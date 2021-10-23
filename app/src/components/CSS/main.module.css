@@ -1,0 +1,38 @@
+.wrapper {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 264px 1.4fr;
+  grid-template-rows: 74px 1.8fr;
+  gap: 16px 20px;
+  grid-template-areas:
+    "header header"
+    "saidbar profile";
+  height: 100%;
+  margin: 20px 34px;
+}
+.profile {
+  grid-area: profile;
+  background-color: sandybrown;
+}
+.header {
+  grid-area: header;
+  background-color: salmon;
+}
+.header .logo{
+    font-size: 3rem;
+    font-weight: bold;
+    color:#2aacc1;
+}
+.saidbar {
+  grid-area: saidbar;
+  background-color: seagreen;
+}
+
+.saidbar ul li{
+    list-style: none;
+}
+
+.saidbar ul li a{
+    text-decoration: none;
+    color:black;
+}
