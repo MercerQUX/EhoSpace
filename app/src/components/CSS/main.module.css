@@ -10,29 +10,39 @@
   height: 100%;
   margin: 20px 34px;
 }
+/* profile begin */
 .profile {
   grid-area: profile;
   background-color: sandybrown;
 }
+/* profile end */
+/* header begin */
 .header {
   grid-area: header;
   background-color: salmon;
 }
-.header .logo{
-    font-size: 3rem;
-    font-weight: bold;
-    color:#2aacc1;
+.header .logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2aacc1;
+  padding-left: 20px;
 }
+/* header end */
+/* saidbar begin */
 .saidbar {
   grid-area: saidbar;
   background-color: seagreen;
 }
 
-.saidbar ul li{
-    list-style: none;
+.saidbar ul li {
+  list-style: none;
 }
 
-.saidbar ul li a{
-    text-decoration: none;
-    color:black;
+.saidbar ul li a {
+  text-decoration: none;
+  color: #ff3f7d;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bold;
 }
+/* saidbar end */
