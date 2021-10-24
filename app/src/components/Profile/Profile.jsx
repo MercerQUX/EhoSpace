@@ -1,16 +1,17 @@
 import React from "react";
 import style from "../CSS/main.module.css";
+import Post from "./PostModule/Post";
+import PostCreater from "./PostModule/PostCreator";
 
 const Profile = (props) => {
   return (
     <div className={style.profile}>
       <div>ava+discription</div>
       <div>
-        my post
-        <div>New Post</div>
+        <PostCreater/>
         <div>
-          <div>post</div>
-          <div>post 2</div>
+          <Post/>
+          <Post/>
         </div>
       </div>
     </div>

@@ -1,0 +1,42 @@
+/* PostCreator Begin */
+.wrapperCreaterPost {
+  padding-bottom: 77px;
+}
+.wrapperCreaterPost div textarea {
+  resize: none;
+  width: 98%;
+  height: 120px;
+  margin-left: 0.6%;
+  background: #69a7dd;
+}
+
+.wrapperButPost {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+.wrapperButPost button {
+  background: bisque;
+  border: none;
+  height: 30px;
+  margin-bottom: 5px;
+  box-shadow: -3px 3px 6px #db0f0f;
+}
+.wrapperButPost button:hover {
+  background-color: rgb(235, 189, 133);
+  cursor: pointer;
+  box-shadow: -3px 3px 6px #862a2a;
+}
+/* PostCreater End */
+/* Post Begin */
+.wrapperPost{
+    display: flex;
+    background-color: #b1b1b147;
+    margin-bottom: 20px;
+}
+.wrapperPost img{
+    width: 100px;
+    height: 100px;
+    padding-right: 10px;
+}
