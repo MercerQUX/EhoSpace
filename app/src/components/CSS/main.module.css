@@ -45,4 +45,7 @@
   font-family: cursive;
   font-weight: bold;
 }
+.saidbar ul li a.activeLink {
+  color: #d725ed;
+}
 /* saidbar end */

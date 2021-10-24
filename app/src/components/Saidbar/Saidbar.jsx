@@ -1,21 +1,35 @@
 import React from "react";
 import style from "../CSS/main.module.css";
+import { NavLink } from "react-router-dom";
 
 const Saidbar = (props) => {
   return (
     <div className={style.saidbar}>
       <ul>
         <li>
-          <a href="#">Profile</a>
+          <NavLink to="/profile" activeClassName={style.activeLink}>
+            Profile
+          </NavLink>
         </li>
         <li>
-          <a href="#">Message</a>
+          <NavLink to="/dialogs" activeClassName={style.activeLink}>
+            Message
+          </NavLink>
         </li>
         <li>
-          <a href="#">News</a>
+          <NavLink to="/users" activeClassName={style.activeLink}>
+            Users
+          </NavLink>
         </li>
         <li>
-          <a href="#">Music</a>
+          <NavLink to="/news" activeClassName={style.activeLink}>
+            News
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" activeClassName={style.activeLink}>
+            Contacts
+          </NavLink>
         </li>
         <br />
         <li>
