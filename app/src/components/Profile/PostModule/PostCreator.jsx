@@ -4,6 +4,7 @@ import style from "../../CSS/profile.module.css"
 const PostCreater = (props) =>{
     return ( 
         <div className={style.wrapperCreaterPost}>
+            <h2>My Post</h2>
             <div>
                 <textarea></textarea>
             </div>

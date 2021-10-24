@@ -1,0 +1,30 @@
+.wrapperDialog{
+    display: flex;
+    justify-content: space-around;
+}
+
+.wrapperDialogWindow{
+    padding: 20px;
+}
+
+.wrapperDialogWindow .dialogsWindowItem{
+    padding: 5px 0px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.wrapperMessages{
+    background-color: burlywood;
+    padding: 20px;
+    width: 400px;
+}
+
+.messagesItem{
+    padding: 5px 0px;
+    font-size: 1.15rem;
+}
+
+.userItemActive{
+    color:cadetblue;
+}
