@@ -8,17 +8,17 @@ import News from "./components/News/News";
 import User from "./components/User/User";
 import Contact from "./components/Contact/Contact";
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className={style.wrapper}>
         <Header />
         <Saidbar />
-        <Route path="/profile" component={Profile} />
-        <Route path="/dialogs" component={Dialogs} />
-        <Route path="/users" component={User} />
-        <Route path="/news" component={News} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/profile" render={()=><Profile state={props.store.pageProfile}/>} />
+        <Route path="/dialogs" render={()=><Dialogs state={props.store.pageDialogs}/>} />
+        <Route path="/users" render={()=><User/>} />
+        <Route path="/news" render={()=><News/>} />
+        <Route path="/contact" render={()=><Contact/>} />
       </div>
     </BrowserRouter>
   );

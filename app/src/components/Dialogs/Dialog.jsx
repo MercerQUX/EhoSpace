@@ -6,8 +6,8 @@ import styleD from "../CSS/dialogs.module.css"
 
 const Dialogs = (props) => {
   return <div className={`${style.profile} ${styleD.wrapperDialog}`}>
-    <DialogWindow/>
-    <Messages/>
+    <DialogWindow state={props.state.dialogsUsers}/>
+    <Messages state={props.state.dialogsMessages}/>
   </div>;
 };
 export default Dialogs;
