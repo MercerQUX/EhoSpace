@@ -6,12 +6,11 @@ import ProfileData from "./ProfileData/ProfileData";
 
 const Profile = (props) => {
   let mapPost = props.state.posts.map((item) => <Post text={item.body} />);
-
   return (
     <div className={style.profile}>
       <div>
         <ProfileData />
-        <PostCreater />
+        <PostCreater textPost={props.state.newTextPost} />
         <div>{mapPost}</div>
       </div>
     </div>

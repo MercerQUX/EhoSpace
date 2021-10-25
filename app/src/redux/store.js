@@ -1,14 +1,19 @@
+import { rerenderEntireTree } from "../render";
+
 let store = {
   pageProfile: {
     posts: [
       {
+        id: 1,
         body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias laboriosam dignissimos explicabo ipsam. Deleniti obcaecati veritatis magnam et incidunt itaque. Nemo nihil provident iusto labore reprehenderit odit nisi accusantium non.
             acilis laborum incidunt. Voluptas, laboriosam! Doloremque perferendis ratione, at enim ut odit dolore numquam! Aliquam nam iste distinctio dicta, ducimus magni.`,
       },
       {
+        id: 2,
         body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias laboriosam dignissimos explicabo ipsam. Deleniti obcaecati veritatis magnam et incidunt itaque. Nemo nihil provident iusto labore reprehenderit odit nisi accusantium non.`,
       },
     ],
+    newTextPost: "",
   },
   pageDialogs: {
     dialogsUsers: [
@@ -24,6 +29,24 @@ let store = {
       { body: "I'm fine", other: false },
     ],
   },
+};
+
+export const changeInputPost = (textBody) => {
+  store.pageProfile.newTextPost = textBody;
+  rerenderEntireTree(store);
+};
+
+export const addPost = () => {
+  store.pageProfile.posts = [
+    ...store.pageProfile.posts,
+    {
+      id: store.pageProfile.posts.length + 1,
+      body: store.pageProfile.newTextPost,
+    },
+  ];
+
+  store.pageProfile.newTextPost = "";
+  rerenderEntireTree(store);
 };
 
 export default store;
