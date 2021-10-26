@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import {
   addMessageAction,
   changeInputMessageAction,
-  dispatch,
-} from "../../../redux/store";
+} from "../../../redux/dialogs-reducer";
 import style from "../../CSS/dialogs.module.css";
 import SingleMessage from "./SingleMessage";
 
@@ -18,9 +17,11 @@ const Messages = (props) => {
       <div className={style.messageTextArea}>
         <textarea
           value={props.state.newTextMessage}
-          onChange={(e) => dispatch(changeInputMessageAction(e.target.value))}
+          onChange={(e) =>
+            props.dispatch(changeInputMessageAction(e.target.value))
+          }
         ></textarea>
-        <button onClick={() => dispatch(addMessageAction())}>Send</button>
+        <button onClick={() => props.dispatch(addMessageAction())}>Send</button>
       </div>
     </div>
   );

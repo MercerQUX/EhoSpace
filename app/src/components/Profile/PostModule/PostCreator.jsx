@@ -1,10 +1,7 @@
 import React from "react";
 import style from "../../CSS/profile.module.css";
-import {
-  addPostAction,
-  changeInputPostAction,
-  dispatch,
-} from "../../../redux/store";
+import { changeInputPostAction, addPostAction } from "../../../redux/profile-reducer";
+
 
 const PostCreater = (props) => {
   return (
@@ -13,11 +10,11 @@ const PostCreater = (props) => {
       <div>
         <textarea
           value={props.textPost}
-          onChange={(e) => dispatch(changeInputPostAction(e.target.value))}
+          onChange={(e) => props.dispatch(changeInputPostAction(e.target.value))}
         ></textarea>
       </div>
       <div className={style.wrapperButPost}>
-        <button onClick={() => dispatch(addPostAction())}>Posting Post</button>
+        <button onClick={() => props.dispatch(addPostAction())}>Posting Post</button>
         <button>Remove Post</button>
       </div>
     </div>

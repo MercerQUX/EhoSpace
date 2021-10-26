@@ -10,7 +10,10 @@ const Profile = (props) => {
     <div className={style.profile}>
       <div>
         <ProfileData />
-        <PostCreater textPost={props.state.newTextPost} />
+        <PostCreater
+          textPost={props.state.newTextPost}
+          dispatch={props.dispatch}
+        />
         <div>{mapPost}</div>
       </div>
     </div>

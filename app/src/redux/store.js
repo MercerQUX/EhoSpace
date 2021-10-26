@@ -1,11 +1,9 @@
-let rerenderEntireTree = () => {
-  console.log("state");
-};
+import DialogsReducer from "./dialogs-reducer";
+import ProfileReducer from "./profile-reducer";
 
-const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
-const ADD_POST = "ADD_POST";
-const CHANGE_INPUT_MESSAGE = "CHANGE_INPUT_MESSAGE";
-const ADD_MESSAGE = "ADD_MESSAGE";
+let rerenderEntireTree = () => {
+  console.log("state 1");
+};
 
 let store = {
   pageProfile: {
@@ -40,63 +38,10 @@ let store = {
 };
 
 export const dispatch = (action) => {
-  switch (action.type) {
-    case ADD_POST:
-      store.pageProfile.posts = [
-        ...store.pageProfile.posts,
-        {
-          id: store.pageProfile.posts.length + 1,
-          body: store.pageProfile.newTextPost,
-        },
-      ];
-
-      store.pageProfile.newTextPost = "";
-      rerenderEntireTree(store);
-      break;
-    case CHANGE_INPUT_POST:
-      store.pageProfile.newTextPost = action.bodyText;
-      rerenderEntireTree(store);
-      break;
-    case CHANGE_INPUT_MESSAGE:
-      store.pageDialogs.newTextMessage = action.bodyText;
-      rerenderEntireTree(store);
-      break;
-    case ADD_MESSAGE:
-      store.pageDialogs.dialogsMessages = [
-        ...store.pageDialogs.dialogsMessages,
-        {
-          id: store.pageDialogs.dialogsMessages.length + 1,
-          body: store.pageDialogs.newTextMessage,
-          other: false,
-        },
-      ];
-
-      store.pageDialogs.newTextMessage = "";
-
-      rerenderEntireTree(store);
-      break;
-    default:
-      return store;
-  }
+  store.pageProfile = ProfileReducer(store.pageProfile, action);
+  store.pageDialogs = DialogsReducer(store.pageDialogs, action);
+  rerenderEntireTree(store);
 };
-
-export const addPostAction = () => ({
-  type: ADD_POST,
-});
-
-export const changeInputPostAction = (text) => ({
-  type: CHANGE_INPUT_POST,
-  bodyText: text,
-});
-
-export const addMessageAction = () => ({
-  type: ADD_MESSAGE,
-});
-
-export const changeInputMessageAction = (text) => ({
-  type: CHANGE_INPUT_MESSAGE,
-  bodyText: text,
-});
 
 export const subscribe = (observer) => {
   rerenderEntireTree = observer;

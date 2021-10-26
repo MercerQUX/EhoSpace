@@ -16,11 +16,21 @@ function App(props) {
         <Saidbar />
         <Route
           path="/profile"
-          render={() => <Profile state={props.store.pageProfile} />}
+          render={() => (
+            <Profile
+              state={props.store.pageProfile}
+              dispatch={props.dispatch}
+            />
+          )}
         />
         <Route
           path="/dialogs"
-          render={() => <Dialogs state={props.store.pageDialogs} />}
+          render={() => (
+            <Dialogs
+              state={props.store.pageDialogs}
+              dispatch={props.dispatch}
+            />
+          )}
         />
         <Route path="/users" render={() => <User />} />
         <Route path="/news" render={() => <News />} />

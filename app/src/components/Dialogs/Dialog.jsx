@@ -8,7 +8,7 @@ const Dialogs = (props) => {
   return (
     <div className={`${style.profile} ${styleD.wrapperDialog}`}>
       <DialogWindow state={props.state.dialogsUsers} />
-      <Messages state={props.state} />
+      <Messages dispatch={props.dispatch} state={props.state} />
     </div>
   );
 };
