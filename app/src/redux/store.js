@@ -1,4 +1,11 @@
-import { rerenderEntireTree } from "../render";
+let rerenderEntireTree = () => {
+  console.log("state");
+};
+
+const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
+const ADD_POST = "ADD_POST";
+const CHANGE_INPUT_MESSAGE = "CHANGE_INPUT_MESSAGE";
+const ADD_MESSAGE = "ADD_MESSAGE";
 
 let store = {
   pageProfile: {
@@ -24,29 +31,75 @@ let store = {
       { id: 5, name: "Vincent" },
     ],
     dialogsMessages: [
-      { body: "Hello", other: false },
-      { body: "How are you?", other: false },
-      { body: "I'm fine", other: false },
+      { id: 1, body: "Hello", other: false },
+      { id: 2, body: "How are you?", other: false },
+      { id: 3, body: "I'm fine", other: false },
     ],
+    newTextMessage: "22",
   },
 };
 
-export const changeInputPost = (textBody) => {
-  store.pageProfile.newTextPost = textBody;
-  rerenderEntireTree(store);
+export const dispatch = (action) => {
+  switch (action.type) {
+    case ADD_POST:
+      store.pageProfile.posts = [
+        ...store.pageProfile.posts,
+        {
+          id: store.pageProfile.posts.length + 1,
+          body: store.pageProfile.newTextPost,
+        },
+      ];
+
+      store.pageProfile.newTextPost = "";
+      rerenderEntireTree(store);
+      break;
+    case CHANGE_INPUT_POST:
+      store.pageProfile.newTextPost = action.bodyText;
+      rerenderEntireTree(store);
+      break;
+    case CHANGE_INPUT_MESSAGE:
+      store.pageDialogs.newTextMessage = action.bodyText;
+      rerenderEntireTree(store);
+      break;
+    case ADD_MESSAGE:
+      store.pageDialogs.dialogsMessages = [
+        ...store.pageDialogs.dialogsMessages,
+        {
+          id: store.pageDialogs.dialogsMessages.length + 1,
+          body: store.pageDialogs.newTextMessage,
+          other: false,
+        },
+      ];
+
+      store.pageDialogs.newTextMessage = "";
+
+      rerenderEntireTree(store);
+      break;
+    default:
+      return store;
+  }
 };
 
-export const addPost = () => {
-  store.pageProfile.posts = [
-    ...store.pageProfile.posts,
-    {
-      id: store.pageProfile.posts.length + 1,
-      body: store.pageProfile.newTextPost,
-    },
-  ];
+export const addPostAction = () => ({
+  type: ADD_POST,
+});
 
-  store.pageProfile.newTextPost = "";
-  rerenderEntireTree(store);
+export const changeInputPostAction = (text) => ({
+  type: CHANGE_INPUT_POST,
+  bodyText: text,
+});
+
+export const addMessageAction = () => ({
+  type: ADD_MESSAGE,
+});
+
+export const changeInputMessageAction = (text) => ({
+  type: CHANGE_INPUT_MESSAGE,
+  bodyText: text,
+});
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 };
 
 export default store;
