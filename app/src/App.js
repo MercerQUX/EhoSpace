@@ -8,14 +8,14 @@ import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";
 import UsersContainer from "./components/User/UsersContainer";
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
       <div className={style.wrapper}>
         <Header />
         <Saidbar />
-        <Route path="/profile" render={() => <Profile store={props.state} />} />
-        <Route path="/dialogs" render={() => <Dialogs store={props.state} />} />
+        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/dialogs" render={() => <Dialogs />} />
         <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/contact" render={() => <Contact />} />
