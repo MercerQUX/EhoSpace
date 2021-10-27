@@ -5,8 +5,8 @@ import Saidbar from "./components/Saidbar/Saidbar";
 import style from "./components/CSS/main.module.css";
 import Dialogs from "./components/Dialogs/Dialog";
 import News from "./components/News/News";
-import User from "./components/User/User";
 import Contact from "./components/Contact/Contact";
+import UsersContainer from "./components/User/UsersContainer";
 
 function App(props) {
   return (
@@ -16,7 +16,7 @@ function App(props) {
         <Saidbar />
         <Route path="/profile" render={() => <Profile store={props.state} />} />
         <Route path="/dialogs" render={() => <Dialogs store={props.state} />} />
-        <Route path="/users" render={() => <User />} />
+        <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/contact" render={() => <Contact />} />
       </div>

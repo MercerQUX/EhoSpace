@@ -1,7 +1,7 @@
 import Messages from "./Message";
 import {
-  addMessageAction,
-  changeInputMessageAction,
+  addMessageAC,
+  changeInputMessageAC,
 } from "../../../redux/dialogs-reducer";
 import { connect } from "react-redux";
 
@@ -11,9 +11,9 @@ let MessageContainer = connect(
     newText: state.pageDialogs.newTextMessage,
   }),
   (dispatch) => ({
-    addMessage: () => dispatch(addMessageAction()),
+    addMessage: () => dispatch(addMessageAC()),
     changeInputMessage: (text) => {
-      dispatch(changeInputMessageAction(text));
+      dispatch(changeInputMessageAC(text));
     },
   })
 )(Messages);

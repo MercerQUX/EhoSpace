@@ -1,5 +1,5 @@
-const CHANGE_INPUT_MESSAGE = "CHANGE_INPUT_MESSAGE";
 const ADD_MESSAGE = "ADD_MESSAGE";
+const CHANGE_INPUT_MESSAGE = "CHANGE_INPUT_MESSAGE";
 
 const initState = {
   dialogsUsers: [
@@ -39,11 +39,11 @@ const DialogsReducer = (state = initState, action) => {
   }
 };
 
-export const addMessageAction = () => ({
+export const addMessageAC = () => ({
   type: ADD_MESSAGE,
 });
 
-export const changeInputMessageAction = (text) => ({
+export const changeInputMessageAC = (text) => ({
   type: CHANGE_INPUT_MESSAGE,
   bodyText: text,
 });

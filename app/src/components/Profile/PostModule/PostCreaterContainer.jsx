@@ -1,17 +1,15 @@
 import PostCreater from "./PostCreater";
-import {
-  changeInputPostAction,
-  addPostAction,
-} from "../../../redux/profile-reducer";
+import { changeInputPostAC, addPostAC } from "../../../redux/profile-reducer";
 import { connect } from "react-redux";
 
 let PostCreaterContainer = connect(
   (state) => ({
     newText: state.pageProfile.newTextPost,
+    posts: state.pageProfile.posts,
   }),
   (dispatch) => ({
-    addPost: () => dispatch(addPostAction()),
-    changeInputPost: (text) => dispatch(changeInputPostAction(text)),
+    addPost: () => dispatch(addPostAC()),
+    changeInputPost: (text) => dispatch(changeInputPostAC(text)),
   })
 )(PostCreater);
 

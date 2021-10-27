@@ -1,7 +1,7 @@
-const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
 const ADD_POST = "ADD_POST";
+const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
 
-const initState = {
+let initState = {
   posts: [
     {
       id: 1,
@@ -37,11 +37,11 @@ const ProfileReducer = (state = initState, action) => {
   }
 };
 
-export const addPostAction = () => ({
+export const addPostAC = () => ({
   type: ADD_POST,
 });
 
-export const changeInputPostAction = (text) => ({
+export const changeInputPostAC = (text) => ({
   type: CHANGE_INPUT_POST,
   bodyText: text,
 });

@@ -1,6 +1,9 @@
 import style from "../../CSS/profile.module.css";
+import Post from "./Post";
 
 const PostCreater = (props) => {
+  let mapPost = props.posts.map((item) => <Post text={item.body} />);
+
   return (
     <div className={style.wrapperCreaterPost}>
       <h2>My Post</h2>
@@ -20,6 +23,7 @@ const PostCreater = (props) => {
         </button>
         <button>Remove Post</button>
       </div>
+      <div>{mapPost}</div>
     </div>
   );
 };

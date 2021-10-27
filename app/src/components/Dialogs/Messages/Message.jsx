@@ -2,11 +2,13 @@ import style from "../../CSS/dialogs.module.css";
 import SingleMessage from "../Messages/SingleMessage";
 
 const Messages = (props) => {
+  let mapMessages = props.dialogsMessages.map((item) => (
+    <SingleMessage body={item.body} />
+  ));
+
   return (
     <div className={style.wrapperMessages}>
-      {props.dialogsMessages.map((item) => (
-        <SingleMessage body={item.body} />
-      ))}
+      {mapMessages}
       <div className={style.messageTextArea}>
         <textarea
           value={props.newText}
