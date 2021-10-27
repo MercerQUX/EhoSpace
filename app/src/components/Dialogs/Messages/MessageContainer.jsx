@@ -1,34 +1,21 @@
 import Messages from "./Message";
-import SingleMessage from "./SingleMessage";
 import {
   addMessageAction,
   changeInputMessageAction,
 } from "../../../redux/dialogs-reducer";
+import { connect } from "react-redux";
 
-const MessageContainer = (props) => {
-  let state = props.store.getState().pageDialogs;
-
-  let mapMessages = state.dialogsMessages.map((item) => (
-    <SingleMessage body={item.body} />
-  ));
-
-  const addMessage = () => {
-    props.store.dispatch(addMessageAction());
-  };
-  const changeInputMessage = (text) => {
-    props.store.dispatch(changeInputMessageAction(text));
-  };
-
-  return (
-    <div>
-      <Messages
-        messageElements={mapMessages}
-        addMessage={addMessage}
-        changeInputMessage={changeInputMessage}
-        state={state}
-      />
-    </div>
-  );
-};
+let MessageContainer = connect(
+  (state) => ({
+    dialogsMessages: state.pageDialogs.dialogsMessages,
+    newText: state.pageDialogs.newTextMessage,
+  }),
+  (dispatch) => ({
+    addMessage: () => dispatch(addMessageAction()),
+    changeInputMessage: (text) => {
+      dispatch(changeInputMessageAction(text));
+    },
+  })
+)(Messages);
 
 export default MessageContainer;

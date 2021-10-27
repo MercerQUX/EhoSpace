@@ -4,11 +4,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { Provider } from "react-redux";
 
 export const rerenderEntireTree = (state) => {
   return ReactDOM.render(
     <React.StrictMode>
-      <App store={state} />
+      <Provider store={store}>
+        <App state={state} />
+      </Provider>
     </React.StrictMode>,
     document.getElementById("root")
   );

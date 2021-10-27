@@ -12,7 +12,7 @@ const Profile = (props) => {
     <div className={style.profile}>
       <div>
         <ProfileData />
-        <PostCreaterContainer store={props.store} />
+        <PostCreaterContainer />
         <div>{mapPost}</div>
       </div>
     </div>

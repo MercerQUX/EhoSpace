@@ -3,26 +3,16 @@ import {
   changeInputPostAction,
   addPostAction,
 } from "../../../redux/profile-reducer";
+import { connect } from "react-redux";
 
-const PostCreaterContainer = (props) => {
-  const addPost = () => {
-    props.store.dispatch(addPostAction());
-    changeInputPost("");
-  };
-
-  const changeInputPost = (text) => {
-    props.store.dispatch(changeInputPostAction(text));
-  };
-
-  return (
-    <div>
-      <PostCreater
-        state={props.store.getState()}
-        addPost={addPost}
-        changeInputPost={changeInputPost}
-      />
-    </div>
-  );
-};
+let PostCreaterContainer = connect(
+  (state) => ({
+    newText: state.pageProfile.newTextPost,
+  }),
+  (dispatch) => ({
+    addPost: () => dispatch(addPostAction()),
+    changeInputPost: (text) => dispatch(changeInputPostAction(text)),
+  })
+)(PostCreater);
 
 export default PostCreaterContainer;

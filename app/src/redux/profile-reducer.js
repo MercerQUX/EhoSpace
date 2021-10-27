@@ -19,18 +19,19 @@ const initState = {
 const ProfileReducer = (state = initState, action) => {
   switch (action.type) {
     case ADD_POST:
-      state.posts = [
-        ...state.posts,
-        {
-          id: state.posts.length + 1,
-          body: state.newTextPost,
-        },
-      ];
-      state.newTextPost = "";
-      return state;
+      return {
+        ...state,
+        posts: [
+          ...state.posts,
+          {
+            id: state.posts.length + 1,
+            body: state.newTextPost,
+          },
+        ],
+        newTextPost: "",
+      };
     case CHANGE_INPUT_POST:
-      state.newTextPost = action.bodyText;
-      return state;
+      return { ...state, newTextPost: action.bodyText };
     default:
       return state;
   }

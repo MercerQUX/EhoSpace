@@ -6,8 +6,8 @@ const PostCreater = (props) => {
       <h2>My Post</h2>
       <div>
         <textarea
+          value={props.newText}
           onChange={(e) => props.changeInputPost(e.target.value)}
-          value={props.state.pageProfile.newTextPost}
         ></textarea>
       </div>
       <div className={style.wrapperButPost}>
