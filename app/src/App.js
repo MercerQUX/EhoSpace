@@ -14,24 +14,8 @@ function App(props) {
       <div className={style.wrapper}>
         <Header />
         <Saidbar />
-        <Route
-          path="/profile"
-          render={() => (
-            <Profile
-              state={props.store.pageProfile}
-              dispatch={props.dispatch}
-            />
-          )}
-        />
-        <Route
-          path="/dialogs"
-          render={() => (
-            <Dialogs
-              state={props.store.pageDialogs}
-              dispatch={props.dispatch}
-            />
-          )}
-        />
+        <Route path="/profile" render={() => <Profile store={props.store} />} />
+        <Route path="/dialogs" render={() => <Dialogs store={props.store} />} />
         <Route path="/users" render={() => <User />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/contact" render={() => <Contact />} />

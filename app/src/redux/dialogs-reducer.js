@@ -14,7 +14,7 @@ const initState = {
     { id: 2, body: "How are you?", other: false },
     { id: 3, body: "I'm fine", other: false },
   ],
-  newTextMessage: "22",
+  newTextMessage: "",
 };
 
 const DialogsReducer = (state = initState, action) => {

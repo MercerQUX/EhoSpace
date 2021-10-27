@@ -8,15 +8,15 @@ import App from "./App";
 export const rerenderEntireTree = (state) => {
   return ReactDOM.render(
     <React.StrictMode>
-      <App store={state} dispatch={store.dispatch} />
+      <App store={state} />
     </React.StrictMode>,
     document.getElementById("root")
   );
 };
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree(store);
 store.subscribe(() => {
-  let state = store.getState();
+  let state = store;
   rerenderEntireTree(state);
 });
 
