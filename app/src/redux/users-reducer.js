@@ -14,7 +14,7 @@ const initState = {
     },
     {
       id: 2,
-      followed: false,
+      followed: true,
       fullName: "Dmitro",
       status: "I wanna become the most best!",
       country: "Ukraine",
@@ -45,14 +45,14 @@ const UsersReducer = (state = initState, action) => {
       return {
         ...state,
         users: state.users.map((u) =>
-          u.id === action.userID ? { ...u, follow: true } : u
+          u.id === action.userID ? { ...u, followed: false } : u
         ),
       };
     case UNFOLLOW:
       return {
         ...state,
         users: state.users.map((u) =>
-          u.id === action.userID ? { ...u, follow: false } : u
+          u.id === action.userID ? { ...u, followed: true } : u
         ),
       };
     case SET_USERS:
