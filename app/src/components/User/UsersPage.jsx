@@ -4,6 +4,7 @@ import style from "../CSS/main.module.css";
 import styleU from "../CSS/users.module.css";
 import User from "./User";
 import * as axios from "axios";
+import Preloader from "../common/Preloader";
 
 const UsersPage = (props) => {
   useEffect(() => {
@@ -18,9 +19,11 @@ const UsersPage = (props) => {
       .then((res) => {
         props.setUsers(res.data);
         props.plusLoadedPage();
+        props.toggleIsFetching(false);
       });
   }, []);
   let getUsers = () => {
+    props.toggleIsFetching(true);
     axios
       .get(
         `http://localhost:4000/users?_page=${props.loadedPage}&_limit=${props.pageSize}`
@@ -28,6 +31,7 @@ const UsersPage = (props) => {
       .then((res) => {
         props.setUsers(res.data);
         props.plusLoadedPage();
+        props.toggleIsFetching(false);
       });
   };
 
@@ -41,8 +45,16 @@ const UsersPage = (props) => {
   ));
   return (
     <div className={style.profile}>
-      {mapUsers}
+      {props.isFetching && !props.isEmpty ? (
+        <Preloader />
+      ) : (
+        <div>{mapUsers}</div>
+      )}
       <div style={{ textAlign: "center" }}>
+        {props.isEmpty ? (
+          <span className={styleU.error}>Пользователей не найдено</span>
+        ) : null}
+        <br />
         <button className={styleU.btnGetUsers} onClick={getUsers}>
           Load Users
         </button>

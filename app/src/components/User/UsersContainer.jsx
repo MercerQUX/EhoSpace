@@ -5,6 +5,7 @@ import {
   unfollowAC,
   loadedPageAC,
   totalUsersAC,
+  toggleIsFetchingAC,
 } from "../../redux/users-reducer";
 import UsersPage from "./UsersPage";
 
@@ -13,6 +14,8 @@ let UsersContainer = connect(
     users: state.pageUsers.users,
     pageSize: state.pageUsers.pageSize,
     loadedPage: state.pageUsers.numLoadedPages,
+    isFetching: state.pageUsers.isFetching,
+    isEmpty: state.pageUsers.isEmpty,
   }),
   (dispatch) => ({
     follow: (userID) => dispatch(followAC(userID)),
@@ -20,6 +23,7 @@ let UsersContainer = connect(
     setUsers: (users) => dispatch(setUsersAC(users)),
     plusLoadedPage: () => dispatch(loadedPageAC()),
     totalUsers: (count) => dispatch(totalUsersAC(count)),
+    toggleIsFetching: (toggle) => dispatch(toggleIsFetchingAC(toggle)),
   })
 )(UsersPage);
 
