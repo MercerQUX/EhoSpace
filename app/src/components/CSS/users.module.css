@@ -39,3 +39,15 @@
   background-color: #5ca520;
   border: solid 1px green;
 }
+.btnGetUsers {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(129, 168, 20);
+  border: 1px solid rgb(215, 230, 13);
+  margin: 10px 0px;
+  cursor: pointer;
+}
+.btnGetUsers:hover {
+  border: 1px solid rgb(207, 253, 0);
+  background-color: chocolate;
+}

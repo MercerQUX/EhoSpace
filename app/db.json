@@ -1,0 +1,117 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "followed": false,
+      "fullName": "Frank",
+      "status": "I wanna live!",
+      "country": "Russian",
+      "city": "Moscov"
+    },
+    {
+      "id": 2,
+      "followed": true,
+      "fullName": "Dmitro",
+      "status": "I wanna become the most best!",
+      "country": "Ukraine",
+      "city": "Kiev"
+    },
+    {
+      "id": 3,
+      "followed": false,
+      "fullName": "Vasil",
+      "status": "I wanna drink to tea.",
+      "country": "Ukranine",
+      "city": "Dnipro"
+    },
+    {
+      "id": 4,
+      "followed": false,
+      "fullName": "Vinny",
+      "status": "I wanna live happy!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 5,
+      "followed": false,
+      "fullName": "Flex",
+      "status": "I wanna live happy too!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 6,
+      "followed": false,
+      "fullName": "Dobby",
+      "status": "I cheater!!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 7,
+      "followed": false,
+      "fullName": "Boby",
+      "status": "I wanna money!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 8,
+      "followed": false,
+      "fullName": "Lisa",
+      "status": "I wanna read!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 9,
+      "followed": false,
+      "fullName": "Favicon",
+      "status": "I wanna make the Show!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 10,
+      "followed": false,
+      "fullName": "Elis",
+      "status": "I wanna lol!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 11,
+      "followed": false,
+      "fullName": "Elis 2",
+      "status": "I wanna lol!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 12,
+      "followed": false,
+      "fullName": "Elis 3",
+      "status": "I wanna lol!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 13,
+      "followed": false,
+      "fullName": "Elis 4",
+      "status": "I wanna lol!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    },
+    {
+      "id": 14,
+      "followed": false,
+      "fullName": "Elis 5",
+      "status": "I wanna lol!",
+      "country": "Russian",
+      "city": "Krasnodar"
+    }
+  ],
+  "totalUsers": [14]
+}
