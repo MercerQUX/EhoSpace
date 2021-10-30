@@ -28,6 +28,3 @@ let UsersContainer = connect(
 )(UsersPage);
 
 export default UsersContainer;
-
-
-

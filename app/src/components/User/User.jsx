@@ -1,13 +1,13 @@
 import React from "react";
 import style from "../CSS/users.module.css";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 const User = (props) => {
   return (
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>
         <NavLink className={style.userIMG} to={`profile/${props.data.id}`}>
-          <img src="" alt="avatar"  />
+          <img src="" alt="avatar" />
         </NavLink>
 
         <div className={style.dataBlock}>

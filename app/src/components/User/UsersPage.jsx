@@ -5,34 +5,24 @@ import styleU from "../CSS/users.module.css";
 import User from "./User";
 import * as axios from "axios";
 import Preloader from "../common/Preloader";
+import { getNumberTotalUsersAPI, getPartUsersAPI } from "../../API/API";
 
 const UsersPage = (props) => {
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/totalUsers`)
-      .then((res) => props.totalUsers(res.data[0]));
-
-    axios
-      .get(
-        `http://localhost:4000/users?_page=${props.loadedPage}&_limit=${props.pageSize}`
-      )
-      .then((res) => {
-        props.setUsers(res.data);
-        props.plusLoadedPage();
-        props.toggleIsFetching(false);
-      });
+    getNumberTotalUsersAPI().then((data) => props.totalUsers(data));
+    requestUsers();
   }, []);
-  let getUsers = () => {
+
+  const requestUsers = () => {
+    getPartUsersAPI(props.loadedPage, props.pageSize).then((data) => {
+      props.setUsers(data);
+      props.plusLoadedPage();
+      props.toggleIsFetching(false);
+    });
+  };
+  const getUsers = () => {
     props.toggleIsFetching(true);
-    axios
-      .get(
-        `http://localhost:4000/users?_page=${props.loadedPage}&_limit=${props.pageSize}`
-      )
-      .then((res) => {
-        props.setUsers(res.data);
-        props.plusLoadedPage();
-        props.toggleIsFetching(false);
-      });
+    requestUsers();
   };
 
   let mapUsers = props.users.map((user) => (

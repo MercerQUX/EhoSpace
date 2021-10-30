@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import * as axios from "axios";
 import Preloader from "../../common/Preloader";
 import ProfileCard from "./ProfileCard";
+import { getSingleUserAPI } from "../../../API/API";
 
 const ProfileData = (props) => {
   let selectedUser =
@@ -10,8 +11,8 @@ const ProfileData = (props) => {
       : props.match.params.UserID;
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/users/${selectedUser}`).then((res) => {
-      props.setSelectedProfile(res.data);
+    getSingleUserAPI(selectedUser).then((data) => {
+      props.setSelectedProfile(data);
     });
   }, [props.isAuth]);
 
