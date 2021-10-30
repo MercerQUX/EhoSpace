@@ -1,5 +1,6 @@
 const ADD_POST = "ADD_POST";
 const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
+const GET_SELECTED_PROFILE = "GET_SELECTED_PROFILE";
 
 let initState = {
   posts: [
@@ -14,6 +15,7 @@ let initState = {
     },
   ],
   newTextPost: "",
+  profile: null,
 };
 
 const ProfileReducer = (state = initState, action) => {
@@ -32,6 +34,8 @@ const ProfileReducer = (state = initState, action) => {
       };
     case CHANGE_INPUT_POST:
       return { ...state, newTextPost: action.bodyText };
+    case GET_SELECTED_PROFILE:
+      return { ...state, profile: action.profile };
     default:
       return state;
   }
@@ -44,6 +48,11 @@ export const addPostAC = () => ({
 export const changeInputPostAC = (text) => ({
   type: CHANGE_INPUT_POST,
   bodyText: text,
+});
+
+export const setSelectedProfileAC = (data) => ({
+  type: GET_SELECTED_PROFILE,
+  profile: data,
 });
 
 export default ProfileReducer;
