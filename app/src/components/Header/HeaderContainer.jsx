@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import { setLoggedDataAC } from "../../redux/auth-reducer";
 import Header from "./Header";
-import * as axios from "axios";
-import { getLoggedDataAPI } from "../../API/API";
+import { getLoggedDataAPI } from "../../API/auth-API";
 
 const HeaderContainer = (props) => {
   getLoggedDataAPI().then((data) => {

@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "followed": false,
+      "followed": true,
       "fullName": "Vinny",
       "status": "I wanna live happy!",
       "country": "Russian",
@@ -66,7 +66,7 @@
     },
     {
       "id": 9,
-      "followed": false,
+      "followed": true,
       "fullName": "Favicon",
       "status": "I wanna make the Show!",
       "country": "Russian",
@@ -74,7 +74,7 @@
     },
     {
       "id": 10,
-      "followed": false,
+      "followed": true,
       "fullName": "Elis",
       "status": "I wanna lol!",
       "country": "Russian",
@@ -82,7 +82,7 @@
     },
     {
       "id": 11,
-      "followed": false,
+      "followed": true,
       "fullName": "Elis 2",
       "status": "I wanna lol!",
       "country": "Russian",
@@ -90,7 +90,7 @@
     },
     {
       "id": 12,
-      "followed": false,
+      "followed": true,
       "fullName": "Elis 3",
       "status": "I wanna lol!",
       "country": "Russian",

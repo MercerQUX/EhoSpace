@@ -1,4 +1,4 @@
-import { getSingleUserAPI } from "../API/API";
+import { getSingleUserAPI } from "../API/profile-API";
 
 const ADD_POST = "ADD_POST";
 const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";

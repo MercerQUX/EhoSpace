@@ -2,7 +2,7 @@ import {
   getNumberTotalUsersAPI,
   getPartUsersAPI,
   rewriteUserAPI,
-} from "../API/API";
+} from "../API/user-API";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
