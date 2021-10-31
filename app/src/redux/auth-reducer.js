@@ -10,7 +10,6 @@ let initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case SET_LOGGED_DATA:
-      console.log(action.data);
       return {
         ...state,
         login: action.data.login,

@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "followed": false,
+      "followed": true,
       "fullName": "Frank",
       "status": "I wanna live!",
       "country": "Russian",
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "followed": false,
+      "followed": true,
       "fullName": "Vasil",
       "status": "I wanna drink to tea.",
       "country": "Ukranine",
@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "followed": false,
+      "followed": true,
       "fullName": "Vinny",
       "status": "I wanna live happy!",
       "country": "Russian",
@@ -58,7 +58,7 @@
     },
     {
       "id": 8,
-      "followed": false,
+      "followed": true,
       "fullName": "Lisa",
       "status": "I wanna read!",
       "country": "Russian",
@@ -98,7 +98,7 @@
     },
     {
       "id": 13,
-      "followed": false,
+      "followed": true,
       "fullName": "Elis 4",
       "status": "I wanna lol!",
       "country": "Russian",
@@ -106,14 +106,16 @@
     },
     {
       "id": 14,
-      "followed": false,
+      "followed": true,
       "fullName": "Elis 5",
       "status": "I wanna lol!",
       "country": "Russian",
       "city": "Krasnodar"
     }
   ],
-  "totalUsers": [14],
+  "totalUsers": [
+    14
+  ],
   "authSystem": [
     {
       "authData": {

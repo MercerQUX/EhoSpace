@@ -21,6 +21,7 @@ const User = (props) => {
           <button
             className={style.follow}
             onClick={() => props.follow(props.data.id)}
+            disabled={props.disabledFollowing}
           >
             Follow
           </button>
@@ -28,6 +29,7 @@ const User = (props) => {
           <button
             className={style.unfollow}
             onClick={() => props.unfollow(props.data.id)}
+            disabled={props.disabledFollowing}
           >
             Unfollow
           </button>

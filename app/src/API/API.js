@@ -7,6 +7,7 @@ const AUTH_TYPE = "AUTH_TYPE";
 const TOTAL_USERS = "TOTAL_USERS";
 const GET_USERS_PART = "GET_USERS_PART";
 const GET_SINGLE_USER = "GET_SINGLE_USER";
+const REWRITE_USER = "REWRITE_USER";
 
 const constAxios = axios.create({
   withCredentials: true,
@@ -23,6 +24,12 @@ const API = (action) => {
           return constAxios
             .get(`/users?_page=${action.page}&_limit=${action.limit}`)
             .then((res) => res.data);
+        case REWRITE_USER:
+          return constAxios.put(`/users/${action.id}`, {
+            ...action.status,
+          });
+        default:
+          return 0;
       }
     case PROFILE_TYPE:
       switch (action.typeB) {
@@ -51,5 +58,8 @@ export const getPartUsersAPI = (page, limit) =>
 
 export const getSingleUserAPI = (selected) =>
   API({ typeA: PROFILE_TYPE, typeB: GET_SINGLE_USER, selected: selected });
+
+export const rewriteUserAPI = (userID, status) =>
+  API({ typeA: USERS_TYPE, typeB: REWRITE_USER, id: userID, status: status });
 
 export default API;

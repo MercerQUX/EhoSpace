@@ -4,6 +4,8 @@ const SET_USERS = "SET_USERS";
 const COUNT_LOAD_USERS = "COUNT_LOAD_USERS";
 const TOTAL_USERS = "TOTAL_USERS";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const DISABLED_CHANGED_FOLLOWING = "DISABLED_CHANGED_FOLLOWING";
+const FOLLOWING_DISABLED = "FOLLOWING_DISABLED ";
 
 const initState = {
   users: [],
@@ -12,6 +14,8 @@ const initState = {
   numLoadedPages: 1,
   isFetching: true,
   isEmpty: false,
+  changeFollow: undefined,
+  isFollowingDisabled: false,
 };
 
 const UsersReducer = (state = initState, action) => {
@@ -22,6 +26,7 @@ const UsersReducer = (state = initState, action) => {
         users: state.users.map((u) =>
           u.id === action.userID ? { ...u, followed: false } : u
         ),
+        changeFollow: action.userID,
       };
     case UNFOLLOW:
       return {
@@ -29,6 +34,7 @@ const UsersReducer = (state = initState, action) => {
         users: state.users.map((u) =>
           u.id === action.userID ? { ...u, followed: true } : u
         ),
+        changeFollow: action.userID,
       };
     case SET_USERS:
       return { ...state, users: [...state.users, ...action.users] };
@@ -42,6 +48,10 @@ const UsersReducer = (state = initState, action) => {
       return { ...state, totalUsersCount: action.count };
     case TOGGLE_IS_FETCHING:
       return { ...state, isFetching: action.toggle };
+    case DISABLED_CHANGED_FOLLOWING:
+      return { ...state, changeFollow: undefined };
+    case FOLLOWING_DISABLED:
+      return { ...state, isFollowingDisabled: action.toggle };
     default:
       return state;
   }
@@ -59,6 +69,16 @@ export const totalUsersAC = (count) => ({ type: TOTAL_USERS, count: count });
 
 export const toggleIsFetchingAC = (toggle) => ({
   type: TOGGLE_IS_FETCHING,
+  toggle: toggle,
+});
+
+export const disableChangedFollowedAC = () => ({
+  type: DISABLED_CHANGED_FOLLOWING,
+  toggle: undefined,
+});
+
+export const toggleIsDisabledFollowingAC = (toggle) => ({
+  type: FOLLOWING_DISABLED,
   toggle: toggle,
 });
 
