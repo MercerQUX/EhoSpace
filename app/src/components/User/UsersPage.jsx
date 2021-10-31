@@ -3,39 +3,19 @@ import { useEffect } from "react";
 import style from "../CSS/main.module.css";
 import styleU from "../CSS/users.module.css";
 import User from "./User";
-import * as axios from "axios";
 import Preloader from "../common/Preloader";
-import {
-  getNumberTotalUsersAPI,
-  getPartUsersAPI,
-  rewriteUserAPI,
-} from "../../API/API";
 
 const UsersPage = (props) => {
   useEffect(() => {
-    getNumberTotalUsersAPI().then((data) => props.totalUsers(data));
-    requestUsers();
+    props.getTotalUsers();
+    props.getUsers(props.loadedPage, props.pageSize);
   }, []);
 
-  if (props.changeFollow != undefined) {
-    props.toggleDisabledFollowing(true);
-    rewriteUserAPI(
-      props.changeFollow,
-      props.users[props.changeFollow - 1]
-    ).then((res) => props.toggleDisabledFollowing(false));
-    props.disabledChangedFollowing();
-  }
+  props.followed(props.changeFollow, props.users[props.changeFollow - 1]);
 
-  const requestUsers = () => {
-    getPartUsersAPI(props.loadedPage, props.pageSize).then((data) => {
-      props.setUsers(data);
-      props.plusLoadedPage();
-      props.toggleIsFetching(false);
-    });
-  };
   const getUsers = () => {
     props.toggleIsFetching(true);
-    requestUsers();
+    props.getUsers(props.loadedPage, props.pageSize);
   };
 
   let mapUsers = props.users.map((user) => (

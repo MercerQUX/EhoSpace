@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setSelectedProfileAC } from "../../../redux/profile-reducer";
+import { getProfileDataTC } from "../../../redux/profile-reducer";
 import ProfileData from "./ProfileData";
 import { withRouter } from "react-router";
 
@@ -10,7 +10,8 @@ const ProfileDataContainer = connect(
     isAuth: state.authenticator.isAuth,
   }),
   (dispatch) => ({
-    setSelectedProfile: (data) => dispatch(setSelectedProfileAC(data)),
+    getProfileData: (userID, loggedID, isAuth) =>
+      dispatch(getProfileDataTC(userID, loggedID, isAuth)),
   })
 )(withRouter(ProfileData));
 

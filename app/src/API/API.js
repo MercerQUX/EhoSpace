@@ -8,6 +8,7 @@ const TOTAL_USERS = "TOTAL_USERS";
 const GET_USERS_PART = "GET_USERS_PART";
 const GET_SINGLE_USER = "GET_SINGLE_USER";
 const REWRITE_USER = "REWRITE_USER";
+const LOGGED_DATA = "LOGGED_DATA";
 
 const constAxios = axios.create({
   withCredentials: true,
@@ -42,6 +43,12 @@ const API = (action) => {
       }
     case AUTH_TYPE:
       switch (action.typeB) {
+        case LOGGED_DATA:
+          return constAxios.get("/authSystem?authNow_like").then((res) => {
+            if (res.data[0].authNow.isAuth) {
+              return res.data[0].authNow;
+            }
+          });
         default:
           return 0;
       }
@@ -61,5 +68,8 @@ export const getSingleUserAPI = (selected) =>
 
 export const rewriteUserAPI = (userID, status) =>
   API({ typeA: USERS_TYPE, typeB: REWRITE_USER, id: userID, status: status });
+
+export const getLoggedDataAPI = () =>
+  API({ typeA: AUTH_TYPE, typeB: LOGGED_DATA });
 
 export default API;

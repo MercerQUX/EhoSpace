@@ -1,13 +1,11 @@
 import { connect } from "react-redux";
 import {
   followAC,
-  setUsersAC,
   unfollowAC,
-  loadedPageAC,
-  totalUsersAC,
   toggleIsFetchingAC,
-  toggleIsDisabledFollowingAC,
-  disableChangedFollowedAC,
+  getUsersTC,
+  getTotalUsersTC,
+  followedTC,
 } from "../../redux/users-reducer";
 import UsersPage from "./UsersPage";
 
@@ -24,13 +22,10 @@ let UsersContainer = connect(
   (dispatch) => ({
     follow: (userID) => dispatch(followAC(userID)),
     unfollow: (userID) => dispatch(unfollowAC(userID)),
-    setUsers: (users) => dispatch(setUsersAC(users)),
-    plusLoadedPage: () => dispatch(loadedPageAC()),
-    totalUsers: (count) => dispatch(totalUsersAC(count)),
     toggleIsFetching: (toggle) => dispatch(toggleIsFetchingAC(toggle)),
-    disabledChangedFollowing: () => dispatch(disableChangedFollowedAC()),
-    toggleDisabledFollowing: (toggle) =>
-      dispatch(toggleIsDisabledFollowingAC(toggle)),
+    getUsers: (page, limit) => dispatch(getUsersTC(page, limit)),
+    getTotalUsers: () => dispatch(getTotalUsersTC()),
+    followed: (id, user) => dispatch(followedTC(id, user)),
   })
 )(UsersPage);
 

@@ -1,3 +1,5 @@
+import { getSingleUserAPI } from "../API/API";
+
 const ADD_POST = "ADD_POST";
 const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
 const GET_SELECTED_PROFILE = "GET_SELECTED_PROFILE";
@@ -40,7 +42,7 @@ const ProfileReducer = (state = initState, action) => {
       return state;
   }
 };
-
+// ACTIONS CREATOR
 export const addPostAC = () => ({
   type: ADD_POST,
 });
@@ -54,5 +56,13 @@ export const setSelectedProfileAC = (data) => ({
   type: GET_SELECTED_PROFILE,
   profile: data,
 });
+//THUNKS CREATOR
+export const getProfileDataTC = (userID, loggedID, isAuth) => (dispatch) => {
+  let selectedUser = userID == undefined && isAuth ? loggedID : userID;
+
+  getSingleUserAPI(selectedUser).then((data) => {
+    dispatch(setSelectedProfileAC(data));
+  });
+};
 
 export default ProfileReducer;

@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "followed": true,
+      "followed": false,
       "fullName": "Vinny",
       "status": "I wanna live happy!",
       "country": "Russian",
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "followed": false,
+      "followed": true,
       "fullName": "Flex",
       "status": "I wanna live happy too!",
       "country": "Russian",
@@ -42,7 +42,7 @@
     },
     {
       "id": 6,
-      "followed": false,
+      "followed": true,
       "fullName": "Dobby",
       "status": "I cheater!!",
       "country": "Russian",
@@ -50,7 +50,7 @@
     },
     {
       "id": 7,
-      "followed": false,
+      "followed": true,
       "fullName": "Boby",
       "status": "I wanna money!",
       "country": "Russian",

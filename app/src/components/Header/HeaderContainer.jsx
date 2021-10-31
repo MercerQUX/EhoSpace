@@ -2,12 +2,11 @@ import { connect } from "react-redux";
 import { setLoggedDataAC } from "../../redux/auth-reducer";
 import Header from "./Header";
 import * as axios from "axios";
+import { getLoggedDataAPI } from "../../API/API";
 
 const HeaderContainer = (props) => {
-  axios.get("http://localhost:4000/authSystem?authNow_like").then((res) => {
-    if (res.data[0].authNow.isAuth) {
-      props.setLoggedData(res.data[0].authNow);
-    }
+  getLoggedDataAPI().then((data) => {
+    props.setLoggedData(data);
   });
 
   return <Header isAuth={props.isAuth} login={props.login} />;

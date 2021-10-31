@@ -1,3 +1,9 @@
+import {
+  getNumberTotalUsersAPI,
+  getPartUsersAPI,
+  rewriteUserAPI,
+} from "../API/API";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -56,7 +62,7 @@ const UsersReducer = (state = initState, action) => {
       return state;
   }
 };
-
+// ACTIONS CREATOR
 export const followAC = (userID) => ({ type: FOLLOW, userID: userID });
 
 export const unfollowAC = (userID) => ({ type: UNFOLLOW, userID: userID });
@@ -81,5 +87,27 @@ export const toggleIsDisabledFollowingAC = (toggle) => ({
   type: FOLLOWING_DISABLED,
   toggle: toggle,
 });
+// THUNKS CREATORS
+export const getUsersTC = (page, limit) => (dispatch) => {
+  getPartUsersAPI(page, limit).then((data) => {
+    dispatch(setUsersAC(data));
+    dispatch(loadedPageAC());
+    dispatch(toggleIsFetchingAC(false));
+  });
+};
+
+export const getTotalUsersTC = () => (dispatch) => {
+  getNumberTotalUsersAPI().then((data) => dispatch(totalUsersAC(data)));
+};
+
+export const followedTC = (idUser, user) => (dispatch) => {
+  if (idUser != undefined) {
+    dispatch(toggleIsDisabledFollowingAC(true));
+    rewriteUserAPI(idUser, user).then(() =>
+      dispatch(toggleIsDisabledFollowingAC(false))
+    );
+    dispatch(disableChangedFollowedAC());
+  }
+};
 
 export default UsersReducer;
