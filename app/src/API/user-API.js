@@ -19,7 +19,7 @@ const API = (action) => {
         .then((res) => res.data);
     case REWRITE_USER:
       return constAxios.put(`/users/${action.id}`, {
-        ...action.status,
+        ...action.data,
       });
     default:
       return 0;
@@ -31,5 +31,5 @@ export const getNumberTotalUsersAPI = () => API({ type: TOTAL_USERS });
 export const getPartUsersAPI = (page, limit) =>
   API({ type: GET_USERS_PART, page: page, limit: limit });
 
-export const rewriteUserAPI = (userID, status) =>
-  API({ type: REWRITE_USER, id: userID, status: status });
+export const rewriteUserAPI = (userID, data) =>
+  API({ type: REWRITE_USER, id: userID, data: data });

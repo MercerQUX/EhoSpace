@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const ProfileCard = (props) => {
   const [isEditMode, setIsEditMode] = useState(false);
+
+  let sendNewStatus = () => {
+    setIsEditMode(false);
+    props.saveStatus(props.profile.id, props.profile);
+  };
 
   return (
     <div>
@@ -17,7 +22,8 @@ const ProfileCard = (props) => {
         {isEditMode && (
           <input
             autoFocus={true}
-            onBlur={() => setIsEditMode(false)}
+            onChange={(e) => props.changeStatus(e.target.value)}
+            onBlur={sendNewStatus}
             value={props.profile.status}
           />
         )}
