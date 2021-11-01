@@ -2,8 +2,10 @@ import { connect } from "react-redux";
 import { getProfileDataTC } from "../../../redux/profile-reducer";
 import ProfileData from "./ProfileData";
 import { withRouter } from "react-router";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
-const ProfileDataContainer = connect(
+const ProfileDataConnect = connect(
   (state) => ({
     profile: state.pageProfile.profile,
     idLoggedUser: state.authenticator.userID,
@@ -13,6 +15,12 @@ const ProfileDataContainer = connect(
     getProfileData: (userID, loggedID, isAuth) =>
       dispatch(getProfileDataTC(userID, loggedID, isAuth)),
   })
-)(withRouter(ProfileData));
+);
+
+const ProfileDataContainer = compose(
+  ProfileDataConnect,
+  withRouter,
+  withAuthRedirect
+)(ProfileData);
 
 export default ProfileDataContainer;
