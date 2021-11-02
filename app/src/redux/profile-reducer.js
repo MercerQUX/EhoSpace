@@ -2,7 +2,6 @@ import { getSingleUserAPI } from "../API/profile-API";
 import { rewriteUserAPI } from "../API/user-API";
 
 const ADD_POST = "ADD_POST";
-const CHANGE_INPUT_POST = "CHANGE_INPUT_POST";
 const GET_SELECTED_PROFILE = "GET_SELECTED_PROFILE";
 const CHANGED_STATUS = "CHANGED_STATUS";
 
@@ -18,7 +17,6 @@ let initState = {
       body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias laboriosam dignissimos explicabo ipsam. Deleniti obcaecati veritatis magnam et incidunt itaque. Nemo nihil provident iusto labore reprehenderit odit nisi accusantium non.`,
     },
   ],
-  newTextPost: "",
   profile: null,
   actualStatus: "",
 };
@@ -32,13 +30,10 @@ const ProfileReducer = (state = initState, action) => {
           ...state.posts,
           {
             id: state.posts.length + 1,
-            body: state.newTextPost,
+            body: action.value.newPost,
           },
         ],
-        newTextPost: "",
       };
-    case CHANGE_INPUT_POST:
-      return { ...state, newTextPost: action.bodyText };
     case GET_SELECTED_PROFILE:
       return { ...state, profile: action.profile };
     case CHANGED_STATUS:
@@ -48,13 +43,9 @@ const ProfileReducer = (state = initState, action) => {
   }
 };
 // ACTIONS CREATOR
-export const addPostAC = () => ({
+export const addPostAC = (value) => ({
   type: ADD_POST,
-});
-
-export const changeInputPostAC = (text) => ({
-  type: CHANGE_INPUT_POST,
-  bodyText: text,
+  value: value,
 });
 
 export const setSelectedProfileAC = (data) => ({

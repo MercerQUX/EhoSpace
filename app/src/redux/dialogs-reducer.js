@@ -1,5 +1,4 @@
 const ADD_MESSAGE = "ADD_MESSAGE";
-const CHANGE_INPUT_MESSAGE = "CHANGE_INPUT_MESSAGE";
 
 const initState = {
   dialogsUsers: [
@@ -26,26 +25,19 @@ const DialogsReducer = (state = initState, action) => {
           ...state.dialogsMessages,
           {
             id: state.dialogsMessages.length + 1,
-            body: state.newTextMessage,
+            body: action.value.addMessage,
             other: false,
           },
         ],
-        newTextMessage: "",
       };
-    case CHANGE_INPUT_MESSAGE:
-      return { ...state, newTextMessage: action.bodyText };
     default:
       return state;
   }
 };
 
-export const addMessageAC = () => ({
+export const addMessageAC = (value) => ({
   type: ADD_MESSAGE,
-});
-
-export const changeInputMessageAC = (text) => ({
-  type: CHANGE_INPUT_MESSAGE,
-  bodyText: text,
+  value: value,
 });
 
 export default DialogsReducer;
