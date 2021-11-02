@@ -25,8 +25,8 @@ const ProfileDataConnect = connect(
 
 const ProfileDataContainer = compose(
   ProfileDataConnect,
-  withRouter
-  //withAuthRedirect
+  withRouter,
+  withAuthRedirect
 )(ProfileData);
 
 export default ProfileDataContainer;

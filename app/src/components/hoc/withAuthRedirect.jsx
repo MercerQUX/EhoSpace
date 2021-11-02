@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 export const withAuthRedirect = (Component) => {
   const RedirectComponent = (props) => {
-    console.log(props)
     if (props.isAuth) {
       return <Component {...props} />;
     } else {

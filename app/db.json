@@ -113,22 +113,29 @@
       "city": "Krasnodar"
     }
   ],
-  "totalUsers": [14],
+  "totalUsers": [
+    14
+  ],
   "authData": [
     {
       "id": 3,
       "login": "bumchik",
-      "emai": "vasilbumchic@gmail.com"
+      "email": "vasilbumchic@gmail.com"
     },
     {
       "id": 8,
       "login": "lady1337",
-      "emai": "lisa1337@gmail.com"
+      "email": "lisa1337@gmail.com"
+    },
+    {
+      "id": 11,
+      "login": "lady13",
+      "email": "lisa13@gmail.com"
     },
     {
       "id": 9,
       "login": "faviconSSS",
-      "emai": "favic@gmail.com"
+      "email": "favic@gmail.com"
     }
   ],
   "authPassword": [

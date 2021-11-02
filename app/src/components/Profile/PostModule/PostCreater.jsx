@@ -21,7 +21,6 @@ const PostCreater = (props) => {
 };
 
 const PostCreatorForm = (props) => {
-  console.log(props);
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -31,6 +30,7 @@ const PostCreatorForm = (props) => {
           placeholder={"Your a new post..."}
           validate={[required, maxLength150]}
           type={"textarea"}
+          dataType={"textarea"}
         />
       </div>
       <div className={style.wrapperButPost}>

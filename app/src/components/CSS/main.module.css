@@ -39,6 +39,15 @@
 .loginBlock a:hover {
   color: wheat;
 }
+.logOut {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding-right: 20px;
+  color: #bd3486;
+}
+.logOut:hover{
+  color:#c31bbe;
+}
 /* header end */
 /* saidbar begin */
 .saidbar {

@@ -3,7 +3,6 @@ import Preloader from "../../common/Preloader";
 import ProfileCard from "./ProfileCard";
 
 const ProfileData = (props) => {
-  console.log(props);
   useEffect(() => {
     props.getProfileData(
       props.match.params.UserID,
@@ -14,7 +13,7 @@ const ProfileData = (props) => {
 
   return (
     <div>
-      {props.isAuth && props.profile != null ? (
+      { props.profile != null ? (
         <ProfileCard
           saveStatus={props.saveStatus}
           changeStatus={props.changeStates}

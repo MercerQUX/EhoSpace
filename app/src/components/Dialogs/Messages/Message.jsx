@@ -27,6 +27,7 @@ const MessageForm = (props) => {
         name={"addMessage"}
         placeholder={"Your message..."}
         type={"textarea"}
+        dataType={"textarea"}
         validate={[required, maxLength150]}
       />
       <button>Send</button>

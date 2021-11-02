@@ -1,28 +1,31 @@
 import { Field, reduxForm } from "redux-form";
+import { indentifyDataTC } from "../../redux/auth-reducer";
 import { FormControl } from "../../UI/form/FormControl";
 import { required } from "../../UI/form/validation/validators";
+import { connect } from "react-redux";
 import style from "../CSS/main.module.css";
+import { Redirect } from "react-router";
 
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field
-          name={""}
           placeholder={"Login"}
           name={"login"}
           component={FormControl}
-          type={"input"}
           validate={[required]}
+          dataType={"input"}
         />
       </div>
       <div>
         <Field
-          type={"input"}
+          type={"password"}
           placeholder={"Password"}
           name={"password"}
           component={FormControl}
           validate={[required]}
+          dataType={"input"}
         />
       </div>
       <div>
@@ -40,9 +43,11 @@ const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
 const Login = (props) => {
   const onSubmit = (formData) => {
-    console.log(formData);
+    props.indentifyData(formData.login, formData.password);
   };
-  return (
+  return props.isAuth ? (
+    <Redirect to={"/profile"} />
+  ) : (
     <div className={style.profile}>
       LOGIN
       <LoginReduxForm onSubmit={onSubmit} />
@@ -50,4 +55,10 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default connect(
+  (state) => ({ isAuth: state.authenticator.isAuth }),
+  (dispatch) => ({
+    indentifyData: (login, password) =>
+      dispatch(indentifyDataTC(login, password)),
+  })
+)(Login);

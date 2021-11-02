@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
-import { setLoggedDataAC } from "../../redux/auth-reducer";
+import { logOutTC, setLoggedDataAC } from "../../redux/auth-reducer";
 import Header from "./Header";
 import { getLoggedDataAPI } from "../../API/auth-API";
 
 const HeaderContainer = (props) => {
   getLoggedDataAPI().then((data) => {
-    props.setLoggedData(data);
+    if (data != undefined) {
+      props.setLoggedData(data);
+    }
   });
 
-  return <Header isAuth={props.isAuth} login={props.login} />;
+  return (
+    <Header logOut={props.logOut} isAuth={props.isAuth} login={props.login} />
+  );
 };
 
 export default connect(
@@ -16,5 +20,8 @@ export default connect(
     login: state.authenticator.login,
     isAuth: state.authenticator.isAuth,
   }),
-  (dispatch) => ({ setLoggedData: (data) => dispatch(setLoggedDataAC(data)) })
+  (dispatch) => ({
+    setLoggedData: (data) => dispatch(setLoggedDataAC(data)),
+    logOut: () => dispatch(logOutTC()),
+  })
 )(HeaderContainer);
