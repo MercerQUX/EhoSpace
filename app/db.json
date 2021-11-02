@@ -113,49 +113,42 @@
       "city": "Krasnodar"
     }
   ],
-  "totalUsers": [
-    14
-  ],
-  "authSystem": [
+  "totalUsers": [14],
+  "authData": [
     {
-      "authData": {
-        "bumchik": {
-          "id": 3,
-          "emai": "vasilbumchic@gmail.com",
-          "login": "bumchik"
-        },
-        "lady1337": {
-          "id": 8,
-          "emai": "lisa1337@gmail.com",
-          "login": "lady1337"
-        },
-        "faviconSSS": {
-          "id": 9,
-          "emai": "favic@gmail.com",
-          "login": "faviconSSS"
-        }
-      }
+      "id": 3,
+      "login": "bumchik",
+      "emai": "vasilbumchic@gmail.com"
     },
     {
-      "authPassword": {
-        "bumchik": {
-          "password": "batuska"
-        },
-        "lady1337": {
-          "password": "test"
-        },
-        "faviconSSS": {
-          "password": "favicon"
-        }
-      }
+      "id": 8,
+      "login": "lady1337",
+      "emai": "lisa1337@gmail.com"
     },
     {
-      "authNow": {
-        "isAuth": true,
-        "login": "lady1337",
-        "id": 8,
-        "email": "lisa1337@gmail.com"
-      }
+      "id": 9,
+      "login": "faviconSSS",
+      "emai": "favic@gmail.com"
     }
-  ]
+  ],
+  "authPassword": [
+    {
+      "id": 3,
+      "password": "batuska"
+    },
+    {
+      "id": 8,
+      "password": "test"
+    },
+    {
+      "id": 9,
+      "password": "favicon"
+    }
+  ],
+  "authSystem": {
+    "id": 8,
+    "login": "lady1337",
+    "email": "lisa1337@gmail.com",
+    "isAuth": true
+  }
 }

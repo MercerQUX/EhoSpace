@@ -9,9 +9,9 @@ const constAxios = axios.create({
 const APIAuth = (action) => {
   switch (action.type) {
     case LOGGED_DATA:
-      return constAxios.get("/authSystem?authNow_like").then((res) => {
-        if (res.data[0].authNow.isAuth) {
-          return res.data[0].authNow;
+      return constAxios.get("/authSystem").then((res) => {
+        if (res.data.isAuth) {
+          return res.data;
         }
       });
     default:
