@@ -1,5 +1,15 @@
 import { connect } from "react-redux";
 import {
+  isEmpty,
+  getChangeFollow,
+  isFollowingDisabled,
+  isFetching,
+  getPageSize,
+  getLoadedPage,
+  getLoggedUser,
+  getUsersWithoutLoggedIn,
+} from "../../redux/react-selectors/users-selector";
+import {
   followAC,
   unfollowAC,
   toggleIsFetchingAC,
@@ -11,13 +21,14 @@ import UsersPage from "./UsersPage";
 
 let UsersContainer = connect(
   (state) => ({
-    users: state.pageUsers.users,
-    pageSize: state.pageUsers.pageSize,
-    loadedPage: state.pageUsers.numLoadedPages,
-    isFetching: state.pageUsers.isFetching,
-    isEmpty: state.pageUsers.isEmpty,
-    changeFollow: state.pageUsers.changeFollow,
-    isFollowingDisabled: state.pageUsers.isFollowingDisabled,
+    users: getUsersWithoutLoggedIn(state),
+    pageSize: getPageSize(state),
+    loadedPage: getLoadedPage(state),
+    isFetching: isFetching(state),
+    getLoggedUser: getLoggedUser(state),
+    isEmpty: isEmpty(state),
+    changeFollow: getChangeFollow(state),
+    isFollowingDisabled: isFollowingDisabled(state),
   }),
   (dispatch) => ({
     follow: (userID) => dispatch(followAC(userID)),
