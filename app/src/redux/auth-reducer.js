@@ -25,6 +25,7 @@ const authReducer = (state = initState, action) => {
         email: action.data.email,
         isAuth: action.data.isAuth,
         userID: action.data.id,
+        error: action.error
       };
     case RETURN_ERROR:
       return {
@@ -53,7 +54,7 @@ export const indentifyDataTC = (login, password) => (dispatch) => {
       indentifyPasswordAPI(data.id, password).then((identifyPassword) => {
         if (identifyPassword) {
           sendLoggedDataAPI({ ...data, isAuth: true });
-          dispatch(setLoggedDataAC({ ...data, isAuth: true }));
+          dispatch(setLoggedDataAC({ ...data, isAuth: true, error:null }));
         } else {
           dispatch(returnErrorAC());
         }

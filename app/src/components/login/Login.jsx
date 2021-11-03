@@ -39,7 +39,7 @@ const LoginForm = (props) => {
   );
 };
 
-const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
+const LoginReduxForm = reduxForm({ form: "Login" })(LoginForm);
 
 const Login = (props) => {
   const onSubmit = (formData) => {
@@ -51,12 +51,16 @@ const Login = (props) => {
     <div className={style.profile}>
       LOGIN
       <LoginReduxForm onSubmit={onSubmit} />
+      {props.error != undefined ? <span>{props.error}</span> : <span></span>}
     </div>
   );
 };
 
 export default connect(
-  (state) => ({ isAuth: state.authenticator.isAuth }),
+  (state) => ({
+    isAuth: state.authenticator.isAuth,
+    error: state.authenticator.error,
+  }),
   (dispatch) => ({
     indentifyData: (login, password) =>
       dispatch(indentifyDataTC(login, password)),
