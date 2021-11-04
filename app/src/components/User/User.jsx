@@ -7,7 +7,7 @@ const User = (props) => {
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>
         <NavLink className={style.userIMG} to={`profile/${props.data.id}`}>
-          <img src="" alt="avatar" />
+          <img src={props.data.avatar} alt="avatar" />
         </NavLink>
 
         <div className={style.dataBlock}>
@@ -20,7 +20,7 @@ const User = (props) => {
         {props.data.followed ? (
           <button
             className={style.follow}
-            onClick={() => props.follow(props.data.id)}
+            onClick={() => props.following(props.data.id)}
             disabled={props.disabledFollowing}
           >
             Follow
@@ -28,7 +28,7 @@ const User = (props) => {
         ) : (
           <button
             className={style.unfollow}
-            onClick={() => props.unfollow(props.data.id)}
+            onClick={() => props.following(props.data.id)}
             disabled={props.disabledFollowing}
           >
             Unfollow

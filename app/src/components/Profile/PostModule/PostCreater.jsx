@@ -41,7 +41,7 @@ const PostCreatorForm = (props) => {
   );
 };
 
-const afterSubmit = (result, dispatch) => dispatch(reset("postCreator"));
+const afterSubmit = (dispatch) => dispatch(reset("postCreator"));
 
 const PostCreaterReduxForm = reduxForm({
   form: "postCreator",

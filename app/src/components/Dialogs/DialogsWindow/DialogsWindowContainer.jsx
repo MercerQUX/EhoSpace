@@ -10,9 +10,4 @@ const DialogsWindowConnect = connect(
   (dispatch) => ({})
 );
 
-const DialogsWindowContainer = compose(
-  DialogsWindowConnect,
-  withAuthRedirect
-)(DialogWindow);
-
-export default DialogsWindowContainer;
+export default compose(DialogsWindowConnect, withAuthRedirect)(DialogWindow);

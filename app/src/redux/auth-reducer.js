@@ -1,12 +1,13 @@
 import {
   deleteLoggedDataAPI,
+  getLoggedDataAPI,
   indentifyLoginAPI,
   indentifyPasswordAPI,
   sendLoggedDataAPI,
 } from "../API/auth-API";
 
-const SET_LOGGED_DATA = "SET_LOGGED_DATA";
-const RETURN_ERROR = "RETURN_ERROR";
+const SET_LOGGED_DATA = "auth/SET_LOGGED_DATA";
+const RETURN_ERROR = "auth/RETURN_ERROR";
 
 let initState = {
   userID: null,
@@ -25,7 +26,7 @@ const authReducer = (state = initState, action) => {
         email: action.data.email,
         isAuth: action.data.isAuth,
         userID: action.data.id,
-        error: action.error
+        error: action.error,
       };
     case RETURN_ERROR:
       return {
@@ -46,27 +47,33 @@ export const returnErrorAC = () => ({
   type: RETURN_ERROR,
 });
 // THUNKS CREATOR
-export const indentifyDataTC = (login, password) => (dispatch) => {
-  indentifyLoginAPI(login).then((data) => {
-    if (data === 0) {
-      dispatch(returnErrorAC());
-    } else {
-      indentifyPasswordAPI(data.id, password).then((identifyPassword) => {
-        if (identifyPassword) {
-          sendLoggedDataAPI({ ...data, isAuth: true });
-          dispatch(setLoggedDataAC({ ...data, isAuth: true, error:null }));
-        } else {
-          dispatch(returnErrorAC());
-        }
-      });
-    }
-  });
+export const actualLoggedUserTC = () => async (dispatch) => {
+  let data = await getLoggedDataAPI();
+  if (data != undefined) {
+    dispatch(setLoggedDataAC(data));
+  }
 };
 
-export const logOutTC = () => (dispatch) => {
-  deleteLoggedDataAPI().then(() => {
-    dispatch(setLoggedDataAC({ isAuth: false }));
-  });
+export const indentifyDataTC = (login, password) => async (dispatch) => {
+  let data = await indentifyLoginAPI(login);
+  data === 0
+    ? dispatch(returnErrorAC())
+    : dispatch(indentifyPasswordTC(data, password));
+};
+
+export const indentifyPasswordTC = (data, password) => async (dispatch) => {
+  let identifyPassword = await indentifyPasswordAPI(data.id, password);
+  if (identifyPassword) {
+    sendLoggedDataAPI({ ...data, isAuth: true });
+    dispatch(setLoggedDataAC({ ...data, isAuth: true, error: null }));
+  } else {
+    dispatch(returnErrorAC());
+  }
+};
+
+export const logOutTC = () => async (dispatch) => {
+  await deleteLoggedDataAPI();
+  dispatch(setLoggedDataAC({ isAuth: false }));
 };
 
 export default authReducer;

@@ -6,7 +6,8 @@
       "fullName": "Frank",
       "status": "I wanna live!",
       "country": "Russian",
-      "city": "Moscov"
+      "city": "Moscov",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-tIeT5IXbN7_N95ncf17QT7nASyFoBP8-A&usqp=CAU"
     },
     {
       "id": 2,
@@ -14,31 +15,35 @@
       "fullName": "Dmitro",
       "status": "I wanna become the most best!",
       "country": "Ukraine",
-      "city": "Kiev"
+      "city": "Kiev",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmr-i3PQboi-7eW3n9XzEeHhuCWabzif2iFg&usqp=CAU"
     },
     {
       "id": 3,
-      "followed": true,
+      "followed": false,
       "fullName": "Vasil",
       "status": "I wanna drink to tea.",
       "country": "Ukranine",
-      "city": "Dnipro"
+      "city": "Dnipro",
+      "avatar": "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/167499756/original/9339260ee254d167526665c9fcaaa7abd0519b7b/draw-minimalist-avatar-for-social-media-or-gaming.jpg"
     },
     {
       "id": 4,
-      "followed": true,
+      "followed": false,
       "fullName": "Vinny",
       "status": "I wanna live happy!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF6BYZqLtONpe0-VakrTkofJ2z3LvP3Ah-rQ&usqp=CAU"
     },
     {
       "id": 5,
-      "followed": true,
+      "followed": false,
       "fullName": "Flex",
       "status": "I wanna live happy too!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ7B_nnN6kRlg6uuEAkQV978ux2O3tvsP4yQ&usqp=CAU"
     },
     {
       "id": 6,
@@ -46,31 +51,35 @@
       "fullName": "Dobby",
       "status": "I cheater!!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v211-06-socialmedia_1_2.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=5885f21367e5f4499432ae3bfdd1273a"
     },
     {
       "id": 7,
-      "followed": true,
-      "fullName": "Boby",
+      "followed": false,
+      "fullName": "Elena",
       "status": "I wanna money!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://static.vecteezy.com/system/resources/thumbnails/002/623/639/small/lady-in-luxury-carnival-mask-black-hair-woman-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
     },
     {
       "id": 8,
-      "followed": true,
+      "followed": false,
       "fullName": "Lisa",
       "status": "I wanna read!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://i.etsystatic.com/22570293/r/il/7019b2/2734278570/il_340x270.2734278570_8g0z.jpg"
     },
     {
       "id": 9,
       "followed": true,
       "fullName": "Favicon",
-      "status": "I wanna make the Show!",
+      "status": "I wanna make the Show! And many girls!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://i.etsystatic.com/27686474/c/719/571/236/55/il/24ca59/2964081879/il_340x270.2964081879_rbok.jpg"
     },
     {
       "id": 10,
@@ -78,43 +87,33 @@
       "fullName": "Elis",
       "status": "I wanna lol!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
     },
     {
       "id": 11,
-      "followed": true,
-      "fullName": "Elis 2",
-      "status": "I wanna lol!",
-      "country": "Russian",
-      "city": "Krasnodar"
-    },
-    {
-      "id": 12,
-      "followed": true,
+      "followed": false,
       "fullName": "Elis 3",
       "status": "I wanna lol!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
     },
     {
-      "id": 13,
-      "followed": true,
-      "fullName": "Elis 4",
-      "status": "I wanna lol!",
-      "country": "Russian",
-      "city": "Krasnodar"
-    },
-    {
-      "id": 14,
-      "followed": true,
+      "id": 12,
+      "followed": false,
       "fullName": "Elis 5",
       "status": "I wanna lol!",
       "country": "Russian",
-      "city": "Krasnodar"
+      "city": "Krasnodar",
+      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
+    },
+    {
+      "id": 13
     }
   ],
   "totalUsers": [
-    14
+    13
   ],
   "authData": [
     {

@@ -7,10 +7,10 @@ const ProfileCard = (props) => {
     setIsEditMode(false);
     props.saveStatus(props.profile.id, props.profile);
   };
-
+  console.log(props)
   return (
     <div>
-      <img src="" alt="avatar" />
+      <img src={props.profile.avatar} alt="avatar" />
       <div>
         <strong>{props.profile.fullName}</strong>
         <br />

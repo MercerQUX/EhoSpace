@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect } from "react";
 import style from "../CSS/main.module.css";
 import styleU from "../CSS/users.module.css";
@@ -22,8 +21,7 @@ const UsersPage = (props) => {
     <User
       id={user.id}
       data={user}
-      follow={props.follow}
-      unfollow={props.unfollow}
+      following={props.following}
       disabledFollowing={props.isFollowingDisabled}
     />
   ));

@@ -24,6 +24,7 @@
   justify-content: space-between;
 }
 .header .logo {
+  text-decoration: none;
   font-size: 3rem;
   font-weight: bold;
   color: #2aacc1;
@@ -45,8 +46,8 @@
   padding-right: 20px;
   color: #bd3486;
 }
-.logOut:hover{
-  color:#c31bbe;
+.logOut:hover {
+  color: #c31bbe;
 }
 /* header end */
 /* saidbar begin */

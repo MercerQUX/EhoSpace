@@ -1,4 +1,4 @@
-const ADD_MESSAGE = "ADD_MESSAGE";
+const ADD_MESSAGE = "dialog/ADD_MESSAGE";
 
 const initState = {
   dialogsUsers: [

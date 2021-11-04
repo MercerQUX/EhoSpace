@@ -1,9 +1,9 @@
 import { getSingleUserAPI } from "../API/profile-API";
 import { rewriteUserAPI } from "../API/user-API";
 
-const ADD_POST = "ADD_POST";
-const GET_SELECTED_PROFILE = "GET_SELECTED_PROFILE";
-const CHANGED_STATUS = "CHANGED_STATUS";
+const ADD_POST = "profile/ADD_POST";
+const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";
+const CHANGED_STATUS = "profile/CHANGED_STATUS";
 
 let initState = {
   posts: [
@@ -58,16 +58,15 @@ export const changeStatusAC = (text) => ({
   text: text,
 });
 //THUNKS CREATOR
-export const getProfileDataTC = (userID, loggedID, isAuth) => (dispatch) => {
-  let selectedUser = userID == undefined && isAuth ? loggedID : userID;
-
-  getSingleUserAPI(selectedUser).then((data) => {
+export const getProfileDataTC =
+  (userID, loggedID, isAuth) => async (dispatch) => {
+    let selectedUser = userID == undefined && isAuth ? loggedID : userID;
+    let data = await getSingleUserAPI(selectedUser);
     dispatch(setSelectedProfileAC(data));
-  });
-};
+  };
 
-export const changedStatusTC = (userID, user) => (dispatch) => {
-  rewriteUserAPI(userID, user);
+export const changedStatusTC = (userID, user) => async (dispatch) => {
+  await rewriteUserAPI(userID, user);
 };
 
 export default ProfileReducer;

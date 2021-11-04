@@ -18,6 +18,7 @@ const API = (action) => {
         .get(`/users?_page=${action.page}&_limit=${action.limit}`)
         .then((res) => res.data);
     case REWRITE_USER:
+      console.log("UPDATE PUT")
       return constAxios.put(`/users/${action.id}`, {
         ...action.data,
       });

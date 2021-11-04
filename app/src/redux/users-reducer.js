@@ -4,14 +4,13 @@ import {
   rewriteUserAPI,
 } from "../API/user-API";
 
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_USERS = "SET_USERS";
-const COUNT_LOAD_USERS = "COUNT_LOAD_USERS";
-const TOTAL_USERS = "TOTAL_USERS";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
-const DISABLED_CHANGED_FOLLOWING = "DISABLED_CHANGED_FOLLOWING";
-const FOLLOWING_DISABLED = "FOLLOWING_DISABLED ";
+const FOLLOWING = "users/FOLLOWING";
+const SET_USERS = "users/SET_USERS";
+const COUNT_LOAD_USERS = "users/COUNT_LOAD_USERS";
+const TOTAL_USERS = "users/TOTAL_USERS";
+const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
+const DISABLED_CHANGED_FOLLOWING = "users/DISABLED_CHANGED_FOLLOWING";
+const FOLLOWING_DISABLED = "users/FOLLOWING_DISABLED ";
 
 const initState = {
   users: [],
@@ -20,27 +19,21 @@ const initState = {
   numLoadedPages: 1,
   isFetching: true,
   isEmpty: false,
-  changeFollow: undefined,
+  changeFollow: null,
   isFollowingDisabled: false,
 };
 
 const UsersReducer = (state = initState, action) => {
   switch (action.type) {
-    case FOLLOW:
+    case FOLLOWING:
       return {
         ...state,
         users: state.users.map((u) =>
-          u.id === action.userID ? { ...u, followed: false } : u
+          u.id === action.userID
+            ? { ...u, followed: u.followed ? false : true }
+            : u
         ),
-        changeFollow: action.userID,
-      };
-    case UNFOLLOW:
-      return {
-        ...state,
-        users: state.users.map((u) =>
-          u.id === action.userID ? { ...u, followed: true } : u
-        ),
-        changeFollow: action.userID,
+        changeFollow: action.userId
       };
     case SET_USERS:
       return { ...state, users: [...state.users, ...action.users] };
@@ -58,14 +51,14 @@ const UsersReducer = (state = initState, action) => {
       return { ...state, changeFollow: undefined };
     case FOLLOWING_DISABLED:
       return { ...state, isFollowingDisabled: action.toggle };
+    case "dd":
+      return {...state, changeFollow:action.id}
     default:
       return state;
   }
 };
 // ACTIONS CREATOR
-export const followAC = (userID) => ({ type: FOLLOW, userID: userID });
-
-export const unfollowAC = (userID) => ({ type: UNFOLLOW, userID: userID });
+export const followingAC = (userID) => ({ type: FOLLOWING, userID: userID });
 
 export const setUsersAC = (users) => ({ type: SET_USERS, users: users });
 
@@ -88,24 +81,23 @@ export const toggleIsDisabledFollowingAC = (toggle) => ({
   toggle: toggle,
 });
 // THUNKS CREATORS
-export const getUsersTC = (page, limit) => (dispatch) => {
-  getPartUsersAPI(page, limit).then((data) => {
-    dispatch(setUsersAC(data));
-    dispatch(loadedPageAC());
-    dispatch(toggleIsFetchingAC(false));
-  });
+export const getUsersTC = (page, limit) => async (dispatch) => {
+  let data = await getPartUsersAPI(page, limit);
+  dispatch(setUsersAC(data));
+  dispatch(loadedPageAC());
+  dispatch(toggleIsFetchingAC(false));
 };
 
-export const getTotalUsersTC = () => (dispatch) => {
-  getNumberTotalUsersAPI().then((data) => dispatch(totalUsersAC(data)));
+export const getTotalUsersTC = () => async (dispatch) => {
+  let data = await getNumberTotalUsersAPI();
+  dispatch(totalUsersAC(data));
 };
 
-export const followedTC = (idUser, user) => (dispatch) => {
+export const followedTC = (idUser, user) => async (dispatch) => {
   if (idUser != undefined) {
     dispatch(toggleIsDisabledFollowingAC(true));
-    rewriteUserAPI(idUser, user).then(() =>
-      dispatch(toggleIsDisabledFollowingAC(false))
-    );
+    await rewriteUserAPI(idUser, user);
+    dispatch(toggleIsDisabledFollowingAC(false));
     dispatch(disableChangedFollowedAC());
   }
 };

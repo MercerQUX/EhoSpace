@@ -5,6 +5,7 @@ import { required } from "../../UI/form/validation/validators";
 import { connect } from "react-redux";
 import style from "../CSS/main.module.css";
 import { Redirect } from "react-router";
+import { compose } from "redux";
 
 const LoginForm = (props) => {
   return (
@@ -56,7 +57,7 @@ const Login = (props) => {
   );
 };
 
-export default connect(
+let LoginConnect = connect(
   (state) => ({
     isAuth: state.authenticator.isAuth,
     error: state.authenticator.error,
@@ -65,4 +66,6 @@ export default connect(
     indentifyData: (login, password) =>
       dispatch(indentifyDataTC(login, password)),
   })
-)(Login);
+);
+
+export default compose(LoginConnect)(Login);

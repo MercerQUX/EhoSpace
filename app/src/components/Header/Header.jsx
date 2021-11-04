@@ -5,7 +5,9 @@ import style from "../CSS/main.module.css";
 const Header = (props) => {
   return (
     <header className={style.header}>
-      <div className={style.logo}>LOGO</div>
+      <NavLink to="/profile" className={style.logo}>
+        LOGO
+      </NavLink>
       <div className={style.loginBlock}>
         {props.isAuth ? (
           <div>
