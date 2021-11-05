@@ -1,11 +1,11 @@
 import { Field, reduxForm, reset } from "redux-form";
-import style from "../../CSS/dialogs.module.css";
-import SingleMessage from "../Messages/SingleMessage";
 import { required, maxLength150 } from "../../../UI/form/validation/validators";
 import { FormControl } from "../../../UI/form/FormControl";
+import style from "../../CSS/dialogs.module.css";
+import SingleMessage from "../Messages/SingleMessage";
 
-const Messages = (props) => {
-  let mapMessages = props.dialogsMessages.map((item) => (
+const Messages = ({ dialogsMessages, addMessage }) => {
+  let mapMessages = dialogsMessages.map((item) => (
     <SingleMessage body={item.body} />
   ));
 
@@ -13,7 +13,7 @@ const Messages = (props) => {
     <div className={style.wrapperMessages}>
       {mapMessages}
       <div className={style.messageTextArea}>
-        <MessageReduxForm onSubmit={(values) => props.addMessage(values)} />
+        <MessageReduxForm onSubmit={(values) => addMessage(values)} />
       </div>
     </div>
   );
@@ -35,11 +35,9 @@ const MessageForm = (props) => {
   );
 };
 
-const afterSubmit = (result, dispatch) => dispatch(reset("dialogMessageForm"));
-
 const MessageReduxForm = reduxForm({
   form: "dialogMessageForm",
-  onSubmitSuccess: afterSubmit,
+  onSubmitSuccess: (res, dispatch) => dispatch(reset("dialogMessageForm")),
 })(MessageForm);
 
 export default Messages;

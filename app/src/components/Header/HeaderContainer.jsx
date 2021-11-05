@@ -3,12 +3,9 @@ import { compose } from "redux";
 import { actualLoggedUserTC, logOutTC } from "../../redux/auth-reducer";
 import Header from "./Header";
 
-const HeaderContainer = (props) => {
-  props.actualLoggedUser();
-
-  return (
-    <Header logOut={props.logOut} isAuth={props.isAuth} login={props.login} />
-  );
+const HeaderContainer = ({ actualLoggedUser, ...props }) => {
+  actualLoggedUser();
+  return <Header {...props} />;
 };
 
 const HeaderConnect = connect(

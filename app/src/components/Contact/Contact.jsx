@@ -1,4 +1,3 @@
-import React from "react";
 import style from "../CSS/main.module.css";
 
 const Contact = (props) => {

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "followed": true,
-      "fullName": "Frank",
+      "fullName": "Lance Mills",
       "status": "I wanna live!",
       "country": "Russian",
       "city": "Moscov",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "followed": true,
-      "fullName": "Dmitro",
+      "fullName": "Mitchell Robinson",
       "status": "I wanna become the most best!",
       "country": "Ukraine",
       "city": "Kiev",
@@ -21,8 +21,8 @@
     {
       "id": 3,
       "followed": false,
-      "fullName": "Vasil",
-      "status": "I wanna drink to tea.",
+      "fullName": "Dennis Davidson",
+      "status": "I wanna drink to tea.!",
       "country": "Ukranine",
       "city": "Dnipro",
       "avatar": "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/167499756/original/9339260ee254d167526665c9fcaaa7abd0519b7b/draw-minimalist-avatar-for-social-media-or-gaming.jpg"
@@ -30,7 +30,7 @@
     {
       "id": 4,
       "followed": false,
-      "fullName": "Vinny",
+      "fullName": "Paul Curtis",
       "status": "I wanna live happy!",
       "country": "Russian",
       "city": "Krasnodar",
@@ -39,7 +39,7 @@
     {
       "id": 5,
       "followed": false,
-      "fullName": "Flex",
+      "fullName": "Jesse Harrison",
       "status": "I wanna live happy too!",
       "country": "Russian",
       "city": "Krasnodar",
@@ -48,8 +48,8 @@
     {
       "id": 6,
       "followed": true,
-      "fullName": "Dobby",
-      "status": "I cheater!!",
+      "fullName": "Seth Simpson",
+      "status": "I cheater!!dwadaw",
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v211-06-socialmedia_1_2.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=5885f21367e5f4499432ae3bfdd1273a"
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "followed": false,
-      "fullName": "Elena",
+      "fullName": "Melissa Lee",
       "status": "I wanna money!",
       "country": "Russian",
       "city": "Krasnodar",
@@ -66,7 +66,7 @@
     {
       "id": 8,
       "followed": false,
-      "fullName": "Lisa",
+      "fullName": "Sheila Campbell",
       "status": "I wanna read!",
       "country": "Russian",
       "city": "Krasnodar",
@@ -75,17 +75,17 @@
     {
       "id": 9,
       "followed": true,
-      "fullName": "Favicon",
-      "status": "I wanna make the Show! And many girls!",
+      "fullName": "Mathew Miller",
       "country": "Russian",
       "city": "Krasnodar",
-      "avatar": "https://i.etsystatic.com/27686474/c/719/571/236/55/il/24ca59/2964081879/il_340x270.2964081879_rbok.jpg"
+      "avatar": "https://i.etsystatic.com/27686474/c/719/571/236/55/il/24ca59/2964081879/il_340x270.2964081879_rbok.jpg",
+      "status": "I wanna become best man for girls!\nCheck my profile, and make many like!"
     },
     {
       "id": 10,
       "followed": true,
-      "fullName": "Elis",
-      "status": "I wanna lol!",
+      "fullName": "Barbara Moore",
+      "status": "I wanna lol!!!",
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
@@ -93,7 +93,7 @@
     {
       "id": 11,
       "followed": false,
-      "fullName": "Elis 3",
+      "fullName": "Barbara Moore 2",
       "status": "I wanna lol!",
       "country": "Russian",
       "city": "Krasnodar",
@@ -102,18 +102,15 @@
     {
       "id": 12,
       "followed": false,
-      "fullName": "Elis 5",
+      "fullName": "Barbara Moore 3",
       "status": "I wanna lol!",
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
-    },
-    {
-      "id": 13
     }
   ],
   "totalUsers": [
-    13
+    12
   ],
   "authData": [
     {

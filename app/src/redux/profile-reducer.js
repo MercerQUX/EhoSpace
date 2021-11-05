@@ -65,8 +65,8 @@ export const getProfileDataTC =
     dispatch(setSelectedProfileAC(data));
   };
 
-export const changedStatusTC = (userID, user) => async (dispatch) => {
-  await rewriteUserAPI(userID, user);
+export const changedStatusTC = (userID, user) => async () => {
+    await rewriteUserAPI(userID, user);
 };
 
 export default ProfileReducer;

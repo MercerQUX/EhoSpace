@@ -7,40 +7,40 @@ import style from "../CSS/main.module.css";
 import { Redirect } from "react-router";
 import { compose } from "redux";
 
-const LoginForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field
-          placeholder={"Login"}
-          name={"login"}
-          component={FormControl}
-          validate={[required]}
-          dataType={"input"}
-        />
-      </div>
-      <div>
-        <Field
-          type={"password"}
-          placeholder={"Password"}
-          name={"password"}
-          component={FormControl}
-          validate={[required]}
-          dataType={"input"}
-        />
-      </div>
-      <div>
-        <Field type={"checkbox"} name={"rememberme"} component={"input"} />
-        Remember Me
-      </div>
-      <div>
-        <button>Send</button>
-      </div>
-    </form>
-  );
-};
-
-const LoginReduxForm = reduxForm({ form: "Login" })(LoginForm);
+const LoginReduxForm = reduxForm({ form: "Login" })(
+  ({ handleSubmit, ...props }) => {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <Field
+            placeholder={"Login"}
+            name={"login"}
+            component={FormControl}
+            validate={[required]}
+            dataType={"input"}
+          />
+        </div>
+        <div>
+          <Field
+            type={"password"}
+            placeholder={"Password"}
+            name={"password"}
+            component={FormControl}
+            validate={[required]}
+            dataType={"input"}
+          />
+        </div>
+        <div>
+          <Field type={"checkbox"} name={"rememberme"} component={"input"} />
+          Remember Me
+        </div>
+        <div>
+          <button>Send</button>
+        </div>
+      </form>
+    );
+  }
+);
 
 const Login = (props) => {
   const onSubmit = (formData) => {

@@ -4,20 +4,20 @@ import styleU from "../CSS/users.module.css";
 import User from "./User";
 import Preloader from "../common/Preloader";
 
-const UsersPage = (props) => {
+const UsersPage = ({users,...props}) => {
   useEffect(() => {
     props.getTotalUsers();
     props.getUsers(props.loadedPage, props.pageSize);
   }, []);
 
-  props.followed(props.changeFollow, props.users[props.changeFollow - 1]);
+  props.followed(props.changeFollow, users[props.changeFollow - 1]);
 
   const getUsers = () => {
     props.toggleIsFetching(true);
     props.getUsers(props.loadedPage, props.pageSize);
   };
 
-  let mapUsers = props.users.map((user) => (
+  let mapUsers = users.map((user) => (
     <User
       id={user.id}
       data={user}

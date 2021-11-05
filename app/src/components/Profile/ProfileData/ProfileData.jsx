@@ -1,27 +1,20 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Preloader from "../../common/Preloader";
 import ProfileCard from "./ProfileCard";
 
-const ProfileData = (props) => {
+const ProfileData = ({
+  match,
+  idLoggedUser,
+  isAuth,
+  getProfileData,
+  ...props
+}) => {
   useEffect(() => {
-    props.getProfileData(
-      props.match.params.UserID,
-      props.idLoggedUser,
-      props.isAuth
-    );
-  }, [props.isAuth]);
-
+    getProfileData(match.params.UserID, idLoggedUser, isAuth);
+  }, [isAuth]);
   return (
     <div>
-      { props.profile != null ? (
-        <ProfileCard
-          saveStatus={props.saveStatus}
-          changeStatus={props.changeStates}
-          profile={props.profile}
-        />
-      ) : (
-        <Preloader />
-      )}
+      {props.profile != null ? <ProfileCard {...props} /> : <Preloader />}
     </div>
   );
 };

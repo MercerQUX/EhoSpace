@@ -30,13 +30,89 @@
 }
 /* PostCreater End */
 /* Post Begin */
-.wrapperPost{
-    display: flex;
-    background-color: #b1b1b147;
-    margin-bottom: 20px;
+.wrapperPost {
+  display: flex;
+  background-color: #b1b1b147;
+  margin-bottom: 20px;
 }
-.wrapperPost img{
-    width: 100px;
-    height: 100px;
-    padding-right: 10px;
+.wrapperPost img {
+  width: 100px;
+  height: 100px;
+  padding-right: 10px;
 }
+/* Post End */
+/* ProfileCard Begin */
+.profileCard {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.profileCard img {
+  width: 180px;
+  height: 180px;
+}
+
+.profileLocation {
+  background-color: burlywood;
+}
+.leftCard {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+.profileInfo {
+  padding: 0px 0px 25px 15px;
+}
+
+.profileImg img {
+  width: 180px;
+  height: 180px;
+}
+.rightCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+}
+
+.rightCard span {
+  text-decoration: none;
+  text-align: center;
+  margin-left: 5px;
+  padding: 8px 41px;
+  border: solid 3px #f70340;
+  border-radius: 4px;
+  font: 16px "Arial Black", Gadget, sans-serif;
+  font-weight: bold;
+  color: #e5ffff;
+  background-color: #e82323;
+  background-image: -moz-linear-gradient(top, #e82323 0%, #665e60 100%);
+  background-image: -webkit-linear-gradient(top, #e82323 0%, #665e60 100%);
+  background-image: -o-linear-gradient(top, #e82323 0%, #665e60 100%);
+  background-image: -ms-linear-gradient(top, #e82323 0%, #665e60 100%);
+  background-image: linear-gradient(top, #e82323 0%, #665e60 100%);
+  -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
+  -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
+  box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
+}
+
+.profileName {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.editStatusInput {
+  resize: none;
+  background-color: #b3b0a9;
+  width: 410px;
+  height: 35px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid #b39999;
+  box-shadow: 2px 2px 4px #7a6e6e;
+  outline: none;
+}
+/* ProfileCard End */

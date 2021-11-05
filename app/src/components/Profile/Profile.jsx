@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import style from "../CSS/main.module.css";
 import PostCreaterContainer from "./PostModule/PostCreaterContainer";
 import ProfileDataContainer from "./ProfileData/ProfileDataContainer";
 
-const Profile = (props) => {
+const Profile = () => {
   return (
     <div className={style.profile}>
       <div>

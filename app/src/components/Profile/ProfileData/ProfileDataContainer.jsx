@@ -14,11 +14,12 @@ const ProfileDataConnect = connect(
     profile: state.pageProfile.profile,
     idLoggedUser: state.authenticator.userID,
     isAuth: state.authenticator.isAuth,
+    actualID: state.authenticator.userID,
   }),
   (dispatch) => ({
     getProfileData: (userID, loggedID, isAuth) =>
-      dispatch(getProfileDataTC(userID, loggedID, isAuth)),
-    changeStates: (text) => dispatch(changeStatusAC(text)),
+    dispatch(getProfileDataTC(userID, loggedID, isAuth)),
+    changeStatus: (text) => dispatch(changeStatusAC(text)),
     saveStatus: (userID, data) => dispatch(changedStatusTC(userID, data)),
   })
 );
