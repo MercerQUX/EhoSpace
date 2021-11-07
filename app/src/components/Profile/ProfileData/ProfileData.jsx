@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Preloader from "../../common/Preloader";
-import ProfileCard from "./ProfileCard";
+import ProfileCardContainer from "../ProfileCard/ProfileCardContainer";
 
 const ProfileData = ({
   match,
@@ -14,7 +14,11 @@ const ProfileData = ({
   }, [isAuth]);
   return (
     <div>
-      {props.profile != null ? <ProfileCard {...props} /> : <Preloader />}
+      {props.profile != null ? (
+        <ProfileCardContainer {...props} />
+      ) : (
+        <Preloader />
+      )}
     </div>
   );
 };

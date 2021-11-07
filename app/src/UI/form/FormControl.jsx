@@ -9,8 +9,9 @@ export const FormControl = ({ input, meta, ...props }) => {
           <textarea {...input} {...props}></textarea>
         )}
         {props.dataType === "input" && <input {...input} {...props} />}
+        {/* {hasError && <span className={style.errorSpan}>{meta.error}</span>} */}
       </div>
-      {hasError && <span className={style.errorSpan}>{meta.error}</span>}
+      
     </div>
   );
 };

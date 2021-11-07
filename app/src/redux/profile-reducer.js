@@ -4,6 +4,7 @@ import { rewriteUserAPI } from "../API/user-API";
 const ADD_POST = "profile/ADD_POST";
 const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";
 const CHANGED_STATUS = "profile/CHANGED_STATUS";
+const REWRITE_PROFILE = "REWRITE_PROFILE";
 
 let initState = {
   posts: [
@@ -38,6 +39,8 @@ const ProfileReducer = (state = initState, action) => {
       return { ...state, profile: action.profile };
     case CHANGED_STATUS:
       return { ...state, profile: { ...state.profile, status: action.text } };
+    case REWRITE_PROFILE:
+      return {...state, profile: action.data}
     default:
       return state;
   }
@@ -57,6 +60,11 @@ export const changeStatusAC = (text) => ({
   type: CHANGED_STATUS,
   text: text,
 });
+
+export const rewriteProfileAC = (data) => ({
+  type: REWRITE_PROFILE,
+  data
+})
 //THUNKS CREATOR
 export const getProfileDataTC =
   (userID, loggedID, isAuth) => async (dispatch) => {

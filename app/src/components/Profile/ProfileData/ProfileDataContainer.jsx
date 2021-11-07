@@ -3,11 +3,12 @@ import {
   changedStatusTC,
   changeStatusAC,
   getProfileDataTC,
+  rewriteProfileAC,
 } from "../../../redux/profile-reducer";
-import ProfileData from "./ProfileData";
 import { withRouter } from "react-router";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import ProfileData from "./ProfileData";
 
 const ProfileDataConnect = connect(
   (state) => ({
@@ -21,6 +22,7 @@ const ProfileDataConnect = connect(
     dispatch(getProfileDataTC(userID, loggedID, isAuth)),
     changeStatus: (text) => dispatch(changeStatusAC(text)),
     saveStatus: (userID, data) => dispatch(changedStatusTC(userID, data)),
+    rewriteProfile: (data) => dispatch(rewriteProfileAC(data)),
   })
 );
 

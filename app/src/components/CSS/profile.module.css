@@ -52,7 +52,11 @@
   width: 180px;
   height: 180px;
 }
-
+.profileStatus {
+  display: block;
+  width: 100%;
+  word-break: break-word;
+}
 .profileLocation {
   background-color: burlywood;
 }
@@ -71,13 +75,34 @@
 }
 .rightCard {
   display: flex;
+  flex-direction: column;
+  height: 180px;
+  justify-content: space-between;
+}
+.locationCard {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 55px;
 }
+.btn_settings {
+  text-align: center;
+  margin-left: 5px;
+  padding: 8px 41px;
+  border: solid 2px #ff5353;
+  background-color: #c52828;
+  border-radius: 4px;
+  font: 16px "Arial Black", Gadget, sans-serif;
+  font-weight: bold;
+  color: #e5ffff;
+}
+.btn_settings:hover {
+  background-color: #c70a15;
+  cursor: pointer;
+}
 
-.rightCard span {
+.locationCard span {
   text-decoration: none;
   text-align: center;
   margin-left: 5px;
@@ -88,13 +113,6 @@
   font-weight: bold;
   color: #e5ffff;
   background-color: #e82323;
-  background-image: -moz-linear-gradient(top, #e82323 0%, #665e60 100%);
-  background-image: -webkit-linear-gradient(top, #e82323 0%, #665e60 100%);
-  background-image: -o-linear-gradient(top, #e82323 0%, #665e60 100%);
-  background-image: -ms-linear-gradient(top, #e82323 0%, #665e60 100%);
-  background-image: linear-gradient(top, #e82323 0%, #665e60 100%);
-  -webkit-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
-  -moz-box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
   box-shadow: 0px 0px 2px #bababa, inset 0px 0px 3px #edc0c0;
 }
 
@@ -116,3 +134,70 @@
   outline: none;
 }
 /* ProfileCard End */
+/* EditMode Begin */
+.wrapperEditMode {
+  position: fixed;
+  background-color: #a0afbb;
+  border-radius: 50px;
+  width: 360px;
+  height: 400px;
+  z-index: 2000;
+  top: 12%;
+  left: 40%;
+  margin: 0px auto;
+  padding: 50px;
+}
+.wrapperForm {
+  background-color: #8df0f3;
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 0px 5px;
+  border-radius: 10px;
+}
+.wrapperForm div {
+  margin-bottom: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+.inputs {
+  width: 210px;
+  height: 30px;
+  font-size: 1.2rem;
+  background-color: #cee8ff;
+  border: #c3c5f1 2px solid;
+}
+.inputs:focus {
+  outline: 2px solid rgb(104, 190, 224);
+  color: rgb(104, 190, 224);
+}
+.wrapperForm span {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.wrapperForm button {
+  width: 48%;
+  padding: 5px 0px;
+  margin-right: 2%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.uploadAvatar {
+  flex-direction: column;
+}
+.empty {
+  background-color: rosybrown;
+}
+.inputsAvatar {
+  width: 348px;
+  height: 30px;
+  background-color: #cee8ff;
+}
+
+.btn_apply {
+  background-color: rgb(12 181 12);
+}
+.btn_cancel {
+  background-color: rgb(215 13 13);
+}
