@@ -2,15 +2,14 @@ import React from "react";
 import style from "../CSS/main.module.css";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { rewriteProfileAC } from "../Profile/ProfileData";
-import { changeAC } from "../../redux/profile-reducer";
+import { getProfileDataTC } from "../Profile/ProfileData";
 
-const Saidbar = (props) => {
+const Saidbar = ({ getProfileData, idLoggedUser, isAuth }) => {
   return (
     <div className={style.saidbar}>
       <ul>
         <li>
-          <NavLink to="/profile" activeClassName={style.activeLink}>
+          <NavLink to="/login" activeClassName={style.activeLink}>
             Profile
           </NavLink>
         </li>
@@ -43,4 +42,13 @@ const Saidbar = (props) => {
   );
 };
 
-export default Saidbar
+export default connect(
+  (state) => ({
+    idLoggedUser: state.authenticator.userID,
+    isAuth: state.authenticator.isAuth,
+  }),
+  (dispatch) => ({
+    getProfileData: (id, idLogged, isAuth) =>
+      dispatch(getProfileDataTC(id, idLogged, isAuth)),
+  })
+)(Saidbar);

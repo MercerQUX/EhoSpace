@@ -2,7 +2,7 @@ import React from "react";
 import style from "../CSS/users.module.css";
 import { NavLink } from "react-router-dom";
 
-const User = ({ data, disabledFollowing, following }) => {
+const User = ({ data, isFollowingDisabled, ...props }) => {
   return (
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>
@@ -21,16 +21,16 @@ const User = ({ data, disabledFollowing, following }) => {
         {data.followed ? (
           <button
             className={style.follow}
-            onClick={() => following(data.id)}
-            disabled={disabledFollowing}
+            onClick={(e) => props.followed(data, false)}
+            disabled={isFollowingDisabled}
           >
             Follow
           </button>
         ) : (
           <button
             className={style.unfollow}
-            onClick={() => following(data.id)}
-            disabled={disabledFollowing}
+            onClick={(e) => props.followed(data, true)}
+            disabled={isFollowingDisabled}
           >
             Unfollow
           </button>

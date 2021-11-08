@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Field, reduxForm, change } from "redux-form";
+import { useEffect } from "react";
+import { Field, reduxForm } from "redux-form";
 import { FormControl } from "../../../UI/form/FormControl";
 import { maxLength100 } from "../../../UI/form/validation/validators";
 import style from "../../CSS/profile.module.css";
@@ -27,7 +27,7 @@ const EditReduxForm = reduxForm({ form: "editStatus" })(
   }
 );
 
-const ProfileCard = ({ profile, actualID, location, ...props }) => {
+const ProfileCard = ({ profile, actualID, ...props }) => {
   return (
     <div>
       <div className={style.profileCard}>
@@ -60,7 +60,7 @@ const ProfileCard = ({ profile, actualID, location, ...props }) => {
           </div>
         </div>
         <div className={style.rightCard}>
-          {props.isOwnerProfile ? (
+          {props.isOwnerProfile && props.location.pathname === "/profile" ? (
             <button
               onClick={() => props.setIsEditProfile(true)}
               className={style.btn_settings}

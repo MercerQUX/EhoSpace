@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { rewriteUserAPI } from "../../../API/user-API";
 import Preloader from "../../common/Preloader";
 import ProfileCard from "./ProfileCard";
@@ -13,6 +13,14 @@ const ProfileCardContainer = ({
   const isOwnerProfile = actualID === props.profile.id;
   const [isEditStatus, setIsEditStatus] = useState(false);
   const [isEditProfile, setIsEditProfile] = useState(false);
+  const [isTimeOut, setIsTimeOut] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTimeOut(true);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [props.profile]);
 
   let openEditStatus = () => {
     if (isOwnerProfile) {
@@ -70,7 +78,7 @@ const ProfileCardContainer = ({
 
   return (
     <div>
-      {props.profile != null ? (
+      {props.profile != null && isTimeOut ? (
         <ProfileCard {...defaultProps} />
       ) : (
         <Preloader />

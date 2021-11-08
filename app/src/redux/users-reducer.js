@@ -9,7 +9,6 @@ const SET_USERS = "users/SET_USERS";
 const COUNT_LOAD_USERS = "users/COUNT_LOAD_USERS";
 const TOTAL_USERS = "users/TOTAL_USERS";
 const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
-const DISABLED_CHANGED_FOLLOWING = "users/DISABLED_CHANGED_FOLLOWING";
 const FOLLOWING_DISABLED = "users/FOLLOWING_DISABLED ";
 
 const initState = {
@@ -19,7 +18,6 @@ const initState = {
   numLoadedPages: 1,
   isFetching: true,
   isEmpty: false,
-  changeFollow: null,
   isFollowingDisabled: false,
 };
 
@@ -29,11 +27,8 @@ const UsersReducer = (state = initState, action) => {
       return {
         ...state,
         users: state.users.map((u) =>
-          u.id === action.userID
-            ? { ...u, followed: u.followed ? false : true }
-            : u
+          u.id === action.id ? { ...u, followed: action.isFollow } : u
         ),
-        changeFollow: action.userId
       };
     case SET_USERS:
       return { ...state, users: [...state.users, ...action.users] };
@@ -44,21 +39,21 @@ const UsersReducer = (state = initState, action) => {
         return { ...state, isEmpty: true };
       }
     case TOTAL_USERS:
-      return { ...state, totalUsersCount: action.count };
+      return { ...state, totalUsersCount: action.count - 1 };
     case TOGGLE_IS_FETCHING:
       return { ...state, isFetching: action.toggle };
-    case DISABLED_CHANGED_FOLLOWING:
-      return { ...state, changeFollow: undefined };
     case FOLLOWING_DISABLED:
       return { ...state, isFollowingDisabled: action.toggle };
-    case "dd":
-      return {...state, changeFollow:action.id}
     default:
       return state;
   }
 };
 // ACTIONS CREATOR
-export const followingAC = (userID) => ({ type: FOLLOWING, userID: userID });
+export const followingAC = (id, isFollow) => ({
+  type: FOLLOWING,
+  id,
+  isFollow,
+});
 
 export const setUsersAC = (users) => ({ type: SET_USERS, users: users });
 
@@ -69,11 +64,6 @@ export const totalUsersAC = (count) => ({ type: TOTAL_USERS, count: count });
 export const toggleIsFetchingAC = (toggle) => ({
   type: TOGGLE_IS_FETCHING,
   toggle: toggle,
-});
-
-export const disableChangedFollowedAC = () => ({
-  type: DISABLED_CHANGED_FOLLOWING,
-  toggle: undefined,
 });
 
 export const toggleIsDisabledFollowingAC = (toggle) => ({
@@ -93,12 +83,12 @@ export const getTotalUsersTC = () => async (dispatch) => {
   dispatch(totalUsersAC(data));
 };
 
-export const followedTC = (idUser, user) => async (dispatch) => {
-  if (idUser != undefined) {
+export const followedTC = (data, isFollow) => async (dispatch) => {
+  if (data.id != undefined) {
     dispatch(toggleIsDisabledFollowingAC(true));
-    await rewriteUserAPI(idUser, user);
+    dispatch(followingAC(data.id, isFollow));
+    await rewriteUserAPI(data.id, { ...data, followed: isFollow });
     dispatch(toggleIsDisabledFollowingAC(false));
-    dispatch(disableChangedFollowedAC());
   }
 };
 

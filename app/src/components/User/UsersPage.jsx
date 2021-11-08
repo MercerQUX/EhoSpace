@@ -4,13 +4,13 @@ import styleU from "../CSS/users.module.css";
 import User from "./User";
 import Preloader from "../common/Preloader";
 
-const UsersPage = ({users,...props}) => {
+const UsersPage = ({ users, ...props }) => {
   useEffect(() => {
-    props.getTotalUsers();
-    props.getUsers(props.loadedPage, props.pageSize);
+    if (users.length == 0) {
+      props.getTotalUsers();
+      props.getUsers(props.loadedPage, props.pageSize);
+    }
   }, []);
-
-  props.followed(props.changeFollow, users[props.changeFollow - 1]);
 
   const getUsers = () => {
     props.toggleIsFetching(true);
@@ -21,8 +21,8 @@ const UsersPage = ({users,...props}) => {
     <User
       id={user.id}
       data={user}
-      following={props.following}
-      disabledFollowing={props.isFollowingDisabled}
+      isFollowingDisabled={props.isFollowingDisabled}
+      followed={props.followed}
     />
   ));
   return (

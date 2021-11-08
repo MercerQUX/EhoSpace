@@ -6,7 +6,6 @@ export const getPageSize = (state) => state.pageUsers.pageSize;
 export const getLoadedPage = (state) => state.pageUsers.numLoadedPages;
 export const isFetching = (state) => state.pageUsers.isFetching;
 export const isEmpty = (state) => state.pageUsers.isEmpty;
-export const getChangeFollow = (state) => state.pageUsers.changeFollow;
 export const isFollowingDisabled = (state) =>
   state.pageUsers.isFollowingDisabled;
 
