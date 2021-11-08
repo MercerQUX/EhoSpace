@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import Preloader from "../../common/Preloader";
-import ProfileCardContainer from "../ProfileCard/ProfileCardContainer";
+import { useEffect, Preloader, ProfileCardContainer } from "./index";
 
 const ProfileData = ({
   match,

@@ -1,6 +1,9 @@
 import React from "react";
 import style from "../CSS/main.module.css";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { rewriteProfileAC } from "../Profile/ProfileData";
+import { changeAC } from "../../redux/profile-reducer";
 
 const Saidbar = (props) => {
   return (
@@ -40,4 +43,4 @@ const Saidbar = (props) => {
   );
 };
 
-export default Saidbar;
+export default Saidbar

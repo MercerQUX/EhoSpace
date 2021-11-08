@@ -18,32 +18,6 @@ export const maxLengthCreator = (maxLength) => (value) => {
   }
 };
 
-export const maxLength15 = (value) => {
-  if (value !== undefined) {
-    if (value.length > 15) {
-      return "You have exceeded the allowed character value (15)";
-    } else {
-      return undefined;
-    }
-  }
-};
-
-export const maxLength150 = (value) => {
-  if (value !== undefined) {
-    if (value.length > 150) {
-      return "You have exceeded the allowed character value (150)";
-    } else {
-      return undefined;
-    }
-  }
-};
-
-export const maxLength100 = (value) => {
-  if (value !== undefined) {
-    if (value.length > 100) {
-      return "You have exceeded the allowed character value (100)";
-    } else {
-      return undefined;
-    }
-  }
-};
+export const maxLength15 = maxLengthCreator(15);
+export const maxLength100 = maxLengthCreator(15);
+export const maxLength150 = maxLengthCreator(15);
