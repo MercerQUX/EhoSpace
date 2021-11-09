@@ -6,7 +6,11 @@ const User = ({ data, isFollowingDisabled, ...props }) => {
   return (
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>
-        <NavLink className={style.userIMG} to={`profile/${data.id}`}>
+        <NavLink
+          onClick={() => window.scrollTo({ top: 0 })}
+          className={style.userIMG}
+          to={`profile/${data.id}`}
+        >
           <img src={data.avatar} alt="avatar" />
         </NavLink>
 

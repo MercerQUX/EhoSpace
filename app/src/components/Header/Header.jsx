@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <header className={style.header}>
       <NavLink to="/profile" className={style.logo}>
-        LOGO
+        Social Space
       </NavLink>
       <div className={style.loginBlock}>
         {props.isAuth ? (

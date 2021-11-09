@@ -13,13 +13,16 @@
 /* profile begin */
 .profile {
   grid-area: profile;
-  background-color: sandybrown;
+  background-color: #7aa7c8d3;
+  background-image: url("https://wallup.net/wp-content/uploads/2018/03/19/580162-pattern-vertical-portrait_display-digital_art.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 150%;
 }
 /* profile end */
 /* header begin */
 .header {
   grid-area: header;
-  background-color: salmon;
+  background-color: #9e9bd7de;
   display: flex;
   justify-content: space-between;
 }
@@ -27,12 +30,17 @@
   text-decoration: none;
   font-size: 3rem;
   font-weight: bold;
-  color: #2aacc1;
+  color: #33c4dbba;
+  text-shadow: 2px 2px 8px #ffffffcf;
   padding-left: 20px;
+  letter-spacing: 1px;
 }
 .loginBlock a {
   font-size: 2.8rem;
-  color: black;
+  color: #1b6ce5cf;
+  text-shadow: 3px 3px 10px #ffffffcf;
+  padding-left: 20px;
+  letter-spacing: 1px;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
@@ -44,16 +52,18 @@
   font-size: 1.3rem;
   cursor: pointer;
   padding-right: 20px;
-  color: #bd3486;
+  color: #0040f3;
+  text-shadow: 2px 2px 6px #981acfcf;
 }
 .logOut:hover {
-  color: #c31bbe;
+  color: #0025a0d7;
+  text-shadow: 2px 2px 6px #195ad4cf;
 }
 /* header end */
 /* saidbar begin */
 .saidbar {
   grid-area: saidbar;
-  background-color: seagreen;
+  background-color: rgb(102 136 211 / 60%);
 }
 
 .saidbar ul li {
@@ -62,12 +72,15 @@
 
 .saidbar ul li a {
   text-decoration: none;
-  color: #ff3f7d;
-  font-size: 20px;
+  color: #a4baf9;
+  font-size: 1.6rem;
   font-family: cursive;
   font-weight: bold;
 }
 .saidbar ul li a.activeLink {
-  color: #d725ed;
+  color: #269bff;
+}
+.saidbar ul li:hover {
+  color: #269bff;
 }
 /* saidbar end */

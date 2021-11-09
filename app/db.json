@@ -93,11 +93,11 @@
       "followed": true,
       "name": "Mathew",
       "surname": "Miller",
-      "nickname": "Faviconn",
+      "nickname": "Favicon",
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://vjoy.cc/wp-content/uploads/2020/11/1572690290_4.jpg",
-      "status": "Who I? I don't know!"
+      "status": "Who I? I don't know!!!"
     },
     {
       "id": 10,
@@ -123,7 +123,7 @@
     },
     {
       "id": 12,
-      "followed": true,
+      "followed": false,
       "name": "Barbara",
       "surname": "Moore 3",
       "nickname": "",
@@ -173,9 +173,9 @@
     }
   ],
   "authSystem": {
-    "id": 9,
-    "login": "faviconSSS",
-    "email": "favic@gmail.com",
+    "id": 8,
+    "login": "lady1337",
+    "email": "lisa1337@gmail.com",
     "isAuth": true
   }
 }

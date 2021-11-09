@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "../CSS/main.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProfileDataTC } from "../Profile/ProfileData";
 
-const Saidbar = ({ getProfileData, idLoggedUser, isAuth }) => {
+const Saidbar = () => {
+  const [isRedirect, setRedirect] = useState(false);
+  useEffect(() => setRedirect(false));
   return (
     <div className={style.saidbar}>
       <ul>
         <li>
-          <NavLink to="/login" activeClassName={style.activeLink}>
+          <NavLink
+            onClick={() => setRedirect(true)}
+            to="/profile"
+            activeClassName={style.activeLink}
+          >
             Profile
+            {isRedirect && <Redirect to="/login" />}
           </NavLink>
         </li>
         <li>
