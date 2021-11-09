@@ -14,7 +14,7 @@
 .profile {
   grid-area: profile;
   background-color: #7aa7c8d3;
-  background-image: url("https://wallup.net/wp-content/uploads/2018/03/19/580162-pattern-vertical-portrait_display-digital_art.jpg");
+  background-image: url("../common/background-profile.jpg");
   background-repeat: no-repeat;
   background-size: 100% 150%;
 }
