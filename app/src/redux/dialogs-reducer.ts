@@ -1,6 +1,13 @@
+import { dialogsMessagesType, dialogsUsersType } from "./reducersTypes";
+
 const ADD_MESSAGE = "dialog/ADD_MESSAGE";
 
-const initState = {
+type initialStateType = {
+  dialogsUsers: Array<dialogsUsersType>;
+  dialogsMessages: Array<dialogsMessagesType>;
+};
+
+const initState: initialStateType = {
   dialogsUsers: [
     { id: 1, name: "Lux" },
     { id: 2, name: "Lili" },
@@ -15,7 +22,7 @@ const initState = {
   ],
 };
 
-const DialogsReducer = (state = initState, action) => {
+const DialogsReducer = (state = initState, action: any) => {
   switch (action.type) {
     case ADD_MESSAGE:
       return {
@@ -33,8 +40,13 @@ const DialogsReducer = (state = initState, action) => {
       return state;
   }
 };
-
-export const addMessageAC = (value) => ({
+// Types
+type addMessageAT = (value: string) => {
+  type: typeof ADD_MESSAGE;
+  value: string;
+};
+// Actions Creator
+export const addMessageAC: addMessageAT = (value) => ({
   type: ADD_MESSAGE,
   value: value,
 });

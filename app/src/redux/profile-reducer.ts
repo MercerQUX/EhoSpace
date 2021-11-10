@@ -1,12 +1,19 @@
 import { getSingleUserAPI } from "../API/profile-API";
 import { rewriteUserAPI } from "../API/user-API";
+import { postsType, profileType } from "./reducersTypes";
 
 const ADD_POST = "profile/ADD_POST";
 const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";
 const CHANGED_STATUS = "profile/CHANGED_STATUS";
 const REWRITE_PROFILE = "REWRITE_PROFILE";
 
-let initState = {
+type initialStateType = {
+  posts: Array<postsType>;
+  profile: profileType;
+  actualStatus: string;
+};
+
+let initState: initialStateType = {
   posts: [
     {
       id: 1,
@@ -22,7 +29,7 @@ let initState = {
   actualStatus: "",
 };
 
-const ProfileReducer = (state = initState, action) => {
+const ProfileReducer = (state = initState, action: any) => {
   switch (action.type) {
     case ADD_POST:
       return {
@@ -40,41 +47,58 @@ const ProfileReducer = (state = initState, action) => {
     case CHANGED_STATUS:
       return { ...state, profile: { ...state.profile, status: action.text } };
     case REWRITE_PROFILE:
-      return {...state, profile: action.data}
+      return { ...state, profile: action.data };
     default:
       return state;
   }
 };
+// Types
+type addPostAT = (value: string) => {
+  type: typeof ADD_POST;
+  value: string;
+};
+type setSelectedProfileAT = (profile: profileType) => {
+  type: typeof GET_SELECTED_PROFILE;
+  profile: profileType;
+};
+type changeStatusAT = (text: string) => {
+  type: typeof CHANGED_STATUS;
+  text: string;
+};
+type rewriteProfileAT = (profile: profileType) => {
+  type: typeof REWRITE_PROFILE;
+  profile: profileType;
+};
 // ACTIONS CREATOR
-export const addPostAC = (value) => ({
+export const addPostAC: addPostAT = (value) => ({
   type: ADD_POST,
   value: value,
 });
 
-export const setSelectedProfileAC = (data) => ({
+export const setSelectedProfileAC: setSelectedProfileAT = (profile) => ({
   type: GET_SELECTED_PROFILE,
-  profile: data,
+  profile: profile,
 });
 
-export const changeStatusAC = (text) => ({
+export const changeStatusAC: changeStatusAT = (text) => ({
   type: CHANGED_STATUS,
   text: text,
 });
 
-export const rewriteProfileAC = (data) => ({
+export const rewriteProfileAC: rewriteProfileAT = (profile) => ({
   type: REWRITE_PROFILE,
-  data
-})
+  profile: profile,
+});
 //THUNKS CREATOR
 export const getProfileDataTC =
-  (userID, loggedID, isAuth) => async (dispatch) => {
+  (userID: any, loggedID: any, isAuth: boolean) => async (dispatch: any) => {
     let selectedUser = userID == undefined && isAuth ? loggedID : userID;
     let data = await getSingleUserAPI(selectedUser);
     dispatch(setSelectedProfileAC(data));
   };
 
-export const changedStatusTC = (userID, user) => async () => {
-    await rewriteUserAPI(userID, user);
+export const changedStatusTC = (userID: any, user: any) => async () => {
+  await rewriteUserAPI(userID, user);
 };
 
 export default ProfileReducer;

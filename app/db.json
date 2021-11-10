@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "followed": true,
+      "followed": false,
       "name": "Lancee",
       "surname": "Mills",
       "nickname": "",
