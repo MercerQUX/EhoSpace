@@ -2,7 +2,7 @@ import { RootState } from "./redux-store";
 import { ThunkAction } from "redux-thunk";
 import { getSingleUserAPI } from "../API/profile-API";
 import { rewriteUserAPI } from "../API/user-API";
-import { profileType } from "./types/ReducersTypes";
+import { profileType, usersType } from "./types/ReducersTypes";
 
 const ADD_POST = "profile/ADD_POST";
 const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";
@@ -72,7 +72,7 @@ export const getProfileDataTC =
   };
 
 export const changedStatusTC =
-  (id: number, user: profileType): ProfileThunksType =>
+  (id: number, user: usersType): ProfileThunksType =>
   async () => {
     await rewriteUserAPI(id, user);
   };

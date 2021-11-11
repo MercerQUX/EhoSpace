@@ -86,6 +86,7 @@ export const getUsersTC =
   (page: number, limit: number): UsersThunksType =>
   async (dispatch) => {
     let data = await getPartUsersAPI(page, limit);
+
     dispatch(setUsersAC(data));
     dispatch(loadedPageAC());
     dispatch(toggleIsFetchingAC(false));

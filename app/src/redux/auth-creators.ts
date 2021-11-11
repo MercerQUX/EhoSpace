@@ -37,7 +37,15 @@ export const returnErrorAC = (): returnErrorAT => ({
 export const actualLoggedUserTC = (): ThunkType => async (dispatch) => {
   let data = await getLoggedDataAPI();
   if (data != undefined) {
-    dispatch(setLoggedDataAC({ ...data }));
+    dispatch(
+      setLoggedDataAC({
+        id: data.id,
+        email: data.email,
+        login: data.login,
+        isAuth: data.isAuth,
+        error: null,
+      })
+    );
   }
 };
 

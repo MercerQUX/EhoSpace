@@ -1,4 +1,5 @@
-import * as axios from "axios";
+import axios from "axios";
+import { profileAPIActionsType } from "./types/APITypes";
 const GET_SINGLE_USER = "GET_SINGLE_USER";
 
 const constAxios = axios.create({
@@ -6,7 +7,7 @@ const constAxios = axios.create({
   baseURL: "http://localhost:4000",
 });
 
-const APIProfile = (action) => {
+const APIProfile = (action: profileAPIActionsType) => {
   switch (action.type) {
     case GET_SINGLE_USER:
       return constAxios
@@ -17,5 +18,5 @@ const APIProfile = (action) => {
   }
 };
 
-export const getSingleUserAPI = (selected) =>
+export const getSingleUserAPI = (selected: number) =>
   APIProfile({ type: GET_SINGLE_USER, selected: selected });
