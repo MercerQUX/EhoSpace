@@ -1,4 +1,4 @@
-import { dialogsMessagesType, dialogsUsersType } from "./reducersTypes";
+import { dialogsMessagesType, dialogsUsersType } from "./types/ReducersTypes";
 
 const ADD_MESSAGE = "dialog/ADD_MESSAGE";
 
@@ -40,15 +40,4 @@ const DialogsReducer = (state = initState, action: any) => {
       return state;
   }
 };
-// Types
-type addMessageAT = (value: string) => {
-  type: typeof ADD_MESSAGE;
-  value: string;
-};
-// Actions Creator
-export const addMessageAC: addMessageAT = (value) => ({
-  type: ADD_MESSAGE,
-  value: value,
-});
-
 export default DialogsReducer;

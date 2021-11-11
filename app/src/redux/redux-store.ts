@@ -5,6 +5,7 @@ import ProfileReducer from "./profile-reducer";
 import UsersReducer from "./users-reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form"; 
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const reducers = combineReducers({
   pageProfile: ProfileReducer,
@@ -14,7 +15,10 @@ const reducers = combineReducers({
   form: formReducer,
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = ReturnType<typeof store.dispatch>;
 
 export default store;
-window.store = store;

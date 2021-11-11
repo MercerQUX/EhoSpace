@@ -1,6 +1,6 @@
 //AUTH-REDUCER
 export type dataLoggedType = {
-  userID: null | number;
+  id: null | number;
   email: null | string;
   login: null | string;
   isAuth: boolean;
