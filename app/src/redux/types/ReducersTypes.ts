@@ -11,7 +11,7 @@ export type postsType = {
   id: number;
   body: string;
 };
-export type profileType = null | {
+export type profileType = {
   id: number;
   followed: boolean;
   name: string;

@@ -1,4 +1,4 @@
-import { dataLoggedType } from "./../redux/types/ReducersTypes";
+import { dataLoggedType } from "../redux/types/ReducersTypes";
 import axios from "axios";
 import {
   authAPIActionsType,

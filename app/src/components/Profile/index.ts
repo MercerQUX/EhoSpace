@@ -1,29 +1,25 @@
 import { useEffect } from "react";
-import Preloader from "../../common/Preloader";
-import ProfileCardContainer from "../ProfileCard/ProfileCardContainer";
+import Preloader from "../common/Preloader";
 import { connect } from "react-redux";
 import {
-  changedStatusTC,
+  sendRewriteProfileTC,
   changeStatusAC,
   getProfileDataTC,
   rewriteProfileAC,
-} from "../../../redux/profile-creators";
+} from "../../redux/profile-creators";
 import { withRouter } from "react-router";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
 import { compose } from "redux";
-import ProfileData from "./ProfileData";
 
 export {
   useEffect,
   Preloader,
-  ProfileCardContainer,
   connect,
-  changedStatusTC,
+  sendRewriteProfileTC,
   changeStatusAC,
   getProfileDataTC,
   rewriteProfileAC,
   withRouter,
   withAuthRedirect,
   compose,
-  ProfileData,
 };

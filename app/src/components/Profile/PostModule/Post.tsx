@@ -1,6 +1,12 @@
 import style from "../../CSS/profile.module.css";
 
-const Post = ({ name, surname, img, text }) => {
+type defaultProps = {
+  name: string;
+  surname: string;
+  img: string;
+  text: string;
+};
+const Post: React.FC<defaultProps> = ({ name, surname, img, text }) => {
   return (
     <div className={style.wrapperPost}>
       <img src={img} alt="aaa" />

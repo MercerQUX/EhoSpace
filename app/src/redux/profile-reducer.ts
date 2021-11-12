@@ -7,7 +7,7 @@ const REWRITE_PROFILE = "REWRITE_PROFILE";
 
 type initialStateType = {
   posts: Array<postsType>;
-  profile: profileType;
+  profile: null | profileType;
   actualStatus: string;
 };
 
@@ -45,11 +45,10 @@ const ProfileReducer = (state = initState, action: any) => {
     case CHANGED_STATUS:
       return { ...state, profile: { ...state.profile, status: action.text } };
     case REWRITE_PROFILE:
-      return { ...state, profile: action.data };
+      return { ...state, profile: action.profile };
     default:
       return state;
   }
 };
-
 
 export default ProfileReducer;

@@ -1,15 +1,16 @@
 import PostCreater from "./PostCreater";
-import { addPostAC } from "../../../redux/profile-reducer";
+import { addPostAC } from "../../../redux/profile-creators";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { AppDispatch, RootState } from "../../../redux/redux-store";
 
 let PostCreaterContainerConnect = connect(
-  (state) => ({
+  (state: RootState) => ({
     posts: state.pageProfile.posts,
     profile: state.pageProfile.profile,
   }),
-  (dispatch) => ({
-    addPost: (value) => dispatch(addPostAC(value)),
+  (dispatch: AppDispatch) => ({
+    addPost: (value: string) => dispatch(addPostAC(value)),
   })
 );
 

@@ -71,7 +71,7 @@ export const getProfileDataTC =
     dispatch(setSelectedProfileAC(data));
   };
 
-export const changedStatusTC =
+export const sendRewriteProfileTC =
   (id: number, user: usersType): ProfileThunksType =>
   async () => {
     await rewriteUserAPI(id, user);

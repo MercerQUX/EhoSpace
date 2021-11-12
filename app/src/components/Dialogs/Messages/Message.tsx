@@ -1,5 +1,5 @@
 import { Field, reduxForm, reset } from "redux-form";
-import { required, maxLength150 } from "../../../UI/form/validation/validators";
+import { required, maxLength150 } from "../../../UI/validation/validators";
 import { FormControl } from "../../../UI/form/FormControl";
 import style from "../../CSS/dialogs.module.css";
 import SingleMessage from "./SingleMessage";

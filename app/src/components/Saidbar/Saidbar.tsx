@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "../CSS/main.module.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { getProfileDataTC } from "../Profile/ProfileData";
+import { getProfileDataTC } from "../Profile";
 import { AppDispatch, RootState } from "../../redux/redux-store";
 
 const Saidbar = () => {

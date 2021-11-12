@@ -1,6 +1,6 @@
 import { Field, reduxForm } from "redux-form";
 import { FormControl } from "../../UI/form/FormControl";
-import { required } from "../../UI/form/validation/validators";
+import { required } from "../../UI/validation/validators";
 import style from "../CSS/main.module.css";
 import { Redirect } from "react-router";
 

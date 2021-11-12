@@ -1,12 +1,12 @@
 import style from "../CSS/main.module.css";
 import PostCreaterContainer from "./PostModule/PostCreaterContainer";
-import ProfileDataContainer from "./ProfileData/ProfileDataContainer";
+import ProfileContainer from "./ProfileModule/ProfileContainer";
 
 const Profile = () => {
   return (
     <div className={style.profile}>
       <div>
-        <ProfileDataContainer />
+        <ProfileContainer />
         <PostCreaterContainer />
       </div>
     </div>

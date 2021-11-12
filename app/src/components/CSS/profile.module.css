@@ -157,6 +157,7 @@
 
 .editStatusInput {
   resize: none;
+  text-align: center;
   background-color: #6171ff4d;
   width: 410px;
   height: 35px;
@@ -168,6 +169,7 @@
   outline: none;
   color: #250fb3;
 }
+
 /* ProfileCard End */
 /* EditMode Begin */
 .wrapperEditMode {
