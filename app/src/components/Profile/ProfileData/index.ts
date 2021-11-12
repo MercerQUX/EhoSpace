@@ -7,7 +7,7 @@ import {
   changeStatusAC,
   getProfileDataTC,
   rewriteProfileAC,
-} from "../../../redux/profile-reducer";
+} from "../../../redux/profile-creators";
 import { withRouter } from "react-router";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";

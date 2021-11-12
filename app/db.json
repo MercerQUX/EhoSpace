@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "followed": false,
+      "followed": true,
       "name": "Lancee",
       "surname": "Mills",
       "nickname": "",
@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "followed": false,
+      "followed": true,
       "name": "Mitchell",
       "surname": "Robinson",
       "nickname": "",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "followed": false,
+      "followed": true,
       "name": "Dennis",
       "surname": "Davidson",
       "nickname": "",
@@ -80,12 +80,12 @@
     {
       "id": 8,
       "followed": true,
-      "name": "Sheilli",
-      "surname": "Garrys",
-      "nickname": "Magic",
-      "status": "I fashion ",
-      "country": "USA",
-      "city": "Alabama",
+      "name": "Violet",
+      "surname": "Pusya",
+      "nickname": "MagicGirl",
+      "status": "",
+      "country": "Ukraine",
+      "city": "Krivoy Rog",
       "avatar": "https://trikky.ru/wp-content/blogs.dir/1/files/2020/12/27/izobrazhenie_viber_2020-12-27_17-34-45.jpg"
     },
     {
@@ -97,7 +97,7 @@
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://vjoy.cc/wp-content/uploads/2020/11/1572690290_4.jpg",
-      "status": "Who I? I don't know!!!"
+      "status": "Who I? I don't know!"
     },
     {
       "id": 10,
@@ -123,7 +123,7 @@
     },
     {
       "id": 12,
-      "followed": false,
+      "followed": true,
       "name": "Barbara",
       "surname": "Moore 3",
       "nickname": "",
@@ -173,9 +173,9 @@
     }
   ],
   "authSystem": {
-    "id": 8,
-    "login": "lady1337",
-    "email": "lisa1337@gmail.com",
+    "id": 9,
+    "login": "faviconSSS",
+    "email": "favic@gmail.com",
     "isAuth": true
   }
 }

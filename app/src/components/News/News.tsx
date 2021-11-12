@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../CSS/main.module.css";
 
-const News = (props) => {
+const News = () => {
   return (
     <div className={style.profile}>
       <p>News</p>

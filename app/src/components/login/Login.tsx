@@ -1,11 +1,9 @@
 import { Field, reduxForm } from "redux-form";
-import { indentifyDataTC } from "../../redux/auth-reducer";
 import { FormControl } from "../../UI/form/FormControl";
 import { required } from "../../UI/form/validation/validators";
-import { connect } from "react-redux";
 import style from "../CSS/main.module.css";
 import { Redirect } from "react-router";
-import { compose } from "redux";
+
 
 const LoginReduxForm = reduxForm({ form: "Login" })(
   ({ handleSubmit, ...props }) => {
@@ -42,8 +40,8 @@ const LoginReduxForm = reduxForm({ form: "Login" })(
   }
 );
 
-const Login = (props) => {
-  const onSubmit = (formData) => {
+const Login = (props:any) => {
+  const onSubmit = (formData:any) => {
     props.indentifyData(formData.login, formData.password);
   };
   return props.isAuth ? (
@@ -57,15 +55,4 @@ const Login = (props) => {
   );
 };
 
-let LoginConnect = connect(
-  (state) => ({
-    isAuth: state.authenticator.isAuth,
-    error: state.authenticator.error,
-  }),
-  (dispatch) => ({
-    indentifyData: (login, password) =>
-      dispatch(indentifyDataTC(login, password)),
-  })
-);
-
-export default compose(LoginConnect)(Login);
+export default Login;

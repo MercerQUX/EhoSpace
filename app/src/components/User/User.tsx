@@ -1,8 +1,19 @@
 import React from "react";
 import style from "../CSS/users.module.css";
 import { NavLink } from "react-router-dom";
+import { usersType } from "../../redux/types/ReducersTypes";
 
-const User = ({ data, isFollowingDisabled, ...props }) => {
+type defaultProps = {
+  id: number;
+  data: any;
+  isFollowingDisabled: boolean;
+  followed: (user:usersType,toggle:boolean) => void;
+};
+const User: React.FC<defaultProps> = ({
+  data,
+  isFollowingDisabled,
+  ...props
+}) => {
   return (
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>

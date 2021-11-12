@@ -2,9 +2,16 @@ import { Field, reduxForm, reset } from "redux-form";
 import { required, maxLength150 } from "../../../UI/form/validation/validators";
 import { FormControl } from "../../../UI/form/FormControl";
 import style from "../../CSS/dialogs.module.css";
-import SingleMessage from "../Messages/SingleMessage";
+import SingleMessage from "./SingleMessage";
+import { dialogsMessagesType } from "../../../redux/types/ReducersTypes";
+import { AppDispatch } from "../../../redux/redux-store";
 
-const Messages = ({ dialogsMessages, addMessage }) => {
+type defaultProps = {
+  dialogsMessages: Array<dialogsMessagesType>;
+  addMessage: (value:string) => CallableFunction;
+};
+
+const Messages:React.FC<defaultProps> = ({ dialogsMessages, addMessage }) => {
   let mapMessages = dialogsMessages.map((item) => (
     <SingleMessage body={item.body} />
   ));
@@ -13,13 +20,13 @@ const Messages = ({ dialogsMessages, addMessage }) => {
     <div className={style.wrapperMessages}>
       {mapMessages}
       <div className={style.messageTextArea}>
-        <MessageReduxForm onSubmit={(values) => addMessage(values)} />
+        <MessageReduxForm onSubmit={(values:any)=> addMessage(values)} />
       </div>
     </div>
   );
 };
 
-const MessageForm = (props) => {
+const MessageForm = (props:any) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <Field
@@ -37,7 +44,7 @@ const MessageForm = (props) => {
 
 const MessageReduxForm = reduxForm({
   form: "dialogMessageForm",
-  onSubmitSuccess: (res, dispatch) => dispatch(reset("dialogMessageForm")),
+  onSubmitSuccess: (res, dispatch:AppDispatch) => dispatch(reset("dialogMessageForm")),
 })(MessageForm);
 
 export default Messages;

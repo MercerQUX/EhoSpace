@@ -3,8 +3,10 @@ import style from "../CSS/main.module.css";
 import styleU from "../CSS/users.module.css";
 import User from "./User";
 import Preloader from "../common/Preloader";
+import { usersType } from "../../redux/types/ReducersTypes";
+import { defaultProps } from "./UsersContainer";
 
-const UsersPage = ({ users, ...props }) => {
+const UsersPage:React.FC<defaultProps> = ({ users, ...props }) => {
   useEffect(() => {
     if (users.length == 0) {
       props.getTotalUsers();

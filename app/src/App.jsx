@@ -7,7 +7,7 @@ import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";
 import UsersContainer from "./components/User/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/login/Login";
+import LoginContainer from "./components/login/LoginContainer";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/contact" render={() => <Contact />} />
-        <Route path="/login" render={() => <Login />} />
+        <Route path="/login" render={() => <LoginContainer />} />
       </div>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import style from "../CSS/main.module.css";
 
-const Contact = (props) => {
+const Contact = () => {
   return (
     <div className={style.profile}>
       <p>Contacts</p>
