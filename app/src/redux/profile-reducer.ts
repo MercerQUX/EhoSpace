@@ -36,7 +36,7 @@ const ProfileReducer = (state = initState, action: any) => {
           ...state.posts,
           {
             id: state.posts.length + 1,
-            body: action.value.newPost,
+            body: action.value,
           },
         ],
       };

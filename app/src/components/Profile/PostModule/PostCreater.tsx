@@ -1,16 +1,13 @@
 import style from "../../CSS/profile.module.css";
 import Post from "./Post";
-import { Field, reduxForm, reset } from "redux-form";
-import { required, maxLength430 } from "../../../UI/validation/validators";
-import { FormControl } from "../../../UI/form/FormControl";
 import { profileType } from "../../../redux/types/ReducersTypes";
-import { AppDispatch } from "../../../redux/redux-store";
+import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
 
-type defaultProps = {
+interface defaultProps {
   posts: Array<any>;
   addPost: (values: string) => void;
   profile: profileType;
-};
+}
 
 const PostCreater: React.FC<defaultProps> = ({ posts, addPost, profile }) => {
   let map = () => {
@@ -34,40 +31,11 @@ const PostCreater: React.FC<defaultProps> = ({ posts, addPost, profile }) => {
     <div className={style.wrapperCreaterPost}>
       <div>
         <h2>My Post</h2>
-        <PostCreaterReduxForm
-          onSubmit={(values: any) => {
-            addPost(values);
-            reset("");
-          }}
-        />
+        <FormCreatePost addPost={addPost} />
       </div>
       {<div className={style.posts}>{map()}</div>}
     </div>
   );
 };
-
-const afterSubmit = (res: any, dispatch: AppDispatch) => {
-  dispatch(reset("postCreator"));
-};
-
-const PostCreaterReduxForm = reduxForm({
-  form: "postCreator",
-  onSubmitSuccess: afterSubmit,
-})((props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <Field
-        component={FormControl}
-        name={"newPost"}
-        placeholder={"Your a new post..."}
-        validate={[required, maxLength430]}
-        dataType={"textarea"}
-      />
-      <button className={style.btn_post} type="submit">
-        Posting Post
-      </button>
-    </form>
-  );
-});
 
 export default PostCreater;

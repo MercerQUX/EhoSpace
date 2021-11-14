@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
-import style from "../../components/CSS/profile.module.css";
+import style from "../forms.module.css";
 import { profileType } from "../../redux/types/ReducersTypes";
+import { validEditProfileSchema } from "../validation/validators";
 
 interface initValueType {
   profileName: string;
@@ -21,6 +22,24 @@ interface defaultProps {
 
 interface formikProps {
   setIsEditProfile: (toggle: boolean) => void;
+  errors: {
+    profileName?: string;
+    profileSurname?: string;
+    profileNick?: string;
+    profileStatus?: string;
+    profileCountry?: string;
+    profileCity?: string;
+    profileAvatar?: string;
+  };
+  touched: {
+    profileName?: boolean;
+    profileSurname?: boolean;
+    profileNick?: boolean;
+    profileStatus?: boolean;
+    profileCountry?: boolean;
+    profileCity?: boolean;
+    profileAvatar?: boolean;
+  };
 }
 
 export const FormEditProfile = ({
@@ -38,6 +57,7 @@ export const FormEditProfile = ({
     profileCity: profile.city,
     profileAvatar: "",
   };
+
   return (
     <Formik
       initialValues={startValue}
@@ -56,7 +76,7 @@ export const FormEditProfile = ({
         sendNewProfile(profile.id, newData);
         setIsEditProfile(false);
       }}
-      validationSchema={""}
+      validationSchema={validEditProfileSchema}
     >
       {({ ...formikProps }) => {
         return <Fields {...formikProps} setIsEditProfile={setIsEditProfile} />;
@@ -65,81 +85,109 @@ export const FormEditProfile = ({
   );
 };
 
-const Fields = ({ setIsEditProfile }: formikProps) => {
+const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
+  const alternateСallErrors =
+    errors.profileName ||
+    errors.profileSurname ||
+    errors.profileNick ||
+    errors.profileStatus ||
+    errors.profileCountry ||
+    errors.profileCity ||
+    errors.profileAvatar;
   return (
     <Form>
-      <div>
-        <span>Name:</span>
+      <div className={style.allForms}>
+        <span className={style.spanEditProfile}>Name*:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileName && style.errorField
+          }`}
           type={"input"}
           name={"profileName"}
           placeholder={"New Name"}
         />
       </div>
-      <div>
-        <span>Surname:</span>
+      <div className={style.allForms}>
+        <span className={style.spanEditProfile}>Surname*:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileSurname && style.errorField
+          }`}
           type={"input"}
           name={"profileSurname"}
           placeholder={"New Surname"}
         />
       </div>
-      <div>
-        <span>Nickname:</span>
+      <div className={style.allForms}>
+        <span className={style.spanEditProfile}>Nickname:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileNick && style.errorField
+          }`}
           type={"input"}
           name={"profileNick"}
           placeholder={"New Nickname"}
         />
       </div>
-      <div>
-        <span>Status:</span>
+      <div className={style.allForms}>
+        <span className={style.spanEditProfile}>Status*:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileStatus && style.errorField
+          }`}
           type={"input"}
           name={"profileStatus"}
           placeholder={"New Status"}
         />
       </div>
-      <div>
-        <span>Coutry:</span>
+      <div className={style.allForms}>
+        <span className={`${style.spanEditProfile}`}>Coutry*:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileCountry && style.errorField
+          }`}
           type={"input"}
           name={"profileCountry"}
           placeholder={"New Country"}
         />
       </div>
-      <div>
-        <span>City:</span>
+      <div className={style.allForms}>
+        <span className={style.spanEditProfile}>City:</span>
         <Field
-          className={style.inputs}
+          className={`${style.inputsEditProfile} ${
+            errors.profileCity && style.errorField
+          }`}
           type={"input"}
           name={"profileCity"}
           placeholder={"New City"}
         />
       </div>
       <div className={style.uploadAvatar}>
-        <span>Loading Avatar from link:</span>
+        <span className={style.spanEditProfile}>Loading Avatar from link:</span>
+        <br />
         <Field
-          className={style.inputsAvatar}
+          className={`${style.inputsAvatar} ${
+            errors.profileAvatar && style.errorField
+          }`}
           type={"input"}
           name={"profileAvatar"}
           placeholder={"URL new photo for avatar"}
         />
       </div>
-      {/* {error} */}
+      {alternateСallErrors && (
+        <span className={style.errorEditProfile}>{alternateСallErrors}</span>
+      )}
       <br />
-      <button type="submit" className={style.btn_apply}>
+      <button
+        type="submit"
+        className={`${style.btn_editProfile} ${style.btn_apply}`}
+      >
         Apply
       </button>
       <button
         type="reset"
         onClick={() => setIsEditProfile(false)}
-        className={style.btn_cancel}
+        className={`${style.btn_editProfile} ${style.btn_cancel}`}
       >
         Cancel
       </button>

@@ -63,9 +63,11 @@ export const indentifyPasswordTC =
   async (dispatch) => {
     let identifyPassword = await indentifyPasswordAPI(data.id, password);
     if (identifyPassword) {
+      console.log("OKEY");
       sendLoggedDataAPI({ ...data, isAuth: true });
       dispatch(setLoggedDataAC({ ...data, isAuth: true, error: null }));
     } else {
+      console.log("Scram");
       dispatch(returnErrorAC());
     }
   };
@@ -78,7 +80,7 @@ export const logOutTC = (): ThunkType => async (dispatch) => {
       email: null,
       login: null,
       isAuth: false,
-      error: "Your not logged",
+      error: null,
     })
   );
 };

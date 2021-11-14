@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import style from "../CSS/main.module.css";
 import styleU from "../CSS/users.module.css";
 import User from "./User";
-import Preloader from "../common/Preloader";
+import Preloader from "../asset/common/Preloader";
 import { usersType } from "../../redux/types/ReducersTypes";
 import { defaultProps } from "./UsersContainer";
 

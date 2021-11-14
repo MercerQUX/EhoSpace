@@ -7,7 +7,7 @@ import Login from "./Login";
 let LoginConnect = connect(
   (state: RootState) => ({
     isAuth: state.authenticator.isAuth,
-    error: state.authenticator.error,
+    error: state.authenticator.error
   }),
   (dispatch: AppDispatch) => ({
     indentifyData: (login: string, password: string) =>

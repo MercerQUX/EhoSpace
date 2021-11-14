@@ -31,7 +31,7 @@ const DialogsReducer = (state = initState, action: any) => {
           ...state.dialogsMessages,
           {
             id: state.dialogsMessages.length + 1,
-            body: action.value.addMessage,
+            body: action.value,
             other: false,
           },
         ],

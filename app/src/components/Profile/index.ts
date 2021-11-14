@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Preloader from "../common/Preloader";
+import Preloader from "../asset/common/Preloader";
 import { connect } from "react-redux";
 import {
   sendRewriteProfileTC,

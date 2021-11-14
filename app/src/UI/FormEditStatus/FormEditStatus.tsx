@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import style from "../../components/CSS/profile.module.css";
+import style from "../forms.module.css";
 import { profileType } from "../../redux/types/ReducersTypes";
 import { ValidStatusSchema } from "../validation/validators";
 
@@ -16,8 +16,8 @@ interface defaultProps {
 
 interface formikProps {
   handleSubmit: () => void;
-  touched: any;
-  errors: any;
+  touched: { editStatus?: boolean };
+  errors: { editStatus?: string };
 }
 
 export const FormEditStatus = ({
@@ -26,7 +26,6 @@ export const FormEditStatus = ({
   saveStatus,
   profile,
 }: defaultProps) => {
-  console.log(profile.status);
   const startValue: initValueType = { editStatus: profile.status };
   return (
     <Formik
@@ -59,7 +58,7 @@ const Fields = ({ handleSubmit, touched, errors }: formikProps) => {
       />
       <br />
       {touched.editStatus && errors.editStatus ? (
-        <span>{errors.editStatus}</span>
+        <span className={style.errorEditStatus}>{errors.editStatus}</span>
       ) : null}
     </Form>
   );

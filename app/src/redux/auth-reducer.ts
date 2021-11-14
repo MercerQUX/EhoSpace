@@ -36,7 +36,7 @@ const authReducer = (
     case RETURN_ERROR:
       return {
         ...state,
-        isAuth: state.isAuth,
+        isAuth: false,
         error: "Error: The username or password was entered incorrectly",
       };
     default:

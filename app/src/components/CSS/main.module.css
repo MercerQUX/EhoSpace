@@ -14,7 +14,7 @@
 .profile {
   grid-area: profile;
   background-color: #7aa7c8d3;
-  background-image: url("../common/background-profile.jpg");
+  background-image: url("../asset/background-profile.jpg");
   background-repeat: no-repeat;
   background-size: 100% 150%;
 }
@@ -65,11 +65,9 @@
   grid-area: saidbar;
   background-color: rgb(102 136 211 / 60%);
 }
-
 .saidbar ul li {
   list-style: none;
 }
-
 .saidbar ul li a {
   text-decoration: none;
   color: #a4baf9;

@@ -1,0 +1,141 @@
+/* FormCreatePost Style Begin */
+.formCreatePost {
+  resize: none;
+  width: 100%;
+  height: 90px;
+  background: #79aeddb8;
+  font-size: 1rem;
+  border: 2px solid #19aced;
+  box-shadow: 0px 0px 8px 10px rgb(25 172 237 / 40%);
+}
+.formCreatePost:focus {
+  box-shadow: 0px 0px 8px 12px rgb(25 172 237 / 50%);
+  outline: 1px solid #19aced;
+}
+.btn_post {
+  float: right;
+  cursor: pointer;
+  text-align: center;
+  padding: 4px 30px;
+  margin-top: 1%;
+  border: solid 3px #777bebd9;
+  border-radius: 4px;
+  font: 16px "Arial Black", Gadget, sans-serif;
+  font-weight: bold;
+  color: #0769fdcf;
+  background-color: #dddddd52;
+  box-shadow: 0px 0px 8px #0e5cd1, inset 0px 0px 8px #edc0c0;
+}
+.btn_post:hover {
+  color: #edededcf;
+  background-color: #237af3ab;
+}
+.errorCreatePost {
+  color: white;
+  font-weight: bold;
+  padding-left: 20px;
+}
+/* FormCreatePost Style End */
+
+/* FormEditProfile Style Begin */
+.spanEditProfile {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1d35dbdb;
+}
+.allForms {
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+.inputsEditProfile {
+  width: 210px;
+  height: 30px;
+  font-size: 1.2rem;
+  background-color: #0037ff30;
+  border: #c3c5f1 2px solid;
+}
+.inputsEditProfile:focus {
+  outline: 2px solid rgb(104, 190, 224);
+  color: #ffffffb8;
+  font-weight: bold;
+  border: #979bf0 2px solid;
+}
+.uploadAvatar {
+  flex-direction: column;
+}
+.inputsAvatar {
+  width: 348px;
+  height: 30px;
+  background-color: #cee8ff;
+  background-color: #0037ff30;
+  border: #c3c5f1 2px solid;
+}
+.inputsAvatar:focus {
+  border: #979bf0 2px solid;
+  outline: 2px solid rgb(104, 190, 224);
+  color: #ffffffb8;
+}
+.errorEditProfile {
+  font-size: 1rem;
+  color: #ff0202de;
+  font-weight: bold;
+}
+.errorField {
+  outline: 1px solid rgb(235, 0, 0);
+}
+.errorField:focus {
+  border: 1px solid rgb(248, 1, 1);
+}
+.btn_editProfile {
+  width: 48%;
+  padding: 5px 0px;
+  margin-right: 2%;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 3%;
+}
+.btn_apply {
+  background-color: rgb(53 227 41 / 60%);
+  border: 2px solid #5157dd70;
+  height: 40px;
+  border-radius: 4px;
+}
+.btn_apply:hover {
+  background-color: rgb(25 215 12 / 80%);
+  border: 2px solid rgb(86 91 209 / 80%);
+}
+.btn_cancel {
+  background-color: rgb(225 41 41 / 60%);
+  border: 2px solid #5157dd70;
+  height: 40px;
+  border-radius: 4px;
+}
+.btn_cancel:hover {
+  background-color: rgb(233 11 11 / 80%);
+  border: 2px solid rgb(81 87 221 / 80%);
+}
+/* FormEditProfile Style End */
+
+/* FormEditStatus Style Begin */
+.editStatusInput {
+  resize: none;
+  text-align: center;
+  background-color: #6171ff4d;
+  width: 410px;
+  height: 35px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #5666ff;
+  box-shadow: 2px 2px 4px #1e82ff;
+  outline: none;
+  color: #250fb3;
+}
+
+.errorEditStatus {
+  color: #f9f5f5;
+  font-weight: bold;
+  padding-left: 10px;
+}
+/* FormEditStatus Style End */

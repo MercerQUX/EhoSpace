@@ -1,5 +1,5 @@
-import style from "../CSS/users.module.css";
-import preloader from "../../UI/preloader.svg";
+import style from "../asset.module.css";
+import preloader from "../preloader.svg";
 const Preloader = () => {
   return (
     <div>
