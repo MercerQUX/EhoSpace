@@ -1,25 +1,20 @@
-import { useEffect } from "react";
-import Preloader from "../asset/common/Preloader";
-import { connect } from "react-redux";
-import {
-  sendRewriteProfileTC,
-  changeStatusAC,
-  getProfileDataTC,
-  rewriteProfileAC,
-} from "../../redux/profile-creators";
-import { withRouter } from "react-router";
-import { withAuthRedirect } from "../hoc/withAuthRedirect";
-import { compose } from "redux";
-
+export { ProfileCardContainer } from "./ProfileModule/ProfileContainer";
+export { PostCreaterContainer } from "./PostModule/PostCreaterContainer";
+export { ProfileCard } from "./ProfileModule/ProfileCard";
+export { Post } from "./PostModule/Post";
+export { Preloader } from "../../asset/common/Preloader";
+export { FormEditStatus } from "../../UI/FormEditStatus/FormEditStatus";
+export { FormEditProfile } from "../../UI/FormEditProfile/FormEditProfile";
+export { FormCreatePost } from "../../UI/FormCreatePost/FormCreatePost";
+export { PostCreater } from "./PostModule/PostCreater";
 export {
-  useEffect,
-  Preloader,
-  connect,
-  sendRewriteProfileTC,
+  addPostAC,
   changeStatusAC,
   getProfileDataTC,
   rewriteProfileAC,
-  withRouter,
-  withAuthRedirect,
-  compose,
-};
+  sendRewriteProfileTC,
+} from "../../redux/profile-creators";
+
+export type { AppDispatch, RootState } from "../../redux/redux-store";
+export type { profileType, usersType } from "../../redux/types/ReducersTypes";
+export type { defaultPropsProfile } from "./ProfileModule/ProfileContainer";

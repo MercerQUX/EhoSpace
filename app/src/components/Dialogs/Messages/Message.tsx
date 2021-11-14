@@ -1,14 +1,15 @@
-import style from "../../CSS/dialogs.module.css";
-import SingleMessage from "./SingleMessage";
-import { dialogsMessagesType } from "../../../redux/types/ReducersTypes";
-import { FormMessage } from "../../../UI/FormChat/FormMessage";
+import { dialogsMessagesType, SingleMessage, FormMessage } from "..";
+import style from "../dialogs.module.css";
 
 type defaultProps = {
   dialogsMessages: Array<dialogsMessagesType>;
   addMessage: (value: string) => CallableFunction;
 };
 
-const Messages: React.FC<defaultProps> = ({ dialogsMessages, addMessage }) => {
+export const Messages: React.FC<defaultProps> = ({
+  dialogsMessages,
+  addMessage,
+}) => {
   let mapMessages = dialogsMessages.map((item) => (
     <SingleMessage body={item.body} />
   ));
@@ -22,5 +23,3 @@ const Messages: React.FC<defaultProps> = ({ dialogsMessages, addMessage }) => {
     </div>
   );
 };
-
-export default Messages;

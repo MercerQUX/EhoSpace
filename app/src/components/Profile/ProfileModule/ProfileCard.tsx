@@ -1,15 +1,13 @@
-import { profileDefaultProps } from "./ProfileContainer";
-import style from "../../CSS/profile.module.css";
-import { FormEditStatus } from "../../../UI/FormEditStatus/FormEditStatus";
 import { useState } from "react";
-import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
+import { FormEditProfile, FormEditStatus, defaultPropsProfile } from "..";
+import style from "../profile.module.css";
 
-export const ProfileCard: React.FC<profileDefaultProps> = ({
+export const ProfileCard: React.FC<defaultPropsProfile> = ({
   profile,
   actualID,
   changeStatus,
   sendNewProfile,
-  rewriteProfile
+  rewriteProfile,
 }) => {
   const isOwnerProfile = actualID === profile.id;
   const [isEditStatus, setIsEditStatus] = useState(true);
@@ -78,9 +76,3 @@ export const ProfileCard: React.FC<profileDefaultProps> = ({
     </div>
   );
 };
-
-// <EditMode
-//   value={profile}
-//   onSubmit={props.onSubmitProfile}
-//   closeEditProfile={props.closeEditProfile}
-// />

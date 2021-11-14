@@ -1,65 +1,59 @@
-import { AppDispatch, RootState } from "../../../redux/redux-store";
-import { profileType, usersType } from "../../../redux/types/ReducersTypes";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { useState, useEffect } from "react";
 import {
-  connect,
-  sendRewriteProfileTC,
+  AppDispatch,
   changeStatusAC,
   getProfileDataTC,
-  rewriteProfileAC,
-  withRouter,
-  withAuthRedirect,
-  compose,
   Preloader,
-} from "../index";
-import { useEffect, useState } from "react";
-import { ProfileCard } from "../ProfileModule/ProfileCard";
+  ProfileCard,
+  profileType,
+  rewriteProfileAC,
+  RootState,
+  sendRewriteProfileTC,
+  usersType,
+} from "..";
 
-export type profileDefaultProps = TStateProps & TDispatchProps;
-
-interface TStateProps {
+export interface defaultPropsProfile {
   profile: profileType;
   actualID: number;
-}
-interface TDispatchProps {
   changeStatus: (text: string) => void;
   sendNewProfile: (userID: number, data: profileType) => void;
   rewriteProfile: (data: profileType) => void;
 }
-interface TOwnProps {
+
+interface defaultPropsProfileOwn {
   match: any;
   isAuth: boolean;
   idLoggedUser: number;
   getProfileData: (userID: number, loggedID: number, isAuth: boolean) => any;
 }
 
-const ProfileContainer: React.FC<TOwnProps & profileDefaultProps> = ({
-  match,
-  idLoggedUser,
-  isAuth,
-  getProfileData,
-  ...props
-}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    getProfileData(match.params.UserID, idLoggedUser, isAuth);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 400);
-    return () => clearTimeout(timer);
-  }, [isAuth]);
+const ProfileContainer: React.FC<defaultPropsProfile & defaultPropsProfileOwn> =
+  ({ match, idLoggedUser, isAuth, getProfileData, ...props }) => {
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+      getProfileData(match.params.UserID, idLoggedUser, isAuth);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 400);
+      return () => clearTimeout(timer);
+    }, [isAuth]);
 
-  return (
-    <div>
-      {props.profile != null && !isLoading ? (
-        <ProfileCard {...props} />
-      ) : (
-        <Preloader />
-      )}
-    </div>
-  );
-};
+    return (
+      <div>
+        {props.profile != null && !isLoading ? (
+          <ProfileCard {...props} />
+        ) : (
+          <Preloader />
+        )}
+      </div>
+    );
+  };
 
-const ProfileDataConnect = connect(
+const ProfileCardConnect = connect(
   (state: RootState) => ({
     profile: state.pageProfile.profile,
     idLoggedUser: state.authenticator.userID,
@@ -76,8 +70,8 @@ const ProfileDataConnect = connect(
   })
 );
 
-export default compose<any>(
-  ProfileDataConnect,
+export const ProfileCardContainer = compose<any>(
+  ProfileCardConnect,
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

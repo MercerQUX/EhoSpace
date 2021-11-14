@@ -1,16 +1,12 @@
-import Messages from "./Message";
-import { addMessageAC } from "../../../redux/dialogs-creators";
+import { RootState, AppDispatch, addMessageAC } from "..";
 import { connect } from "react-redux";
-import { compose } from "redux";
-import { AppDispatch, RootState } from "../../../redux/redux-store";
+import { Messages } from "./Message";
 
-let MessageContainerConnect = connect(
+export const MessageContainer = connect(
   (state: RootState) => ({
     dialogsMessages: state.pageDialogs.dialogsMessages,
   }),
   (dispatch: AppDispatch) => ({
     addMessage: (value: string) => dispatch(addMessageAC(value)),
   })
-);
-
-export default compose<any>(MessageContainerConnect)(Messages);
+)(Messages);

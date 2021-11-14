@@ -1,17 +1,18 @@
+import { RootState } from "..";
+import { SingleDialog } from "./SingleDialog";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import SingleDialog from "./SingleDialog";
-import { RootState } from "../../../redux/redux-store";
 
-const DialogsWindowConnect = connect(
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+
+export const DialogsWindowConnect = connect(
   (state: RootState) => ({
     dialogsUsers: state.pageDialogs.dialogsUsers,
   }),
-  (dispatch) => ({})
+  {}
 );
 
-export default compose<any>(
+export const DialogsWindowContainer = compose<any>(
   DialogsWindowConnect,
   withAuthRedirect
 )(SingleDialog);

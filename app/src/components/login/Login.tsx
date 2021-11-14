@@ -1,4 +1,4 @@
-import style from "../CSS/main.module.css";
+import style from "../../main.module.css"
 import { Redirect } from "react-router";
 import { FormLogin } from "../../UI/FormAuth/FormLogin";
 

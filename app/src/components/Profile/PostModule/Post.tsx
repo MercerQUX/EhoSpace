@@ -1,4 +1,4 @@
-import style from "../../CSS/profile.module.css";
+import style from "../profile.module.css";
 
 type defaultProps = {
   name: string;
@@ -6,7 +6,7 @@ type defaultProps = {
   img: string;
   text: string;
 };
-const Post: React.FC<defaultProps> = ({ name, surname, img, text }) => {
+export const Post: React.FC<defaultProps> = ({ name, surname, img, text }) => {
   return (
     <div className={style.wrapperPost}>
       <img src={img} alt="aaa" />
@@ -20,4 +20,3 @@ const Post: React.FC<defaultProps> = ({ name, surname, img, text }) => {
   );
 };
 
-export default Post;

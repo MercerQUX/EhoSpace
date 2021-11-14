@@ -1,10 +1,9 @@
-import PostCreater from "./PostCreater";
-import { addPostAC } from "../../../redux/profile-creators";
+import { addPostAC, AppDispatch, RootState } from "..";
+import { PostCreater } from "./../PostModule/PostCreater";
 import { connect } from "react-redux";
-import { compose } from "redux";
-import { AppDispatch, RootState } from "../../../redux/redux-store";
 
-let PostCreaterContainerConnect = connect(
+
+export const PostCreaterContainer = connect(
   (state: RootState) => ({
     posts: state.pageProfile.posts,
     profile: state.pageProfile.profile,
@@ -12,6 +11,4 @@ let PostCreaterContainerConnect = connect(
   (dispatch: AppDispatch) => ({
     addPost: (value: string) => dispatch(addPostAC(value)),
   })
-);
-
-export default compose(PostCreaterContainerConnect)(PostCreater);
+)(PostCreater);

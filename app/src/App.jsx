@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import Saidbar from "./components/Saidbar/Saidbar";
-import style from "./components/CSS/main.module.css";
+import style from "./main.module.css";
 import Dialogs from "./components/Dialogs/Dialog";
 import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";

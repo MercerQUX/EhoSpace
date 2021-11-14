@@ -1,25 +1,26 @@
-import { connect } from "react-redux";
-import { compose } from "redux";
 import {
-  isEmpty,
-  isFetching,
+  usersType,
+  RootState,
+  getUsersWithoutLoggedIn,
   getPageSize,
   getLoadedPage,
+  isFetching,
   getLoggedUser,
-  getUsersWithoutLoggedIn,
+  isEmpty,
   isFollowingDisabled,
-} from "./users-selector";
-import { usersType } from "../../redux/types/ReducersTypes";
-import { AppDispatch, RootState } from "../../redux/redux-store";
-import {
+  AppDispatch,
+  getTotalUsersTC,
   toggleIsFetchingAC,
   getUsersTC,
-  getTotalUsersTC,
   followedTC,
-} from "../../redux/users-creator";
-import UsersPage from "./UsersPage";
+} from ".";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { UsersPage } from "./UsersPage";
 
-type TStateProps = {
+type TStateProps = {};
+
+export interface defaultPropsUsers {
   users: Array<usersType>;
   pageSize: number;
   loadedPage: number;
@@ -27,16 +28,11 @@ type TStateProps = {
   getLoggedUser: number;
   isEmpty: boolean;
   isFollowingDisabled: boolean;
-};
-
-type TDispatchProps = {
   getTotalUsers: () => void;
   toggleIsFetching: (toggle: boolean) => void;
   getUsers: (page: any, limit: any) => void;
   followed: (id: any, user: any) => void;
-};
-
-export type defaultProps = TStateProps & TDispatchProps;
+}
 
 let UsersContainerConnect = connect(
   (state: RootState) => ({
@@ -56,4 +52,4 @@ let UsersContainerConnect = connect(
   })
 );
 
-export default compose<defaultProps>(UsersContainerConnect)(UsersPage);
+export default compose<any>(UsersContainerConnect)(UsersPage);

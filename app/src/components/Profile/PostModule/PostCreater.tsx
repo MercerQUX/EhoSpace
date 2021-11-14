@@ -1,7 +1,5 @@
-import style from "../../CSS/profile.module.css";
-import Post from "./Post";
-import { profileType } from "../../../redux/types/ReducersTypes";
-import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
+import { Post, profileType, FormCreatePost } from "..";
+import style from "../profile.module.css";
 
 interface defaultProps {
   posts: Array<any>;
@@ -9,7 +7,11 @@ interface defaultProps {
   profile: profileType;
 }
 
-const PostCreater: React.FC<defaultProps> = ({ posts, addPost, profile }) => {
+export const PostCreater: React.FC<defaultProps> = ({
+  posts,
+  addPost,
+  profile,
+}) => {
   let map = () => {
     if (profile == null) {
       return <h2 className={style.loading}>Loading...</h2>;
@@ -37,5 +39,3 @@ const PostCreater: React.FC<defaultProps> = ({ posts, addPost, profile }) => {
     </div>
   );
 };
-
-export default PostCreater;

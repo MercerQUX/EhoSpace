@@ -1,7 +1,7 @@
-import React from "react";
-import style from "../CSS/users.module.css";
+import style from "./users.module.css";
 import { NavLink } from "react-router-dom";
-import { usersType } from "../../redux/types/ReducersTypes";
+import { usersType } from ".";
+
 
 type defaultProps = {
   id: number;
@@ -9,7 +9,7 @@ type defaultProps = {
   isFollowingDisabled: boolean;
   followed: (user:usersType,toggle:boolean) => void;
 };
-const User: React.FC<defaultProps> = ({
+export const User: React.FC<defaultProps> = ({
   data,
   isFollowingDisabled,
   ...props
@@ -55,5 +55,3 @@ const User: React.FC<defaultProps> = ({
     </div>
   );
 };
-
-export default User;

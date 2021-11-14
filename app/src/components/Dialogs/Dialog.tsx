@@ -1,7 +1,6 @@
-import style from "../CSS/main.module.css";
-import styleD from "../CSS/dialogs.module.css";
-import MessageContainer from "./Messages/MessageContainer";
-import DialogsWindowContainer from "./DialogsWindow/DialogsWindowContainer";
+import { DialogsWindowContainer, MessageContainer } from ".";
+import style from "../../main.module.css";
+import styleD from "./dialogs.module.css";
 
 const Dialogs = () => {
   return (
