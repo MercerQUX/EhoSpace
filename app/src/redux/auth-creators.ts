@@ -15,7 +15,7 @@ const RETURN_ERROR = "auth/RETURN_ERROR";
 // TYPES
 export type AuthActionType = setLoggedDataAT | returnErrorAT;
 
-type ThunkType = ThunkAction<Promise<void>, RootState, unknown, AuthActionType>;
+type AuthThunkType = ThunkAction<Promise<void>, RootState, unknown, AuthActionType>;
 type setLoggedDataAT = {
   type: typeof SET_LOGGED_DATA;
   data: dataLoggedType;
@@ -34,7 +34,7 @@ export const returnErrorAC = (): returnErrorAT => ({
 });
 
 // THUNKS CREATOR
-export const actualLoggedUserTC = (): ThunkType => async (dispatch) => {
+export const actualLoggedUserTC = (): AuthThunkType => async (dispatch) => {
   let data = await getLoggedDataAPI();
   if (data != undefined) {
     dispatch(
@@ -50,7 +50,7 @@ export const actualLoggedUserTC = (): ThunkType => async (dispatch) => {
 };
 
 export const indentifyDataTC =
-  (login: string, password: string): ThunkType =>
+  (login: string, password: string): AuthThunkType =>
   async (dispatch) => {
     let data = await indentifyLoginAPI(login);
     data === 0
@@ -59,20 +59,18 @@ export const indentifyDataTC =
   };
 
 export const indentifyPasswordTC =
-  (data: dataLoggedType, password: string): ThunkType =>
+  (data: dataLoggedType, password: string): AuthThunkType =>
   async (dispatch) => {
     let identifyPassword = await indentifyPasswordAPI(data.id, password);
     if (identifyPassword) {
-      console.log("OKEY");
       sendLoggedDataAPI({ ...data, isAuth: true });
       dispatch(setLoggedDataAC({ ...data, isAuth: true, error: null }));
     } else {
-      console.log("Scram");
       dispatch(returnErrorAC());
     }
   };
 
-export const logOutTC = (): ThunkType => async (dispatch) => {
+export const logOutTC = (): AuthThunkType => async (dispatch) => {
   await deleteLoggedDataAPI();
   dispatch(
     setLoggedDataAC({

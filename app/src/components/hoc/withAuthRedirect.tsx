@@ -3,9 +3,20 @@ import { connect } from "react-redux";
 import React, { JSXElementConstructor } from "react";
 import { RootState } from "../../redux/redux-store";
 
-export const withAuthRedirect = (Component:JSXElementConstructor<any>) => {
-  const RedirectComponent = (props:any) => {
-    if (props.isAuth) {
+interface componentProps {}
+
+interface hocProps {
+  isAuth: boolean;
+}
+
+export const withAuthRedirect = (
+  Component: JSXElementConstructor<componentProps>
+) => {
+  const RedirectComponent = ({
+    isAuth,
+    ...props
+  }: hocProps & componentProps) => {
+    if (isAuth) {
       return <Component {...props} />;
     } else {
       {
@@ -13,7 +24,7 @@ export const withAuthRedirect = (Component:JSXElementConstructor<any>) => {
       }
     }
   };
-  return connect((state:RootState) => ({ isAuth: state.authenticator.isAuth }))(
-    RedirectComponent
-  );
+  return connect((state: RootState) => ({
+    isAuth: state.authenticator.isAuth,
+  }))(RedirectComponent);
 };

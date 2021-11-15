@@ -36,4 +36,4 @@ const HeaderConnect = connect(
   })
 );
 
-export default compose<defaultProps>(HeaderConnect)(HeaderContainer);
+export const HeaderContainerCompose = compose<React.ComponentType>(HeaderConnect)(HeaderContainer);

@@ -6,14 +6,14 @@ import Dialogs from "./components/Dialogs/Dialog";
 import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";
 import UsersContainer from "./components/User/UsersContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import {HeaderContainerCompose} from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/login/LoginContainer";
 
 function App() {
   return (
     <BrowserRouter>
       <div className={style.wrapper}>
-        <HeaderContainer />
+        <HeaderContainerCompose />
         <Saidbar />
         <Route path="/" render={() => <Redirect to={"/profile"} />} />
         <Route path="/profile/:UserID?" render={() => <Profile />} />
