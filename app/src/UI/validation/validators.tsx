@@ -10,7 +10,7 @@ export const ValidMessageSchema = Yup.object().shape({
   bodyMessage: Yup.string().required("Warning:Field required"),
 });
 
-export const validLoginFormSchema = Yup.object().shape({
+export const ValidLoginFormSchema = Yup.object().shape({
   login: Yup.string()
     .required("Warning: Fields must not be empty")
     .matches(
@@ -30,10 +30,10 @@ export const validLoginFormSchema = Yup.object().shape({
     .max(24, "Warning: Maximum characters 24"),
 });
 
-export const valieRegisterFormSchema = Yup.object().shape({
+export const ValidRegisterFormSchema = Yup.object().shape({
   email: Yup.string()
     .required("Warning: Field Email must not be empty")
-    .email(),
+    .email("Warning: Field Email must be a valid email"),
   login: Yup.string()
     .required("Warning: Field Login must not be empty")
     .matches(
@@ -71,7 +71,7 @@ export const ValidCreatePostSchema = Yup.object().shape({
     .max(500, "Warning: Maximum characters 500"),
 });
 
-export const validEditProfileSchema = Yup.object().shape({
+export const ValidEditProfileSchema = Yup.object().shape({
   profileName: Yup.string()
     .required("Warning: Field Name is empty")
     .min(2, "Warning: Name less than 2 characters")
@@ -85,7 +85,6 @@ export const validEditProfileSchema = Yup.object().shape({
     "Warning: Nickname more than 25 characters"
   ),
   profileStatus: Yup.string()
-    .required("Warning: Field Status is empty")
     .max(150, "Warning: Surname more than 150 characters"),
   profileCountry: Yup.string()
     .required("Warning: Field Country is empty")

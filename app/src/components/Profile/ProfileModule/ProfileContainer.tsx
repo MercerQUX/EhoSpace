@@ -26,21 +26,20 @@ export interface defaultPropsProfile {
 
 interface defaultPropsProfileOwn {
   match: any;
-  isAuth: boolean;
   idLoggedUser: number;
   getProfileData: (userID: number, loggedID: number, isAuth: boolean) => any;
 }
 
 const ProfileContainer: React.FC<defaultPropsProfile & defaultPropsProfileOwn> =
-  ({ match, idLoggedUser, isAuth, getProfileData, ...props }) => {
+  ({ match, idLoggedUser, getProfileData, ...props }) => {
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-      getProfileData(match.params.UserID, idLoggedUser, isAuth);
+      getProfileData(match.params.UserID, idLoggedUser, true);
       const timer = setTimeout(() => {
         setIsLoading(false);
       }, 400);
       return () => clearTimeout(timer);
-    }, [isAuth]);
+    }, []);
 
     return (
       <div>
@@ -57,7 +56,6 @@ const ProfileCardConnect = connect(
   (state: RootState) => ({
     profile: state.pageProfile.profile,
     idLoggedUser: state.authenticator.userID,
-    isAuth: state.authenticator.isAuth,
     actualID: state.authenticator.userID,
   }),
   (dispatch: AppDispatch) => ({

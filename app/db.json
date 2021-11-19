@@ -85,7 +85,7 @@
       "nickname": "MagicGirl",
       "status": "",
       "country": "Ukraine",
-      "city": "Krivoy Rog",
+      "city": "Not indicated",
       "avatar": "https://trikky.ru/wp-content/blogs.dir/1/files/2020/12/27/izobrazhenie_viber_2020-12-27_17-34-45.jpg"
     },
     {
@@ -173,9 +173,9 @@
     }
   ],
   "authSystem": {
-    "id": 9,
-    "login": "faviconSSS",
-    "email": "favic@gmail.com",
-    "isAuth": true
+    "id": 0,
+    "login": null,
+    "email": null,
+    "isAuth": false
   }
 }

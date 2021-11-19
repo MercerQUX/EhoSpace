@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import style from "../forms.module.css";
 import { profileType } from "../../redux/types/ReducersTypes";
-import { validEditProfileSchema } from "../validation/validators";
+import { ValidEditProfileSchema } from "../validation/validators";
 
 interface initValueType {
   profileName: string;
@@ -76,7 +76,7 @@ export const FormEditProfile = ({
         sendNewProfile(profile.id, newData);
         setIsEditProfile(false);
       }}
-      validationSchema={validEditProfileSchema}
+      validationSchema={ValidEditProfileSchema}
     >
       {({ ...formikProps }) => {
         return <Fields {...formikProps} setIsEditProfile={setIsEditProfile} />;
@@ -130,7 +130,7 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
         />
       </div>
       <div className={style.allForms}>
-        <span className={style.spanEditProfile}>Status*:</span>
+        <span className={style.spanEditProfile}>Status:</span>
         <Field
           className={`${style.inputsEditProfile} ${
             errors.profileStatus && style.errorField

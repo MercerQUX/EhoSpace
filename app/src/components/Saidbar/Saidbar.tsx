@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import style from "./saidbar.module.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { getProfileDataTC } from "../../redux/profile-creators";
 import { AppDispatch, RootState } from "../../redux/redux-store";
 
 const Saidbar = () => {
@@ -51,12 +50,9 @@ const Saidbar = () => {
 };
 
 export default connect(
-  (state:RootState) => ({
+  (state: RootState) => ({
     idLoggedUser: state.authenticator.userID,
     isAuth: state.authenticator.isAuth,
   }),
-  (dispatch:AppDispatch) => ({
-    getProfileData: (id:number, idLogged:number, isAuth:boolean) =>
-      dispatch(getProfileDataTC(id, idLogged, isAuth)),
-  })
+  (dispatch: AppDispatch) => ({})
 )(Saidbar);
