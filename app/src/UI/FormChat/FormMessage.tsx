@@ -1,16 +1,12 @@
 import { Field, Formik, Form } from "formik";
 import { ValidMessageSchema } from "../validation/validators";
 
-interface initValueType {
-  bodyMessage: string;
-}
-interface defaultProps {
+interface IDefaultProps {
   addMessage: (value: string) => CallableFunction;
 }
-interface formikProps {}
 
-export const FormMessage = ({ addMessage }: defaultProps) => {
-  const startValue: initValueType = { bodyMessage: "" };
+export const FormMessage = ({ addMessage }: IDefaultProps) => {
+  const startValue = { bodyMessage: "" };
   return (
     <Formik
       initialValues={startValue}
@@ -25,13 +21,13 @@ export const FormMessage = ({ addMessage }: defaultProps) => {
       validationSchema={ValidMessageSchema}
     >
       {(...formikProps) => {
-        return <Fields {...formikProps} />;
+        return <Fields/>;
       }}
     </Formik>
   );
 };
 
-const Fields = ({}: formikProps) => {
+const Fields = () => {
   return (
     <Form>
       <Field

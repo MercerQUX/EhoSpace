@@ -2,25 +2,25 @@ import { Formik, Form, Field } from "formik";
 import { ValidCreatePostSchema } from "../validation/validators";
 import style from "../forms.module.css";
 
-interface initialValue {
-  newPost: string;
-}
-interface defaultProps {
+interface IDefaultProps {
   addPost: (values: string) => void;
 }
-interface formikProps {
-  errors: { newPost?: string };
-  touched: { newPost?: boolean };
+interface IPropertyValues<T> {
+  newPost?: T;
+}
+interface IFieldProps {
+  errors: IPropertyValues<string>;
+  touched: IPropertyValues<boolean>;
 }
 
-export const FormCreatePost = ({ addPost }: defaultProps) => {
-  const startValue: initialValue = { newPost: "" };
+export const FormCreatePost = ({ addPost }: IDefaultProps) => {
+  const startValue = { newPost: "" };
   return (
     <Formik
       initialValues={startValue}
-      onSubmit={(values, action) => {
+      onSubmit={(values: typeof startValue, { resetForm }) => {
         addPost(values.newPost);
-        action.resetForm({
+        resetForm({
           values: {
             newPost: "",
           },
@@ -33,7 +33,7 @@ export const FormCreatePost = ({ addPost }: defaultProps) => {
   );
 };
 
-const Fields = ({ errors, touched }: formikProps) => {
+const Fields = ({ errors, touched }: IFieldProps) => {
   console.log("return", errors, touched);
   return (
     <Form>

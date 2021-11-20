@@ -2,44 +2,29 @@ import { Formik, Form, Field } from "formik";
 import style from "../forms.module.css";
 import { profileType } from "../../redux/types/ReducersTypes";
 import { ValidEditProfileSchema } from "../validation/validators";
+import cn from "classnames";
 
-interface initValueType {
-  profileName: string;
-  profileSurname: string;
-  profileNick?: string;
-  profileStatus: string;
-  profileCountry: string;
-  profileCity?: string;
-  profileAvatar?: string;
-}
-
-interface defaultProps {
+interface IDefaultProps {
   profile: profileType;
   setIsEditProfile: (toggle: boolean) => void;
   rewriteProfile: (data: profileType) => void;
   sendNewProfile: (userID: number, data: profileType) => void;
 }
 
-interface formikProps {
+interface IPropertyValues<T> {
+  profileName?: T;
+  profileSurname?: T;
+  profileNick?: T;
+  profileStatus?: T;
+  profileCountry?: T;
+  profileCity?: T;
+  profileAvatar?: T;
+}
+
+interface IFieldProps {
   setIsEditProfile: (toggle: boolean) => void;
-  errors: {
-    profileName?: string;
-    profileSurname?: string;
-    profileNick?: string;
-    profileStatus?: string;
-    profileCountry?: string;
-    profileCity?: string;
-    profileAvatar?: string;
-  };
-  touched: {
-    profileName?: boolean;
-    profileSurname?: boolean;
-    profileNick?: boolean;
-    profileStatus?: boolean;
-    profileCountry?: boolean;
-    profileCity?: boolean;
-    profileAvatar?: boolean;
-  };
+  errors: IPropertyValues<string>;
+  touched: IPropertyValues<boolean>;
 }
 
 export const FormEditProfile = ({
@@ -47,8 +32,8 @@ export const FormEditProfile = ({
   setIsEditProfile,
   rewriteProfile,
   sendNewProfile,
-}: defaultProps) => {
-  const startValue: initValueType = {
+}: IDefaultProps) => {
+  const startValue = {
     profileName: profile.name,
     profileSurname: profile.surname,
     profileNick: profile.nickname,
@@ -61,7 +46,7 @@ export const FormEditProfile = ({
   return (
     <Formik
       initialValues={startValue}
-      onSubmit={(values: initValueType) => {
+      onSubmit={(values: typeof startValue) => {
         const newData = {
           ...profile,
           name: values.profileName,
@@ -85,7 +70,7 @@ export const FormEditProfile = ({
   );
 };
 
-const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
+const Fields = ({ setIsEditProfile, errors, touched }: IFieldProps) => {
   const alternateСallErrors =
     errors.profileName ||
     errors.profileSurname ||
@@ -110,9 +95,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <div className={style.allForms}>
         <span className={style.spanEditProfile}>Surname*:</span>
         <Field
-          className={`${style.inputsEditProfile} ${
+          className={cn(
+            style.inputsEditProfile,
             errors.profileSurname && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileSurname"}
           placeholder={"New Surname"}
@@ -121,9 +107,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <div className={style.allForms}>
         <span className={style.spanEditProfile}>Nickname:</span>
         <Field
-          className={`${style.inputsEditProfile} ${
+          className={cn(
+            style.inputsEditProfile,
             errors.profileNick && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileNick"}
           placeholder={"New Nickname"}
@@ -132,9 +119,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <div className={style.allForms}>
         <span className={style.spanEditProfile}>Status:</span>
         <Field
-          className={`${style.inputsEditProfile} ${
+          className={cn(
+            style.inputsEditProfile,
             errors.profileStatus && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileStatus"}
           placeholder={"New Status"}
@@ -143,9 +131,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <div className={style.allForms}>
         <span className={`${style.spanEditProfile}`}>Coutry*:</span>
         <Field
-          className={`${style.inputsEditProfile} ${
+          className={cn(
+            style.inputsEditProfile,
             errors.profileCountry && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileCountry"}
           placeholder={"New Country"}
@@ -154,9 +143,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <div className={style.allForms}>
         <span className={style.spanEditProfile}>City:</span>
         <Field
-          className={`${style.inputsEditProfile} ${
+          className={cn(
+            style.inputsEditProfile,
             errors.profileCity && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileCity"}
           placeholder={"New City"}
@@ -166,9 +156,10 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
         <span className={style.spanEditProfile}>Loading Avatar from link:</span>
         <br />
         <Field
-          className={`${style.inputsAvatar} ${
+          className={cn(
+            style.inputsAvatar,
             errors.profileAvatar && style.errorField
-          }`}
+          )}
           type={"input"}
           name={"profileAvatar"}
           placeholder={"URL new photo for avatar"}
@@ -180,14 +171,14 @@ const Fields = ({ setIsEditProfile, errors, touched }: formikProps) => {
       <br />
       <button
         type="submit"
-        className={`${style.btn_editProfile} ${style.btn_apply}`}
+        className={cn(style.btn_editProfile, style.btn_apply)}
       >
         Apply
       </button>
       <button
         type="reset"
         onClick={() => setIsEditProfile(false)}
-        className={`${style.btn_editProfile} ${style.btn_cancel}`}
+        className={cn(style.btn_editProfile, style.btn_cancel)}
       >
         Cancel
       </button>

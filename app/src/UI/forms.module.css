@@ -225,7 +225,7 @@
 
 .overlay {
   background-color: #008997;
-  background: url(https://www.ferra.ru/imgs/2018/11/26/20/2834700/2320e033e0d1e7097b594b757ab3cb5be8900b5c.jpg);
+  background: url("../asset/auth-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

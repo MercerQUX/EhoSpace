@@ -1,7 +1,7 @@
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import React, { JSXElementConstructor } from "react";
-import { RootState } from "../../redux/redux-store";
+import { RootState } from "../redux/redux-store";
 
 interface componentProps {}
 

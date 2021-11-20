@@ -3,21 +3,21 @@ import style from "../forms.module.css";
 import { profileType } from "../../redux/types/ReducersTypes";
 import { ValidStatusSchema } from "../validation/validators";
 
-interface initValueType {
-  editStatus: string;
-}
-
-interface defaultProps {
+interface IDefaultProps {
   profile: profileType;
   setIsEditStatus: (set: boolean) => void;
   changeStatus: (newStatus: string) => void;
   saveStatus: (userID: number, data: profileType) => void;
 }
 
-interface formikProps {
+interface IPropertyValues<T> {
+  editStatus?: T;
+}
+
+interface IFieldProps {
   handleSubmit: () => void;
-  touched: { editStatus?: boolean };
-  errors: { editStatus?: string };
+  errors: IPropertyValues<string>;
+  touched: IPropertyValues<boolean>;
 }
 
 export const FormEditStatus = ({
@@ -25,12 +25,12 @@ export const FormEditStatus = ({
   changeStatus,
   saveStatus,
   profile,
-}: defaultProps) => {
-  const startValue: initValueType = { editStatus: profile.status };
+}: IDefaultProps) => {
+  const startValue = { editStatus: profile.status };
   return (
     <Formik
       initialValues={startValue}
-      onSubmit={(values: initValueType) => {
+      onSubmit={(values) => {
         changeStatus(values.editStatus);
         saveStatus(profile.id, { ...profile, status: values.editStatus });
         setIsEditStatus(true);
@@ -44,7 +44,7 @@ export const FormEditStatus = ({
   );
 };
 
-const Fields = ({ handleSubmit, touched, errors }: formikProps) => {
+const Fields = ({ handleSubmit, touched, errors }: IFieldProps) => {
   return (
     <Form>
       <Field

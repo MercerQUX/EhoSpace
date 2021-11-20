@@ -2,7 +2,23 @@ import { Field, Form, Formik } from "formik";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../validation/validators";
 
-export const FormLogin = ({ indentifyData, error }) => {
+interface IDefaultProps {
+  indentifyData: (login: string, password: string) => void;
+  error: null | string;
+}
+
+interface IPropertyValues<T> {
+  login?: T;
+  password?: T;
+}
+
+interface IFieldProps {
+  errors: IPropertyValues<string>;
+  touched: IPropertyValues<boolean>;
+  error: null | string;
+}
+
+export const FormLogin = ({ indentifyData, error }: IDefaultProps) => {
   return (
     <Formik
       initialValues={{ login: "", password: "" }}
@@ -18,7 +34,7 @@ export const FormLogin = ({ indentifyData, error }) => {
   );
 };
 
-const FieldLogin = ({ errors, touched, error }) => {
+const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
   const alternateСallErrors =
     (touched.login ? errors.login : null) ||
     (touched.password ? errors.password : null) ||

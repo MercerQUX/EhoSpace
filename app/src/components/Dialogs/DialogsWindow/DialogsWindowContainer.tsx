@@ -3,9 +3,9 @@ import { SingleDialog } from "./SingleDialog";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
 
-export const DialogsWindowConnect = connect(
+const DialogsWindowConnect = connect(
   (state: RootState) => ({
     dialogsUsers: state.pageDialogs.dialogsUsers,
   }),

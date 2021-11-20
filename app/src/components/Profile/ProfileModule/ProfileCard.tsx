@@ -20,9 +20,11 @@ export const ProfileCard: React.FC<defaultPropsProfile> = ({
             <img src={profile.avatar} alt="avatar" />
           </div>
           <div className={style.profileInfo}>
-            <strong className={style.profileName}>{`${profile.name} ${
-              profile.nickname ? `"${profile.nickname}"` : ""
-            } ${profile.surname}`}</strong>
+            <strong className={style.profileName}>
+              {`${profile.name} 
+              ${profile.nickname ? `"${profile.nickname}"` : ""} 
+              ${profile.surname}`}
+            </strong>
             <br />
             <br />
             <div>
