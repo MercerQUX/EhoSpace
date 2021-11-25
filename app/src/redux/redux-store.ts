@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import authReducer from "./auth-reducer";
 import DialogsReducer from "./dialogs-reducer";
 import ProfileReducer from "./profile-reducer";
-import UsersReducer from "./users-reducer";
+import UsersReducer from "./users-reducer/users-reducer";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 

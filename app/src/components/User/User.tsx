@@ -26,13 +26,13 @@ export const User: React.FC<defaultProps> = ({
         </NavLink>
 
         <div className={style.dataBlock}>
-          <div>{`${data.name} ${data.surname}`}</div>
-          <div>{data.nickname}</div>
-          <div>{data.status}</div>
+          <div className={style.dataFullName}>{`${data.name} ${data.surname}`}</div>
+          <div className={style.dataNickname}>{data.nickname}</div>
+          <div className={style.dataStatus}>{data.status}</div>
         </div>
       </div>
       <div className={style.rightContent}>
-        <strong>{data.country}</strong>
+        <strong className={style.dataCountry}>{data.country}</strong>
         {data.followed ? (
           <button
             className={style.follow}
@@ -50,7 +50,7 @@ export const User: React.FC<defaultProps> = ({
             Unfollow
           </button>
         )}
-        <strong>{data.city}</strong>
+        <strong className={style.dataCity}>{data.city}</strong>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
-import { RootState } from "./redux-store";
+import { RootState } from "../redux-store";
 import { ThunkAction } from "redux-thunk";
 import {
   getNumberTotalUsersAPI,
   getPartUsersAPI,
   rewriteUserAPI,
-} from "../API/user-API";
-import { usersType } from "./types/ReducersTypes";
+} from "../../API/user-API";
+import { usersType } from "../types/ReducersTypes";
 
 const FOLLOWING = "users/FOLLOWING";
 const SET_USERS = "users/SET_USERS";
@@ -15,7 +15,7 @@ const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
 const FOLLOWING_DISABLED = "users/FOLLOWING_DISABLED ";
 
 // TYPES
-type UsersActionsType =
+export type UsersActionsType =
   | followingAT
   | setUsersAT
   | loadedPageAT
@@ -23,7 +23,7 @@ type UsersActionsType =
   | toggleIsDisabledFollowingAT
   | totalUsersAT;
 
-type UsersThunksType = ThunkAction<
+export type UsersThunksType = ThunkAction<
   Promise<void>,
   RootState,
   unknown,

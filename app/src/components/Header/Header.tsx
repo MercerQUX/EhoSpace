@@ -2,20 +2,20 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import style from "./header.module.css";
 
-type defaultProps = {
+export type defaultPropsHeader = {
   isAuth: boolean;
   logOut: () => void;
   login: string;
 };
 
-const Header: React.FC<defaultProps> = ({ isAuth, logOut, login }) => {
+const Header: React.FC<defaultPropsHeader> = ({ isAuth, logOut, login }) => {
   return (
     <header className={style.header}>
       <NavLink to="/profile" className={style.logo}>
         Social Space
       </NavLink>
       <div className={style.loginBlock}>
-        {isAuth ? (
+        {isAuth && login ? (
           <div>
             <strong onClick={logOut} className={style.logOut}>
               LogOut

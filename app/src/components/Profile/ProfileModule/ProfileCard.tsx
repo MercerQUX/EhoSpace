@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMatch } from "react-router";
 import { FormEditProfile, FormEditStatus, defaultPropsProfile } from "..";
 import style from "../profile.module.css";
 
@@ -12,6 +13,7 @@ export const ProfileCard: React.FC<defaultPropsProfile> = ({
   const isOwnerProfile = actualID === profile.id;
   const [isEditStatus, setIsEditStatus] = useState(true);
   const [isEditProfile, setIsEditProfile] = useState(false);
+  console.log(useMatch("userID"))
   return (
     <div>
       <div className={style.profileCard}>

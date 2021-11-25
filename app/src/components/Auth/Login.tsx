@@ -1,4 +1,4 @@
-import { Redirect } from "react-router";
+import { Navigate } from "react-router-dom";
 import { AuthForms } from "../../UI/FormAuth/FormsAuth";
 
 interface defaultProps {
@@ -7,14 +7,9 @@ interface defaultProps {
   error: null | string;
 }
 
-function ide<T,U>(params:T, message:U):U {
-  return message;
-}
-ide<number,string>(44,"dawdwa")
-
 const Login = ({ indentifyData, isAuth, error }: defaultProps) => {
   return isAuth ? (
-    <Redirect to={"/profile"} />
+    <Navigate to={"/profile"} />
   ) : (
     <div>
       <AuthForms error={error} indentifyData={indentifyData} />

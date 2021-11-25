@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import React, { JSXElementConstructor } from "react";
 import { RootState } from "../redux/redux-store";
@@ -20,7 +20,7 @@ export const withAuthRedirect = (
       return <Component {...props} />;
     } else {
       {
-        return <Redirect to="/login" />;
+        return <Navigate to="/login" />;
       }
     }
   };

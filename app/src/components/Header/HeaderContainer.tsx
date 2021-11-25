@@ -11,19 +11,14 @@ type TStateProps = {
   isAuth: boolean;
 };
 type TDispatchProps = {
-  actualLoggedUser: () => any;
   logOut: () => void;
 };
 
 type defaultProps = TStateProps & TDispatchProps;
 
 const HeaderContainer: React.FC<defaultProps> = ({
-  actualLoggedUser,
   ...props
 }) => {
-  actualLoggedUser().then(()=>{
-    
-  });
   return <Header {...props} />;
 };
 

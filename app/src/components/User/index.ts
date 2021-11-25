@@ -3,7 +3,7 @@ export {
   getUsersTC,
   getTotalUsersTC,
   followedTC,
-} from "../../redux/users-creator";
+} from "../../redux/users-reducer/users-creator";
 export {
   isEmpty,
   isFetching,

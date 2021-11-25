@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./saidbar.module.css";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/redux-store";
 
@@ -17,7 +17,7 @@ const Saidbar = () => {
             activeClassName={style.activeLink}
           >
             Profile
-            {isRedirect && <Redirect to="/login" />}
+            {/* {isRedirect && <Navigate to="/login" />} */}
           </NavLink>
         </li>
         <li>
@@ -50,9 +50,11 @@ const Saidbar = () => {
 };
 
 export default connect(
-  (state: RootState) => ({
+  (state) => ({
     idLoggedUser: state.authenticator.userID,
     isAuth: state.authenticator.isAuth,
   }),
-  (dispatch: AppDispatch) => ({})
+  (dispatch) => ({})
 )(Saidbar);
+
+ 

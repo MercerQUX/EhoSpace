@@ -1,9 +1,13 @@
 .wrapperUser {
-  background-color: #bd7512;
+  background-color: #79aedd69;
   display: flex;
-  width: 98%;
+  width: 90%;
   margin: 20px auto;
+  padding: 10px 20px;
   justify-content: space-between;
+  border: 1px solid #79aedd;
+  box-shadow: 0px 0px 10px #0071d5;
+  border-radius: 20px;
 }
 .leftContent {
   display: flex;
@@ -15,34 +19,72 @@
   justify-content: space-between;
   text-align: right;
 }
-.userIMG{
-  width: 100px;
-  height: 100px;
-  background-color: #b57474;
+.userIMG {
+  width: 7rem;
+  height: 7rem;
+  margin-right: 20px;
   cursor: pointer;
 }
-.userIMG img{
-  width: 100px;
-  height: 100px;
+.userIMG img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 10px;
 }
 .dataBlock {
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 80px;
   justify-content: space-between;
+}
+
+.dataFullName {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #c5dcff;
+}
+.dataNickname {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0px 0px 10px white;
+}
+.dataStatus {
+  font-size: 0.9rem;
+  color: #0055d7;
+  font-weight: 600;
+  padding-top: 5px;
+  width: 90%;
+  word-break: break-all;
+}
+.dataCountry {
+  font-size: 1.5rem;
+  color: #1d1b4d;
+  text-shadow: 0px 0px 5px #ff2323;
 }
 .rightContent button {
   font-size: 1.2rem;
-  width: 90px;
+  width: 160px;
   cursor: pointer;
+  height: 50px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin-right: 130px;
 }
 .unfollow {
-  background-color: #d32323;
-  border: solid 1px #ff002f;
+  background-color: #cf0a0ae0;
+  border: solid 2px #cd2c2c;;
+  box-shadow: 0px 0px 10px #fd1616, inset 8px 6px 20px #ff0f46;
+}
+.unfollow:hover {
+  box-shadow: 0px 0px 10px #fd1616, inset -8px -6px 20px #ff0f46;
 }
 .follow {
-  background-color: #5ca520;
-  border: solid 1px green;
+  background-color: #005e09;
+  border: solid 2px #96b60b;
+  box-shadow: 0px 0px 10px #b8d1e1, inset 8px 6px 20px #e3eb7b;
+}
+.follow:hover {
+  box-shadow: 0px 0px 10px #b8d1e1, inset -8px -6px 25px #e3eb7b;
 }
 .btnGetUsers {
   width: 200px;

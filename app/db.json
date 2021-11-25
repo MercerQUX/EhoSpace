@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "followed": false,
+      "followed": true,
       "name": "Lancee",
       "surname": "Mills",
       "nickname": "",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "followed": true,
+      "followed": false,
       "name": "Dennis",
       "surname": "Davidson",
       "nickname": "",
@@ -71,8 +71,8 @@
       "followed": true,
       "name": "Melissa",
       "surname": "Lee",
-      "nickname": "",
-      "status": "I wanna money!",
+      "nickname": "T3sFrely",
+      "status": "I wanna a lot of money!",
       "country": "Russian",
       "city": "Krasnodar",
       "avatar": "https://static.vecteezy.com/system/resources/thumbnails/002/623/639/small/lady-in-luxury-carnival-mask-black-hair-woman-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
@@ -83,7 +83,7 @@
       "name": "Violet",
       "surname": "Pusya",
       "nickname": "MagicGirl",
-      "status": "",
+      "status": "Fashion is trand!",
       "country": "Ukraine",
       "city": "Not indicated",
       "avatar": "https://trikky.ru/wp-content/blogs.dir/1/files/2020/12/27/izobrazhenie_viber_2020-12-27_17-34-45.jpg"
@@ -97,7 +97,7 @@
       "country": "Russian",
       "city": "Not indicated",
       "avatar": "https://cs12.pikabu.ru/post_img/2020/06/17/3/1592363988226447395.gif",
-      "status": "Who I? I don't know!!!!!! I UFO!"
+      "status": "ggggggggggggggggggg ggggggggggggggggggggggggggd\n\n\n\n ggggggggggggggggggggggggggggggggddddddggggggggggggggdddddddd fffgggggggggggggggggddddddddddddddddg"
     },
     {
       "id": 10,
@@ -173,9 +173,9 @@
     }
   ],
   "authSystem": {
-    "id": 0,
-    "login": null,
-    "email": null,
-    "isAuth": false
+    "id": 9,
+    "login": "faviconSSS",
+    "email": "favic@gmail.com",
+    "isAuth": true
   }
 }

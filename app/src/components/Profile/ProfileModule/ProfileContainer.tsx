@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
 import { useState, useEffect } from "react";
 import {
@@ -15,6 +14,7 @@ import {
   sendRewriteProfileTC,
   usersType,
 } from "..";
+import { useParams } from "react-router";
 
 export interface defaultPropsProfile {
   profile: profileType;
@@ -25,16 +25,16 @@ export interface defaultPropsProfile {
 }
 
 interface defaultPropsProfileOwn {
-  match: any;
   idLoggedUser: number;
   getProfileData: (userID: number, loggedID: number, isAuth: boolean) => any;
 }
 
 const ProfileContainer: React.FC<defaultPropsProfile & defaultPropsProfileOwn> =
-  ({ match, idLoggedUser, getProfileData, ...props }) => {
+  ({idLoggedUser, getProfileData, ...props }) => {
     const [isLoading, setIsLoading] = useState(true);
+    console.log("bod ",useParams())
     useEffect(() => {
-      getProfileData(match.params.UserID, idLoggedUser, true);
+      getProfileData(2, idLoggedUser, true);
       const timer = setTimeout(() => {
         setIsLoading(false);
       }, 400);
@@ -70,6 +70,5 @@ const ProfileCardConnect = connect(
 
 export const ProfileCardContainer = compose<any>(
   ProfileCardConnect,
-  withRouter,
   withAuthRedirect
 )(ProfileContainer);

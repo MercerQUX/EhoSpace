@@ -1,4 +1,4 @@
-import { usersType } from "./types/ReducersTypes";
+import { usersType } from "../types/ReducersTypes";
 
 const FOLLOWING = "users/FOLLOWING";
 const SET_USERS = "users/SET_USERS";
@@ -7,7 +7,7 @@ const TOTAL_USERS = "users/TOTAL_USERS";
 const TOGGLE_IS_FETCHING = "users/TOGGLE_IS_FETCHING";
 const FOLLOWING_DISABLED = "users/FOLLOWING_DISABLED ";
 
-type initialStateType = {
+export type initialStateType = {
   users: Array<usersType>;
   pageSize: number;
   totalUsersCount: number;
@@ -27,7 +27,7 @@ const initState: initialStateType = {
   isFollowingDisabled: false,
 };
 
-const UsersReducer = (state = initState, action: any): initialStateType => {
+export const UsersReducer = (state = initState, action: any): initialStateType => {
   switch (action.type) {
     case FOLLOWING:
       return {
