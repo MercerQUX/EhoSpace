@@ -1,8 +1,8 @@
-import { RootState } from "./redux-store";
+import { RootState } from "../redux-store";
 import { ThunkAction } from "redux-thunk";
-import { getSingleUserAPI } from "../API/profile-API";
-import { rewriteUserAPI } from "../API/user-API";
-import { profileType, usersType } from "./types/ReducersTypes";
+import { getSingleUserAPI } from "../../API/profile-API";
+import { rewriteUserAPI } from "../../API/user-API";
+import { profileType, usersType } from "../types/ReducersTypes";
 
 const ADD_POST = "profile/ADD_POST";
 const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";

@@ -1,8 +1,8 @@
-import { RootState } from "../../redux/redux-store";
+import { RootState } from "../redux-store";
 import { createSelector } from "reselect";
 
 export const getUsers = (state: RootState) => state.pageUsers.users;
-export const getLoggedUser = (state: RootState) => state.authenticator.userID;
+export const getLoggedUser = (state: RootState) => state.authenticator.id;
 export const getPageSize = (state: RootState) => state.pageUsers.pageSize;
 export const getLoadedPage = (state: RootState) =>
   state.pageUsers.numLoadedPages;

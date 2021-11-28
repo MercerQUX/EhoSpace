@@ -13,7 +13,7 @@ export {
   getProfileDataTC,
   rewriteProfileAC,
   sendRewriteProfileTC,
-} from "../../redux/profile-creators";
+} from "../../redux/profile-reducer/profile-creators";
 
 export type { AppDispatch, RootState } from "../../redux/redux-store";
 export type { profileType, usersType } from "../../redux/types/ReducersTypes";

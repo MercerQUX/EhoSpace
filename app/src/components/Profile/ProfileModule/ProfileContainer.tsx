@@ -55,8 +55,8 @@ const ProfileContainer: React.FC<defaultPropsProfile & defaultPropsProfileOwn> =
 const ProfileCardConnect = connect(
   (state: RootState) => ({
     profile: state.pageProfile.profile,
-    idLoggedUser: state.authenticator.userID,
-    actualID: state.authenticator.userID,
+    idLoggedUser: state.authenticator.id,
+    actualID: state.authenticator.id,
   }),
   (dispatch: AppDispatch) => ({
     getProfileData: (userID: number, loggedID: number, isAuth: boolean) =>

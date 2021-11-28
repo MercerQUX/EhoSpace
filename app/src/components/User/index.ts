@@ -12,7 +12,7 @@ export {
   getLoggedUser,
   getUsersWithoutLoggedIn,
   isFollowingDisabled,
-} from "./users-selector";
+} from "../../redux/users-reducer/users-selector";
 export { Preloader } from "../../asset/common/Preloader";
 export { User } from "./User";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { actualLoggedUserTC, logOutTC } from "../../redux/auth-creators";
+import { actualLoggedUserTC, logOutTC } from "../../redux/auth-reducer/auth-creators";
 
 import { AppDispatch, RootState } from "../../redux/redux-store";
 import Header from "./Header";

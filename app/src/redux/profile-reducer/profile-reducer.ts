@@ -1,4 +1,4 @@
-import { postsType, profileType } from "./types/ReducersTypes";
+import { postsType, profileType } from "../types/ReducersTypes";
 
 const ADD_POST = "profile/ADD_POST";
 const GET_SELECTED_PROFILE = "profile/GET_SELECTED_PROFILE";

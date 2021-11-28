@@ -1,4 +1,4 @@
-import { dialogsMessagesType, dialogsUsersType } from "./types/ReducersTypes";
+import { dialogsMessagesType, dialogsUsersType } from "../types/ReducersTypes";
 
 const ADD_MESSAGE = "dialog/ADD_MESSAGE";
 

@@ -1,4 +1,4 @@
-import { indentifyDataTC } from "../../redux/auth-creators";
+import { indentifyDataTC } from "../../redux/auth-reducer/auth-creators";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { AppDispatch, RootState } from "../../redux/redux-store";

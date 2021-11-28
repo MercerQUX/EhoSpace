@@ -1,4 +1,4 @@
-import { RootState } from "./redux-store";
+import { RootState } from "../redux-store";
 import { ThunkAction } from "redux-thunk";
 import {
   deleteLoggedDataAPI,
@@ -6,8 +6,8 @@ import {
   indentifyLoginAPI,
   indentifyPasswordAPI,
   sendLoggedDataAPI,
-} from "../API/auth-API";
-import { dataLoggedType } from "./types/ReducersTypes";
+} from "../../API/auth-API";
+import { dataLoggedType } from "../types/ReducersTypes";
 
 const SET_LOGGED_DATA = "auth/SET_LOGGED_DATA";
 const RETURN_ERROR = "auth/RETURN_ERROR";
@@ -15,7 +15,7 @@ const RETURN_ERROR = "auth/RETURN_ERROR";
 // TYPES
 export type AuthActionType = setLoggedDataAT | returnErrorAT;
 
-type AuthThunkType = ThunkAction<Promise<void>, RootState, unknown, AuthActionType>;
+export type AuthThunkType = ThunkAction<Promise<void>, RootState, unknown, AuthActionType>;
 type setLoggedDataAT = {
   type: typeof SET_LOGGED_DATA;
   data: dataLoggedType;

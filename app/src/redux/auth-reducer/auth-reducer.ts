@@ -3,8 +3,8 @@ import { AuthActionType } from "./auth-creators";
 const SET_LOGGED_DATA = "auth/SET_LOGGED_DATA";
 const RETURN_ERROR = "auth/RETURN_ERROR";
 
-type initialStateType = {
-  userID: null | number;
+export type initialStateType = {
+  id: null | number;
   email: null | string;
   login: null | string;
   isAuth: boolean;
@@ -12,14 +12,14 @@ type initialStateType = {
 };
 
 let initState: initialStateType = {
-  userID: null,
+  id: null,
   email: null,
   login: null,
   isAuth: false,
   error: null,
 };
 
-const authReducer = (
+export const authReducer = (
   state = initState,
   action: AuthActionType
 ): initialStateType => {
@@ -30,7 +30,7 @@ const authReducer = (
         login: action.data.login,
         email: action.data.email,
         isAuth: action.data.isAuth,
-        userID: action.data.id,
+        id: action.data.id,
         error: action.data.error,
       };
     case RETURN_ERROR:
