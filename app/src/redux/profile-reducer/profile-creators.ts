@@ -74,5 +74,5 @@ export const getProfileDataTC =
 export const sendRewriteProfileTC =
   (id: number, user: usersType): ProfileThunksType =>
   async () => {
-    await rewriteUserAPI(id, user);
+    await rewriteUserAPI({id, user});
   };

@@ -103,7 +103,10 @@ export const followedTC =
     if (data.id != undefined) {
       dispatch(toggleIsDisabledFollowingAC(true));
       dispatch(followingAC(data.id, isFollow));
-      await rewriteUserAPI(data.id, { ...data, followed: isFollow });
+      await rewriteUserAPI({
+        id: data.id,
+        user: { ...data, followed: isFollow },
+      });
       dispatch(toggleIsDisabledFollowingAC(false));
     }
   };

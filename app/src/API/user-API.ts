@@ -37,5 +37,5 @@ export const getNumberTotalUsersAPI = () => API({ type: TOTAL_USERS });
 export const getPartUsersAPI = (page: number, limit: number) =>
   API({ type: GET_USERS_PART, page: page, limit: limit });
 
-export const rewriteUserAPI = (id: number, user: usersType) =>
-  API({ type: REWRITE_USER, id: id, user: user });
+export const rewriteUserAPI = (data:{id: number, user: usersType}) =>
+  API({ type: REWRITE_USER, id: data.id, user:data.user });

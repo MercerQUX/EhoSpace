@@ -173,9 +173,9 @@
     }
   ],
   "authSystem": {
-    "id": 9,
-    "login": "faviconSSS",
-    "email": "favic@gmail.com",
-    "isAuth": true
+    "id": 0,
+    "login": null,
+    "email": null,
+    "isAuth": false
   }
 }
