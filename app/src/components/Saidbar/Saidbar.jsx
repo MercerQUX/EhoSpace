@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./saidbar.module.css";
 import { NavLink, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/redux-store";
 
 const Saidbar = () => {
   const [isRedirect, setRedirect] = useState(false);
@@ -49,12 +47,4 @@ const Saidbar = () => {
   );
 };
 
-export default connect(
-  (state) => ({
-    idLoggedUser: state.authenticator.userID,
-    isAuth: state.authenticator.isAuth,
-  }),
-  (dispatch) => ({})
-)(Saidbar);
-
- 
+export default Saidbar;

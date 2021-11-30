@@ -1,13 +1,12 @@
 import style from "./users.module.css";
 import { NavLink } from "react-router-dom";
-import { usersType } from ".";
-
+import { ICommonProfile } from "../../models/ICommonProfile";
 
 type defaultProps = {
   id: number;
   data: any;
   isFollowingDisabled: boolean;
-  followed: (user:usersType,toggle:boolean) => void;
+  followed: (isFollowed: boolean, selectUsers: ICommonProfile) => void;
 };
 export const User: React.FC<defaultProps> = ({
   data,
@@ -26,7 +25,9 @@ export const User: React.FC<defaultProps> = ({
         </NavLink>
 
         <div className={style.dataBlock}>
-          <div className={style.dataFullName}>{`${data.name} ${data.surname}`}</div>
+          <div
+            className={style.dataFullName}
+          >{`${data.name} ${data.surname}`}</div>
           <div className={style.dataNickname}>{data.nickname}</div>
           <div className={style.dataStatus}>{data.status}</div>
         </div>
@@ -36,7 +37,7 @@ export const User: React.FC<defaultProps> = ({
         {data.followed ? (
           <button
             className={style.follow}
-            onClick={(e) => props.followed(data, false)}
+            onClick={(e) => props.followed(false, data)}
             disabled={isFollowingDisabled}
           >
             Follow
@@ -44,7 +45,7 @@ export const User: React.FC<defaultProps> = ({
         ) : (
           <button
             className={style.unfollow}
-            onClick={(e) => props.followed(data, true)}
+            onClick={(e) => props.followed(true, data)}
             disabled={isFollowingDisabled}
           >
             Unfollow

@@ -1,13 +1,15 @@
 import { Field, Form, Formik } from "formik";
 import style from "../forms.module.css";
-import { profileType } from "../../redux/types/ReducersTypes";
 import { ValidStatusSchema } from "../validation/validators";
+import { IThunkRewriteProfile } from "../../store/thunks/profileThunks";
+import { useAppDispatch } from "../../hooks/redux-use";
+import { ICommonProfile } from "../../models/ICommonProfile";
 
 interface IDefaultProps {
-  profile: profileType;
-  setIsEditStatus: (set: boolean) => void;
-  changeStatus: (newStatus: string) => void;
-  saveStatus: (userID: number, data: profileType) => void;
+  profile: ICommonProfile;
+  setIsEditStatus: (set: boolean) => any;
+  changeStatus: (newStatus: string) => any;
+  saveStatus: ({ id, updateProfile }: IThunkRewriteProfile) => any;
 }
 
 interface IPropertyValues<T> {
@@ -26,13 +28,19 @@ export const FormEditStatus = ({
   saveStatus,
   profile,
 }: IDefaultProps) => {
+  const dispatch = useAppDispatch();
   const startValue = { editStatus: profile.status };
   return (
     <Formik
       initialValues={startValue}
       onSubmit={(values) => {
-        changeStatus(values.editStatus);
-        saveStatus(profile.id, { ...profile, status: values.editStatus });
+        dispatch(changeStatus(values.editStatus));
+        dispatch(
+          saveStatus({
+            id: profile.id,
+            updateProfile: { ...profile, status: values.editStatus },
+          })
+        );
         setIsEditStatus(true);
       }}
       validationSchema={ValidStatusSchema}

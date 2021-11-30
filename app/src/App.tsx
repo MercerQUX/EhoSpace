@@ -5,24 +5,24 @@ import style from "./main.module.css";
 import Dialogs from "./components/Dialogs/Dialog";
 import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";
-import UsersContainer from "./components/User/UsersContainer";
-import { HeaderContainerCompose } from "./components/Header/HeaderContainer";
-import LoginContainer from "./components/Auth/LoginContainer";
+import Header from "./components/Header/Header";
+import Login from "./components/Auth/Login";
+import UsersPage from "./components/User/UsersPage";
 
 function App() {
   return (
     <BrowserRouter>
       <div className={style.wrapper}>
-        <HeaderContainerCompose />
+        <Header />
         <Saidbar />
         <Routes>
-          {/* <Route path="/" element={<Profile />} /> */}
+          <Route path="/" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/dialogs" element={<Dialogs />} />
-          <Route path="/users" element={<UsersContainer />} />
+          <Route path="/users" element={<UsersPage />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<LoginContainer />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>

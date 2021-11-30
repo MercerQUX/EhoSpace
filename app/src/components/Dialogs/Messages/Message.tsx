@@ -1,24 +1,20 @@
-import { dialogsMessagesType, SingleMessage, FormMessage } from "..";
+import { useAppSelector } from "../../../hooks/redux-use";
+import { dialogsMessages } from "../../../store/reselectors/dialogs-selector";
+import { FormMessage } from "../../../UI/FormChat/FormMessage";
 import style from "../dialogs.module.css";
+import { SingleMessage } from "./SingleMessage";
 
-type defaultProps = {
-  dialogsMessages: Array<dialogsMessagesType>;
-  addMessage: (value: string) => CallableFunction;
-};
+type defaultProps = {};
 
-export const Messages: React.FC<defaultProps> = ({
-  dialogsMessages,
-  addMessage,
-}) => {
-  let mapMessages = dialogsMessages.map((item) => (
-    <SingleMessage body={item.body} />
-  ));
+export const Messages: React.FC<defaultProps> = ({}) => {
+  const message = useAppSelector(dialogsMessages);
+  let mapMessages = message.map((item) => <SingleMessage body={item.body} />);
 
   return (
     <div className={style.wrapperMessages}>
       {mapMessages}
       <div className={style.messageTextArea}>
-        <FormMessage addMessage={addMessage} />
+        <FormMessage />
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import { ValidCreatePostSchema } from "../validation/validators";
 import style from "../forms.module.css";
+import { useAppDispatch } from "../../hooks/redux-use";
 
 interface IDefaultProps {
-  addPost: (values: string) => void;
+  addPost: (values: string) => any;
 }
 interface IPropertyValues<T> {
   newPost?: T;
@@ -14,12 +15,13 @@ interface IFieldProps {
 }
 
 export const FormCreatePost = ({ addPost }: IDefaultProps) => {
+  const dispatch = useAppDispatch();
   const startValue = { newPost: "" };
   return (
     <Formik
       initialValues={startValue}
       onSubmit={(values: typeof startValue, { resetForm }) => {
-        addPost(values.newPost);
+        dispatch(addPost(values.newPost));
         resetForm({
           values: {
             newPost: "",

@@ -1,11 +1,10 @@
-import { usersSlice } from "./../reducers/usersSlice";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useAppDispatch } from "./../../hooks/redux-use";
 import {
   getNumberTotalUsersAPI,
   getPartUsersAPI,
   rewriteUserAPI,
 } from "./../../API/user-API";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ICommonProfile } from "../../models/ICommonProfile";
 
 interface IThunkPayloadFetchUsers {
@@ -23,7 +22,7 @@ export const fetchUsers = createAsyncThunk(
     try {
       const response = await getPartUsersAPI(payload.page, payload.limit);
       return response;
-    } catch {
+    } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }
   }
@@ -35,7 +34,7 @@ export const fetchFullCountUsers = createAsyncThunk(
     try {
       const response = await getNumberTotalUsersAPI();
       return response;
-    } catch {
+    } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }
   }
@@ -45,25 +44,20 @@ export const fetchFollow = createAsyncThunk(
   "users/fetchFollow",
   async (payload: IThunkPayloadFetchFollowed, thunkAPI) => {
     const { isFollowed, selectUsers } = payload;
-    const dispatch = useAppDispatch();
     try {
       if (selectUsers.id === undefined) {
         throw new SyntaxError("DataType: data not initialization");
       }
-      dispatch(
-        usersSlice.actions.following({
-          id: selectUsers.id,
-          followed: isFollowed,
-        })
-      );
-      await rewriteUserAPI({
-        id: selectUsers.id,
-        user: {
-          ...selectUsers,
-          followed: isFollowed,
-        },
+      // dispatch(
+      //   userAction.following({
+      //     id: selectUsers.id,
+      //     followed: isFollowed,
+      //   }))
+      await rewriteUserAPI(selectUsers.id, {
+        ...selectUsers,
+        followed: isFollowed,
       });
-    } catch {
+    } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }
   }

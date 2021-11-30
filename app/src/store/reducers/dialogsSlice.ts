@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  dialogsMessagesType,
-  dialogsUsersType,
-} from "../../redux/types/ReducersTypes";
+
+type dialogsUsersType = {
+  id:number,
+  name:string
+}
+type dialogsMessagesType = {
+  id:number,
+  body:string,
+  other:boolean
+}
 
 type initialStateType = {
   dialogsUsers: Array<dialogsUsersType>;
@@ -24,7 +30,7 @@ const initialState: initialStateType = {
   ],
 };
 
-export const dialogsSlice = createSlice({
+const dialogsSlice = createSlice({
   name: "dialogsPage",
   initialState,
   reducers: {
@@ -41,4 +47,6 @@ export const dialogsSlice = createSlice({
   },
 });
 
-export default dialogsSlice.reducer;
+export const dialogsAction = dialogsSlice.actions;
+
+export const dialogsReducer = dialogsSlice.reducer;

@@ -1,5 +1,5 @@
-import { dataLoggedType } from "../redux/types/ReducersTypes";
 import axios from "axios";
+import { IDataAuth } from "../models/IDataAuth";
 import {
   authAPIActionsType,
   dataAuthType,
@@ -66,7 +66,7 @@ const APIAuth = (action: authAPIActionsType) => {
 
 export const getLoggedDataAPI = () => APIAuth({ type: LOGGED_DATA });
 export const deleteLoggedDataAPI = () => APIAuth({ type: DELETE_LOGGED_DATA });
-export const sendLoggedDataAPI = (data: dataLoggedType) =>
+export const sendLoggedDataAPI = (data: IDataAuth) =>
   APIAuth({ type: SEND_LOGGED_DATA, data });
 export const indentifyLoginAPI = (login: string) =>
   APIAuth({ type: INDENTIFY_LOGIN, login });

@@ -4,12 +4,7 @@ import { FormRigister } from "./FormRegister";
 import style from "../forms.module.css";
 import cn from "classnames"
 
-interface IDefaultProps {
-  indentifyData: (login: string, password: string) => void;
-  error: null | string;
-}
-
-export const AuthForms = ({ indentifyData, error }:IDefaultProps) => {
+export const AuthForms = () => {
   const [isToggle, setIsToggle] = useState(false);
 
   return (
@@ -20,7 +15,7 @@ export const AuthForms = ({ indentifyData, error }:IDefaultProps) => {
         <FormRigister />
       </div>
       <div className={cn(style.container__form, style.container__signin)}>
-        <FormLogin error={error} indentifyData={indentifyData} />
+        <FormLogin/>
       </div>
       <div className={style.container__overlay}>
         <div className={style.overlay}>

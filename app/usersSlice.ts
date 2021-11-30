@@ -17,12 +17,12 @@ export type initialStateType = {
   error: string;
 };
 
-const initialState: initialStateType = {
+let initialState: initialStateType = {
   users: [],
   pageSize: 4,
   totalUsersCount: 0,
   numLoadedPages: 1,
-  isFetching: true,
+  isFetching: false,
   isEmpty: false,
   isFollowingDisabled: false,
   error: "",
@@ -52,7 +52,11 @@ export const usersSlice = createSlice({
       const whatPageNow =
         state.totalUsersCount / state.pageSize + 1 > state.numLoadedPages;
       state.users = [...state.users, ...action.payload];
-      whatPageNow ? ++state.numLoadedPages : (state.isEmpty = true);
+      if (whatPageNow) {
+        state.numLoadedPages = state.numLoadedPages + 1 + 1;
+      } else {
+        state.isEmpty = true;
+      }
       state.isFetching = false;
     },
     [fetchUsers.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -60,29 +64,30 @@ export const usersSlice = createSlice({
       state.error = action.payload;
     },
 
-    [fetchFullCountUsers.fulfilled.type]: (
-      state,
-      action: PayloadAction<number>
-    ) => {
-      state.totalUsersCount = --action.payload;
-    },
-    [fetchFullCountUsers.rejected.type]: (
-      state,
-      action: PayloadAction<string>
-    ) => {
-      state.error = action.payload;
-    },
+      [fetchFullCountUsers.fulfilled.type]: (
+        state,
+        action: PayloadAction<number>
+      ) => {
+        state.totalUsersCount = --action.payload;
+      },
+      [fetchFullCountUsers.rejected.type]: (
+        state,
+        action: PayloadAction<string>
+      ) => {
+        state.error = action.payload;
+      },
 
-    [fetchFollow.pending.type]: (state) => {
-      state.isFollowingDisabled = true;
-    },
-    [fetchFollow.fulfilled.type]: (state) => {
-      state.isFollowingDisabled = false;
-    },
-    [fetchFollow.rejected.type]: (state) => {
-      state.isFollowingDisabled = false;
-    },
+      [fetchFollow.pending.type]: (state) => {
+        state.isFollowingDisabled = true;
+      },
+      [fetchFollow.fulfilled.type]: (state) => {
+        state.isFollowingDisabled = false;
+      },
+      [fetchFollow.rejected.type]: (state) => {
+        state.isFollowingDisabled = false;
+      },
   },
 });
 
-export default usersSlice.reducer;
+export const usersAction = usersSlice.actions;
+export const usersReducer = usersSlice.reducer;

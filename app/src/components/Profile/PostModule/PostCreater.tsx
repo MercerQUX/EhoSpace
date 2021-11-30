@@ -1,17 +1,19 @@
-import { Post, profileType, FormCreatePost } from "..";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
+import { profileAction } from "../../../store/reducers/profileSlice";
+import {
+  getPosts,
+  getProfile,
+} from "../../../store/reselectors/profile-selector";
+import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
 import style from "../profile.module.css";
+import { Post } from "./Post";
 
-interface defaultProps {
-  posts: Array<any>;
-  addPost: (values: string) => void;
-  profile: profileType;
-}
-
-export const PostCreater: React.FC<defaultProps> = ({
-  posts,
-  addPost,
-  profile,
-}) => {
+export const PostCreater: React.FC = () => {
+  const { posts, profile } = {
+    posts: useAppSelector(getPosts),
+    profile: useAppSelector(getProfile),
+  };
+  const addPost = profileAction.addPost;
   let map = () => {
     if (profile == null) {
       return <h2 className={style.loading}>Loading...</h2>;

@@ -55,20 +55,7 @@ export const indentifyEnteredData = createAsyncThunk(
   }
 );
 
-// export const logOutTC = (): AuthThunkType => async (dispatch) => {
-//   await deleteLoggedDataAPI();
-//   dispatch(
-//     setLoggedDataAC({
-//       id: null,
-//       email: null,
-//       login: null,
-//       isAuth: false,
-//       error: null,
-//     })
-//   );
-// };
-
-export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+export const authLogOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {
     await deleteLoggedDataAPI();
   } catch (e) {

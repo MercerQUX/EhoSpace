@@ -1,12 +1,13 @@
-import { ProfileCardContainer, PostCreaterContainer } from "./index";
 import style from "../../main.module.css";
+import { PostCreater } from "./PostModule/PostCreater";
+import { ProfileContainer } from "./ProfileModule/ProfileContainer";
 
 const Profile = () => {
   return (
     <div className={style.profile}>
       <div>
-        <ProfileCardContainer />
-        <PostCreaterContainer />
+        <ProfileContainer />
+        <PostCreater />
       </div>
     </div>
   );

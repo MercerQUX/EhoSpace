@@ -18,5 +18,5 @@ const APIProfile = (action: profileAPIActionsType) => {
   }
 };
 
-export const getSingleUserAPI = (selected: number) =>
+export const getSingleUserAPI = (selected: number|undefined) =>
   APIProfile({ type: GET_SINGLE_USER, selected: selected });

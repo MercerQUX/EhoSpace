@@ -97,7 +97,7 @@
       "country": "Russian",
       "city": "Not indicated",
       "avatar": "https://cs12.pikabu.ru/post_img/2020/06/17/3/1592363988226447395.gif",
-      "status": "ggggggggggggggggggg ggggggggggggggggggggggggggd\n\n\n\n ggggggggggggggggggggggggggggggggddddddggggggggggggggdddddddd fffgggggggggggggggggddddddddddddddddg"
+      "status": "I love apples"
     },
     {
       "id": 10,
@@ -173,9 +173,8 @@
     }
   ],
   "authSystem": {
-    "id": 0,
-    "login": null,
-    "email": null,
-    "isAuth": false
+    "id": 9,
+    "login": "faviconSSS",
+    "email": "favic@gmail.com"
   }
 }

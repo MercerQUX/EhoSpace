@@ -1,17 +1,17 @@
 import { Field, Formik, Form } from "formik";
+import { useAppDispatch } from "../../hooks/redux-use";
+import { dialogsAction } from "../../store/reducers/dialogsSlice";
 import { ValidMessageSchema } from "../validation/validators";
 
-interface IDefaultProps {
-  addMessage: (value: string) => CallableFunction;
-}
-
-export const FormMessage = ({ addMessage }: IDefaultProps) => {
+export const FormMessage = () => {
   const startValue = { bodyMessage: "" };
+  const dispatch = useAppDispatch();
+  const { addMessage } = dialogsAction;
   return (
     <Formik
       initialValues={startValue}
       onSubmit={(values, actions) => {
-        addMessage(values.bodyMessage);
+        dispatch(addMessage(values.bodyMessage));
         actions.resetForm({
           values: {
             bodyMessage: "",
@@ -21,7 +21,7 @@ export const FormMessage = ({ addMessage }: IDefaultProps) => {
       validationSchema={ValidMessageSchema}
     >
       {(...formikProps) => {
-        return <Fields/>;
+        return <Fields />;
       }}
     </Formik>
   );

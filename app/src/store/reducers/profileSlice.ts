@@ -1,7 +1,11 @@
 import { updateAuthProfile } from "./../thunks/profileThunks";
 import { ICommonProfile } from "./../../models/ICommonProfile";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { postsType } from "../../redux/types/ReducersTypes";
+
+type postsType = {
+  id:number,
+  body:string
+}
 
 interface initialStateProfileType {
   posts: Array<postsType>;
@@ -27,7 +31,7 @@ let initialState: initialStateProfileType = {
   isFetching: false,
 };
 
-export const profileSlice = createSlice({
+const profileSlice = createSlice({
   name: "profilePage",
   initialState,
   reducers: {
@@ -65,4 +69,5 @@ export const profileSlice = createSlice({
   },
 });
 
-export default profileSlice.reducer;
+export const profileAction = profileSlice.actions;
+export const profileReducer = profileSlice.reducer;

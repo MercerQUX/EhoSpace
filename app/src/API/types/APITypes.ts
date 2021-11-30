@@ -1,4 +1,5 @@
-import { dataLoggedType, usersType } from "./../../redux/types/ReducersTypes";
+import { ICommonProfile } from './../../models/ICommonProfile';
+import { IDataAuth } from "./../../models/IDataAuth";
 //AUTH-API-TYPES
 const LOGGED_DATA = "LOGGED_DATA";
 const DELETE_LOGGED_DATA = "DELETE_LOGGED_DATA";
@@ -17,7 +18,7 @@ type getLoggedDataAPIType = { type: typeof LOGGED_DATA };
 type deleteLoggedDataAPIType = { type: typeof DELETE_LOGGED_DATA };
 type sendLoggedDataAPIAPIType = {
   type: typeof SEND_LOGGED_DATA;
-  data: dataLoggedType;
+  data: IDataAuth;
 };
 type indentifyLoginAPIAPIType = { type: typeof INDENTIFY_LOGIN; login: string };
 type indentifyPasswordAPIAPIType = {
@@ -46,7 +47,7 @@ export type profileAPIActionsType = getSingleUserAPIType;
 
 type getSingleUserAPIType = {
   type: typeof GET_SINGLE_USER;
-  selected: number;
+  selected: number | undefined;
 };
 //USERS-API-TYPES
 const TOTAL_USERS = "TOTAL_USERS";
@@ -67,5 +68,5 @@ type getPartUsersAPIType = {
 type rewriteUserAPIType = {
   type: typeof REWRITE_USER;
   id: number;
-  user: usersType;
+  user: ICommonProfile;
 };

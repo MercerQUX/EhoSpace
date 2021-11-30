@@ -1,4 +1,4 @@
-import { indentifyEnteredData, logOut } from "./../thunks/authThunks";
+import { indentifyEnteredData, authLogOut } from "./../thunks/authThunks";
 import { IDataAuth } from "../../models/IDataAuth";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { actualLoggedUser } from "../thunks/authThunks";
@@ -6,28 +6,28 @@ import { actualLoggedUser } from "../thunks/authThunks";
 type initialStateType = IDataAuth;
 
 let initialState: initialStateType = {
-  id: null,
-  email: null,
-  login: null,
+  id: 0,
+  email: "",
+  login: "",
   isAuth: false,
-  error: null,
+  error: "",
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: "Auth",
   initialState,
   reducers: {
-    //Rewrite the state for the actual data for the user who was authorized;
-    setLoggedData(state, action: PayloadAction<initialStateType>) {
-      state = action.payload;
-    },
+    // Rewrite the state for the actual data for the user who was authorized;
+    // setLoggedData(state, action: PayloadAction<initialStateType>) {
+    //   state = action.payload;
+    // },
   },
   extraReducers: {
     [actualLoggedUser.fulfilled.type]: (
       state,
       action: PayloadAction<IDataAuth>
     ) => {
-      state = action.payload;
+      return { ...state, ...action.payload };
     },
     [actualLoggedUser.rejected.type]: (
       state,
@@ -40,7 +40,7 @@ export const authSlice = createSlice({
       state,
       action: PayloadAction<IDataAuth>
     ) => {
-      state = { ...action.payload, error: null };
+      return { ...state, ...action.payload, isAuth: true, error: "" };
     },
     [indentifyEnteredData.rejected.type]: (
       state,
@@ -49,19 +49,22 @@ export const authSlice = createSlice({
       state.error = action.payload;
     },
 
-    [logOut.fulfilled.type]: (state) => {
-      state = {
-        id: null,
-        email: null,
-        login: null,
+    [authLogOut.fulfilled.type]: (state) => {
+      const resetLogginAuth = {
+        id: 0,
+        email: "",
+        login: "",
         isAuth: false,
-        error: null,
+        error: "",
       };
+      return { ...state, ...resetLogginAuth };
     },
-    [logOut.rejected.type]: (state, action: PayloadAction<string>) => {
+    [authLogOut.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
   },
 });
 
-export default authSlice.reducer;
+export const authAction = authSlice.actions;
+
+export const authReducer = authSlice.reducer;

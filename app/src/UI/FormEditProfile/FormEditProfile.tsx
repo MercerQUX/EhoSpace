@@ -1,14 +1,16 @@
 import { Formik, Form, Field } from "formik";
 import style from "../forms.module.css";
-import { profileType } from "../../redux/types/ReducersTypes";
 import { ValidEditProfileSchema } from "../validation/validators";
 import cn from "classnames";
+import { IThunkRewriteProfile } from "../../store/thunks/profileThunks";
+import { useAppDispatch } from "../../hooks/redux-use";
+import { ICommonProfile } from "../../models/ICommonProfile";
 
 interface IDefaultProps {
-  profile: profileType;
-  setIsEditProfile: (toggle: boolean) => void;
-  rewriteProfile: (data: profileType) => void;
-  sendNewProfile: (userID: number, data: profileType) => void;
+  profile: ICommonProfile;
+  setIsEditProfile: (toggle: boolean) => any;
+  rewriteProfile: (data: ICommonProfile) => any;
+  sendNewProfile: ({ id, updateProfile }: IThunkRewriteProfile) => any;
 }
 
 interface IPropertyValues<T> {
@@ -33,6 +35,7 @@ export const FormEditProfile = ({
   rewriteProfile,
   sendNewProfile,
 }: IDefaultProps) => {
+  const dispatch = useAppDispatch();
   const startValue = {
     profileName: profile.name,
     profileSurname: profile.surname,
@@ -57,8 +60,8 @@ export const FormEditProfile = ({
           city: values.profileCity || "Not indicated",
           avatar: values.profileAvatar || profile.avatar,
         };
-        rewriteProfile(newData);
-        sendNewProfile(profile.id, newData);
+        dispatch(rewriteProfile(newData));
+        dispatch(sendNewProfile({ id: profile.id, updateProfile: newData }));
         setIsEditProfile(false);
       }}
       validationSchema={ValidEditProfileSchema}

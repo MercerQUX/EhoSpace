@@ -1,10 +1,12 @@
-import store from "./redux/redux-store";
 import reportWebVitals from "./reportWebVitals";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
+import setupStore from "./store/store";
+
+let store = setupStore();
 
 ReactDOM.render(
   <React.StrictMode>

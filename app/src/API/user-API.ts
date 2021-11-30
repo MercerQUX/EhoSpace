@@ -1,4 +1,5 @@
-import { usersType } from "./../redux/types/ReducersTypes";
+import { ICommonProfile } from './../models/ICommonProfile';
+import { IDataAuth } from './../models/IDataAuth';
 import axios from "axios";
 import { usersAPIActionsType } from "./types/APITypes";
 
@@ -15,16 +16,16 @@ const API = (action: usersAPIActionsType) => {
   switch (action.type) {
     case TOTAL_USERS:
       return constAxios
-        .get<Array<any>>("/totalUsers")
+        .get<Array<number[]>>("/totalUsers")
         .then((res) => res.data[0]);
     case GET_USERS_PART:
       return constAxios
-        .get<Array<usersType>>(
+        .get<Array<IDataAuth>>(
           `/users?_page=${action.page}&_limit=${action.limit}`
         )
         .then((res) => res.data);
     case REWRITE_USER:
-      return constAxios.put<usersType>(`/users/${action.id}`, {
+      return constAxios.put<any>(`/users/${action.id}`, {
         ...action.user,
       });
     default:
@@ -37,5 +38,5 @@ export const getNumberTotalUsersAPI = () => API({ type: TOTAL_USERS });
 export const getPartUsersAPI = (page: number, limit: number) =>
   API({ type: GET_USERS_PART, page: page, limit: limit });
 
-export const rewriteUserAPI = (data:{id: number, user: usersType}) =>
-  API({ type: REWRITE_USER, id: data.id, user:data.user });
+export const rewriteUserAPI = (id: number, user: ICommonProfile) =>
+  API({ type: REWRITE_USER, id: id, user:user });

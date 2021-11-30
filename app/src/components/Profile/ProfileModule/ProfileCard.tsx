@@ -1,19 +1,29 @@
 import { useState } from "react";
 import { useMatch } from "react-router";
-import { FormEditProfile, FormEditStatus, defaultPropsProfile } from "..";
+import { ICommonProfile } from "../../../models/ICommonProfile";
+import { IThunkRewriteProfile } from "../../../store/thunks/profileThunks";
+import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
+import { FormEditStatus } from "../../../UI/FormEditStatus/FormEditStatus";
 import style from "../profile.module.css";
 
-export const ProfileCard: React.FC<defaultPropsProfile> = ({
+interface defaultProps {
+  profile: ICommonProfile;
+  selectUserID: number;
+  changeStatus: (text: string) => void;
+  sendNewProfile: ({ id, updateProfile }: IThunkRewriteProfile) => void;
+  rewriteProfile: (data: ICommonProfile) => void;
+}
+
+export const ProfileCard: React.FC<defaultProps> = ({
   profile,
-  actualID,
+  selectUserID,
   changeStatus,
   sendNewProfile,
   rewriteProfile,
 }) => {
-  const isOwnerProfile = actualID === profile.id;
+  const isOwnerProfile = selectUserID === profile.id;
   const [isEditStatus, setIsEditStatus] = useState(true);
   const [isEditProfile, setIsEditProfile] = useState(false);
-  console.log(useMatch("userID"))
   return (
     <div>
       <div className={style.profileCard}>

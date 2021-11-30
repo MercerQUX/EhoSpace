@@ -1,11 +1,12 @@
 import { Field, Form, Formik } from "formik";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
+import {
+  getAuthError,
+  isAuthInitialization,
+} from "../../store/reselectors/auth-selector";
+import { indentifyEnteredData } from "../../store/thunks/authThunks";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../validation/validators";
-
-interface IDefaultProps {
-  indentifyData: (login: string, password: string) => void;
-  error: null | string;
-}
 
 interface IPropertyValues<T> {
   login?: T;
@@ -18,12 +19,19 @@ interface IFieldProps {
   error: null | string;
 }
 
-export const FormLogin = ({ indentifyData, error }: IDefaultProps) => {
+export const FormLogin = () => {
+  const { error } = {
+    error: useAppSelector(getAuthError),
+  };
+  const dispatch = useAppDispatch();
+  const indentifyData = indentifyEnteredData;
   return (
     <Formik
       initialValues={{ login: "", password: "" }}
       onSubmit={(values) => {
-        indentifyData(values.login, values.password);
+        dispatch(
+          indentifyData({ login: values.login, password: values.password })
+        );
       }}
       validationSchema={ValidLoginFormSchema}
     >

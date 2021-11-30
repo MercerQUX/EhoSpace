@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import React, { JSXElementConstructor } from "react";
-import { RootState } from "../redux/redux-store";
+import React, { JSXElementConstructor } from "react"
+import { useAppSelector } from "../hooks/redux-use";
+import { isAuthInitialization } from "../store/reselectors/auth-selector";
 
 interface componentProps {}
 
@@ -20,11 +20,10 @@ export const withAuthRedirect = (
       return <Component {...props} />;
     } else {
       {
-        return <Navigate to="/login" />;
+        return <Component {...props} />;
+        //return <Navigate to="/login" />;
       }
     }
   };
-  return connect((state: RootState) => ({
-    isAuth: state.authenticator.isAuth,
-  }))(RedirectComponent);
+  return RedirectComponent
 };

@@ -1,15 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { dialogsUsersType } from "..";
+import { useAppSelector } from "../../../hooks/redux-use";
+import { dialogsUsers } from "../../../store/reselectors/dialogs-selector";
 import style from "../dialogs.module.css";
 
-type defaultProps = {
-  dialogsUsers: Array<dialogsUsersType>;
-};
-
-export const SingleDialog: React.FC<defaultProps> = ({ dialogsUsers }) => {
+export const WindowDialog: React.FC = () => {
+  const allUsersInDialog = useAppSelector(dialogsUsers);
   return (
     <div className={style.wrapperDialogWindow}>
-      {dialogsUsers.map((item) => (
+      {allUsersInDialog.map((item) => (
         <div className={style.dialogsWindowItem}>
           <NavLink to={`/dialogs/${item.id}`}>{item.name}</NavLink>
         </div>

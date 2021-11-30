@@ -1,7 +1,7 @@
 export interface IDataAuth {
-  id: null | number;
-  email: null | string;
-  login: null | string;
+  id: number;
+  email: string;
+  login: string;
   isAuth: boolean;
-  error: null | string;
+  error: string;
 }
