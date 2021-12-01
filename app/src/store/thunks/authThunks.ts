@@ -3,9 +3,9 @@ import {
   indentifyLoginAPI,
   indentifyPasswordAPI,
   sendLoggedDataAPI,
-} from "./../../API/auth-API";
+} from "../../APIs/auth-API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getLoggedDataAPI } from "../../API/auth-API";
+import { getLoggedDataAPI } from "../../APIs/auth-API";
 
 interface IThunkIndentifyData {
   login: string;

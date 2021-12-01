@@ -1,5 +1,5 @@
-import { ICommonProfile } from './../models/ICommonProfile';
-import { IDataAuth } from './../models/IDataAuth';
+import { ICommonProfile } from '../models/ICommonProfile';
+import { IDataAuth } from '../models/IDataAuth';
 import axios from "axios";
 import { usersAPIActionsType } from "./types/APITypes";
 

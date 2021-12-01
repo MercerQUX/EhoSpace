@@ -1,7 +1,7 @@
 import { Field, Formik, Form } from "formik";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { dialogsAction } from "../../store/reducers/dialogsSlice";
-import { ValidMessageSchema } from "../validation/validators";
+import { ValidMessageSchema } from "../../services/validation/validators";
 
 export const FormMessage = () => {
   const startValue = { bodyMessage: "" };

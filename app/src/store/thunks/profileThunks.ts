@@ -1,7 +1,7 @@
-import { ICommonProfile } from "./../../models/ICommonProfile";
+import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getSingleUserAPI } from "../../API/profile-API";
-import { rewriteUserAPI } from "../../API/user-API";
+import { getSingleUserAPI } from "../../APIs/profile-API";
+import { rewriteUserAPI } from "../../APIs/user-API";
 export interface IThunkUpdateProfile {
   selectUserID: number;
   loggedID: number;

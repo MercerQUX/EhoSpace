@@ -10,7 +10,7 @@ import { getProfile } from "../../../store/reselectors/profile-selector";
 import { sendRewriteProfile } from "../../../store/thunks/profileThunks";
 import { ProfileCard } from "./ProfileCard";
 import { Preloader } from "../../../asset/common/Preloader";
-import { initlizationProfile } from "../../../Helpers/initialzationHelper";
+import { initlizationProfile } from "../../../helpers/initialzationHelper";
 
 export const ProfileContainer: React.FC<any> = () => {
   const { idLoggedUser, profile, auth } = {

@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import { ValidCreatePostSchema } from "../validation/validators";
+import { ValidCreatePostSchema } from "../../services/validation/validators";
 import style from "../forms.module.css";
 import { useAppDispatch } from "../../hooks/redux-use";
 

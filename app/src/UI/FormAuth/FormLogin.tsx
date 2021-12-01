@@ -6,7 +6,7 @@ import {
 } from "../../store/reselectors/auth-selector";
 import { indentifyEnteredData } from "../../store/thunks/authThunks";
 import style from "../forms.module.css";
-import { ValidLoginFormSchema } from "../validation/validators";
+import { ValidLoginFormSchema } from "../../services/validation/validators";
 
 interface IPropertyValues<T> {
   login?: T;

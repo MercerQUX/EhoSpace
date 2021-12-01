@@ -1,5 +1,5 @@
 import { updateAuthProfile } from "./../thunks/profileThunks";
-import { ICommonProfile } from "./../../models/ICommonProfile";
+import { ICommonProfile } from "../../models/ICommonProfile";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type postsType = {

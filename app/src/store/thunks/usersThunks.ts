@@ -3,7 +3,7 @@ import {
   getNumberTotalUsersAPI,
   getPartUsersAPI,
   rewriteUserAPI,
-} from "./../../API/user-API";
+} from "../../APIs/user-API";
 import { ICommonProfile } from "../../models/ICommonProfile";
 
 interface IThunkPayloadFetchUsers {

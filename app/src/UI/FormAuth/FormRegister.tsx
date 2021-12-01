@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import style from "../forms.module.css";
-import { ValidRegisterFormSchema } from "../validation/validators";
+import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
 
 interface IDefaultProps {}

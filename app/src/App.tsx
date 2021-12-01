@@ -9,7 +9,7 @@ import Header from "./components/Header/Header";
 import Login from "./components/Auth/Login";
 import UsersPage from "./components/User/UsersPage";
 import { useEffect, useState } from "react";
-import { initialzationApp } from "./Helpers/initialzationHelper";
+import { initialzationApp } from "./helpers/initialzationHelper";
 import { useAppDispatch, useAppSelector } from "./hooks/redux-use";
 import { Preloader } from "./asset/common/Preloader";
 import { useRedirect } from "./hooks/redirect-use";

@@ -13,13 +13,13 @@ import {
   getLimitLoadingUsers,
   getMaxPageForShow,
 } from "../../store/reselectors/users-selector";
-import { User } from "./User";
 import {
   fetchFullCountUsers,
   fetchFollow,
   fetchUsers,
 } from "../../store/thunks/usersThunks";
 import { Preloader } from "../../asset/common/Preloader";
+import { User } from "./User";
 
 const UsersPage: React.FC = () => {
   const {
