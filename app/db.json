@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "followed": true,
+      "followed": false,
       "name": "Dennis",
       "surname": "Davidson",
       "nickname": "",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "followed": true,
+      "followed": false,
       "name": "Paul",
       "surname": "Curtis",
       "nickname": "",
@@ -92,12 +92,12 @@
       "id": 9,
       "followed": true,
       "name": "Mathew",
-      "surname": "Miller",
+      "surname": "Millers",
       "nickname": "Favicon",
       "country": "Russian",
       "city": "Not indicated",
       "avatar": "https://cs12.pikabu.ru/post_img/2020/06/17/3/1592363988226447395.gif",
-      "status": "I love apples"
+      "status": "I love apples!"
     },
     {
       "id": 10,

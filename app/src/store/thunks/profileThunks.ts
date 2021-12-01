@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getSingleUserAPI } from "../../API/profile-API";
 import { rewriteUserAPI } from "../../API/user-API";
 export interface IThunkUpdateProfile {
-  selectUserID: number | undefined;
+  selectUserID: number;
   loggedID: number;
   isAuth: boolean;
 }
@@ -17,8 +17,9 @@ export const updateAuthProfile = createAsyncThunk(
   async (payload: IThunkUpdateProfile, thunkAPI) => {
     try {
       const { selectUserID, loggedID, isAuth } = payload;
+      
       let selectedUser =
-        selectUserID === undefined && isAuth ? loggedID : selectUserID;
+        isNaN(selectUserID) && isAuth ? loggedID : selectUserID;
       let response = await getSingleUserAPI(selectedUser);
       return response;
     } catch (e) {

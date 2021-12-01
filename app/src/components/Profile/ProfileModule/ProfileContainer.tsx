@@ -7,13 +7,10 @@ import {
 import { profileAction } from "../../../store/reducers/profileSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import { getProfile } from "../../../store/reselectors/profile-selector";
-import {
-  sendRewriteProfile,
-  updateAuthProfile,
-} from "../../../store/thunks/profileThunks";
+import { sendRewriteProfile } from "../../../store/thunks/profileThunks";
 import { ProfileCard } from "./ProfileCard";
 import { Preloader } from "../../../asset/common/Preloader";
-import { initlizationProfile } from "../../Helpers/initialzationHelper";
+import { initlizationProfile } from "../../../Helpers/initialzationHelper";
 
 export const ProfileContainer: React.FC<any> = () => {
   const { idLoggedUser, profile, auth } = {
@@ -22,18 +19,19 @@ export const ProfileContainer: React.FC<any> = () => {
     auth: useAppSelector(isAuthInitialization),
   };
   const { changeStatus, rewriteProfile } = profileAction;
-
+  const dispatch = useAppDispatch();
   const sendNewProfile = sendRewriteProfile;
-  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState(true);
-  console.log("bod ", useParams());
+  const paramsSelectedUserID = useParams().userID;
+
   useEffect(() => {
-    initlizationProfile(4, idLoggedUser, auth,dispatch);
+    initlizationProfile(paramsSelectedUserID, idLoggedUser, auth, dispatch);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 400);
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <div>
       {profile != null && !isLoading ? (

@@ -8,17 +8,29 @@ import Contact from "./components/Contact/Contact";
 import Header from "./components/Header/Header";
 import Login from "./components/Auth/Login";
 import UsersPage from "./components/User/UsersPage";
+import { useEffect, useState } from "react";
+import { initialzationApp } from "./Helpers/initialzationHelper";
+import { useAppDispatch, useAppSelector } from "./hooks/redux-use";
+import { Preloader } from "./asset/common/Preloader";
+import { useRedirect } from "./hooks/redirect-use";
+import { isAuthInitialization } from "./store/reselectors/auth-selector";
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    initialzationApp(dispatch);
+  }, []);
+  const isAuth = useAppSelector(isAuthInitialization);
   return (
     <BrowserRouter>
       <div className={style.wrapper}>
         <Header />
         <Saidbar />
         <Routes>
-          <Route path="/" element={<Profile />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/dialogs" element={<Dialogs />} />
+          {useRedirect(isAuth, <Profile />, "/", "/login")}
+          {useRedirect(isAuth, <Profile />, "/profile", "/login")}
+          <Route path="/profile/:userID" element={<Profile />} />
+          {useRedirect(isAuth, <Dialogs />, "/dialogs", "/login")}
           <Route path="/users" element={<UsersPage />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />

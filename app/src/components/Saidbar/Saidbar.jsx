@@ -15,7 +15,7 @@ const Saidbar = () => {
             activeClassName={style.activeLink}
           >
             Profile
-            {/* {isRedirect && <Navigate to="/login" />} */}
+            {isRedirect && <Navigate to="/login" />}
           </NavLink>
         </li>
         <li>

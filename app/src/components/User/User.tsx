@@ -19,7 +19,7 @@ export const User: React.FC<defaultProps> = ({
         <NavLink
           onClick={() => window.scrollTo({ top: 0 })}
           className={style.userIMG}
-          to={`profile/${data.id}`}
+          to={`/profile/${data.id}`}
         >
           <img src={data.avatar} alt="avatar" />
         </NavLink>
