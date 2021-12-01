@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
+import { useAppSelector } from "../../../hooks/redux-use";
 import { profileAction } from "../../../store/reducers/profileSlice";
 import {
   getPosts,

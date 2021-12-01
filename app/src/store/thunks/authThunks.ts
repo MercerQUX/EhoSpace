@@ -17,7 +17,7 @@ export const actualLoggedUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let response = await getLoggedDataAPI();
-      if (response.isAuth === false) {
+      if (response.login === null) {
         throw new Error("AuthTypeError: unauthorized user ");
       }
       return response;
@@ -31,6 +31,7 @@ export const indentifyEnteredData = createAsyncThunk(
   "auth/identifyData",
   async (payload: IThunkIndentifyData, thunkAPI) => {
     const { login, password } = payload;
+    debugger;
     const localError = new Error(
       "Error: The username or password was entered incorrectly"
     );
@@ -44,7 +45,7 @@ export const indentifyEnteredData = createAsyncThunk(
         password
       );
       if (isCorrectlyPassword) {
-        await sendLoggedDataAPI({ ...response });
+        await sendLoggedDataAPI({ ...response,isAuth:true });
         return response;
       } else {
         throw localError;

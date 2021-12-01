@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "followed": false,
+      "followed": true,
       "name": "Dennis",
       "surname": "Davidson",
       "nickname": "",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "followed": false,
+      "followed": true,
       "name": "Paul",
       "surname": "Curtis",
       "nickname": "",
@@ -175,6 +175,7 @@
   "authSystem": {
     "id": 9,
     "login": "faviconSSS",
-    "email": "favic@gmail.com"
+    "email": "favic@gmail.com",
+    "isAuth": true
   }
 }

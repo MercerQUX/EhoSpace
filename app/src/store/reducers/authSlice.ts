@@ -17,17 +17,13 @@ const authSlice = createSlice({
   name: "Auth",
   initialState,
   reducers: {
-    // Rewrite the state for the actual data for the user who was authorized;
-    // setLoggedData(state, action: PayloadAction<initialStateType>) {
-    //   state = action.payload;
-    // },
   },
   extraReducers: {
     [actualLoggedUser.fulfilled.type]: (
       state,
       action: PayloadAction<IDataAuth>
     ) => {
-      return { ...state, ...action.payload };
+      return { ...state, ...action.payload,error:"" };
     },
     [actualLoggedUser.rejected.type]: (
       state,
@@ -40,7 +36,8 @@ const authSlice = createSlice({
       state,
       action: PayloadAction<IDataAuth>
     ) => {
-      return { ...state, ...action.payload, isAuth: true, error: "" };
+      debugger;
+      return { ...state, ...action.payload, isAuth:true, error: "" };
     },
     [indentifyEnteredData.rejected.type]: (
       state,

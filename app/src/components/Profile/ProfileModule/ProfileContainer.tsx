@@ -13,28 +13,22 @@ import {
 } from "../../../store/thunks/profileThunks";
 import { ProfileCard } from "./ProfileCard";
 import { Preloader } from "../../../asset/common/Preloader";
+import { initlizationProfile } from "../../Helpers/initialzationHelper";
 
 export const ProfileContainer: React.FC<any> = () => {
-  const dispatch = useAppDispatch();
   const { idLoggedUser, profile, auth } = {
     idLoggedUser: useAppSelector(getAuthID),
     profile: useAppSelector(getProfile),
     auth: useAppSelector(isAuthInitialization),
   };
   const { changeStatus, rewriteProfile } = profileAction;
-  const updateProfileData = updateAuthProfile;
-  const sendNewProfile = sendRewriteProfile;
 
+  const sendNewProfile = sendRewriteProfile;
+  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState(true);
   console.log("bod ", useParams());
   useEffect(() => {
-    dispatch(
-      updateProfileData({
-        selectUserID: undefined,
-        loggedID: idLoggedUser,
-        isAuth: auth,
-      })
-    );
+    initlizationProfile(4, idLoggedUser, auth,dispatch);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 400);

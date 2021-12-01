@@ -6,11 +6,12 @@ import { getAuthID } from "../../store/reselectors/auth-selector";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import {
   getUsersWithoutLoggedIn,
-  getPageSize,
-  getLoadedPage,
   getIsFetching,
   getIsEmpty,
   getIsFollowingDisabled,
+  getAmountShowedPage,
+  getLimitLoadingUsers,
+  getMaxPageForShow,
 } from "../../store/reselectors/users-selector";
 import { User } from "./User";
 import {
@@ -23,32 +24,34 @@ import { Preloader } from "../../asset/common/Preloader";
 const UsersPage: React.FC = () => {
   const {
     users,
-    pageSize,
+    limitShowedUsers,
     loadedPage,
     isFetching,
     loggedID,
     isEmpty,
     isFollowingDisabled,
+    maxPage,
   } = {
     users: useAppSelector(getUsersWithoutLoggedIn),
-    pageSize: useAppSelector(getPageSize),
-    loadedPage: useAppSelector(getLoadedPage),
+    limitShowedUsers: useAppSelector(getLimitLoadingUsers),
+    loadedPage: useAppSelector(getAmountShowedPage),
     isFetching: useAppSelector(getIsFetching),
     loggedID: useAppSelector(getAuthID),
     isEmpty: useAppSelector(getIsEmpty),
     isFollowingDisabled: useAppSelector(getIsFollowingDisabled),
+    maxPage: useAppSelector(getMaxPageForShow),
   };
   const dispatch = useAppDispatch();
   let getTotalUsers = () => dispatch(fetchFullCountUsers);
-  const getUsers = (page: number, limit: number) =>
-    dispatch(fetchUsers({ page: page, limit: limit }));
+  const getUsers = (page: number, limit: number, mp: number) =>
+    dispatch(fetchUsers({ page: page, limit: limit, maxPage: mp }));
   const followed = (isFollowed: boolean, selectUsers: ICommonProfile) =>
     dispatch(fetchFollow({ isFollowed, selectUsers }));
 
   useEffect(() => {
     if (users.length == 0) {
       dispatch(getTotalUsers());
-      getUsers(loadedPage, pageSize);
+      getUsers(loadedPage, limitShowedUsers, maxPage);
     }
   }, []);
   let mapUsers = users.map((user) => (
@@ -69,7 +72,7 @@ const UsersPage: React.FC = () => {
         <br />
         <button
           className={styleU.btnGetUsers}
-          onClick={() => getUsers(loadedPage, pageSize)}
+          onClick={() => getUsers(loadedPage, limitShowedUsers, maxPage)}
         >
           Load Users
         </button>

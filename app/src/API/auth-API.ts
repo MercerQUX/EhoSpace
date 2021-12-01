@@ -22,16 +22,14 @@ const APIAuth = (action: authAPIActionsType) => {
   switch (action.type) {
     case LOGGED_DATA:
       return constAxios.get<dataAuthType>("/authSystem").then((res) => {
-        if (res.data.isAuth) {
-          return res.data;
-        }
+          return res.data;  
       });
     case DELETE_LOGGED_DATA:
       return constAxios.post<dataAuthType>("/authSystem", {
         id: 0,
         login: null,
         email: null,
-        isAuth: false,
+        isAuth:false
       });
     case SEND_LOGGED_DATA:
       return constAxios.post<dataAuthType>("/authSystem", {
