@@ -1,5 +1,5 @@
 {
-  "totalUsers": 9,
+  "totalUsers": [9],
   "innerData": {
     "Testing":{
       "email": "testing@gmail.com",

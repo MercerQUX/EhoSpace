@@ -1,11 +1,21 @@
 import { IDataAuth } from "../../models/IDataAuth";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { signInProfile } from "../thunks/authThunks";
+import {
+  initializeAuthProfile,
+  signInProfile,
+  signOutProfile,
+  signUpProfile,
+} from "../thunks/authThunks";
 
 type initialStateType = IDataAuth;
 type signInProfile = {
   id: number;
   login: string;
+};
+type initializeType = {
+  login: string | null;
+  isAuth: boolean;
+  id: number;
 };
 
 let initialState: initialStateType = {
@@ -19,9 +29,19 @@ let initialState: initialStateType = {
 const authSlice = createSlice({
   name: "Auth",
   initialState,
-  reducers: {},
+  reducers: {
+    initializeAuthProfile(state, action: PayloadAction<initializeType>) {
+      const { login, isAuth, id } = action.payload;
+      state.isAuth = isAuth;
+      state.login = login;
+      state.id = id;
+    },
+  },
   extraReducers: {
-    [signInProfile.fulfilled.type]: (state, action: PayloadAction<signInProfile>) => {
+    [signInProfile.fulfilled.type]: (
+      state,
+      action: PayloadAction<signInProfile>
+    ) => {
       state.login = action.payload.login;
       state.id = action.payload.id;
       state.isAuth = true;
@@ -34,6 +54,23 @@ const authSlice = createSlice({
     [signInProfile.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.isLoading = false;
+    },
+    [signUpProfile.fulfilled.type]: (state) => {
+      state.error = "";
+      state.isLoading = false;
+    },
+    [signUpProfile.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [signUpProfile.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
+    [signOutProfile.fulfilled.type]: (state) => {
+      state.login = "";
+      state.id = 0;
+      state.isAuth = false;
+      state.error = "";
     },
   },
 });

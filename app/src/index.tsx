@@ -6,7 +6,9 @@ import App from "./App";
 import { Provider } from "react-redux";
 import setupStore from "./store/store";
 import "./firebase"
-
+import { getAuth } from "firebase/auth";
+import firebaseui from "firebaseui";
+//var ui = new firebaseui.auth.AuthUI(getAuth());
 let store = setupStore();
 
 ReactDOM.render(

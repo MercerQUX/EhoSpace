@@ -18,6 +18,7 @@
   flex-direction: column;
   justify-content: flex-start;
   text-align: right;
+  align-items: flex-end;
 }
 .dataCountry {
   font-size: 1.5rem;

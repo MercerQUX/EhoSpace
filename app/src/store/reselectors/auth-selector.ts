@@ -6,6 +6,9 @@ export const getAuthID = (state: RootState) => {
 export const getAuthLogin = (state: RootState) => {
   return state.authReducer.login;
 };
+export const getAuthIsLoading = (state: RootState) => {
+  return state.authReducer.isLoading;
+};
 export const getAuthError = (state: RootState) => {
   return state.authReducer.error;
 };

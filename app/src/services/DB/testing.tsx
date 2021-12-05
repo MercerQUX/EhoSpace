@@ -3,6 +3,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import {
   addDoc,
@@ -23,11 +25,14 @@ import {
   limitToFirst,
   orderByKey,
   equalTo,
+  limitToLast,
+  startAfter,
 } from "firebase/database";
 import { userInfo } from "os";
 import { handleLoginDB } from "./SignInDB";
 
 export const Test: React.FC = ({}) => {
+  const auth = getAuth();
   const handleRegister = () => {
     const auth = getAuth();
     createUserWithEmailAndPassword(
@@ -37,7 +42,6 @@ export const Test: React.FC = ({}) => {
     ).then((res) => {
       updateProfile(res.user, { displayName: "MitchellRob" });
     });
-    
   };
   const rdbGet = async () => {
     const db = getDatabase();
@@ -46,6 +50,19 @@ export const Test: React.FC = ({}) => {
       const data = snapshot.val();
       console.log(data, "first");
     });
+  };
+  const getUsers = async ({ limit, startFrom }: any) => {
+    const openDB = getDatabase();
+    const ss = query(
+      ref(openDB, "users"),
+      orderByKey(),
+      limitToFirst(limit),
+      startAfter(String(startFrom))
+    );
+    let array = await get(ss).then((res) => {
+      return res.exportVal();
+    });
+    return array;
   };
   return <div>Test</div>;
 };

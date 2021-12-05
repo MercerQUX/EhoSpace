@@ -2,21 +2,20 @@ import style from "../../main.module.css";
 import styleU from "./users.module.css";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
-import { getAuthID } from "../../store/reselectors/auth-selector";
+import {
+  getAuthID,
+  getAuthIsLoading,
+} from "../../store/reselectors/auth-selector";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import {
-  getUsersWithoutLoggedIn,
   getIsFetching,
   getIsEmpty,
   getIsFollowingDisabled,
-  getAmountShowedPage,
+  getShowedUsers,
   getLimitLoadingUsers,
-  getMaxPageForShow,
+  getUsers,
 } from "../../store/reselectors/users-selector";
-import {
-  fetchFullCountUsers,
-  fetchUsers,
-} from "../../store/thunks/usersThunks";
+import { getPartUsers } from "../../store/thunks/usersThunks";
 import { Preloader } from "../../asset/common/Preloader";
 import { User } from "./User";
 
@@ -24,32 +23,26 @@ const UsersPage: React.FC = () => {
   const {
     users,
     limitShowedUsers,
-    loadedPage,
+    loadedUsers,
     isFetching,
     loggedID,
     isEmpty,
     isFollowingDisabled,
-    maxPage,
   } = {
-    users: useAppSelector(getUsersWithoutLoggedIn),
+    users: useAppSelector(getUsers),
     limitShowedUsers: useAppSelector(getLimitLoadingUsers),
-    loadedPage: useAppSelector(getAmountShowedPage),
+    loadedUsers: useAppSelector(getShowedUsers),
     isFetching: useAppSelector(getIsFetching),
     loggedID: useAppSelector(getAuthID),
     isEmpty: useAppSelector(getIsEmpty),
     isFollowingDisabled: useAppSelector(getIsFollowingDisabled),
-    maxPage: useAppSelector(getMaxPageForShow),
   };
   const dispatch = useAppDispatch();
-  let getTotalUsers = () => dispatch(fetchFullCountUsers);
-  const getUsers = (page: number, limit: number, mp: number) =>
-    dispatch(fetchUsers({ page: page, limit: limit, maxPage: mp }));
+  const getUsersParts = async (limit: number, startFrom: number) =>
+    await dispatch(getPartUsers({ limit: limit, startFrom: startFrom }));
 
   useEffect(() => {
-    if (users.length == 0) {
-      dispatch(getTotalUsers());
-      getUsers(loadedPage, limitShowedUsers, maxPage);
-    }
+    getUsersParts(limitShowedUsers, loadedUsers);
   }, []);
   let mapUsers = users.map((user) => (
     <User
@@ -69,7 +62,7 @@ const UsersPage: React.FC = () => {
         <br />
         <button
           className={styleU.btnGetUsers}
-          onClick={() => getUsers(loadedPage, limitShowedUsers, maxPage)}
+          onClick={() => getUsersParts(limitShowedUsers, loadedUsers)}
         >
           Load Users
         </button>

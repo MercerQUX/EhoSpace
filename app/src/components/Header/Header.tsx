@@ -5,6 +5,7 @@ import {
   isAuthInitialization,
   getAuthLogin,
 } from "../../store/reselectors/auth-selector";
+import { signOutProfile } from "../../store/thunks/authThunks";
 import style from "./header.module.css";
 
 const Header: React.FC = () => {
@@ -21,7 +22,10 @@ const Header: React.FC = () => {
       <div className={style.loginBlock}>
         {isAuth ? (
           <div>
-            <strong onClick={() => dispatch(() => {})} className={style.logOut}>
+            <strong
+              onClick={() => dispatch(signOutProfile())}
+              className={style.logOut}
+            >
               LogOut
             </strong>
             <NavLink to="/login">{login}</NavLink>

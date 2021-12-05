@@ -1,16 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICommonProfile } from "../../models/ICommonProfile";
-import {
-  fetchFullCountUsers,
-  fetchUsers,
-} from "../thunks/usersThunks";
+import { getPartUsers } from "../thunks/usersThunks";
 
 export type initialStateType = {
   users: Array<ICommonProfile>;
-  totalUsers: number;
   limitShowUsers: number;
-  maxPage: number;
-  pageShowed: number;
+  usersShowed: number;
   isFetching: boolean;
   isEmpty: boolean;
   isFollowingDisabled: boolean;
@@ -19,10 +14,8 @@ export type initialStateType = {
 
 let initialState: initialStateType = {
   users: [],
-  totalUsers: 0,
   limitShowUsers: 4,
-  maxPage: 1,
-  pageShowed: 1,
+  usersShowed: -1,
   isFetching: false,
   isEmpty: false,
   isFollowingDisabled: false,
@@ -43,35 +36,21 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchUsers.pending.type]: (state) => {
+    [getPartUsers.pending.type]: (state) => {
       state.isFetching = true;
     },
-    [fetchUsers.fulfilled.type]: (
+    [getPartUsers.fulfilled.type]: (
       state,
       action: PayloadAction<Array<ICommonProfile>>
     ) => {
-      state.pageShowed = state.pageShowed + 1;
       state.users = [...state.users, ...action.payload];
+      state.usersShowed = state.users.length;
       state.isFetching = false;
     },
-    [fetchUsers.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getPartUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
       state.error = action.payload;
       state.isEmpty = true;
-    },
-
-    [fetchFullCountUsers.fulfilled.type]: (
-      state,
-      action: PayloadAction<number>
-    ) => {
-      state.totalUsers = action.payload - 1;
-      state.maxPage = Math.ceil(state.totalUsers / state.limitShowUsers);
-    },
-    [fetchFullCountUsers.rejected.type]: (
-      state,
-      action: PayloadAction<string>
-    ) => {
-      state.error = action.payload;
     },
   },
 });

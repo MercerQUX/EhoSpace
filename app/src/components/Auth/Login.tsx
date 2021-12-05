@@ -1,19 +1,21 @@
 import { Navigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
-import { getAuthLogin, isAuthInitialization } from "../../store/reselectors/auth-selector";
+import { Preloader } from "../../asset/common/Preloader";
+import { useAppSelector } from "../../hooks/redux-use";
+import {
+  getAuthIsLoading,
+  isAuthInitialization,
+} from "../../store/reselectors/auth-selector";
 import { AuthForms } from "../../UI/FormAuth/FormsAuth";
 
-
 const Login = () => {
-  const { isAuth} = {
+  const { isAuth, isLoading } = {
     isAuth: useAppSelector(isAuthInitialization),
+    isLoading: useAppSelector(getAuthIsLoading),
   };
   return isAuth ? (
     <Navigate to={"/profile"} />
   ) : (
-    <div>
-      <AuthForms />
-    </div>
+    <div>{isLoading ? <Preloader /> : <AuthForms />}</div>
   );
 };
 

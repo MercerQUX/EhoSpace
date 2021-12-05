@@ -1,5 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  get,
+  getDatabase,
+  limitToFirst,
+  onValue,
+  orderByKey,
+  query,
+  ref,
+  startAfter,
+} from "firebase/database";
+import {
   getNumberTotalUsersAPI,
   getPartUsersAPI,
   rewriteUserAPI,
@@ -7,40 +17,27 @@ import {
 import { ICommonProfile } from "../../models/ICommonProfile";
 
 interface IThunkPayloadFetchUsers {
-  page: number;
   limit: number;
-  maxPage: number;
+  startFrom: number;
 }
 interface IThunkPayloadFetchFollowed {
   selectUsers: ICommonProfile;
   isFollowed: boolean;
 }
 
-export const fetchUsers = createAsyncThunk(
-  "users/fetchAll",
+export const getPartUsers = createAsyncThunk(
+  "users/getPartUsers",
   async (payload: IThunkPayloadFetchUsers, thunkAPI) => {
-    const { page, limit, maxPage } = payload;
-    try {
-      if (page === maxPage + 1) {
-        throw Error;
-      }
-      const response = await getPartUsersAPI(page, limit);
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue("Server rejected");
-    }
+    const { limit, startFrom } = payload;
+    const openDB = getDatabase();
+    const ss = query(
+      ref(openDB, "users"),
+      orderByKey(),
+      startAfter(String(startFrom)),
+      limitToFirst(limit)
+    );
+    return await get(ss).then((res) => {
+      return Object.values(res.exportVal());
+    });
   }
 );
-
-export const fetchFullCountUsers = createAsyncThunk(
-  "users/fetchCountUsers",
-  async (_, thunkAPI) => {
-    try {
-      const response = await getNumberTotalUsersAPI();
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue("Server rejected");
-    }
-  }
-);
-  
