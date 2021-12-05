@@ -1,65 +1,21 @@
-import {
-  deleteLoggedDataAPI,
-  indentifyLoginAPI,
-  indentifyPasswordAPI,
-  sendLoggedDataAPI,
-} from "../../APIs/auth-API";
+import { getByUID } from "./../../services/DB/SignInDB";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getLoggedDataAPI } from "../../APIs/auth-API";
-
-interface IThunkIndentifyData {
-  login: string;
+import { handleLoginDB } from "../../services/DB/SignInDB";
+interface ISignIn {
+  email_login: string;
   password: string;
 }
 
-export const actualLoggedUser = createAsyncThunk(
-  "auth/actualLoggedUser",
-  async (_, thunkAPI) => {
+export const signInProfile = createAsyncThunk(
+  "auth/signUp",
+  async (payload: ISignIn, thunkAPI) => {
+    const { email_login, password } = payload;
     try {
-      let response = await getLoggedDataAPI();
-      if (response.login === null) {
-        throw new Error("AuthTypeError: unauthorized user ");
-      }
-      return response;
-    } catch ({ message }) {
-      return thunkAPI.rejectWithValue(message);
+      const getUser = await handleLoginDB({ email_login, password });
+      const uid = await getByUID(getUser.user.displayName);
+      return { login: getUser.user.displayName, id: uid };
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Warning: Incorrect data");
     }
   }
 );
-
-export const indentifyEnteredData = createAsyncThunk(
-  "auth/identifyData",
-  async (payload: IThunkIndentifyData, thunkAPI) => {
-    const { login, password } = payload;
-    debugger;
-    const localError = new Error(
-      "Error: The username or password was entered incorrectly"
-    );
-    try {
-      let response = await indentifyLoginAPI(login);
-      if (response === 0) {
-        throw localError;
-      }
-      let isCorrectlyPassword = await indentifyPasswordAPI(
-        response.id,
-        password
-      );
-      if (isCorrectlyPassword) {
-        await sendLoggedDataAPI({ ...response,isAuth:true });
-        return response;
-      } else {
-        throw localError;
-      }
-    } catch ({ message }) {
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-export const authLogOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
-  try {
-    await deleteLoggedDataAPI();
-  } catch (e) {
-    return thunkAPI.rejectWithValue("Server rejected");
-  }
-});

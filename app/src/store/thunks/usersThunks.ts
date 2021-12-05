@@ -43,22 +43,4 @@ export const fetchFullCountUsers = createAsyncThunk(
     }
   }
 );
-
-export const fetchFollow = createAsyncThunk(
-  "users/fetchFollow",
-  async (payload: IThunkPayloadFetchFollowed, thunkAPI) => {
-    const { isFollowed, selectUsers } = payload;
-    try {
-      if (selectUsers.id === undefined) {
-        throw new SyntaxError("DataType: data not initialization");
-      }
-      await rewriteUserAPI(selectUsers.id, {
-        ...selectUsers,
-        followed: isFollowed,
-      });
-      return {isFollowed,id:selectUsers.id}
-    } catch (e) {
-      return thunkAPI.rejectWithValue("Server rejected");
-    }
-  }
-);
+  

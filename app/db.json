@@ -1,181 +1,151 @@
 {
+  "totalUsers": 9,
+  "innerData": {
+    "Testing":{
+      "email": "testing@gmail.com",
+      "id": 1030,
+      "following": [1031],
+      "posts": [0]
+    },
+    "Lance32": {
+      "email": "lance32@gmail.com",
+      "id": 1031,
+      "following": [1030],
+      "posts": [0]
+    },
+    "MitchellRob": {
+      "email": "mitchellrobinson@gmail.com",
+      "id": 1032,
+      "following": [1030],
+      "posts": [0]
+    },
+    "DavidsonLuck": {
+      "email": "DavidsonLuck@gmail.com",
+      "id": 1033,
+      "following": [1030],
+      "posts": [0]
+    },
+    "PaulLime": {
+      "email": "PaulLime@gmail.com",
+      "id": 1034,
+      "following": [1030],
+      "posts": [0]
+    },
+    "Jesseee": {
+      "email": "Jesseee@gmail.com",
+      "id": 1035,
+      "following": [1030],
+      "posts": [0]
+    },
+    "SethLess": {
+      "email": "SethLess@gmail.com",
+      "id": 1036,
+      "following": [1030],
+      "posts": [0]
+    },
+    "T3sFrely": {
+      "email": "T3sFrely@gmail.com",
+      "id": 1037,
+      "following": [1030],
+      "posts": [0]
+    },
+    "MagicGirl": {
+      "email": "MagicGirl@gmail.com",
+      "id": 1038,
+      "following": [1030],
+      "posts": [0]
+    }
+  },
   "users": [
     {
-      "id": 1,
-      "followed": true,
+      "avatar": "",
+      "city": "Not indicated ",
+      "country": "Testing Space",
+      "id": 1030,
+      "name": "I testing",
+      "nickname": "",
+      "status": "I was created for testing!",
+      "surname": "Profile"
+    },
+    {
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-tIeT5IXbN7_N95ncf17QT7nASyFoBP8-A&usqp=CAU",
+      "city": "Moscov",
+      "country": "Russian",
+      "id": 1031,
       "name": "Lancee",
-      "surname": "Mills",
       "nickname": "",
       "status": "I wanna live!",
-      "country": "Russian",
-      "city": "Moscov",
-      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-tIeT5IXbN7_N95ncf17QT7nASyFoBP8-A&usqp=CAU"
+      "surname": "Millss"
     },
     {
-      "id": 2,
-      "followed": true,
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmr-i3PQboi-7eW3n9XzEeHhuCWabzif2iFg&usqp=CAU",
+      "city": "Kiev",
+      "country": "Ukraine",
+      "id": 1032,
       "name": "Mitchell",
-      "surname": "Robinson",
       "nickname": "",
       "status": "I wanna become the most best!d",
-      "country": "Ukraine",
-      "city": "Kiev",
-      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmr-i3PQboi-7eW3n9XzEeHhuCWabzif2iFg&usqp=CAU"
+      "surname": "Robinson"
     },
     {
-      "id": 3,
-      "followed": false,
-      "name": "Dennis",
-      "surname": "Davidson",
-      "nickname": "",
-      "status": "I wanna drink to tea.!",
-      "country": "Ukranine",
+      "avatar": "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/167499756/original/9339260ee254d167526665c9fcaaa7abd0519b7b/draw-minimalist-avatar-for-social-media-or-gaming.jpg",
       "city": "Dnipro",
-      "avatar": "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/167499756/original/9339260ee254d167526665c9fcaaa7abd0519b7b/draw-minimalist-avatar-for-social-media-or-gaming.jpg"
+      "country": "Ukranine",
+      "id": 1033,
+      "name": "Dennis",
+      "nickname": "",
+      "status": "I wanna drink to tea!",
+      "surname": "Davidson"
     },
     {
-      "id": 4,
-      "followed": false,
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF6BYZqLtONpe0-VakrTkofJ2z3LvP3Ah-rQ&usqp=CAU",
+      "city": "New York",
+      "country": "USA",
+      "id": 1034,
       "name": "Paul",
-      "surname": "Curtis",
       "nickname": "",
       "status": "I wanna live happy!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF6BYZqLtONpe0-VakrTkofJ2z3LvP3Ah-rQ&usqp=CAU"
+      "surname": "Curtis"
     },
     {
-      "id": 5,
-      "followed": true,
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ7B_nnN6kRlg6uuEAkQV978ux2O3tvsP4yQ&usqp=CAU",
+      "city": "Rome",
+      "country": "Italy",
+      "id": 1035,
       "name": "Jesse",
-      "surname": "Harrison",
       "nickname": "",
       "status": "I wanna live happy too!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ7B_nnN6kRlg6uuEAkQV978ux2O3tvsP4yQ&usqp=CAU"
+      "surname": "Harrison"
     },
     {
-      "id": 6,
-      "followed": true,
+      "avatar": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v211-06-socialmedia_1_2.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=5885f21367e5f4499432ae3bfdd1273a",
+      "city": "Krasnodar",
+      "country": "Russian",
+      "id": 1036,
       "name": "Seth",
-      "surname": "Simpson",
       "nickname": "",
-      "status": "I cheater!!dwadaw",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v211-06-socialmedia_1_2.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=5885f21367e5f4499432ae3bfdd1273a"
+      "status": "I cheater!!",
+      "surname": "Simpson"
     },
     {
-      "id": 7,
-      "followed": true,
+      "avatar": "https://static.vecteezy.com/system/resources/thumbnails/002/623/639/small/lady-in-luxury-carnival-mask-black-hair-woman-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg",
+      "city": "Krasnodar",
+      "country": "Russian",
+      "id": 1037,
       "name": "Melissa",
-      "surname": "Lee",
       "nickname": "T3sFrely",
       "status": "I wanna a lot of money!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://static.vecteezy.com/system/resources/thumbnails/002/623/639/small/lady-in-luxury-carnival-mask-black-hair-woman-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
+      "surname": "Lee"
     },
     {
-      "id": 8,
-      "followed": true,
+      "avatar": "https://trikky.ru/wp-content/blogs.dir/1/files/2020/12/27/izobrazhenie_viber_2020-12-27_17-34-45.jpg",
+      "city": "Not indicated",
+      "country": "Ukraine",
+      "id": 1038,
       "name": "Violet",
-      "surname": "Pusya",
       "nickname": "MagicGirl",
       "status": "Fashion is trand!",
-      "country": "Ukraine",
-      "city": "Not indicated",
-      "avatar": "https://trikky.ru/wp-content/blogs.dir/1/files/2020/12/27/izobrazhenie_viber_2020-12-27_17-34-45.jpg"
-    },
-    {
-      "id": 9,
-      "followed": true,
-      "name": "Mathew",
-      "surname": "Millers",
-      "nickname": "Favicon",
-      "country": "Russian",
-      "city": "Not indicated",
-      "avatar": "https://cs12.pikabu.ru/post_img/2020/06/17/3/1592363988226447395.gif",
-      "status": "I love apples!"
-    },
-    {
-      "id": 10,
-      "followed": true,
-      "name": "Barbara",
-      "surname": "Moore",
-      "nickname": "",
-      "status": "I wanna lol!!!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
-    },
-    {
-      "id": 11,
-      "followed": true,
-      "name": "BarbaraLOX",
-      "surname": "Moore 2",
-      "nickname": "",
-      "status": "I wanna lol!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
-    },
-    {
-      "id": 12,
-      "followed": true,
-      "name": "Barbara",
-      "surname": "Moore 3",
-      "nickname": "",
-      "status": "I wanna lol!",
-      "country": "Russian",
-      "city": "Krasnodar",
-      "avatar": "https://static.vecteezy.com/system/resources/previews/002/623/603/original/portrait-of-a-beautiful-woman-in-half-turn-lady-with-a-bun-hair-style-avatar-for-social-networks-fashion-and-beauty-illustration-in-flat-style-vector.jpg"
+      "surname": "Lucky"
     }
-  ],
-  "totalUsers": [
-    12
-  ],
-  "authData": [
-    {
-      "id": 3,
-      "login": "bumchik",
-      "email": "vasilbumchic@gmail.com"
-    },
-    {
-      "id": 8,
-      "login": "lady1337",
-      "email": "lisa1337@gmail.com"
-    },
-    {
-      "id": 11,
-      "login": "lady13",
-      "email": "lisa13@gmail.com"
-    },
-    {
-      "id": 9,
-      "login": "faviconSSS",
-      "email": "favic@gmail.com"
-    }
-  ],
-  "authPassword": [
-    {
-      "id": 3,
-      "password": "batuska1"
-    },
-    {
-      "id": 8,
-      "password": "test1"
-    },
-    {
-      "id": 9,
-      "password": "favicon1"
-    }
-  ],
-  "authSystem": {
-    "id": 9,
-    "login": "faviconSSS",
-    "email": "favic@gmail.com",
-    "isAuth": true
-  }
+  ]
 }

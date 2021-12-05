@@ -2,6 +2,9 @@ import { Field, Form, Formik } from "formik";
 import style from "../forms.module.css";
 import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
+import { handleRegisterDB } from "../../services/DB/SignUpDB";
+import { useAppDispatch } from "../../hooks/redux-use";
+import { signInProfile } from "../../store/thunks/authThunks";
 
 interface IDefaultProps {}
 
@@ -28,11 +31,13 @@ export const FormRigister = ({}: IDefaultProps) => {
     country: "",
     password: "",
   };
+  const dispatch = useAppDispatch();
   return (
     <Formik
       initialValues={startValue}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async(values) => {
+        await handleRegisterDB({ ...values });
+        dispatch(signInProfile({ email_login: values.email, password: values.password }));
       }}
       validationSchema={ValidRegisterFormSchema}
     >

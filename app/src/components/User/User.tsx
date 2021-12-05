@@ -6,7 +6,6 @@ type defaultProps = {
   id: number;
   data: any;
   isFollowingDisabled: boolean;
-  followed: (isFollowed: boolean, selectUsers: ICommonProfile) => void;
 };
 export const User: React.FC<defaultProps> = ({
   data,
@@ -38,7 +37,7 @@ export const User: React.FC<defaultProps> = ({
         {data.followed ? (
           <button
             className={style.follow}
-            onClick={(e) => props.followed(false, data)}
+            onClick={(e) => {}}
             disabled={isFollowingDisabled}
           >
             Follow
@@ -46,7 +45,7 @@ export const User: React.FC<defaultProps> = ({
         ) : (
           <button
             className={style.unfollow}
-            onClick={(e) => props.followed(true, data)}
+            onClick={(e) => {}}
             disabled={isFollowingDisabled}
           >
             Unfollow

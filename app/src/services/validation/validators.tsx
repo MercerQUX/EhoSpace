@@ -17,7 +17,7 @@ export const ValidLoginFormSchema = Yup.object().shape({
       /^[A-Za-z0-9]+$/,
       "Warning: Please use only latin characters and numbers"
     )
-    .min(8, "Warning: Minimul characters 8")
+    .min(6, "Warning: Minimul characters 6")
     .max(24, "Warning: Maximum characters 24"),
   password: Yup.string()
     .required("Warning: Fields must not be empty")
@@ -40,7 +40,7 @@ export const ValidRegisterFormSchema = Yup.object().shape({
       /^[A-Za-z0-9]+$/,
       "Warning: Please use only latin characters and numbers"
     )
-    .min(8, "Warning: Minimul characters 8")
+    .min(6, "Warning: Minimul characters 6")
     .max(24, "Warning: Maximum characters 24"),
   name: Yup.string()
     .required("Warning: Field Name is empty")

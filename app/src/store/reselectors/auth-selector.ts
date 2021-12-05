@@ -9,9 +9,6 @@ export const getAuthLogin = (state: RootState) => {
 export const getAuthError = (state: RootState) => {
   return state.authReducer.error;
 };
-export const getAuthEmail = (state: RootState) => {
-  return state.authReducer.email;
-};
 export const isAuthInitialization = (state: RootState) => {
   return state.authReducer.isAuth;
 };

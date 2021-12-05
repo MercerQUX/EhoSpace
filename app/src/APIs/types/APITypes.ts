@@ -32,7 +32,6 @@ export type dataAuthType = {
 };
 export type dataIdentifyType = {
   id: null | number;
-  email: null | string;
   login: null | string;
 };
 export type passwordAuthType = {

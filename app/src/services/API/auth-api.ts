@@ -3,7 +3,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
 type dataIdentifyType = {
   id: null | number;
-  email: null | string;
   login: null | string;
 };
 type passwordAuthType = {
@@ -44,7 +43,6 @@ export const profileAPI = createApi({
         body: {
           id: data.id,
           login: data.login,
-          email: data.email,
           isAuth: data.isAuth,
         },
       }),
@@ -56,7 +54,6 @@ export const profileAPI = createApi({
         body: {
           id: 0,
           login: null,
-          email: null,
           isAuth: false,
         },
       }),

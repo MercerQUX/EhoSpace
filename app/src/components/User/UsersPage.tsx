@@ -15,7 +15,6 @@ import {
 } from "../../store/reselectors/users-selector";
 import {
   fetchFullCountUsers,
-  fetchFollow,
   fetchUsers,
 } from "../../store/thunks/usersThunks";
 import { Preloader } from "../../asset/common/Preloader";
@@ -45,8 +44,6 @@ const UsersPage: React.FC = () => {
   let getTotalUsers = () => dispatch(fetchFullCountUsers);
   const getUsers = (page: number, limit: number, mp: number) =>
     dispatch(fetchUsers({ page: page, limit: limit, maxPage: mp }));
-  const followed = (isFollowed: boolean, selectUsers: ICommonProfile) =>
-    dispatch(fetchFollow({ isFollowed, selectUsers }));
 
   useEffect(() => {
     if (users.length == 0) {
@@ -57,9 +54,9 @@ const UsersPage: React.FC = () => {
   let mapUsers = users.map((user) => (
     <User
       id={user.id}
+      key={user.id}
       data={user}
       isFollowingDisabled={isFollowingDisabled}
-      followed={followed}
     />
   ));
   return (

@@ -4,9 +4,9 @@ import {
   getAuthError,
   isAuthInitialization,
 } from "../../store/reselectors/auth-selector";
-import { indentifyEnteredData } from "../../store/thunks/authThunks";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../../services/validation/validators";
+import { signInProfile } from "../../store/thunks/authThunks";
 
 interface IPropertyValues<T> {
   login?: T;
@@ -24,13 +24,15 @@ export const FormLogin = () => {
     error: useAppSelector(getAuthError),
   };
   const dispatch = useAppDispatch();
-  const indentifyData = indentifyEnteredData;
   return (
     <Formik
       initialValues={{ login: "", password: "" }}
       onSubmit={(values) => {
         dispatch(
-          indentifyData({ login: values.login, password: values.password })
+          signInProfile({
+            email_login: values.login,
+            password: values.password,
+          })
         );
       }}
       validationSchema={ValidLoginFormSchema}
@@ -53,7 +55,7 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
       <Field
         type="text"
         name="login"
-        placeholder="Login"
+        placeholder="Login or email"
         className={style.input}
       />
       <Field

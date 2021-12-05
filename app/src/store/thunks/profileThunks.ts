@@ -17,7 +17,7 @@ export const updateAuthProfile = createAsyncThunk(
   async (payload: IThunkUpdateProfile, thunkAPI) => {
     try {
       const { selectUserID, loggedID, isAuth } = payload;
-      
+
       let selectedUser =
         isNaN(selectUserID) && isAuth ? loggedID : selectUserID;
       let response = await getSingleUserAPI(selectedUser);
@@ -28,13 +28,12 @@ export const updateAuthProfile = createAsyncThunk(
   }
 );
 
-
 export const sendRewriteProfile = createAsyncThunk(
   "profile/rewriteProfile",
   async (payload: IThunkRewriteProfile, thunkAPI) => {
     const { id, updateProfile } = payload;
     try {
-      await rewriteUserAPI(id, updateProfile );
+      await rewriteUserAPI(id, updateProfile);
     } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }

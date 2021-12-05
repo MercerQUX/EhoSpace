@@ -1,6 +1,5 @@
 export interface ICommonProfile {
     id: number;
-    followed: boolean;
     name: string;
     surname: string;
     nickname: string;

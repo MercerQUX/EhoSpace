@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import {
-  fetchFollow,
   fetchFullCountUsers,
   fetchUsers,
 } from "../thunks/usersThunks";
@@ -73,23 +72,6 @@ const userSlice = createSlice({
       action: PayloadAction<string>
     ) => {
       state.error = action.payload;
-    },
-
-    [fetchFollow.pending.type]: (state) => {
-      state.isFollowingDisabled = true;
-    },
-    [fetchFollow.fulfilled.type]: (
-      state,
-      action: PayloadAction<{ isFollowed: boolean; id: number }>
-    ) => {
-      const { id, isFollowed } = action.payload;
-      state.users = state.users.map((u) =>
-        u.id === id ? { ...u, followed: isFollowed } : u
-      );
-      state.isFollowingDisabled = false;
-    },
-    [fetchFollow.rejected.type]: (state) => {
-      state.isFollowingDisabled = false;
     },
   },
 });

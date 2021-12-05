@@ -1,4 +1,3 @@
-import { actualLoggedUser } from "../store/thunks/authThunks";
 import { updateAuthProfile } from "../store/thunks/profileThunks";
 import { AppDispatch } from "../store/store";
 export const initlizationProfile = async (
@@ -18,6 +17,6 @@ export const initlizationProfile = async (
   );
 };
 export const initialzationApp = async (dispatch: any) => {
-  const actualLogged = actualLoggedUser;
-  let actaualAuthData = await dispatch(actualLogged());
+  //const actualLogged = actualLoggedUser;
+  //let actaualAuthData = await dispatch(actualLogged());
 };

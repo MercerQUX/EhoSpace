@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "./hooks/redux-use";
 import { Preloader } from "./asset/common/Preloader";
 import { useRedirect } from "./hooks/redirect-use";
 import { isAuthInitialization } from "./store/reselectors/auth-selector";
+import { Test } from "./services/DB/testing";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <Test/>
       </div>
     </BrowserRouter>
   );
