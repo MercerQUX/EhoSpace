@@ -34,6 +34,7 @@ export const User: React.FC<defaultProps> = ({
       </div>
       <div className={style.rightContent}>
         <strong className={style.dataCountry}>{data.country}</strong>
+        <strong className={style.dataCity}>{data.city}</strong>
         {data.followed ? (
           <button
             className={style.follow}
@@ -51,7 +52,6 @@ export const User: React.FC<defaultProps> = ({
             Unfollow
           </button>
         )}
-        <strong className={style.dataCity}>{data.city}</strong>
       </div>
     </div>
   );
