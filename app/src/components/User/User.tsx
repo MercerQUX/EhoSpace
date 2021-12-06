@@ -1,6 +1,8 @@
 import style from "./users.module.css";
 import { NavLink } from "react-router-dom";
 import { ICommonProfile } from "../../models/ICommonProfile";
+import notAvatar from "../../asset/notAvatar.jpg"
+
 
 type defaultProps = {
   id: number;
@@ -12,6 +14,7 @@ export const User: React.FC<defaultProps> = ({
   isFollowingDisabled,
   ...props
 }) => {
+  const avatars = data.avatar ? data.avatar : notAvatar;
   return (
     <div className={style.wrapperUser}>
       <div className={style.leftContent}>
@@ -19,8 +22,8 @@ export const User: React.FC<defaultProps> = ({
           onClick={() => window.scrollTo({ top: 0 })}
           className={style.userIMG}
           to={`/profile/${data.id}`}
-        >
-          <img src={data.avatar} alt="avatar" />
+        > 
+          <img src={avatars} alt="avatar" />
         </NavLink>
 
         <div className={style.dataBlock}>
