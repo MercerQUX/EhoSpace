@@ -10,5 +10,7 @@ export const getIsFetching = (state: RootState) => state.userReducer.isFetching;
 export const getIsEmpty = (state: RootState) => state.userReducer.isEmpty;
 export const getIsFollowingDisabled = (state: RootState) =>
   state.userReducer.isFollowingDisabled;
+export const getFollowingID = (state:RootState)=>
+state.userReducer.following
 
 const loggedID = (state: RootState) => state.authReducer.id;
