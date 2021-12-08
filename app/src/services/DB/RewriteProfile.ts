@@ -8,3 +8,5 @@ export const rewriteProfile = async (
   const idArrayUsers = id - 1030;
   await set(ref(openDB, "users/" + idArrayUsers), newProfile);
 };
+
+

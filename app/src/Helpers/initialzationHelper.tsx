@@ -1,4 +1,4 @@
-import { updateAuthProfile } from "../store/thunks/profileThunks";
+import { fetchPosts, updateAuthProfile } from "../store/thunks/profileThunks";
 import { AppDispatch } from "../store/store";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { authAction } from "../store/reducers/authSlice";
@@ -11,14 +11,10 @@ export const initlizationProfile = async (
   dispatch: AppDispatch
 ) => {
   const updateProfileData = updateAuthProfile;
-
-  await dispatch(
-    updateProfileData({
-      selectUserID: Number(selectUser),
-      loggedID: idLoggedUser,
-      isAuth: auth,
-    })
-  );
+  let selectedUser =
+    isNaN(Number(selectUser)) && auth ? idLoggedUser : Number(selectUser);
+  await dispatch(updateProfileData(selectedUser));
+  await dispatch(fetchPosts(selectedUser));
 };
 export const initialzationApp = async (dispatch: any) => {
   const auth = getAuth();

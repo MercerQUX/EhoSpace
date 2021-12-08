@@ -1,31 +1,22 @@
-import { updateAuthProfile } from "./../thunks/profileThunks";
+import {
+  fetchPosts,
+  updateAuthProfile,
+  uploadPosts,
+} from "./../thunks/profileThunks";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type postsType = {
-  id:number,
-  body:string
-}
+import { IPosts } from "../../models/IPost";
+import notAvatar from "../../asset/notAvatar.jpg";
 
 interface initialStateProfileType {
-  posts: Array<postsType>;
+  posts: Array<IPosts>;
   profile: ICommonProfile | null;
   actualStatus: string;
   isFetching: boolean;
 }
 
 let initialState: initialStateProfileType = {
-  posts: [
-    {
-      id: 1,
-      body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias laboriosam dignissimos explicabo ipsam. Deleniti obcaecati veritatis magnam et incidunt itaque. Nemo nihil provident iusto labore reprehenderit odit nisi accusantium non.
-              acilis laborum incidunt. Voluptas, laboriosam! Doloremque perferendis ratione, at enim ut odit dolore numquam! Aliquam nam iste distinctio dicta, ducimus magni.`,
-    },
-    {
-      id: 2,
-      body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias laboriosam dignissimos explicabo ipsam. Deleniti obcaecati veritatis magnam et incidunt itaque. Nemo nihil provident iusto labore reprehenderit odit nisi accusantium non.`,
-    },
-  ],
+  posts: [],
   profile: null,
   actualStatus: "",
   isFetching: false,
@@ -41,6 +32,7 @@ const profileSlice = createSlice({
         {
           id: state.posts.length + 1,
           body: action.payload,
+          timestamp: "",
         },
       ];
     },
@@ -61,10 +53,30 @@ const profileSlice = createSlice({
       action: PayloadAction<ICommonProfile>
     ) => {
       state.isFetching = false;
-      state.profile = action.payload;
+      if (action.payload.avatar === "") {
+        state.profile = { ...action.payload, avatar: notAvatar };
+      } else {
+        state.profile = action.payload;
+      }
     },
     [updateAuthProfile.rejected.type]: (state) => {
       state.isFetching = false;
+    },
+    [fetchPosts.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+    [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
+      state.isFetching = false;
+      if (action.payload) {
+        state.posts = action.payload;
+      }
+    },
+    [fetchPosts.rejected.type]: (state) => {
+      state.isFetching = false;
+      state.posts = [];
+    },
+    [uploadPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
+      state.posts = action.payload;
     },
   },
 });

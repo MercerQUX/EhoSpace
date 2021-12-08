@@ -2,6 +2,7 @@ import { Formik, Form, Field } from "formik";
 import { ValidCreatePostSchema } from "../../services/validation/validators";
 import style from "../forms.module.css";
 import { useAppDispatch } from "../../hooks/redux-use";
+import { uploadPosts } from "../../store/thunks/profileThunks";
 
 interface IDefaultProps {
   addPost: (values: string) => any;
@@ -21,7 +22,7 @@ export const FormCreatePost = ({ addPost }: IDefaultProps) => {
     <Formik
       initialValues={startValue}
       onSubmit={(values: typeof startValue, { resetForm }) => {
-        dispatch(addPost(values.newPost));
+        dispatch(uploadPosts(values.newPost));
         resetForm({
           values: {
             newPost: "",
@@ -36,7 +37,6 @@ export const FormCreatePost = ({ addPost }: IDefaultProps) => {
 };
 
 const Fields = ({ errors, touched }: IFieldProps) => {
-  console.log("return", errors, touched);
   return (
     <Form>
       <Field

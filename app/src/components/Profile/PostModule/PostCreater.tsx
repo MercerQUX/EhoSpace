@@ -15,8 +15,10 @@ export const PostCreater: React.FC = () => {
   };
   const addPost = profileAction.addPost;
   let map = () => {
-    if (profile == null) {
+    if (profile === null) {
       return <h2 className={style.loading}>Loading...</h2>;
+    } else if (posts.length === 0) {
+      return <h2>У вас нет ни одного поста!</h2>;
     } else {
       return posts.map((item) => {
         return (
@@ -41,96 +43,3 @@ export const PostCreater: React.FC = () => {
     </div>
   );
 };
-
-const Posts = [
-  {
-    userID:1030,
-    posts:[
-      {
-        id:1,
-        body:"Testing Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1031,
-    posts:[
-      {
-        id:1,
-        body:"Lance Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1032,
-    posts:[
-      {
-        id:1,
-        body:"Mitchel Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1033,
-    posts:[
-      {
-        id:1,
-        body:"Denis Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1034,
-    posts:[
-      {
-        id:1,
-        body:"Paul Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1035,
-    posts:[
-      {
-        id:1,
-        body:"Jesse Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1036,
-    posts:[
-      {
-        id:1,
-        body:"Seth Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1037,
-    posts:[
-      {
-        id:1,
-        body:"Melissa Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-  {
-    userID:1038,
-    posts:[
-      {
-        id:1,
-        body:"Violet Post",
-        timestamp:"00:00:00 01/01/22"
-      },
-    ]
-  },
-]

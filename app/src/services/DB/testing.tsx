@@ -27,6 +27,7 @@ import {
   equalTo,
   limitToLast,
   startAfter,
+  set,
 } from "firebase/database";
 import { userInfo } from "os";
 import { handleLoginDB } from "./SignInDB";
@@ -72,13 +73,35 @@ export const Test: React.FC = ({}) => {
   };
   const fetchSingleProfile = async (ids: number) => {
     const db = getDatabase();
-    const fetchProfile = query(ref(db, "users"), orderByChild(`id`), equalTo(ids));
-    const profile = await (await get(fetchProfile)).exportVal()
+    const fetchProfile = query(
+      ref(db, "users"),
+      orderByChild(`id`),
+      equalTo(ids)
+    );
+    const profile = await (await get(fetchProfile)).exportVal();
     if (profile === null) {
       return new Error("User not found");
     } else {
       return profile;
     }
   };
+  const posts = async () => {
+    const db = getDatabase();
+    const fetchPosts = query(
+      ref(db, "posts"),
+      orderByChild(`userID`),
+      equalTo(1034)
+    );
+    const post = await (await get(fetchPosts)).exportVal();
+    let res: any = Object.values(post)[0];
+    return res.posts;
+  };
+  const postsRe = async (id:number) => {
+    const db = getDatabase();
+    const clearID = id-1030;
+    const reference = ref(db, `posts/${clearID}/posts`)
+    set(reference, [{ id: 1, body: "421dsadsa" }]);
+  };
+  postsRe(1033);
   return <div>Test</div>;
 };

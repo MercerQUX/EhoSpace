@@ -1,12 +1,8 @@
+import { fetchPostsDB, uploadPostsDB } from "./../../services/DB/PostsDB";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchSingleProfile } from "../../services/DB/FetchProfile";
 import { rewriteProfile } from "../../services/DB/RewriteProfile";
-export interface IThunkUpdateProfile {
-  selectUserID: number;
-  loggedID: number;
-  isAuth: boolean;
-}
 export interface IThunkRewriteProfile {
   id: number;
   updateProfile: ICommonProfile;
@@ -14,12 +10,9 @@ export interface IThunkRewriteProfile {
 
 export const updateAuthProfile = createAsyncThunk(
   "profile/updateAuthProfile",
-  async (payload: IThunkUpdateProfile, thunkAPI) => {
+  async (payload: number, thunkAPI) => {
     try {
-      const { selectUserID, loggedID, isAuth } = payload;
-      let selectedUser =
-        isNaN(selectUserID) && isAuth ? loggedID : selectUserID;
-      const response = await fetchSingleProfile(selectedUser);
+      const response = await fetchSingleProfile(payload);
       return Object.values(response)[0];
     } catch (e) {
       return thunkAPI.rejectWithValue("User not found");
@@ -39,5 +32,32 @@ export const sendRewriteProfile = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }
+  }
+);
+
+export const fetchPosts = createAsyncThunk(
+  "profile/fetchPost",
+  async (payload: number, thunkAPI) => {
+    return await fetchPostsDB(payload);
+  }
+);
+
+export const uploadPosts = createAsyncThunk(
+  "profile/uploadPost",
+  async (payload: string, thunkAPI: { getState: any }) => {
+    let newPost = {
+      id: thunkAPI.getState().profileReducer.posts.length + 1,
+      body: payload,
+      timestamp: "00:00:00 01/01/22",
+    };
+    let concatPosts = [...thunkAPI.getState().profileReducer.posts, newPost];
+    await uploadPostsDB({
+      id: thunkAPI.getState().authReducer.id,
+      newPost: concatPosts,
+    });
+
+    try {
+      return concatPosts;
+    } catch (error) {}
   }
 );
