@@ -1,14 +1,14 @@
-import style from "../../main.module.css";
-import styleD from "./dialogs.module.css";
+import styleM from "../../main.module.css";
+import style from "./dialogs.module.css";
 import cn from "classnames";
-import { WindowDialog } from "./DialogsWindow/WindowDialog";
-import { Messages } from "./Messages/Message";
+import { DialogsBlock } from "./DialogsWindow/DialogsBlock";
+import { MessageBlock } from "./MessagesWindow/MessageBlock";
 
 const Dialogs = () => {
   return (
-    <div className={cn(style.profile, styleD.wrapperDialog)}>
-      <WindowDialog />
-      <Messages />
+    <div className={cn(styleM.profile, style.wrapperDialog)}>
+      <DialogsBlock />
+      <MessageBlock />
     </div>
   );
 };

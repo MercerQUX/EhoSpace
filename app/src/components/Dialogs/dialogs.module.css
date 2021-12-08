@@ -1,54 +1,124 @@
 .wrapperDialog {
   display: flex;
   justify-content: space-around;
+  min-width: 60rem;
+  max-width: 100%;
+  min-height: 110%;
 }
 
-.wrapperDialogWindow {
-  padding: 20px;
+.wrapperContactsDialogs {
+  width: 35%;
+  display: flex;
+  display: grid;
+  max-height: 600px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 80% 10%;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "headerDialogs"
+    "usersDialogs"
+    "footerDialogs";
 }
 
-.wrapperDialogWindow .dialogsWindowItem {
-  padding: 5px 0px;
-  cursor: pointer;
-  font-size: 1.2rem;
+.wrapperContactsMessage {
+  width: 65%;
+  display: flex;
+  max-height: 600px;
+  background-color: aqua;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.headerDialogs {
+  grid-area: headerDialogs;
+  background-color: blue;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.headerDialogs span {
+  font-size: 1.9rem;
+  padding-left: 15px;
   font-weight: bold;
-}
-.dialogsWindowItem a {
-  text-decoration: none;
-  color: #dcdced;
+  color: beige;
 }
 
-.wrapperMessages {
-  background-color: burlywood;
-  padding: 20px;
-  width: 400px;
+.usersDialogs {
+  grid-area: usersDialogs;
+  background-color: blueviolet;
+  overflow-y:scroll;
 }
 
-.messagesItem {
-  padding: 5px 0px;
-  font-size: 1.15rem;
+.footerDialogs {
+  grid-area: footerDialogs;
+  background-color: rgb(143, 143, 212);
+  width: 100%;
 }
 
-.userItemActive {
-  color: cadetblue;
+.headerMessage {
+  height: 10%;
+  border-radius: 0px 0px 20px 20px;
+  background-color: rgb(27, 147, 202);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.headerMessage span {
+  padding: 10px 0px 10px 0px;
+}
+.fullNameDialog {
+  font-size: 1.2rem;
+}
+.statusChat {
+  font-size: 0.9rem;
 }
 
-.messageTextArea {
-  margin-top: 20px;
+.userMessage {
+  height: 70%;
+  background-color: rgb(200, 153, 245);
+}
+.footerMessage {
+  height: 20%;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(27, 147, 202);
+  width: 100%;
 }
 
-.messageTextArea textarea {
-  resize: none;
+.showDialogs_btn {
+  background-color: brown;
+  width: 20%;
+  height: 100%;
+}
+
+.wrapperSingleDialog {
   width: 100%;
   height: 50px;
-  background-color: rgb(82, 202, 35);
+  background-color: rgb(221, 27, 27);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
-.messageTextArea button {
-  float: right;
-  width: 100px;
-  height: 40px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  background-color: rgb(185, 122, 40);
+
+.infoDialog{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
 }
-  
+.infoName{
+  font-size: 1.2rem;
+}
+.infoStatus{
+  font-size: 0.8rem;
+  padding-left: 5px;
+}
+.avatar{
+  width: 50px;
+  height: 50px;
+  background-color: burlywood;
+  margin-right: 10px;
+}
