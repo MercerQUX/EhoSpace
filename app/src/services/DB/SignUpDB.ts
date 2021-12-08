@@ -5,15 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
-
-interface ISignUp {
-  name: string;
-  surname: string;
-  country: string;
-  email: string;
-  login: string;
-  password: string;
-}
+import { ISignUp } from "../../models/ISigns";
 
 export const handleRegisterDB = async ({
   name,

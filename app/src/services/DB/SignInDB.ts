@@ -1,10 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { get, getDatabase, onValue, query, ref } from "firebase/database";
-
-interface ISignIn {
-  email_login: string;
-  password: string;
-}
+import { ISignIn } from "../../models/ISigns";
 
 export const handleLoginDB = async ({ email_login, password }: ISignIn) => {
   const pureEmail = await remakeEmailInLogin(email_login);

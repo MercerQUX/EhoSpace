@@ -2,6 +2,7 @@ import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getSingleUserAPI } from "../../APIs/profile-API";
 import { rewriteUserAPI } from "../../APIs/user-API";
+import { fetchSingleProfile } from "../../services/DB/FetchProfile";
 export interface IThunkUpdateProfile {
   selectUserID: number;
   loggedID: number;
@@ -17,13 +18,12 @@ export const updateAuthProfile = createAsyncThunk(
   async (payload: IThunkUpdateProfile, thunkAPI) => {
     try {
       const { selectUserID, loggedID, isAuth } = payload;
-
       let selectedUser =
         isNaN(selectUserID) && isAuth ? loggedID : selectUserID;
-      let response = await getSingleUserAPI(selectedUser);
-      return response;
+      const response = await fetchSingleProfile(selectedUser);
+      return Object.values(response)[0];
     } catch (e) {
-      return thunkAPI.rejectWithValue("Server rejected");
+      return thunkAPI.rejectWithValue("User not found");
     }
   }
 );

@@ -3,19 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { handleLoginDB } from "../../services/DB/SignInDB";
 import { handleRegisterDB } from "../../services/DB/SignUpDB";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-interface ISignIn {
-  email_login: string;
-  password: string;
-}
-
-interface ISignUp {
-  name: string;
-  surname: string;
-  country: string;
-  email: string;
-  login: string;
-  password: string;
-}
+import { ISignIn, ISignUp } from "../../models/ISigns";
 
 export const signInProfile = createAsyncThunk(
   "auth/signIn",
