@@ -43,13 +43,19 @@ export const Test: React.FC = ({}) => {
       updateProfile(res.user, { displayName: "MitchellRob" });
     });
   };
-  const rdbGet = async () => {
+  const rdbGet = async (id: number) => {
     const db = getDatabase();
-    const ss = query(ref(db, "users"), limitToFirst(4));
-    onValue(ss, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data, "first");
-    });
+    const fetchProfile = query(
+      ref(db, "users"),
+      orderByChild(`id`),
+      equalTo(1031)
+    );
+    const profile = get(fetchProfile).then((res) => res.exportVal()[1]);
+    if (profile === null) {
+      return new Error("User not found");
+    } else {
+      return profile;
+    }
   };
   const getUsers = async ({ limit, startFrom }: any) => {
     const openDB = getDatabase();
@@ -63,6 +69,16 @@ export const Test: React.FC = ({}) => {
       return res.exportVal();
     });
     return array;
+  };
+  const fetchSingleProfile = async (ids: number) => {
+    const db = getDatabase();
+    const fetchProfile = query(ref(db, "users"), orderByChild(`id`), equalTo(ids));
+    const profile = await (await get(fetchProfile)).exportVal()
+    if (profile === null) {
+      return new Error("User not found");
+    } else {
+      return profile;
+    }
   };
   return <div>Test</div>;
 };

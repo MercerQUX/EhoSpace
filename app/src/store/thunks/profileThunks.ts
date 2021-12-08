@@ -1,8 +1,7 @@
 import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getSingleUserAPI } from "../../APIs/profile-API";
-import { rewriteUserAPI } from "../../APIs/user-API";
 import { fetchSingleProfile } from "../../services/DB/FetchProfile";
+import { rewriteProfile } from "../../services/DB/RewriteProfile";
 export interface IThunkUpdateProfile {
   selectUserID: number;
   loggedID: number;
@@ -30,10 +29,13 @@ export const updateAuthProfile = createAsyncThunk(
 
 export const sendRewriteProfile = createAsyncThunk(
   "profile/rewriteProfile",
-  async (payload: IThunkRewriteProfile, thunkAPI) => {
+  async (
+    payload: IThunkRewriteProfile,
+    thunkAPI: { getState: any; rejectWithValue: any }
+  ) => {
     const { id, updateProfile } = payload;
     try {
-      await rewriteUserAPI(id, updateProfile);
+      await rewriteProfile(id, updateProfile);
     } catch (e) {
       return thunkAPI.rejectWithValue("Server rejected");
     }

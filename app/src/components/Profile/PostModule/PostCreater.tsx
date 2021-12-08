@@ -41,3 +41,96 @@ export const PostCreater: React.FC = () => {
     </div>
   );
 };
+
+const Posts = [
+  {
+    userID:1030,
+    posts:[
+      {
+        id:1,
+        body:"Testing Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1031,
+    posts:[
+      {
+        id:1,
+        body:"Lance Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1032,
+    posts:[
+      {
+        id:1,
+        body:"Mitchel Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1033,
+    posts:[
+      {
+        id:1,
+        body:"Denis Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1034,
+    posts:[
+      {
+        id:1,
+        body:"Paul Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1035,
+    posts:[
+      {
+        id:1,
+        body:"Jesse Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1036,
+    posts:[
+      {
+        id:1,
+        body:"Seth Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1037,
+    posts:[
+      {
+        id:1,
+        body:"Melissa Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+  {
+    userID:1038,
+    posts:[
+      {
+        id:1,
+        body:"Violet Post",
+        timestamp:"00:00:00 01/01/22"
+      },
+    ]
+  },
+]
