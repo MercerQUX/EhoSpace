@@ -4,7 +4,7 @@ import { NavLink, Navigate } from "react-router-dom";
 
 const Saidbar = () => {
   const [isRedirect, setRedirect] = useState(false);
-  useEffect(() => setRedirect(false));
+  useEffect(() => setRedirect(false),[isRedirect]);
   return (
     <div className={style.saidbar}>
       <ul>
@@ -12,29 +12,41 @@ const Saidbar = () => {
           <NavLink
             onClick={() => setRedirect(true)}
             to="/profile"
-            activeClassName={style.activeLink}
+            className={({ isActive }) => (isActive ? style.activeLink : "")}
           >
             Profile
             {isRedirect && <Navigate to="/login" />}
           </NavLink>
         </li>
         <li>
-          <NavLink to="/dialogs" activeClassName={style.activeLink}>
+          <NavLink
+            to="/dialogs"
+            className={({ isActive }) => (isActive ? style.activeLink : "")}
+          >
             Message
           </NavLink>
         </li>
         <li>
-          <NavLink to="/users" activeClassName={style.activeLink}>
+          <NavLink
+            to="/users"
+            className={({ isActive }) => (isActive ? style.activeLink : "")}
+          >
             Users
           </NavLink>
         </li>
         <li>
-          <NavLink to="/news" activeClassName={style.activeLink}>
+          <NavLink
+            to="/news"
+            className={({ isActive }) => (isActive ? style.activeLink : "")}
+          >
             News
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" activeClassName={style.activeLink}>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? style.activeLink : "")}
+          >
             Contacts
           </NavLink>
         </li>

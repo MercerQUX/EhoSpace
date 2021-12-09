@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 import {
   getAuthID,
@@ -19,18 +19,21 @@ export const ProfileContainer: React.FC<any> = () => {
     auth: useAppSelector(isAuthInitialization),
   };
   const { changeStatus, rewriteProfile } = profileAction;
-  const dispatch = useAppDispatch();
+  let dispatch = useAppDispatch();
   const sendNewProfile = sendRewriteProfile;
   const [isLoading, setIsLoading] = useState(true);
-  const paramsSelectedUserID = useParams().userID;
+  let paramsSelectedUserID = useParams().userID;
+  const initProfile = useCallback(() => {
+    initlizationProfile(paramsSelectedUserID, idLoggedUser, auth, dispatch);
+  }, [paramsSelectedUserID, idLoggedUser, auth, dispatch]);
 
   useEffect(() => {
-    initlizationProfile(paramsSelectedUserID, idLoggedUser, auth, dispatch);
+    initProfile();
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 400);
     return () => clearTimeout(timer);
-  }, []);
+  }, [initProfile]);
 
   return (
     <div>

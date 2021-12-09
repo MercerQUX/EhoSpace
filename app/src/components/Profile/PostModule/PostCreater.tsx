@@ -23,6 +23,7 @@ export const PostCreater: React.FC = () => {
       return posts.map((item) => {
         return (
           <Post
+            key={item.id}
             name={profile.name}
             surname={profile.surname}
             img={profile.avatar}

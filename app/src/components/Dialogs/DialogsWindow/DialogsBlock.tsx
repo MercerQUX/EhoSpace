@@ -7,11 +7,11 @@ export const DialogsBlock:React.FC<{}> = ({}) => {
         <span>Dialogs</span>
         <div className={style.showDialogs_btn}></div>
       </div>
-      <div className={style.usersDialogs}>
+      {/* <div className={style.usersDialogs}>
         {[1,2,3,5,5,5,5,5].map((u)=>{
           return <SingleDialog/>
         })}
-      </div>
+      </div> */}
       <div className={style.footerDialogs}></div>
     </div>
   );

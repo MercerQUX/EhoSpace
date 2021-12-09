@@ -8,7 +8,7 @@ type defaultProps = {};
 
 export const Messages: React.FC<defaultProps> = ({}) => {
   const message = useAppSelector(dialogsMessages);
-  let mapMessages = message.map((item) => <SingleMessage body={item.body} />);
+  let mapMessages = message.map((item) => <SingleMessage key={item.id} body={item.body} />);
 
   return (
     <div className={style.wrapperMessages}>

@@ -2,11 +2,8 @@ import { Field, Form, Formik } from "formik";
 import style from "../forms.module.css";
 import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
-import { handleRegisterDB } from "../../services/DB/SignUpDB";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { signInProfile, signUpProfile } from "../../store/thunks/authThunks";
-
-interface IDefaultProps {}
 
 interface IPropertyValues<T> {
   login?: T;
@@ -22,7 +19,7 @@ interface IFieldProps {
   touched: IPropertyValues<boolean>;
 }
 
-export const FormRigister = ({}: IDefaultProps) => {
+export const FormRigister = () => {
   const startValue = {
     login: "",
     email: "",
@@ -68,6 +65,7 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         type="text"
         placeholder="Your Login"
         name="login"
+        autoComplete="off"
         className={cn(
           style.input,
           touched.login && errors.login ? style.input__error : null
@@ -113,6 +111,7 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         type="password"
         placeholder="Password"
         name="password"
+        autoComplete="off"
         className={cn(
           style.input,
           touched.password && errors.password ? style.input__error : null

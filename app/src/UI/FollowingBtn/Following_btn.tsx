@@ -1,6 +1,6 @@
 import style from "../../components/User/users.module.css";
 import cn from "classnames";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
+import { useAppDispatch } from "../../hooks/redux-use";
 import { setFollowed } from "../../store/thunks/usersThunks";
 
 interface defaultProps {

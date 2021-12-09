@@ -2,7 +2,6 @@ import { Field, Form, Formik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import {
   getAuthError,
-  isAuthInitialization,
 } from "../../store/reselectors/auth-selector";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../../services/validation/validators";
@@ -57,11 +56,13 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
         name="login"
         placeholder="Login or email"
         className={style.input}
+        autoComplete="on"
       />
       <Field
         type="password"
         name="password"
         placeholder="Password"
+        autoComplete="off"
         className={style.input}
       />
       <a href="#" className={style.link}>

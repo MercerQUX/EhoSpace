@@ -1,6 +1,6 @@
 import style from "../../main.module.css";
 import styleU from "./users.module.css";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import { isAuthInitialization } from "../../store/reselectors/auth-selector";
 import {
@@ -24,11 +24,11 @@ const UsersPage: React.FC = () => {
     isAuth: useAppSelector(isAuthInitialization),
   };
   const dispatch = useAppDispatch();
-  const getUsersParts = () => dispatch(getPartUsers());
+  const getUsersParts = useCallback(() => dispatch(getPartUsers()), [dispatch]);
 
   useEffect(() => {
     getUsersParts();
-  }, []);
+  }, [getUsersParts]);
 
   let mapUsers = users.map((user) => (
     <User
