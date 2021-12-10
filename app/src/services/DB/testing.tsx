@@ -1,10 +1,10 @@
 import {
   getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   updateProfile,
   onAuthStateChanged,
   signOut,
+  createUserWithEmailAndPassword,
+  Auth,
 } from "firebase/auth";
 import {
   addDoc,
@@ -29,8 +29,7 @@ import {
   startAfter,
   set,
 } from "firebase/database";
-import { userInfo } from "os";
-import { handleLoginDB } from "./SignInDB";
+
 
 export const Test: React.FC = ({}) => {
   const auth = getAuth();
@@ -60,13 +59,13 @@ export const Test: React.FC = ({}) => {
   };
   const getUsers = async ({ limit, startFrom }: any) => {
     const openDB = getDatabase();
-    const ss = query(
+    const followUser = query(
       ref(openDB, "users"),
       orderByKey(),
       limitToFirst(limit),
       startAfter(String(startFrom))
     );
-    let array = await get(ss).then((res) => {
+    let array = await get(followUser).then((res) => {
       return res.exportVal();
     });
     return array;
@@ -85,23 +84,30 @@ export const Test: React.FC = ({}) => {
       return profile;
     }
   };
-  const posts = async () => {
+  const fetchShortProfile = async (array: number[]) => {
     const db = getDatabase();
-    const fetchPosts = query(
-      ref(db, "posts"),
-      orderByChild(`userID`),
-      equalTo(1034)
-    );
-    const post = await (await get(fetchPosts)).exportVal();
-    let res: any = Object.values(post)[0];
-    return res.posts;
+    const fetchProfile = query(ref(db, "users"));
+    const profiles = await (await get(fetchProfile)).exportVal();
+    const allUsers = Object.values(profiles);
+    const sortUsers = array.map((u: any) => {
+      const followUser: any = allUsers.filter((i: any) => {
+        return i.id === u;
+      })[0];
+      const shortUser = {
+        avatar: followUser.avatar,
+        name: followUser.name,
+        surname: followUser.surname,
+        nickname: followUser.nickname,
+      };
+      return shortUser;
+    });
+    return sortUsers;
   };
-  const postsRe = async (id:number) => {
+  const postsRe = async (id: number) => {
     const db = getDatabase();
-    const clearID = id-1030;
-    const reference = ref(db, `posts/${clearID}/posts`)
+    const clearID = id - 1030;
+    const reference = ref(db, `posts/${clearID}/posts`);
     set(reference, [{ id: 1, body: "421dsadsa" }]);
   };
-  postsRe(1033);
   return <div>Test</div>;
 };

@@ -31,6 +31,7 @@ function App() {
           {useRedirect(isAuth, <Profile />, "/profile", "/login")}
           <Route path="/profile/:userID" element={<Profile />} />
           {useRedirect(isAuth, <Dialogs />, "/dialogs", "/login")}
+          <Route path="/dialogs/:userID" element={<Dialogs />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />

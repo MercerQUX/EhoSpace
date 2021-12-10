@@ -1,33 +1,33 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchArrayFollowUsers } from "../thunks/dialogsThunks";
 
 type dialogsUsersType = {
-  id:number,
-  name:string
-}
+  id: number;
+  name: string;
+  avatar: string;
+  surname: string;
+  nickname: string;
+};
 type dialogsMessagesType = {
-  id:number,
-  body:string,
-  other:boolean
-}
+  id: number;
+  body: string;
+  other: boolean;
+};
 
 type initialStateType = {
   dialogsUsers: Array<dialogsUsersType>;
   dialogsMessages: Array<dialogsMessagesType>;
+  isLoading: boolean;
 };
 
 const initialState: initialStateType = {
-  dialogsUsers: [
-    { id: 1, name: "Lux" },
-    { id: 2, name: "Lili" },
-    { id: 3, name: "Frank" },
-    { id: 4, name: "Mazer" },
-    { id: 5, name: "Vincent" },
-  ],
+  dialogsUsers: [],
   dialogsMessages: [
     { id: 1, body: "Hello", other: false },
     { id: 2, body: "How are you?", other: false },
     { id: 3, body: "I'm fine", other: false },
   ],
+  isLoading: false,
 };
 
 const dialogsSlice = createSlice({
@@ -43,6 +43,21 @@ const dialogsSlice = createSlice({
           other: false,
         },
       ];
+    },
+  },
+  extraReducers: {
+    [fetchArrayFollowUsers.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchArrayFollowUsers.fulfilled.type]: (
+      state,
+      action: PayloadAction<dialogsUsersType[]>
+    ) => {
+      state.isLoading = false;
+      state.dialogsUsers = action.payload;
+    },
+    [fetchArrayFollowUsers.rejected.type]: (state) => {
+      state.isLoading = false;
     },
   },
 });

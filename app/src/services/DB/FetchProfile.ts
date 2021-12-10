@@ -17,3 +17,24 @@ export const fetchSingleProfile = async (id: number) => {
     return profile;
   }
 };
+
+export const fetchShortProfile = async (array: number[]) => {
+  const db = getDatabase();
+  const fetchProfile = query(ref(db, "users"));
+  const profiles = await (await get(fetchProfile)).exportVal();
+  const allUsers = Object.values(profiles);
+  const sortUsers = array.map((u: any) => {
+    const followUser: any = allUsers.filter((i: any) => {
+      return i.id === u;
+    })[0];
+    const shortUser = {
+      id:followUser.id,
+      avatar: followUser.avatar,
+      name: followUser.name,
+      surname: followUser.surname,
+      nickname: followUser.nickname,
+    };
+    return shortUser;
+  });
+  return sortUsers;
+};
