@@ -8,6 +8,10 @@ export const getActualStatus = (state: RootState) => {
   return state.profileReducer.actualStatus;
 };
 
+export const getIsOwnerProfile = (state:RootState)=>{
+  return state.profileReducer.isOwner;
+}
+
 export const isFetchingProfile = (state: RootState) => {
   return state.profileReducer.isFetching;
 };

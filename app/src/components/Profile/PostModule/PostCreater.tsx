@@ -1,6 +1,7 @@
 import { useAppSelector } from "../../../hooks/redux-use";
 import { profileAction } from "../../../store/reducers/profileSlice";
 import {
+  getIsOwnerProfile,
   getPosts,
   getProfile,
 } from "../../../store/reselectors/profile-selector";
@@ -9,16 +10,24 @@ import style from "../profile.module.css";
 import { Post } from "./Post";
 
 export const PostCreater: React.FC = () => {
-  const { posts, profile } = {
+  const { posts, profile, isOwnerProfile } = {
     posts: useAppSelector(getPosts),
     profile: useAppSelector(getProfile),
+    isOwnerProfile: useAppSelector(getIsOwnerProfile),
   };
   const addPost = profileAction.addPost;
   let map = () => {
     if (profile === null) {
       return <h2 className={style.loading}>Loading...</h2>;
-    } else if (posts.length === 0) {
-      return <h2>У вас нет ни одного поста!</h2>;
+    } else if (posts.length === 0 && !isOwnerProfile) {
+      return <h2>This user has no posts yet.</h2>;
+    } else if (posts.length === 0 && isOwnerProfile) {
+      return (
+        <h2>
+          You don't have any posts yet, leave your post so that others know more
+          about you!
+        </h2>
+      );
     } else {
       return posts.map((item) => {
         return (
@@ -36,10 +45,16 @@ export const PostCreater: React.FC = () => {
 
   return (
     <div className={style.wrapperCreaterPost}>
-      <div>
-        <h2>My Post</h2>
-        <FormCreatePost addPost={addPost} />
-      </div>
+      {isOwnerProfile ? (
+        <div>
+          <h2>My Post</h2>
+          <FormCreatePost addPost={addPost} />
+        </div>
+      ) : (
+        <div>
+          <h2>{profile?.name + `'`} Posts</h2>
+        </div>
+      )}
       {<div className={style.posts}>{map()}</div>}
     </div>
   );

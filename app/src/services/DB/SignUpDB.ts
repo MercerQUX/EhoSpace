@@ -4,8 +4,9 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { get, getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import { ISignUp } from "../../models/ISigns";
+import { getSizeProfilesDB } from "./TotalUsersDB";
 
 export const handleRegisterDB = async ({
   name,
@@ -33,13 +34,7 @@ const createNewUserDB = async ({
   login,
 }: ISignUp) => {
   const openDB = getDatabase();
-  let getTotalUsers = await get(ref(openDB, `totalUsers`))
-    .then((res) => {
-      return res.val();
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  let getTotalUsers = await getSizeProfilesDB();
   const newUserDB: ICommonProfile = {
     name: name,
     surname: surname,
@@ -50,12 +45,10 @@ const createNewUserDB = async ({
     avatar: "",
     status: "",
   };
-  await set(ref(openDB, "users/" + getTotalUsers), newUserDB).then(() =>
-    set(ref(openDB, "totalUsers"), ++getTotalUsers)
-  );
+  console.log(newUserDB);
+  await set(ref(openDB, "users/" + getTotalUsers), newUserDB);
   await set(ref(openDB, "innerData/" + login), {
     email: email,
-    posts: [0],
     following: [1030],
     id: newUserDB.id,
   });

@@ -39,7 +39,9 @@ export const User: React.FC<defaultProps> = ({
       </div>
       <div className={style.rightContent}>
         <strong className={style.dataCountry}>{data.country}</strong>
-        <strong className={style.dataCity}>{data.city}</strong>
+        <strong className={style.dataCity}>
+          {data.city === "Not indicated" ? null : data.city}
+        </strong>
         <FollowingButton
           isAuth={isAuth}
           isFollowed={isFollowed}

@@ -9,6 +9,7 @@ import {
   getIsFollowingDisabled,
   getUsers,
   getFollowingID,
+  getFiltredUsers,
 } from "../../store/reselectors/users-selector";
 import { getPartUsers } from "../../store/thunks/usersThunks";
 import { Preloader } from "../../asset/common/Preloader";
@@ -16,7 +17,7 @@ import { User } from "./User";
 
 const UsersPage: React.FC = () => {
   const { users, isFetching, isEmpty, isFollowingDisabled, friends, isAuth } = {
-    users: useAppSelector(getUsers),
+    users: useAppSelector(getFiltredUsers),
     isFetching: useAppSelector(getIsFetching),
     isEmpty: useAppSelector(getIsEmpty),
     isFollowingDisabled: useAppSelector(getIsFollowingDisabled),
@@ -40,7 +41,6 @@ const UsersPage: React.FC = () => {
       isAuth={isAuth}
     />
   ));
-
   return (
     <div className={style.profile}>
       {isFetching && !isEmpty ? <Preloader /> : <div>{mapUsers}</div>}

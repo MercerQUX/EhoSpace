@@ -22,10 +22,7 @@ export const updateAuthProfile = createAsyncThunk(
 
 export const sendRewriteProfile = createAsyncThunk(
   "profile/rewriteProfile",
-  async (
-    payload: IThunkRewriteProfile,
-    thunkAPI: { getState: any; rejectWithValue: any }
-  ) => {
+  async (payload: IThunkRewriteProfile, thunkAPI) => {
     const { id, updateProfile } = payload;
     try {
       await rewriteProfile(id, updateProfile);

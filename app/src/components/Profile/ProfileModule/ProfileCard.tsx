@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ICommonProfile } from "../../../models/ICommonProfile";
 import { IThunkRewriteProfile } from "../../../store/thunks/profileThunks";
 import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
@@ -7,7 +7,7 @@ import style from "../profile.module.css";
 
 interface defaultProps {
   profile: ICommonProfile;
-  selectUserID: number;
+  isOwnerProfile: boolean;
   changeStatus: (text: string) => void;
   sendNewProfile: ({ id, updateProfile }: IThunkRewriteProfile) => void;
   rewriteProfile: (data: ICommonProfile) => void;
@@ -15,12 +15,11 @@ interface defaultProps {
 
 export const ProfileCard: React.FC<defaultProps> = ({
   profile,
-  selectUserID,
+  isOwnerProfile,
   changeStatus,
   sendNewProfile,
   rewriteProfile,
 }) => {
-  const isOwnerProfile = selectUserID === profile.id;
   const [isEditStatus, setIsEditStatus] = useState(true);
   const [isEditProfile, setIsEditProfile] = useState(false);
   return (
@@ -89,3 +88,6 @@ export const ProfileCard: React.FC<defaultProps> = ({
     </div>
   );
 };
+function defineOwnerProfile(selectUserID: number) {
+  throw new Error("Function not implemented.");
+}

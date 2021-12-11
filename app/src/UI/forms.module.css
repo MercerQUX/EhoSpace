@@ -359,4 +359,8 @@
     z-index: 5;
   }
 }
+.input__correctly{
+  box-shadow: 0px 0px 25px #987eff, inset 0px 0px 25px #149514;
+  transition: box-shadow 1 easy;
+}
 /* FormAuth Style End */

@@ -1,7 +1,6 @@
 import { IDataAuth } from "../../models/IDataAuth";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
-  initializeAuthProfile,
   signInProfile,
   signOutProfile,
   signUpProfile,

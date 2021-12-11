@@ -1,11 +1,10 @@
 import { Field, Form, Formik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
-import {
-  getAuthError,
-} from "../../store/reselectors/auth-selector";
+import { getAuthError } from "../../store/reselectors/auth-selector";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../../services/validation/validators";
 import { signInProfile } from "../../store/thunks/authThunks";
+import cn from "classnames";
 
 interface IPropertyValues<T> {
   login?: T;
@@ -55,7 +54,10 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
         type="text"
         name="login"
         placeholder="Login or email"
-        className={style.input}
+        className={cn(
+          style.input,
+          touched.login && !errors.login ? style.input__correctly : null
+        )}
         autoComplete="on"
       />
       <Field
@@ -63,7 +65,10 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
         name="password"
         placeholder="Password"
         autoComplete="off"
-        className={style.input}
+        className={cn(
+          style.input,
+          touched.password && !errors.password ? style.input__correctly : null
+        )}
       />
       <a href="#" className={style.link}>
         Forgot your password?

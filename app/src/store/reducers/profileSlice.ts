@@ -13,6 +13,7 @@ interface initialStateProfileType {
   profile: ICommonProfile | null;
   actualStatus: string;
   isFetching: boolean;
+  isOwner: boolean;
 }
 
 let initialState: initialStateProfileType = {
@@ -20,6 +21,7 @@ let initialState: initialStateProfileType = {
   profile: null,
   actualStatus: "",
   isFetching: false,
+  isOwner: false,
 };
 
 const profileSlice = createSlice({
@@ -35,6 +37,9 @@ const profileSlice = createSlice({
           timestamp: "",
         },
       ];
+    },
+    defineOwnerProfile(state, action: PayloadAction<number>) {
+      state.isOwner = action.payload === state.profile?.id;
     },
     changeStatus(state, action: PayloadAction<string>) {
       //@ts-ignore

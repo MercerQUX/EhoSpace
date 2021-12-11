@@ -1,12 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import { dialogsUsers } from "../../../store/reselectors/dialogs-selector";
 import { getFollowingID } from "../../../store/reselectors/users-selector";
 import { fetchArrayFollowUsers } from "../../../store/thunks/dialogsThunks";
 import style from "../dialogs.module.css";
 import { SingleDialog } from "./SingleDialog";
+
 export const DialogsBlock: React.FC<{}> = ({}) => {
+  const dispatch = useAppDispatch();
   const followedUsers = useAppSelector(dialogsUsers);
+  const friends = useAppSelector(getFollowingID);
+  useEffect(() => {
+    dispatch(fetchArrayFollowUsers(friends))
+    console.log("useEffect");
+  }, [friends]);
   let mapDialogsUser = followedUsers.map((u) => {
     return (
       <SingleDialog

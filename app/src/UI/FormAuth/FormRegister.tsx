@@ -4,6 +4,10 @@ import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { signInProfile, signUpProfile } from "../../store/thunks/authThunks";
+import {
+  validateEmailDB,
+  validateLoginDB,
+} from "../../services/DB/validRegisterDB";
 
 interface IPropertyValues<T> {
   login?: T;
@@ -33,13 +37,15 @@ export const FormRigister = () => {
     <Formik
       initialValues={startValue}
       onSubmit={async (values) => {
-        await dispatch(signUpProfile({ ...values }));
-        dispatch(
-          signInProfile({
-            email_login: values.email,
-            password: values.password,
-          })
-        );
+        const requestSignUp = await dispatch(signUpProfile({ ...values }));
+        if (requestSignUp.meta.requestStatus === "fulfilled") {
+          await dispatch(
+            signInProfile({
+              email_login: values.email,
+              password: values.password,
+            })
+          );
+        }
       }}
       validationSchema={ValidRegisterFormSchema}
     >
@@ -59,16 +65,16 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
     (touched.country ? errors.country : null) ||
     (touched.password ? errors.password : null);
   return (
-    <Form action="##" className={style.form} id="SignUp">
+    <Form autoComplete="off" action="##" className={style.form} id="SignUp">
       <h2 className={style.form__title}>Sign Up</h2>
       <Field
         type="text"
         placeholder="Your Login"
         name="login"
-        autoComplete="off"
         className={cn(
           style.input,
-          touched.login && errors.login ? style.input__error : null
+          touched.login && errors.login ? style.input__error : null,
+          touched.login && !errors.login ? style.input__correctly : null
         )}
       />
       <Field
@@ -77,7 +83,8 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         name="email"
         className={cn(
           style.input,
-          touched.email && errors.email ? style.input__error : null
+          touched.email && errors.email ? style.input__error : null,
+          touched.email && !errors.email ? style.input__correctly : null
         )}
       />
       <Field
@@ -86,7 +93,8 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         name="name"
         className={cn(
           style.input,
-          touched.name && errors.name ? style.input__error : null
+          touched.name && errors.name ? style.input__error : null,
+          touched.name && !errors.name ? style.input__correctly : null
         )}
       />
       <Field
@@ -95,7 +103,8 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         name="surname"
         className={cn(
           style.input,
-          touched.surname && errors.surname ? style.input__error : null
+          touched.surname && errors.surname ? style.input__error : null,
+          touched.surname && !errors.surname ? style.input__correctly : null
         )}
       />
       <Field
@@ -104,7 +113,8 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         name="country"
         className={cn(
           style.input,
-          touched.country && errors.country ? style.input__error : null
+          touched.country && errors.country ? style.input__error : null,
+          touched.country && !errors.country ? style.input__correctly : null
         )}
       />
       <Field
@@ -114,7 +124,8 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         autoComplete="off"
         className={cn(
           style.input,
-          touched.password && errors.password ? style.input__error : null
+          touched.password && errors.password ? style.input__error : null,
+          touched.password && !errors.password ? style.input__correctly : null
         )}
       />
       <span className={style.error}>{alternateСallErrors}</span>

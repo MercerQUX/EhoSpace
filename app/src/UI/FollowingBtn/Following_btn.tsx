@@ -22,11 +22,11 @@ export const FollowingButton: React.FC<defaultProps> = ({
     <div>
       {isAuth ? (
         <button
-          className={cn(isFollowed ? style.follow : style.unfollow)}
+          className={cn(isFollowed ? style.unfollow : style.follow)}
           onClick={() => setFollow(idUser, isFollowed)}
           disabled={isFollowingDisabled}
         >
-          {isFollowed ? "Follow" : "Unfollow"}
+          {isFollowed ? "Unfollow" : "Follow"}
         </button>
       ) : (
         <div></div>

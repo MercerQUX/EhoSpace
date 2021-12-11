@@ -1,18 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { dialogsUsersType, dialogsMessagesType } from "../../models/IDialogs";
 import { fetchArrayFollowUsers } from "../thunks/dialogsThunks";
-
-type dialogsUsersType = {
-  id: number;
-  name: string;
-  avatar: string;
-  surname: string;
-  nickname: string;
-};
-type dialogsMessagesType = {
-  id: number;
-  body: string;
-  other: boolean;
-};
 
 type initialStateType = {
   dialogsUsers: Array<dialogsUsersType>;

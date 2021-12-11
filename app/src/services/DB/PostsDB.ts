@@ -25,6 +25,8 @@ export const fetchPostsDB = async (id: number) => {
 export const uploadPostsDB = async ({ id, newPost }: uploadPostsType) => {
   const db = getDatabase();
   const clearID = id - 1030;
-  const reference = ref(db, `posts/${clearID}/posts`);
-  set(reference, newPost);
+  const referenceFirst = ref(db, `posts/${clearID}/userID`);
+  await set(referenceFirst,id);
+  const referenceSecond = ref(db, `posts/${clearID}/posts`);
+  await set(referenceSecond, newPost);
 };

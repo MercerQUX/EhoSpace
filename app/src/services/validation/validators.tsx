@@ -33,7 +33,11 @@ export const ValidLoginFormSchema = Yup.object().shape({
 export const ValidRegisterFormSchema = Yup.object().shape({
   email: Yup.string()
     .required("Warning: Field Email must not be empty")
-    .email("Warning: Field Email must be a valid email"),
+    .email("Warning: Field Email must be a valid email")
+    .matches(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})/,
+      "Warning: Please use only latin characters and numbers"
+    ),
   login: Yup.string()
     .required("Warning: Field Login must not be empty")
     .matches(
@@ -84,8 +88,10 @@ export const ValidEditProfileSchema = Yup.object().shape({
     25,
     "Warning: Nickname more than 25 characters"
   ),
-  profileStatus: Yup.string()
-    .max(150, "Warning: Surname more than 150 characters"),
+  profileStatus: Yup.string().max(
+    150,
+    "Warning: Surname more than 150 characters"
+  ),
   profileCountry: Yup.string()
     .required("Warning: Field Country is empty")
     .max(35, "Warning: Field Country more than 35 characters"),

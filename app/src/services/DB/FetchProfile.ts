@@ -28,7 +28,7 @@ export const fetchShortProfile = async (array: number[]) => {
       return i.id === u;
     })[0];
     const shortUser = {
-      id:followUser.id,
+      id: followUser.id,
       avatar: followUser.avatar,
       name: followUser.name,
       surname: followUser.surname,

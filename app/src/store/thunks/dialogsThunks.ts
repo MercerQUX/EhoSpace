@@ -3,8 +3,8 @@ import { fetchShortProfile } from "../../services/DB/FetchProfile";
 
 export const fetchArrayFollowUsers = createAsyncThunk(
   "dialogs/FetchArray",
-  async (payload: number[], thunkAPU: { getState: any }) => {
-    const ss = await fetchShortProfile(payload);
-    return ss;
+  async (payload: number[], thunkAPI) => {
+    const shortProfiles = await fetchShortProfile(Object.values(payload));
+    return shortProfiles;
   }
 );

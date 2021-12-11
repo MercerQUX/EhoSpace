@@ -1,9 +1,15 @@
+import { userAction } from "./../reducers/userSlice";
 import { getByUID } from "./../../services/DB/SignInDB";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { handleLoginDB } from "../../services/DB/SignInDB";
 import { handleRegisterDB } from "../../services/DB/SignUpDB";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { ISignIn, ISignUp } from "../../models/ISigns";
+import {
+  validateLoginDB,
+  validateEmailDB,
+} from "../../services/DB/validRegisterDB";
+import { fetchArrayFollowUsers } from "./dialogsThunks";
 
 export const signInProfile = createAsyncThunk(
   "auth/signIn",
@@ -14,7 +20,9 @@ export const signInProfile = createAsyncThunk(
       const uid = await getByUID(getUser.user.displayName);
       return { login: getUser.user.displayName, id: uid };
     } catch (e) {
-      return thunkAPI.rejectWithValue("Warning: Incorrect data");
+      return thunkAPI.rejectWithValue(
+        "Warning: Incorrect data  user login or password"
+      );
     }
   }
 );
@@ -23,7 +31,13 @@ export const signUpProfile = createAsyncThunk(
   "auth/signUp",
   async (payload: ISignUp, thunkAPI) => {
     try {
-      await handleRegisterDB({ ...payload });
+      const validLogin = await validateLoginDB(payload.login);
+      const validEmail = await validateEmailDB(payload.email);
+      if (validLogin && validEmail) {
+        await handleRegisterDB({ ...payload });
+      } else {
+        throw Error;
+      }
     } catch (e) {
       return thunkAPI.rejectWithValue(
         "Warning: There was a data failure, perhaps you entered data that already exists?"
@@ -35,20 +49,9 @@ export const signUpProfile = createAsyncThunk(
 export const signOutProfile = createAsyncThunk(
   "auth/SignOut",
   async (_, thunkAPI) => {
+    const { setFriends } = userAction;
     await signOut(getAuth());
-  }
-);
-
-export const initializeAuthProfile = createAsyncThunk(
-  "auth/initAuthProfile",
-  async (_, thunkAPI) => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      debugger;
-      if (user !== null) {
-      } else {
-      }
-    });
-    return { isAuth: false, login: auth.currentUser?.displayName };
+    await thunkAPI.dispatch(setFriends([]));
+    await thunkAPI.dispatch(fetchArrayFollowUsers([]));
   }
 );
