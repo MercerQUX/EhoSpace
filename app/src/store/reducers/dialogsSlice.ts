@@ -11,9 +11,14 @@ type initialStateType = {
 const initialState: initialStateType = {
   dialogsUsers: [],
   dialogsMessages: [
-    { id: 1, body: "Hello", other: false },
-    { id: 2, body: "How are you?", other: false },
-    { id: 3, body: "I'm fine", other: false },
+    { id: 1, body: "Hello", timestamp: "00:00:00 01/01/2022", other: false },
+    {
+      id: 2,
+      body: "How are you?",
+      timestamp: "00:00:00 01/01/2022",
+      other: true,
+    },
+    { id: 3, body: "I'm fine", timestamp: "00:00:00 01/01/2022", other: false },
   ],
   isLoading: false,
 };
@@ -29,6 +34,7 @@ const dialogsSlice = createSlice({
           id: state.dialogsMessages.length + 1,
           body: action.payload,
           other: false,
+          timestamp: "00:00:00 01/01/2022",
         },
       ];
     },

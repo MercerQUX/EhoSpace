@@ -30,7 +30,6 @@ export const ProfileContainer: React.FC<any> = () => {
 
   useEffect(() => {
     initProfile();
-    //dispatch(defineOwnerProfile(idLoggedUser));
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 400);

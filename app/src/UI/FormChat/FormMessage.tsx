@@ -2,6 +2,7 @@ import { Field, Formik, Form } from "formik";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { dialogsAction } from "../../store/reducers/dialogsSlice";
 import { ValidMessageSchema } from "../../services/validation/validators";
+import style from "../forms.module.css";
 
 export const FormMessage = () => {
   const startValue = { bodyMessage: "" };
@@ -29,13 +30,14 @@ export const FormMessage = () => {
 
 const Fields = () => {
   return (
-    <Form>
+    <Form className={style.wrapperChatForm}>
       <Field
         name={"bodyMessage"}
         placeholder={"Your message..."}
         as="textarea"
+        className={style.chat_textarea}
       />
-      <button>Send</button>
+      <button className={style.chat_btn}>Send</button>
     </Form>
   );
 };

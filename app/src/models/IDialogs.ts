@@ -8,5 +8,6 @@ export interface dialogsUsersType {
 export interface dialogsMessagesType {
   id: number;
   body: string;
+  timestamp:string;
   other: boolean;
 }

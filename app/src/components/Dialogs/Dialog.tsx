@@ -6,7 +6,7 @@ import { MessageBlock } from "./MessagesWindow/MessageBlock";
 
 const Dialogs = () => {
   return (
-    <div className={cn(styleM.profile, style.wrapperDialog)}>
+    <div className={cn(style.wrapperDialog)}>
       <DialogsBlock />
       <MessageBlock />
     </div>
