@@ -9,9 +9,8 @@
 }
 
 .wrapperContactsDialogs {
-  position: absolute;
   display: grid;
-  width: 35%;
+  width: 100%;
   height: 550px;
   grid-template-rows: 10% 85% 5%;
   gap: 0px 0px;
@@ -53,6 +52,7 @@
   padding-left: 30px;
   font-weight: bold;
   color: #856af5;
+  cursor: default;
 }
 
 .usersDialogs {
@@ -133,17 +133,16 @@
 }
 
 .showDialogs_btn {
-  background-color: #0cb1ffa1;
+  background-color: #960d89b0;
   width: 80px;
-  height: 55%;
+  height: 100%;
   padding: 0px 0px 0px 10px;
-  border-bottom-left-radius: 15px;
+  border-bottom-left-radius: 40%;
   cursor: pointer;
-  font-size: 1.8rem;
-  line-height: 22px;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: -10px;
-  color: #0f00ff;
+  color: #556cff;
 }
 
 .wrapperSingleDialog {
@@ -228,18 +227,39 @@ a {
   align-self: end;
   font-size: 0.6rem;
 }
-
+/* Animation Begin */
 .animationHideDialogs {
-  transition: width 3.2s, opacity 1.1s, visibility 1.1s;
+  transition: width 4.5s, opacity 1.4s, visibility 1s;
   visibility: hidden;
   width: 0%;
   opacity: 0;
 }
-
 .animationShowDialogs {
-  transition: width 3.2s, opacity 1.1s;
-  visibility:visible;
-  width: 35%;
+  transition: width cubic-bezier(0.15, 0.2, 0.15, 1) 2.3s,
+    opacity cubic-bezier(0.8, 0.45, 0.87, 0.26) 0.8s;
+  visibility: visible;
+  width: 100%;
   opacity: 1;
 }
-
+.animWrapperActive {
+  position: absolute;
+  transition: 1s linear width;
+  width: 35%;
+}
+.animWrapperDisabled {
+  position: absolute;
+  transition: 1.5s linear width;
+  width: 0%;
+}
+.animHideBtn {
+  transition: 1.2s linear visibility, 1.4s linear opacity, 1.6 linear width;
+  visibility: hidden;
+  opacity: 0;
+}
+.animShowBtn {
+  transition: 2.2s linear visibility, 1.8s linear opacity, 1.6 linear width;
+  opacity: 1;
+  visibility: visible;
+  height: 10%;
+}
+/* Animation End */

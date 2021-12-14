@@ -29,10 +29,22 @@ export const DialogsBlock: React.FC<{}> = ({}) => {
   });
 
   const [hide_show, set_hide_show] = useState(true);
-  let anim;
+  let animOne: string | undefined;
+  let animTwo: string | undefined;
+  let animThree: string | undefined;
   if (hide_show) {
-    return (
-      <div className={cn(style.wrapperContactsDialogs)}>
+    animOne = cn(style.wrapperContactsDialogs, style.animationHideDialogs);
+    animTwo = cn(style.animWrapperActive, style.animShowBtn);
+    animThree = cn(style.animWrapperDisabled);
+  } else {
+    animOne = cn(style.wrapperContactsDialogs, style.animationShowDialogs);
+    animTwo = cn(style.animWrapperDisabled, style.animHideBtn);
+    animThree = cn(style.animWrapperActive);
+  }
+
+  return (
+    <div className={animThree}>
+      <div className={animTwo}>
         <div
           className={style.showDialogs_btn}
           onClick={() => set_hide_show(false)}
@@ -40,12 +52,8 @@ export const DialogsBlock: React.FC<{}> = ({}) => {
           {">>>>"}
         </div>
       </div>
-    );
-  } else {
-    return (
-      <div
-        className={cn(style.wrapperContactsDialogs, style.animationShowDialogs)}
-      >
+
+      <div className={animOne}>
         <div className={style.headerDialogs}>
           <span>Dialogs</span>
           <div
@@ -67,6 +75,6 @@ export const DialogsBlock: React.FC<{}> = ({}) => {
         </div>
         <div className={style.footerDialogs}></div>
       </div>
-    );
-  }
+    </div>
+  );
 };
