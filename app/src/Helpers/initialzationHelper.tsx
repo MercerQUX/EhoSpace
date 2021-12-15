@@ -6,6 +6,7 @@ import { get, getDatabase, ref } from "firebase/database";
 import { userAction } from "../store/reducers/userSlice";
 import { profileAction } from "../store/reducers/profileSlice";
 import { fetchArrayFollowUsers } from "../store/thunks/dialogsThunks";
+
 export const initlizationProfile = async (
   selectUser: string | undefined,
   idLoggedUser: number,
@@ -27,16 +28,20 @@ export const initialzationApp = async (dispatch: any) => {
   const { setFriends } = userAction;
   onAuthStateChanged(auth, async (user) => {
     if (user === null) {
-      dispatch(initializeAuthProfile({ isAuth: false, login: "", id: 0 }));
+      await dispatch(
+        initializeAuthProfile({ isAuth: false, login: "", id: 0 })
+      );
     } else {
       const reference = ref(openDB, `innerData/${user.displayName}`);
       const getInfo = await (await get(reference)).exportVal();
 
       if (getInfo === null) {
-        dispatch(initializeAuthProfile({ isAuth: false, login: "", id: 0 }));
+        await dispatch(
+          initializeAuthProfile({ isAuth: false, login: "", id: 0 })
+        );
       } else {
+        await dispatch(fetchArrayFollowUsers(getInfo.following));
         await dispatch(setFriends(getInfo.following));
-        await dispatch(fetchArrayFollowUsers(getInfo.following))
         dispatch(
           initializeAuthProfile({
             isAuth: true,

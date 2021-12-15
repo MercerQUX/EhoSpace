@@ -3,16 +3,29 @@ import { useAppDispatch } from "../../hooks/redux-use";
 import { dialogsAction } from "../../store/reducers/dialogsSlice";
 import { ValidMessageSchema } from "../../services/validation/validators";
 import style from "../forms.module.css";
+import { sendMessages } from "../../store/thunks/dialogsThunks";
 
-export const FormMessage = () => {
+interface IDefaultProps {
+  idSender: number;
+  adressID?: string;
+}
+
+export const FormMessage = ({ idSender, adressID }: IDefaultProps) => {
   const startValue = { bodyMessage: "" };
   const dispatch = useAppDispatch();
-  const { addMessage } = dialogsAction;
   return (
     <Formik
       initialValues={startValue}
       onSubmit={(values, actions) => {
-        dispatch(addMessage(values.bodyMessage));
+        if (adressID) {
+          dispatch(
+            sendMessages({
+              idSender: idSender,
+              idAdress: Number(adressID),
+              messageBody: values.bodyMessage,
+            })
+          );
+        }
         actions.resetForm({
           values: {
             bodyMessage: "",

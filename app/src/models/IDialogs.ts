@@ -8,6 +8,23 @@ export interface dialogsUsersType {
 export interface dialogsMessagesType {
   id: number;
   body: string;
-  timestamp:string;
-  other: boolean;
+  timestamp: string;
+  idSender: number;
 }
+
+export type fetchMessageType = {
+  idSender: number;
+  idAdress?: string;
+};
+
+export type uploadMessageType = {
+  idSender: number;
+  idAdress: number;
+  addMessages: dialogsMessagesType;
+};
+
+export type sendedMessageType = {
+  idSender: number;
+  idAdress: number;
+  messageBody: string;
+};

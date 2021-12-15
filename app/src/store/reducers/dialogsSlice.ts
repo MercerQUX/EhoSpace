@@ -1,6 +1,10 @@
+import {
+  fetchArrayFollowUsers,
+  fetchChatMessages,
+  sendMessages,
+} from "../thunks/dialogsThunks";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { dialogsUsersType, dialogsMessagesType } from "../../models/IDialogs";
-import { fetchArrayFollowUsers } from "../thunks/dialogsThunks";
 
 type initialStateType = {
   dialogsUsers: Array<dialogsUsersType>;
@@ -10,16 +14,7 @@ type initialStateType = {
 
 const initialState: initialStateType = {
   dialogsUsers: [],
-  dialogsMessages: [
-    { id: 1, body: "Hello", timestamp: "00:00:00 01/01/2022", other: false },
-    {
-      id: 2,
-      body: "How are you?",
-      timestamp: "00:00:00 01/01/2022",
-      other: true,
-    },
-    { id: 3, body: "I'm fine", timestamp: "00:00:00 01/01/2022", other: false },
-  ],
+  dialogsMessages: [],
   isLoading: false,
 };
 
@@ -27,16 +22,8 @@ const dialogsSlice = createSlice({
   name: "dialogsPage",
   initialState,
   reducers: {
-    addMessage(state, action: PayloadAction<string>) {
-      state.dialogsMessages = [
-        ...state.dialogsMessages,
-        {
-          id: state.dialogsMessages.length + 1,
-          body: action.payload,
-          other: false,
-          timestamp: "00:00:00 01/01/2022",
-        },
-      ];
+    addMessage(state, action: PayloadAction<dialogsMessagesType>) {
+      state.dialogsMessages = [...state.dialogsMessages, action.payload];
     },
   },
   extraReducers: {
@@ -53,6 +40,24 @@ const dialogsSlice = createSlice({
     [fetchArrayFollowUsers.rejected.type]: (state) => {
       state.isLoading = false;
     },
+    [fetchChatMessages.pending.type]: (state) => {},
+    [fetchChatMessages.fulfilled.type]: (
+      state,
+      action: PayloadAction<dialogsMessagesType[]>
+    ) => {
+      state.dialogsMessages = action.payload;
+    },
+    [fetchChatMessages.rejected.type]: (state) => {
+      state.dialogsMessages = [];
+    },
+    [sendMessages.pending.type]: (state) => {},
+    [sendMessages.fulfilled.type]: (
+      state,
+      action: PayloadAction<dialogsMessagesType>
+    ) => {
+      state.dialogsMessages = [...state.dialogsMessages, action.payload];
+    },
+    [sendMessages.rejected.type]: (state) => {},
   },
 });
 

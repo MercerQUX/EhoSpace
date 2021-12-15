@@ -2,10 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import { dialogsUsers } from "../../../store/reselectors/dialogs-selector";
 import { getFollowingID } from "../../../store/reselectors/users-selector";
-import { fetchArrayFollowUsers } from "../../../store/thunks/dialogsThunks";
 import style from "../dialogs.module.css";
 import { SingleDialog } from "./SingleDialog";
 import cn from "classnames";
+import { fetchArrayFollowUsers } from "../../../store/thunks/dialogsThunks";
 
 export const DialogsBlock: React.FC<{}> = ({}) => {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ export const DialogsBlock: React.FC<{}> = ({}) => {
     );
   });
 
-  const [hide_show, set_hide_show] = useState(true);
+  const [hide_show, set_hide_show] = useState(false);
   let animOne: string | undefined;
   let animTwo: string | undefined;
   let animThree: string | undefined;
