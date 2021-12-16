@@ -35,7 +35,7 @@ export const ValidRegisterFormSchema = Yup.object().shape({
     .required("Warning: Field Email must not be empty")
     .email("Warning: Field Email must be a valid email")
     .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})/,
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})/,
       "Warning: Please use only latin characters and numbers"
     ),
   login: Yup.string()

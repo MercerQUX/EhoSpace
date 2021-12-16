@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ICommonProfile } from "../../../models/ICommonProfile";
 import { IThunkRewriteProfile } from "../../../store/thunks/profileThunks";
 import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
@@ -43,7 +43,7 @@ export const ProfileCard: React.FC<defaultProps> = ({
                   className={style.profileStatus}
                   onDoubleClick={() => setIsEditStatus(false)}
                 >
-                  {profile.status || "==="}
+                  {profile.status || ""}
                 </strong>
               ) : (
                 <FormEditStatus
@@ -88,6 +88,3 @@ export const ProfileCard: React.FC<defaultProps> = ({
     </div>
   );
 };
-function defineOwnerProfile(selectUserID: number) {
-  throw new Error("Function not implemented.");
-}

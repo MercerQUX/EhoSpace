@@ -16,6 +16,7 @@ const initialState: initialStateType = {
   dialogsUsers: [],
   dialogsMessages: [],
   isLoading: false,
+
 };
 
 const dialogsSlice = createSlice({
@@ -40,15 +41,19 @@ const dialogsSlice = createSlice({
     [fetchArrayFollowUsers.rejected.type]: (state) => {
       state.isLoading = false;
     },
-    [fetchChatMessages.pending.type]: (state) => {},
+    [fetchChatMessages.pending.type]: (state) => {
+      state.isLoading = true;
+    },
     [fetchChatMessages.fulfilled.type]: (
       state,
       action: PayloadAction<dialogsMessagesType[]>
     ) => {
       state.dialogsMessages = action.payload;
+      state.isLoading = false;
     },
     [fetchChatMessages.rejected.type]: (state) => {
       state.dialogsMessages = [];
+      state.isLoading = false;
     },
     [sendMessages.pending.type]: (state) => {},
     [sendMessages.fulfilled.type]: (

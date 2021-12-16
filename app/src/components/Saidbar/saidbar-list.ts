@@ -1,22 +1,27 @@
 export const dataListSaidbar = [
-    {
-      path: "/profile",
-      name: "Profile",
-    },
-    {
-      path: "/dialogs",
-      name: "Dialogs",
-    },
-    {
-      path: "/users",
-      name: "Users",
-    },
-    {
-      path: "/contact",
-      name: "Contacts",
-    },
-    {
-      path: "/news",
-      name: "News",
-    },
-  ];
+  {
+    key: 1,
+    path: "/profile",
+    name: "Profile",
+  },
+  {
+    key: 2,
+    path: "/dialogs",
+    name: "Dialogs",
+  },
+  {
+    key: 3,
+    path: "/users",
+    name: "Users",
+  },
+  {
+    key: 4,
+    path: "/contact",
+    name: "Contacts",
+  },
+  {
+    key: 5,
+    path: "/news",
+    name: "News",
+  },
+];

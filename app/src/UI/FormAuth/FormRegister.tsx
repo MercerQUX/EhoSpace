@@ -4,10 +4,6 @@ import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { signInProfile, signUpProfile } from "../../store/thunks/authThunks";
-import {
-  validateEmailDB,
-  validateLoginDB,
-} from "../../services/DB/validRegisterDB";
 
 interface IPropertyValues<T> {
   login?: T;

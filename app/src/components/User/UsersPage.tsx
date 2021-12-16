@@ -7,7 +7,6 @@ import {
   getIsFetching,
   getIsEmpty,
   getIsFollowingDisabled,
-  getUsers,
   getFollowingID,
   getFiltredUsers,
 } from "../../store/reselectors/users-selector";

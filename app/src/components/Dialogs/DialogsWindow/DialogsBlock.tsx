@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import { dialogsUsers } from "../../../store/reselectors/dialogs-selector";
 import { getFollowingID } from "../../../store/reselectors/users-selector";
@@ -7,28 +7,19 @@ import { SingleDialog } from "./SingleDialog";
 import cn from "classnames";
 import { fetchArrayFollowUsers } from "../../../store/thunks/dialogsThunks";
 
-export const DialogsBlock: React.FC<{}> = ({}) => {
+export const DialogsBlock: React.FC = () => {
   const dispatch = useAppDispatch();
   const followedUsers = useAppSelector(dialogsUsers);
   const friends = useAppSelector(getFollowingID);
-  useEffect(() => {
+  const fetchFollowUsers = useCallback(() => {
     dispatch(fetchArrayFollowUsers(friends));
-    console.log("useEffect");
-  }, [friends]);
-  let mapDialogsUser = followedUsers.map((u) => {
-    return (
-      <SingleDialog
-        surname={u.surname}
-        nickname={u.nickname}
-        key={u.id}
-        id={u.id}
-        avatar={u.avatar}
-        name={u.name}
-      />
-    );
-  });
+  }, [friends, dispatch]);
 
-  const [hide_show, set_hide_show] = useState(false);
+  useEffect(() => {
+    fetchFollowUsers();
+  }, [fetchFollowUsers, friends]);
+
+  const [hide_show, set_hide_show] = useState(true);
   let animOne: string | undefined;
   let animTwo: string | undefined;
   let animThree: string | undefined;
@@ -41,6 +32,19 @@ export const DialogsBlock: React.FC<{}> = ({}) => {
     animTwo = cn(style.animWrapperDisabled, style.animHideBtn);
     animThree = cn(style.animWrapperActive);
   }
+
+  let mapDialogsUser = followedUsers.map((u) => {
+    return (
+      <SingleDialog
+        surname={u.surname}
+        nickname={u.nickname}
+        key={u.id}
+        id={u.id}
+        avatar={u.avatar}
+        name={u.name}
+      />
+    );
+  });
 
   return (
     <div className={animThree}>

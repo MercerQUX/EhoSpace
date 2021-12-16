@@ -70,9 +70,9 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
           touched.password && !errors.password ? style.input__correctly : null
         )}
       />
-      <a href="#" className={style.link}>
+      <div className={style.link}>
         Forgot your password?
-      </a>
+      </div>
       <span className={style.error}>{alternateСallErrors}</span>
       <button type="submit" className={style.btn}>
         Sign In

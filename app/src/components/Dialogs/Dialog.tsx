@@ -1,4 +1,3 @@
-import styleM from "../../main.module.css";
 import style from "./dialogs.module.css";
 import cn from "classnames";
 import { DialogsBlock } from "./DialogsWindow/DialogsBlock";

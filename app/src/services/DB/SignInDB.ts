@@ -1,5 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { get, getDatabase, onValue, query, ref } from "firebase/database";
+import { get, getDatabase, query, ref } from "firebase/database";
 import { ISignIn } from "../../models/ISigns";
 
 export const handleLoginDB = async ({ email_login, password }: ISignIn) => {
@@ -10,7 +10,7 @@ export const handleLoginDB = async ({ email_login, password }: ISignIn) => {
 const remakeEmailInLogin = async (email_login: string) => {
   const openDB = getDatabase();
 
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})/.test(email_login)) {
+  if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})/.test(email_login)) {
     return email_login;
   } else {
     const getUserData = query(ref(openDB, `innerData/${email_login}`));

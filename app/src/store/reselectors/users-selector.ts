@@ -21,5 +21,3 @@ export const getFiltredUsers = createSelector(
       return u.id !== idLogged;
     })
 );
-
-const loggedID = (state: RootState) => state.authReducer.id;

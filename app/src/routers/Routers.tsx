@@ -9,15 +9,24 @@ export const Routers: React.FC<{ isAuth: boolean }> = ({ isAuth }) => {
           if (!isAuth) {
             return (
               <Route
+                key={route.key}
                 path={route.path}
                 element={<Navigate to={route.redirectPath} />}
               />
             );
           } else {
-            return <Route path={route.path} element={<route.JSX />} />;
+            return (
+              <Route
+                key={route.key}
+                path={route.path}
+                element={<route.JSX />}
+              />
+            );
           }
         } else {
-          return <Route path={route.path} element={<route.JSX />} />;
+          return (
+            <Route key={route.key} path={route.path} element={<route.JSX />} />
+          );
         }
       })}
     </Routes>

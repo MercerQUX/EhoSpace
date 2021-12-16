@@ -93,20 +93,24 @@
   box-shadow: 0px 0px 10px #b8d1e1, inset -8px -6px 25px #e3eb7b;
 }
 .btnGetUsers {
-  width: 200px;
+  width: 25%;
   height: 40px;
-  background-color: rgb(129, 168, 20);
-  border: 1px solid rgb(215, 230, 13);
+  background-color: #8daac6;
+  border: 1px solid #3cbfb9;
   margin: 10px 0px;
+  color: #c5dcff;
+  border-radius: 5%;
   cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0px 0px 10px #00ffd0;
 }
 .btnGetUsers:hover {
-  border: 1px solid rgb(207, 253, 0);
-  background-color: chocolate;
+  background-color: #5aaeff;
 }
 
 .error {
-  color: #a51111;
-  font-size: 1.2rem;
+  color: #c5dcff;
+  font-size: 1.5rem;
   font-weight: bold;
 }

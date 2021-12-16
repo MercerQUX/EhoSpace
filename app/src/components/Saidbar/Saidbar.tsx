@@ -8,7 +8,7 @@ const Saidbar = () => {
       <ul>
         {dataListSaidbar.map((link) => {
           return (
-            <li>
+            <li key={link.key}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) => (isActive ? style.activeLink : "")}

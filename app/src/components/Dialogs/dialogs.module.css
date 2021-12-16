@@ -263,3 +263,17 @@ a {
   height: 10%;
 }
 /* Animation End */
+
+.untilSelectText {
+  grid-area: userMessage;
+  display: flex;
+  justify-content: space-between;
+}
+
+.untilSelectText span {
+  color: #556cff;
+  font-size: 1.6rem;
+  padding: 0px 0px 0px 25px;
+  font-weight: 600;
+  width: 50%;
+}

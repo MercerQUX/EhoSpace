@@ -7,7 +7,7 @@ import {
 } from "../thunks/authThunks";
 
 type initialStateType = IDataAuth;
-type signInProfile = {
+type signInProfileType = {
   id: number;
   login: string;
 };
@@ -39,7 +39,7 @@ const authSlice = createSlice({
   extraReducers: {
     [signInProfile.fulfilled.type]: (
       state,
-      action: PayloadAction<signInProfile>
+      action: PayloadAction<signInProfileType>
     ) => {
       state.login = action.payload.login;
       state.id = action.payload.id;

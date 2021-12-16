@@ -1,4 +1,3 @@
-import { RootState } from "./../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   get,
@@ -11,10 +10,6 @@ import {
   startAfter,
 } from "firebase/database";
 
-interface IThunkPayloadFetchUsers {
-  limit: number;
-  startFrom: number;
-}
 interface IThunkPayloadFollowed {
   id: number;
   isFollow: boolean;

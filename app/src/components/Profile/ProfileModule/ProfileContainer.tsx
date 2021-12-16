@@ -19,7 +19,7 @@ export const ProfileContainer: React.FC<any> = () => {
     auth: useAppSelector(isAuthInitialization),
     isOwner: useAppSelector(getIsOwnerProfile)
   };
-  const { changeStatus, rewriteProfile, defineOwnerProfile } = profileAction;
+  const { changeStatus, rewriteProfile } = profileAction;
   let dispatch = useAppDispatch();
   const sendNewProfile = sendRewriteProfile;
   const [isLoading, setIsLoading] = useState(true);

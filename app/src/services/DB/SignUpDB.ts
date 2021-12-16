@@ -49,7 +49,6 @@ const createNewUserDB = async ({
   await set(ref(openDB, "users/" + getTotalUsers), newUserDB);
   await set(ref(openDB, "innerData/" + login), {
     email: email,
-    following: [1030],
     id: newUserDB.id,
   });
 };
