@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/EhoSpace/static/css/main.5b523ab3.chunk.css",
-    "main.js": "/EhoSpace/static/js/main.672f29a2.chunk.js",
-    "main.js.map": "/EhoSpace/static/js/main.672f29a2.chunk.js.map",
-    "runtime-main.js": "/EhoSpace/static/js/runtime-main.0db12aef.js",
-    "runtime-main.js.map": "/EhoSpace/static/js/runtime-main.0db12aef.js.map",
-    "static/js/2.bfab0a04.chunk.js": "/EhoSpace/static/js/2.bfab0a04.chunk.js",
-    "static/js/2.bfab0a04.chunk.js.map": "/EhoSpace/static/js/2.bfab0a04.chunk.js.map",
-    "static/js/3.afe28a81.chunk.js": "/EhoSpace/static/js/3.afe28a81.chunk.js",
-    "static/js/3.afe28a81.chunk.js.map": "/EhoSpace/static/js/3.afe28a81.chunk.js.map",
+    "main.css": "/EhoSpace/static/css/main.7ba5a867.chunk.css",
+    "main.js": "/EhoSpace/static/js/main.a7e0286f.chunk.js",
+    "main.js.map": "/EhoSpace/static/js/main.a7e0286f.chunk.js.map",
+    "runtime-main.js": "/EhoSpace/static/js/runtime-main.ec340dc9.js",
+    "runtime-main.js.map": "/EhoSpace/static/js/runtime-main.ec340dc9.js.map",
+    "static/js/2.3a1cc8d4.chunk.js": "/EhoSpace/static/js/2.3a1cc8d4.chunk.js",
+    "static/js/2.3a1cc8d4.chunk.js.map": "/EhoSpace/static/js/2.3a1cc8d4.chunk.js.map",
+    "static/js/3.3e7a89f5.chunk.js": "/EhoSpace/static/js/3.3e7a89f5.chunk.js",
+    "static/js/3.3e7a89f5.chunk.js.map": "/EhoSpace/static/js/3.3e7a89f5.chunk.js.map",
     "index.html": "/EhoSpace/index.html",
-    "static/css/main.5b523ab3.chunk.css.map": "/EhoSpace/static/css/main.5b523ab3.chunk.css.map",
-    "static/js/2.bfab0a04.chunk.js.LICENSE.txt": "/EhoSpace/static/js/2.bfab0a04.chunk.js.LICENSE.txt",
+    "static/css/main.7ba5a867.chunk.css.map": "/EhoSpace/static/css/main.7ba5a867.chunk.css.map",
+    "static/js/2.3a1cc8d4.chunk.js.LICENSE.txt": "/EhoSpace/static/js/2.3a1cc8d4.chunk.js.LICENSE.txt",
     "static/media/forms.module.css": "/EhoSpace/static/media/auth-background.8303c0a5.jpg",
     "static/media/main.module.css": "/EhoSpace/static/media/background-profile.668eec19.jpg",
     "static/media/index.css": "/EhoSpace/static/media/background.b25aa8de.jpg",
@@ -19,9 +19,9 @@
     "static/media/preloader.f5d18815.svg": "/EhoSpace/static/media/preloader.f5d18815.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0db12aef.js",
-    "static/js/2.bfab0a04.chunk.js",
-    "static/css/main.5b523ab3.chunk.css",
-    "static/js/main.672f29a2.chunk.js"
+    "static/js/runtime-main.ec340dc9.js",
+    "static/js/2.3a1cc8d4.chunk.js",
+    "static/css/main.7ba5a867.chunk.css",
+    "static/js/main.a7e0286f.chunk.js"
   ]
 }
