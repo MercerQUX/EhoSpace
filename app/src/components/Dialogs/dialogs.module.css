@@ -271,9 +271,10 @@ a {
 }
 
 .untilSelectText span {
-  color: #556cff;
+  color: #6fafcf;
   font-size: 1.6rem;
   padding: 0px 0px 0px 25px;
   font-weight: 600;
   width: 50%;
+  text-shadow: 2px 2px 8px #ffffffcf;
 }

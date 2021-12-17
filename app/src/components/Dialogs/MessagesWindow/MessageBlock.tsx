@@ -1,18 +1,15 @@
 import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import {
-  dialogsIsLoading,
   dialogsUsers,
   ownDialogsMessages,
 } from "../../../store/reselectors/dialogs-selector";
 import style from "../dialogs.module.css";
 import { FormMessage } from "../../../UI/FormChat/FormMessage";
-import cn from "classnames";
 import { getAuthID } from "../../../store/reselectors/auth-selector";
 import { useCallback, useEffect } from "react";
 import { fetchChatMessages } from "../../../store/thunks/dialogsThunks";
 import { SingleMessage } from "./SingleMessage";
-import { ChatPreloader } from "../../../asset/common/ChatPreloader";
 import { ChatPreview } from "../../../asset/common/ChatPreview";
 
 export const MessageBlock: React.FC = () => {
@@ -54,7 +51,6 @@ export const MessageBlock: React.FC = () => {
       />
     );
   });
-  const isLoading = false;
   return (
     <div className={style.wrapperContactsMessage}>
       {activeDialogs ? (
@@ -69,7 +65,7 @@ export const MessageBlock: React.FC = () => {
       )}
 
       <div className={style.userMessage}>
-        {isLoading ? <ChatPreloader /> : mapMessage}
+        {mapMessage}
       </div>
       {!activeDialogs && (
         <div className={style.untilSelectText}>

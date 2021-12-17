@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from "./hooks/redux-use";
 import { isAuthInitialization } from "./store/reselectors/auth-selector";
 import { initialzationApp } from "./helpers/initialzationHelper";
 import { Routers } from "./routers/Routers";
-import { ChatPreview } from "./asset/common/ChatPreview";
 
 function App() {
   const dispatch = useAppDispatch();

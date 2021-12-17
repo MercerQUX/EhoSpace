@@ -17,7 +17,7 @@ const Header: React.FC = () => {
   return (
     <header className={style.header}>
       <NavLink to="/profile" className={style.logo}>
-        Social Space
+        EhoSpace Social
       </NavLink>
       <div className={style.loginBlock}>
         {isAuth ? (
