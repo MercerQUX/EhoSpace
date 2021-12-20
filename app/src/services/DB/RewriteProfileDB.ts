@@ -1,5 +1,5 @@
 import { getDatabase, ref, set } from "firebase/database";
-import { ICommonProfile } from "./../../models/ICommonProfile";
+import { ICommonProfile } from "../../models/ICommonProfile";
 export const rewriteProfile = async (
   id: number,
   newProfile: ICommonProfile

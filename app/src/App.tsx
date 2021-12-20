@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import Saidbar from "./components/Saidbar/Saidbar";
 import style from "./main.module.css";
 import Header from "./components/Header/Header";
@@ -16,11 +16,11 @@ function App() {
   }, [dispatch]);
   return (
     <div className={style.wrapper}>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Saidbar />
         <Routers isAuth={isAuth} />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

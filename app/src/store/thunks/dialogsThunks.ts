@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchMessageType, sendedMessageType } from "../../models/IDialogs";
 import { fetchChatDB, uploadChatDB } from "../../services/DB/ChatDB";
-import { fetchShortProfile } from "../../services/DB/FetchProfile";
+import { fetchShortProfile } from "../../services/DB/FetchProfileDB";
 
 export const fetchArrayFollowUsers = createAsyncThunk(
   "dialogs/FetchArray",
