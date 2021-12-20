@@ -1,13 +1,15 @@
-# Description
+<h1 align="center" style="font-weight:bold; color:#63e8ea">EhoSpace v0.1</h1>
+
+## Description
 <img align = "center" src = "./preview-doc.jpg" width = "100%">
 <p>The project was created on the basis of practice with minimal investment in the visual part, but as a skill development in the design of architecture and functionality using BLL and interaction with API-noSQL;</p>
 <p>You can follow the development of the project in the tab <b>/news</b>;</p>
 
-# Target
+## Target
 
 <p>It was uniquely like a pet-project that will also be supported and developed over time, and the practice of further skills. Has been provided as part of a portfolio for current skills. At this stage, the project does not have a stable version and requires many improvements and fixes. </p>
 
-# Opportunities of the project at the moment
+## Opportunities of the project at the moment
 
 <p>• Full authorization</p>
 <p>• Adding posts</p>
@@ -16,7 +18,7 @@
 <p>• Ability to subscribe to users</p>
 <p>• Ability to send messages to subscribed users</p>
 
-# Structure project
+## Structure project
 
 ```
 -src
@@ -136,7 +138,7 @@
  ┗ setupTests.ts ###Config for Jest+Enzyme;
 ```
 
-# Setting up and using the project
+## Setting up and using the project
 
 <h3>First opportunity to start a project:</h3>
 <p style="color:red">
@@ -182,7 +184,7 @@ Thanks to the github page, you don't have to spend a lot of effort to set up a l
 
 <p>
 
-# Further project
+## Further project
 
 Since the project is educational, it has the opportunity to practice any ideas and new technologies, but also the pet project has a plan for the MVP of the project.
 
@@ -194,7 +196,7 @@ Since the project is educational, it has the opportunity to practice any ideas a
 <p>• Create tabs / contacts and / news</p>
 <p><b>more other...</b></p>
 
-# More about
+## More about
 
 The app was created with create-react-app
 
