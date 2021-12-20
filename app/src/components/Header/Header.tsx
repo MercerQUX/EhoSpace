@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./../../asset/siteLogo.png"
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import {
@@ -7,6 +8,7 @@ import {
 } from "../../store/reselectors/auth-selector";
 import { signOutProfile } from "../../store/thunks/authThunks";
 import style from "./header.module.css";
+
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +19,7 @@ const Header: React.FC = () => {
   return (
     <header className={style.header}>
       <NavLink to="/profile" className={style.logo}>
-        EhoSpace Social
+        <img src={logo} alt="Logo" />
       </NavLink>
       <div className={style.loginBlock}>
         {isAuth ? (
