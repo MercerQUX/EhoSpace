@@ -1,15 +1,15 @@
-import { userAction } from "./../reducers/userSlice";
-import { getByUID } from "./../../services/DB/SignInDB";
+import { userAction } from "../reducers/userSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { handleLoginDB } from "../../services/DB/SignInDB";
-import { handleRegisterDB } from "../../services/DB/SignUpDB";
+import { handleLoginDB } from "../../services/DB/signInDB";
+import { handleRegisterDB } from "../../services/DB/signUpDB";
 import { getAuth, signOut } from "firebase/auth";
 import { ISignIn, ISignUp } from "../../models/ISigns";
 import {
   validateLoginDB,
   validateEmailDB,
 } from "../../services/DB/validRegisterDB";
-import { fetchArrayFollowUsers } from "./dialogsThunks";
+import { fetchArrayFollowUsers } from "./dialogs-thunk";
+import { getByUserIdDB } from "../../services/DB/getBySingleUser";
 
 export const signInProfile = createAsyncThunk(
   "auth/signIn",
@@ -17,7 +17,7 @@ export const signInProfile = createAsyncThunk(
     const { email_login, password } = payload;
     try {
       const getUser = await handleLoginDB({ email_login, password });
-      const uid = await getByUID(getUser.user.displayName);
+      const uid = await getByUserIdDB(getUser.user.displayName);
       return { login: getUser.user.displayName, id: uid };
     } catch (e) {
       return thunkAPI.rejectWithValue(

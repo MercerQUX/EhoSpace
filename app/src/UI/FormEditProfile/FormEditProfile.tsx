@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import style from "../forms.module.css";
 import { ValidEditProfileSchema } from "../../services/validation/validators";
 import cn from "classnames";
-import { IThunkRewriteProfile } from "../../store/thunks/profileThunks";
+import { IThunkRewriteProfile } from "../../store/thunks/profile-thunk";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { ICommonProfile } from "../../models/ICommonProfile";
 

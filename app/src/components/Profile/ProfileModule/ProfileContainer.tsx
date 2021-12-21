@@ -7,7 +7,7 @@ import {
 import { profileAction } from "../../../store/reducers/profileSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import { getIsOwnerProfile, getProfile } from "../../../store/reselectors/profile-selector";
-import { sendRewriteProfile } from "../../../store/thunks/profileThunks";
+import { sendRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { ProfileCard } from "./ProfileCard";
 import { Preloader } from "../../../asset/common/Preloader";
 import { initlizationProfile } from "../../../helpers/initialzationHelper";

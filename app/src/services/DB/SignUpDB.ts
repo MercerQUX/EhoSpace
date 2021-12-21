@@ -1,4 +1,4 @@
-import { ICommonProfile } from "./../../models/ICommonProfile";
+import { ICommonProfile } from "../../models/ICommonProfile";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { ISignUp } from "../../models/ISigns";
-import { getSizeProfilesDB } from "./TotalUsersDB";
+import { getSizeProfilesDB } from "./totalUsersDB";
 
 export const handleRegisterDB = async ({
   name,
@@ -34,7 +34,7 @@ const createNewUserDB = async ({
   login,
 }: ISignUp) => {
   const openDB = getDatabase();
-  let getTotalUsers = await getSizeProfilesDB();
+  const getTotalUsers = await getSizeProfilesDB();
   const newUserDB: ICommonProfile = {
     name: name,
     surname: surname,
@@ -45,7 +45,6 @@ const createNewUserDB = async ({
     avatar: "",
     status: "",
   };
-  console.log(newUserDB);
   await set(ref(openDB, "users/" + getTotalUsers), newUserDB);
   await set(ref(openDB, "innerData/" + login), {
     email: email,

@@ -5,7 +5,7 @@ import { getFollowingID } from "../../../store/reselectors/users-selector";
 import style from "../dialogs.module.css";
 import { SingleDialog } from "./SingleDialog";
 import cn from "classnames";
-import { fetchArrayFollowUsers } from "../../../store/thunks/dialogsThunks";
+import { fetchArrayFollowUsers } from "../../../store/thunks/dialogs-thunk";
 
 export const DialogsBlock: React.FC = () => {
   const dispatch = useAppDispatch();

@@ -1,8 +1,8 @@
-import { fetchPostsDB, uploadPostsDB } from "./../../services/DB/PostsDB";
+import { fetchPostsDB, uploadPostsDB } from "../../services/DB/postsDB";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchSingleProfile } from "../../services/DB/FetchProfileDB";
-import { rewriteProfile } from "../../services/DB/RewriteProfileDB";
+import { fetchSingleProfileDB } from "../../services/DB/fetchProfileDB";
+import { rewriteProfile } from "../../services/DB/rewriteProfileDB";
 export interface IThunkRewriteProfile {
   id: number;
   updateProfile: ICommonProfile;
@@ -12,7 +12,7 @@ export const updateAuthProfile = createAsyncThunk(
   "profile/updateAuthProfile",
   async (payload: number, thunkAPI) => {
     try {
-      const response = await fetchSingleProfile(payload);
+      const response = await fetchSingleProfileDB(payload);
       return Object.values(response)[0];
     } catch (e) {
       return thunkAPI.rejectWithValue("User not found");

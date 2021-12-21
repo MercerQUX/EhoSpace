@@ -4,7 +4,7 @@ import {
   signInProfile,
   signOutProfile,
   signUpProfile,
-} from "../thunks/authThunks";
+} from "../thunks/auth-thunk";
 
 type initialStateType = IDataAuth;
 type signInProfileType = {

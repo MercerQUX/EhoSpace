@@ -2,7 +2,7 @@ import {
   fetchPosts,
   updateAuthProfile,
   uploadPosts,
-} from "./../thunks/profileThunks";
+} from "../thunks/profile-thunk";
 import { ICommonProfile } from "../../models/ICommonProfile";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPosts } from "../../models/IPost";

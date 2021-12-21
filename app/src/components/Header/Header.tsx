@@ -6,7 +6,7 @@ import {
   isAuthInitialization,
   getAuthLogin,
 } from "../../store/reselectors/auth-selector";
-import { signOutProfile } from "../../store/thunks/authThunks";
+import { signOutProfile } from "../../store/thunks/auth-thunk";
 import style from "./header.module.css";
 
 

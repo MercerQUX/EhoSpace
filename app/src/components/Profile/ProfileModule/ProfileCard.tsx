@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ICommonProfile } from "../../../models/ICommonProfile";
-import { IThunkRewriteProfile } from "../../../store/thunks/profileThunks";
+import { IThunkRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
 import { FormEditStatus } from "../../../UI/FormEditStatus/FormEditStatus";
 import style from "../profile.module.css";

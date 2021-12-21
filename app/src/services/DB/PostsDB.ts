@@ -8,8 +8,8 @@ import {
   ref,
 } from "firebase/database";
 import { IPosts } from "../../models/IPost";
-type uploadPostsType = { id: number; newPost: Array<IPosts> };
 
+type uploadPostsType = { id: number; newPost: Array<IPosts> };
 
 export const fetchPostsDB = async (id: number) => {
   const db = getDatabase();
@@ -31,6 +31,3 @@ export const uploadPostsDB = async ({ id, newPost }: uploadPostsType) => {
   const referenceSecond = ref(db, `posts/${clearID}/posts`);
   await set(referenceSecond, newPost);
 };
-
-
-

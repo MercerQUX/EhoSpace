@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IDataAuth } from "../models/IDataAuth";
+import { IDataAuth } from "../../models/IDataAuth";
 import {
   authAPIActionsType,
   dataAuthType,

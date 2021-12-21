@@ -1,5 +1,5 @@
-import { ICommonProfile } from '../../models/ICommonProfile';
-import { IDataAuth } from "../../models/IDataAuth";
+import { ICommonProfile } from '../../../models/ICommonProfile';
+import { IDataAuth } from "../../../models/IDataAuth";
 //AUTH-API-TYPES
 const LOGGED_DATA = "LOGGED_DATA";
 const DELETE_LOGGED_DATA = "DELETE_LOGGED_DATA";

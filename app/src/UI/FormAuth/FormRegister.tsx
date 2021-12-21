@@ -3,7 +3,7 @@ import style from "../forms.module.css";
 import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
-import { signInProfile, signUpProfile } from "../../store/thunks/authThunks";
+import { signInProfile, signUpProfile } from "../../store/thunks/auth-thunk";
 
 interface IPropertyValues<T> {
   login?: T;

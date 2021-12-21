@@ -10,7 +10,7 @@ import {
   getFollowingID,
   getFiltredUsers,
 } from "../../store/reselectors/users-selector";
-import { getPartUsers } from "../../store/thunks/usersThunks";
+import { getPartUsers } from "../../store/thunks/users-thunk";
 import { Preloader } from "../../asset/common/Preloader";
 import { User } from "./User";
 

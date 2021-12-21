@@ -1,11 +1,11 @@
-import { fetchPosts, updateAuthProfile } from "../store/thunks/profileThunks";
+import { fetchPosts, updateAuthProfile } from "../store/thunks/profile-thunk";
 import { AppDispatch } from "../store/store";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { authAction } from "../store/reducers/authSlice";
 import { get, getDatabase, ref } from "firebase/database";
 import { userAction } from "../store/reducers/userSlice";
 import { profileAction } from "../store/reducers/profileSlice";
-import { fetchArrayFollowUsers } from "../store/thunks/dialogsThunks";
+import { fetchArrayFollowUsers } from "../store/thunks/dialogs-thunk";
 
 export const initlizationProfile = async (
   selectUser: string | undefined,

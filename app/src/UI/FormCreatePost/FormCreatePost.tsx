@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import { ValidCreatePostSchema } from "../../services/validation/validators";
 import style from "../forms.module.css";
 import { useAppDispatch } from "../../hooks/redux-use";
-import { uploadPosts } from "../../store/thunks/profileThunks";
+import { uploadPosts } from "../../store/thunks/profile-thunk";
 
 interface IDefaultProps {
   addPost: (values: string) => any;

@@ -1,4 +1,4 @@
-import { IDataAuth } from "./../../models/IDataAuth";
+import { IDataAuth } from "../../models/IDataAuth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
 type dataIdentifyType = {

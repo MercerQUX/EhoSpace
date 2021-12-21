@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import { getAuthError } from "../../store/reselectors/auth-selector";
 import style from "../forms.module.css";
 import { ValidLoginFormSchema } from "../../services/validation/validators";
-import { signInProfile } from "../../store/thunks/authThunks";
+import { signInProfile } from "../../store/thunks/auth-thunk";
 import cn from "classnames";
 
 interface IPropertyValues<T> {

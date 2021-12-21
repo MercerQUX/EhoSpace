@@ -13,6 +13,7 @@ export const validateLoginDB = async (login: string) => {
   const valid = (await get(reference)).hasChild(login);
   return valid ? false : true;
 };
+
 export const validateEmailDB = async (email: string) => {
   const db = getDatabase();
   const reference = query(

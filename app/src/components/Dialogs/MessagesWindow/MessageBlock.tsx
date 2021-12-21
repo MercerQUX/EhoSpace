@@ -8,7 +8,7 @@ import style from "../dialogs.module.css";
 import { FormMessage } from "../../../UI/FormChat/FormMessage";
 import { getAuthID } from "../../../store/reselectors/auth-selector";
 import { useCallback, useEffect } from "react";
-import { fetchChatMessages } from "../../../store/thunks/dialogsThunks";
+import { fetchChatMessages } from "../../../store/thunks/dialogs-thunk";
 import { SingleMessage } from "./SingleMessage";
 import { ChatPreview } from "../../../asset/common/ChatPreview";
 

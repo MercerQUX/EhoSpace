@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchMessageType, sendedMessageType } from "../../models/IDialogs";
-import { fetchChatDB, uploadChatDB } from "../../services/DB/ChatDB";
-import { fetchShortProfile } from "../../services/DB/FetchProfileDB";
+import { fetchChatDB, uploadChatDB } from "../../services/DB/chatDB";
+import { fetchShortProfileDB } from "../../services/DB/fetchProfileDB";
 
 export const fetchArrayFollowUsers = createAsyncThunk(
   "dialogs/FetchArray",
   async (payload: number[], thunkAPI) => {
-    const shortProfiles = await fetchShortProfile(Object.values(payload));
+    const shortProfiles = await fetchShortProfileDB(Object.values(payload));
     return shortProfiles;
   }
 );

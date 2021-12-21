@@ -2,7 +2,7 @@ import { Field, Formik, Form } from "formik";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { ValidMessageSchema } from "../../services/validation/validators";
 import style from "../forms.module.css";
-import { sendMessages } from "../../store/thunks/dialogsThunks";
+import { sendMessages } from "../../store/thunks/dialogs-thunk";
 
 interface IDefaultProps {
   idSender: number;

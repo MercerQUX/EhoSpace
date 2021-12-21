@@ -1,29 +1,51 @@
 import style from "../../components/User/users.module.css";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
-import { setFollowed } from "../../store/thunks/usersThunks";
+import { setFollowed } from "../../store/thunks/users-thunk";
+import { Form, Formik } from "formik";
 
-interface defaultProps {
+interface IButtonProps {
   isAuth: boolean;
   isFollowingDisabled: boolean;
   isFollowed: boolean;
+}
+
+interface IFormikProps extends IButtonProps {
   idUser: number;
 }
-export const FollowingButton: React.FC<defaultProps> = ({
+
+export const FollowingButton = ({
   isAuth,
   isFollowingDisabled,
   isFollowed,
   idUser,
-}) => {
-  const dispatch = useAppDispatch();
+}: IFormikProps) => {
   const setFollow = (id: number, isFollow: boolean) =>
     dispatch(setFollowed({ id, isFollow }));
+  const dispatch = useAppDispatch();
   return (
-    <div>
+    <Formik initialValues={{}} onSubmit={() => setFollow(idUser, isFollowed)}>
+      {() => (
+        <FollowButton
+          isAuth={isAuth}
+          isFollowed={isFollowed}
+          isFollowingDisabled={isFollowingDisabled}
+        />
+      )}
+    </Formik>
+  );
+};
+
+const FollowButton = ({
+  isAuth,
+  isFollowed,
+  isFollowingDisabled,
+}: IButtonProps) => {
+  return (
+    <Form>
       {isAuth ? (
         <button
           className={cn(isFollowed ? style.unfollow : style.follow)}
-          onClick={() => setFollow(idUser, isFollowed)}
           disabled={isFollowingDisabled}
         >
           {isFollowed ? "Unfollow" : "Follow"}
@@ -31,6 +53,6 @@ export const FollowingButton: React.FC<defaultProps> = ({
       ) : (
         <div></div>
       )}
-    </div>
+    </Form>
   );
 };

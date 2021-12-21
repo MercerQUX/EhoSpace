@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICommonProfile } from "../../models/ICommonProfile";
-import { getPartUsers, setFollowed } from "../thunks/usersThunks";
+import { getPartUsers, setFollowed } from "../thunks/users-thunk";
 
 export type initialStateType = {
   users: Array<ICommonProfile>;

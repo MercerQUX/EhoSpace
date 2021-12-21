@@ -1,7 +1,7 @@
 import style from "./users.module.css";
 import { NavLink } from "react-router-dom";
 import notAvatar from "../../asset/notAvatar.jpg";
-import { FollowingButton } from "../../UI/FollowingBtn/Following_btn";
+import { FollowingButton } from "../../UI/ButtonFollowing/Following_btn";
 
 type defaultProps = {
   id: number;

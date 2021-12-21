@@ -2,7 +2,7 @@ import {
   fetchArrayFollowUsers,
   fetchChatMessages,
   sendMessages,
-} from "../thunks/dialogsThunks";
+} from "../thunks/dialogs-thunk";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { dialogsUsersType, dialogsMessagesType } from "../../models/IDialogs";
 
