@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { ValidCreatePostSchema } from "../../services/validation/validators";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { uploadPosts } from "../../store/thunks/profile-thunk";
 
@@ -40,7 +40,7 @@ const Fields = ({ errors, touched }: IFieldProps) => {
   return (
     <Form>
       <Field
-        className={style.formCreatePost}
+        className={style.post_textarea}
         id="newPost"
         name="newPost"
         placeholder={"Your a new post..."}
@@ -50,7 +50,7 @@ const Fields = ({ errors, touched }: IFieldProps) => {
         <span className={style.errorCreatePost}>{errors.newPost}</span>
       ) : null}
 
-      <button className={style.btn_post} type="submit">
+      <button className={style.post_button} type="submit">
         Posting Post
       </button>
     </Form>

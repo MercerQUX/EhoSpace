@@ -7,7 +7,7 @@ import {
   getAuthLogin,
 } from "../../store/reselectors/auth-selector";
 import { signOutProfile } from "../../store/thunks/auth-thunk";
-import style from "./header.module.css";
+import style from "./header.module.sass";
 
 
 const Header: React.FC = () => {

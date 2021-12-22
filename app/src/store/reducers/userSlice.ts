@@ -18,7 +18,7 @@ let initialState: initialStateType = {
   following: [],
   limitShowUsers: 4,
   usersShowed: -1,
-  isFetching: false,
+  isFetching: true,
   isEmpty: false,
   isFollowingDisabled: false,
   error: "",
@@ -34,7 +34,7 @@ const userSlice = createSlice({
   },
   extraReducers: {
     [getPartUsers.pending.type]: (state) => {
-      state.isFetching = true;
+      
     },
     [getPartUsers.fulfilled.type]: (
       state,
@@ -43,6 +43,7 @@ const userSlice = createSlice({
       state.users = [...state.users, ...action.payload];
       state.usersShowed = state.users.length - 1;
       state.isFetching = false;
+      state.isEmpty = false;
     },
     [getPartUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;

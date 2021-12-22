@@ -6,7 +6,7 @@ import {
   getProfile,
 } from "../../../store/reselectors/profile-selector";
 import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
-import style from "../profile.module.css";
+import style from "../profile.module.sass";
 import { Post } from "./Post";
 
 export const PostCreater: React.FC = () => {
@@ -20,10 +20,10 @@ export const PostCreater: React.FC = () => {
     if (profile === null) {
       return <h2 className={style.loading}>Loading...</h2>;
     } else if (posts.length === 0 && !isOwnerProfile) {
-      return <h2>This user has no posts yet.</h2>;
+      return <h2 className={style.text_head}>This user has no posts yet.</h2>;
     } else if (posts.length === 0 && isOwnerProfile) {
       return (
-        <h2>
+        <h2 className={style.text_head}>
           You don't have any posts yet, leave your post so that others know more
           about you!
         </h2>
@@ -47,12 +47,12 @@ export const PostCreater: React.FC = () => {
     <div className={style.wrapperCreaterPost}>
       {isOwnerProfile ? (
         <div>
-          <h2>My Post</h2>
+          <h2 className={style.text_head}>My Post</h2>
           <FormCreatePost addPost={addPost} />
         </div>
       ) : (
         <div>
-          <h2>{profile?.name + `'`} Posts</h2>
+          <h2 className={style.text_head}>{profile?.name + `'`} Posts</h2>
         </div>
       )}
       {<div className={style.posts}>{map()}</div>}

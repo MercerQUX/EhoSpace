@@ -1,0 +1,33 @@
+@mixin shadow-btn-following($out-color,$inset-color)
+	box-shadow: 0px 0px 10px $out-color, inset 8px 6px 20px $inset-color
+	-moz-box-shadow: 0px 0px 10px $out-color, inset 8px 6px 20px $inset-color
+
+@mixin shadow-btn-following__hover($out-color,$inset-color)
+	box-shadow: 0px 0px 10px $out-color, inset -8px -6px 20px $inset-color
+	-moz-box-shadow: 0px 0px 10px $out-color, inset -8px -6px 20px $inset-color
+
+.following_button
+	font-size: 1.2rem
+	width: 140px
+	cursor: pointer
+	height: 40px
+	border-radius: 30px
+	font-weight: 600
+	margin-right: -10px
+	margin-top: 20px
+
+.follow
+	background-color: #005e09
+	border: solid 2px #96b60b
+	@include shadow-btn-following($out-color:#b8d1e1 ,$inset-color:#e3eb7b )
+
+	&:hover
+		@include shadow-btn-following__hover($out-color:#b8d1e1 ,$inset-color:#e3eb7b )
+
+.unfollow
+	background-color: #cf0a0ae0
+	border: solid 2px #cd2c2c
+	@include shadow-btn-following($out-color:#fd1616 ,$inset-color:#ff0f46 )
+
+	&:hover
+		@include shadow-btn-following__hover($out-color:#fd1616 ,$inset-color:#ff0f46 )

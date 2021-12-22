@@ -13,13 +13,14 @@ import { SingleMessage } from "./SingleMessage";
 import { ChatPreview } from "../../../asset/common/ChatPreview";
 
 export const MessageBlock: React.FC = () => {
-  const activeDialogs = useParams().userID;
-  const dispatch = useAppDispatch();
-  const { dialogs, messages, loggedID } = {
+  const { activeDialogs, dispatch, dialogs, messages, loggedID } = {
+    activeDialogs: useParams().userID,
+    dispatch: useAppDispatch(),
     dialogs: useAppSelector(dialogsUsers),
     messages: useAppSelector(ownDialogsMessages),
     loggedID: useAppSelector(getAuthID),
   };
+
   const fetchMessages = useCallback(() => {
     dispatch(
       fetchChatMessages({ idSender: loggedID, idAdress: activeDialogs })
@@ -29,6 +30,7 @@ export const MessageBlock: React.FC = () => {
   const dataDialogs = dialogs.filter(
     (user) => user.id === Number(activeDialogs)
   )[0];
+
   useEffect(() => {
     fetchMessages();
   }, [activeDialogs, loggedID, fetchMessages]);
@@ -64,9 +66,7 @@ export const MessageBlock: React.FC = () => {
         </div>
       )}
 
-      <div className={style.userMessage}>
-        {mapMessage}
-      </div>
+      <div className={style.userMessage}>{mapMessage}</div>
       {!activeDialogs && (
         <div className={style.untilSelectText}>
           <span>

@@ -1,4 +1,4 @@
-import style from "../../main.module.css";
+import style from "../../main.module.sass";
 import { PostCreater } from "./PostModule/PostCreater";
 import { ProfileContainer } from "./ProfileModule/ProfileContainer";
 

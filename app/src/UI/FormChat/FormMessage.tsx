@@ -1,7 +1,7 @@
 import { Field, Formik, Form } from "formik";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { ValidMessageSchema } from "../../services/validation/validators";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { sendMessages } from "../../store/thunks/dialogs-thunk";
 
 interface IDefaultProps {
@@ -49,7 +49,7 @@ const Fields = () => {
         as="textarea"
         className={style.chat_textarea}
       />
-      <button className={style.chat_btn}>Send</button>
+      <button className={style.chat_button}>Send</button>
     </Form>
   );
 };

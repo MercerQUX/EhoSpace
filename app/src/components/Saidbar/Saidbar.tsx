@@ -1,4 +1,4 @@
-import style from "./saidbar.module.css";
+import style from "./saidbar.module.sass";
 import { NavLink } from "react-router-dom";
 import { dataListSaidbar } from "./saidbar-list";
 

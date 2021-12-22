@@ -1,5 +1,5 @@
-import style from "../../main.module.css";
-import styleU from "./users.module.css";
+import styleMain from "../../main.module.sass";
+import style from "./users.module.sass";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import { isAuthInitialization } from "../../store/reselectors/auth-selector";
@@ -13,6 +13,7 @@ import {
 import { getPartUsers } from "../../store/thunks/users-thunk";
 import { Preloader } from "../../asset/common/Preloader";
 import { User } from "./User";
+import { scrollingBy } from "../../helpers/scrollHelper";
 
 const UsersPage: React.FC = () => {
   const { users, isFetching, isEmpty, isFollowingDisabled, friends, isAuth } = {
@@ -24,11 +25,10 @@ const UsersPage: React.FC = () => {
     isAuth: useAppSelector(isAuthInitialization),
   };
   const dispatch = useAppDispatch();
-  const getUsersParts = useCallback(() => dispatch(getPartUsers()), [dispatch]);
-
-  useEffect(() => {
-    getUsersParts();
-  }, [getUsersParts]);
+  const getUsersParts = useCallback(async () => {
+    await dispatch(getPartUsers());
+    scrollingBy(window.innerHeight);
+  }, [dispatch]);
 
   let mapUsers = users.map((user) => (
     <User
@@ -41,14 +41,16 @@ const UsersPage: React.FC = () => {
     />
   ));
   return (
-    <div className={style.profile}>
-      {isFetching && !isEmpty ? <Preloader /> : <div>{mapUsers}</div>}
-      <div style={{ textAlign: "center" }}>
+    <div className={styleMain.users}>
+      {isFetching ? <Preloader /> : <div>{mapUsers}</div>}
+      <div className={style.container_btn}>
         {isEmpty ? (
-          <span className={styleU.error}>Пользователей не найдено</span>
+          <span className={style.notFound__error}>
+            Пользователей не найдено
+          </span>
         ) : null}
         <br />
-        <button className={styleU.btnGetUsers} onClick={() => getUsersParts()}>
+        <button className={style.getUser_btn} onClick={() => getUsersParts()}>
           Load Users
         </button>
       </div>

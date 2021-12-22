@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import { getAuthError } from "../../store/reselectors/auth-selector";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { ValidLoginFormSchema } from "../../services/validation/validators";
 import { signInProfile } from "../../store/thunks/auth-thunk";
 import cn from "classnames";
@@ -74,7 +74,7 @@ const FieldLogin = ({ errors, touched, error }: IFieldProps) => {
         Forgot your password?
       </div>
       <span className={style.error}>{alternateСallErrors}</span>
-      <button type="submit" className={style.btn}>
+      <button type="submit" className={style.button__local}>
         Sign In
       </button>
     </Form>

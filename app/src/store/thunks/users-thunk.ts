@@ -17,7 +17,7 @@ interface IThunkPayloadFollowed {
 
 export const getPartUsers = createAsyncThunk(
   "users/getPartUsers",
-  async (_, thunkAPI: { getState: any }) => {
+  async (_, thunkAPI: { getState: any; rejectWithValue: any }) => {
     const state = thunkAPI.getState().userReducer;
     const getUsers = query(
       ref(getDatabase(), "users"),

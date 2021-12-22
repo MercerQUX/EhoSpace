@@ -1,0 +1,30 @@
+$posttime-color:white
+
+%fullname-style
+	color: #1d72f1
+	text-shadow: 1px 1px 0px black
+
+.wrapperPost
+	display: flex
+	background-color: #4ad9bc60
+	margin-bottom: 20px
+	padding: 10px 20px
+
+	img
+		width: 100px
+		height: 100px
+		padding-right: 10px
+
+	.container_content
+		.post_fullname
+			font-weight: bold
+			font-size: 1.3rem
+			@extend %fullname-style
+
+		.postTime
+			font-size: 0.8rem
+			word-spacing: 6px
+			color: $posttime-color
+
+			p
+				word-break: break-all

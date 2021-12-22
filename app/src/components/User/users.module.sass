@@ -1,0 +1,83 @@
+@import usersPage
+
+@mixin wrap-flex
+  display: flex
+  display: -webkit-flex
+  display: -ms-flexbox
+  flex-direction: column
+
+%fullname-style
+  color: #c5dcff
+%nickname-style
+  color: white
+  text-shadow: 0px 0px 10px white
+%status-style
+  color: #0055d7
+%country-style
+  color: #1d1b4d
+  text-shadow: 0px 0px 5px #6464ff
+%city-style
+  color: black
+  text-shadow: 1px 1px 8px black
+
+%img-size
+  width: 7rem
+  height: 7rem
+
+.wrapperUser
+  background-color: #79aedd69
+  display: flex
+  width: 90%
+  margin: 20px auto
+  padding: 10px 20px
+  justify-content: space-between
+  border: 1px solid #79aedd
+  box-shadow: 0px 0px 10px #0071d5
+  border-radius: 20px
+
+.leftContent
+  display: flex
+
+.user_img
+  @extend %img-size
+  margin-right: 20px
+  cursor: pointer
+
+  img
+    @extend %img-size
+    border-radius: 10px
+
+.userInfo
+  @include wrap-flex
+  height: 80px
+  justify-content: space-between
+
+  .userInfo__fullname
+    font-size: 1.6rem
+    font-weight: bold
+    @extend %fullname-style
+
+  .userInfo__nickname
+    font-size: 1rem
+    font-weight: bold
+    @extend %nickname-style
+
+  .userInfo__status
+    font-size: 0.9rem
+    font-weight: 600
+    padding-top: 5px
+    width: 90%
+    word-break: break-word
+    @extend %status-style
+
+.rightContent
+  @include wrap-flex
+  align-items: flex-end
+
+  .userInfo__country
+    font-size: 1.5rem
+    @extend %country-style
+
+  .userInfo__city
+    font-size: 1.1rem
+    @extend %city-style

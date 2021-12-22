@@ -1,6 +1,6 @@
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import Saidbar from "./components/Saidbar/Saidbar";
-import style from "./main.module.css";
+import style from "./main.module.sass";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/redux-use";

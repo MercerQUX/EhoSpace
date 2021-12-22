@@ -1,0 +1,220 @@
+$auth-image: url("../../asset/auth-background.jpg")
+$main-color-button: #0367a6
+
+%title-font-style
+	color: #bdbdf9
+	font-size: 2rem
+	font-style: italic
+	font-weight: bold
+
+%inputs-style
+	border: none
+	background: #987eff6e
+	box-shadow: 0px 0px 25px #987eff, inset 0px 0px 25px black
+	color: white
+	font-size: 1rem
+
+%buttons-style
+	background-color: $main-color-button
+	background-image: linear-gradient(90deg, $main-color-button 0%, #5600ff9e 74%)
+	border: 1px solid $main-color-button
+	color: #e9e9e9
+	box-shadow: 0px 0px 10px #0e5cd1, inset 0px 0px 10px #edc0c0
+	-moz-box-shadow: 0px 0px 10px #0e5cd1, inset 0px 0px 10px #edc0c0
+	-webkit-box-shadow: 0px 0px 10px #0e5cd1, inset 0px 0px 10px #edc0c0
+	font-size: 0.8rem
+	font-weight: bold
+
+@mixin transform-transX($param)
+	-webkit-transform: translateX($param)
+	-moz-transform: translateX($param)
+	-ms-transform: translateX($param)
+	-o-transform: translateX($param)
+	transform: translate($param)
+
+@mixin style-valid-form($color-valid)
+	-moz-box-shadow: 0px 0px 25px #987eff, inset 0px 0px 25px $color-valid
+	-webkit-box-shadow: 0px 0px 25px #987eff, inset 0px 0px 25px $color-valid
+	box-shadow: 0px 0px 25px #987eff, inset 0px 0px 25px $color-valid
+
+@mixin flex-wrap-center
+	display: -webkit-box
+	display: -moz-box
+	display: -ms-flexbox
+	display: -webkit-flex
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+
+/* Form Begin
+.form
+	background-color: #4d6aa470
+	@include flex-wrap-center
+	padding: 0 3rem
+	height: 100%
+
+	.form__title
+		@extend %title-font-style
+		margin: 0
+		margin-bottom: 1.25rem
+
+	.button__local
+		margin-top: 1.5rem
+
+	.link
+		color: #ffffff
+		font-size: 1rem
+		margin: 1.5rem 0
+		text-decoration: none
+
+	.input
+		padding: 0.9rem 0.9rem
+		margin: 0.5rem 0
+		width: 100%
+		border-radius: 50px
+		@extend %inputs-style
+
+		&:focus
+			outline: 1px solid #9391ff
+
+		&::placeholder
+			color: #1401428c
+			font-size: 1rem
+			font-weight: bold
+			opacity: 1
+			transition: opacity 0.8s ease
+
+		&:focus::placeholder
+			opacity: 0
+			transition: opacity 0.6s ease
+
+	.error
+		color: white
+		font-size: 1.2rem
+		font-weight: 500
+		text-shadow: -1px -1px 4px #d5d5d5
+
+	.input__correctly
+		@include style-valid-form($color-valid: #149514)
+
+	.input__error
+		@include style-valid-form($color-valid: #9d0505)
+/* Form End
+
+.container
+	border-radius: 0.7rem
+	box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25), 0 0.7rem 0.7rem rgba(0, 0, 0, 0.22)
+	height: 550px
+	max-width: 100%
+	overflow: hidden
+	position: relative
+	width: 100%
+
+.container__form
+	height: 100%
+	width: 50%
+	position: absolute
+	top: 0
+	transition: all 0.6s ease-in-out
+
+.container.right_panel_active .container__signup
+	animation: show 0.6s
+	opacity: 1
+	@include transform-transX($param:100%)
+	z-index: 5
+
+.container.right_panel_active .container__signin
+	animation: show 0.6s reverse
+	opacity: 0
+	@include transform-transX($param:100%)
+
+.container__signin
+	left: 0
+	width: 50%
+	z-index: 2
+
+.container__signup
+	left: 0
+	opacity: 0
+	width: 50%
+	z-index: 1
+
+.container__overlay
+	height: 100%
+	left: 50%
+	overflow: hidden
+	position: absolute
+	top: 0
+	transition: transform 0.6s ease-in-out
+	width: 50%
+	z-index: 100
+
+.container.right_panel_active .container__overlay
+	@include transform-transX($param:-100%)
+
+.overlay
+	background-color: #008997
+	background: $auth-image
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+	opacity: 0.85
+	height: 100%
+	left: -100%
+	position: relative
+	@include transform-transX($param:0)
+	transition: transform 0.6s ease-in-out
+	width: 200%
+
+.container.right_panel_active .overlay
+	@include transform-transX($param:50%)
+
+.overlay__panel
+	@include flex-wrap-center
+	height: 100%
+	position: absolute
+	top: 0
+	@include transform-transX($param:0)
+	transition: transform 0.6s ease-in-out
+	width: 50%
+
+.overlay__left
+	@include transform-transX($param:-20%)
+
+.container .right_panel_active .overlay__left
+	@include transform-transX($param:0)
+
+.overlay__right
+	right: 0
+	@include transform-transX($param:0)
+
+.container.right_panel_active .overlay__right
+	@include transform-transX($param:20%)
+
+.button__local
+	@extend %buttons-style
+	border-radius: 20px
+	cursor: pointer
+	letter-spacing: 0.1rem
+	padding: 0.9rem 4rem
+	text-transform: uppercase
+	transition: transform 80ms ease-in
+	width: 60%
+	max-width: 250px
+	height: 50px
+	&:active
+		transform: scale(0.95)
+	&:focus
+		outline: none
+
+@keyframes show
+	0%,
+  49.99%
+		opacity: 0
+		z-index: 1
+
+	50%,
+	100%
+		opacity: 1
+		z-index: 5

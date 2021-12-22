@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { ValidRegisterFormSchema } from "../../services/validation/validators";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
@@ -125,7 +125,7 @@ const FieldRegister = ({ errors, touched }: IFieldProps) => {
         )}
       />
       <span className={style.error}>{alternateСallErrors}</span>
-      <button type="submit" className={style.btn}>
+      <button type="submit" className={cn(style.button__local)}>
         Sign Up
       </button>
     </Form>

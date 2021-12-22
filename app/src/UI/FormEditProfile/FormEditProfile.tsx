@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { ValidEditProfileSchema } from "../../services/validation/validators";
 import cn from "classnames";
 import { IThunkRewriteProfile } from "../../store/thunks/profile-thunk";

@@ -1,0 +1,22 @@
+$text-color: #a4baf9
+$active-color: #269bff
+
+.saidbar
+  grid-area: saidbar
+  background-color: rgb(102 136 211 / 60%)
+
+  ul li
+    list-style: none
+
+    a
+      text-decoration: none
+      color: $text-color
+      font-size: 1.6rem
+      font-family: cursive
+      font-weight: bold
+
+      &.activeLink
+        color: $active-color
+
+    &:hover
+      color: $active-color

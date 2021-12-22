@@ -3,7 +3,7 @@ import { ICommonProfile } from "../../../models/ICommonProfile";
 import { IThunkRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";
 import { FormEditStatus } from "../../../UI/FormEditStatus/FormEditStatus";
-import style from "../profile.module.css";
+import style from "../profile.module.sass";
 
 interface defaultProps {
   profile: ICommonProfile;

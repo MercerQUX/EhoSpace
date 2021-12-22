@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import style from "../forms.module.css";
+import style from "../forms.module.sass";
 import { ValidStatusSchema } from "../../services/validation/validators";
 import { IThunkRewriteProfile } from "../../store/thunks/profile-thunk";
 import { useAppDispatch } from "../../hooks/redux-use";

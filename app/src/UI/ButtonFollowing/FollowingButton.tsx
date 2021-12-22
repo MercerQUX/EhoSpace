@@ -1,4 +1,4 @@
-import style from "../../components/User/users.module.css";
+import style from "../forms.module.sass";
 import cn from "classnames";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { setFollowed } from "../../store/thunks/users-thunk";
@@ -45,7 +45,10 @@ const FollowButton = ({
     <Form>
       {isAuth ? (
         <button
-          className={cn(isFollowed ? style.unfollow : style.follow)}
+          className={cn(
+            isFollowed ? style.unfollow : style.follow,
+            style.following_button
+          )}
           disabled={isFollowingDisabled}
         >
           {isFollowed ? "Unfollow" : "Follow"}

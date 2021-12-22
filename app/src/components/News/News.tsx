@@ -1,5 +1,4 @@
-import React from "react";
-import style from "../../main.module.css"
+import style from "../../main.module.sass"
 
 const News = () => {
   return (

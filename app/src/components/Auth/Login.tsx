@@ -6,6 +6,7 @@ import {
   isAuthInitialization,
 } from "../../store/reselectors/auth-selector";
 import { AuthForms } from "../../UI/FormAuth/FormsAuth";
+import styleMain from "../../main.module.sass"
 
 const Login = () => {
   const { isAuth, isLoading } = {
@@ -15,7 +16,7 @@ const Login = () => {
   return isAuth ? (
     <Navigate to={"/profile"} />
   ) : (
-    <div>{isLoading ? <Preloader /> : <AuthForms />}</div>
+    <div className={styleMain.login}>{isLoading ? <Preloader /> : <AuthForms />}</div>
   );
 };
 
