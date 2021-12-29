@@ -3,6 +3,7 @@ import { ValidCreatePostSchema } from "../../services/validation/validators";
 import style from "../forms.module.sass";
 import { useAppDispatch } from "../../hooks/redux-use";
 import { uploadPosts } from "../../store/thunks/profile-thunk";
+import { handleClickKey } from "../../helpers/handleClickKey";
 
 interface IDefaultProps {
   addPost: (values: string) => any;
@@ -13,6 +14,7 @@ interface IPropertyValues<T> {
 interface IFieldProps {
   errors: IPropertyValues<string>;
   touched: IPropertyValues<boolean>;
+  handleSubmit: () => void;
 }
 
 export const FormCreatePost = ({ addPost }: IDefaultProps) => {
@@ -36,7 +38,7 @@ export const FormCreatePost = ({ addPost }: IDefaultProps) => {
   );
 };
 
-const Fields = ({ errors, touched }: IFieldProps) => {
+const Fields = ({ errors, touched, handleSubmit }: IFieldProps) => {
   return (
     <Form>
       <Field
@@ -45,14 +47,12 @@ const Fields = ({ errors, touched }: IFieldProps) => {
         name="newPost"
         placeholder={"Your a new post..."}
         as="textarea"
+        onKeyPress={(e) => handleClickKey(e,handleSubmit)}
       />
       {errors.newPost && touched.newPost ? (
         <span className={style.errorCreatePost}>{errors.newPost}</span>
       ) : null}
-
-      <button className={style.post_button} type="submit">
-        Posting Post
-      </button>
+      <button type="submit" className={style.post_button}>Posting Post</button>
     </Form>
   );
 };

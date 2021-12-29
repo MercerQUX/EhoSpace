@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../hooks/redux-use";
 import { ValidMessageSchema } from "../../services/validation/validators";
 import style from "../forms.module.sass";
 import { sendMessages } from "../../store/thunks/dialogs-thunk";
+import { handleClickKey } from "../../helpers/handleClickKey";
 
 interface IDefaultProps {
   idSender: number;
@@ -34,13 +35,13 @@ export const FormMessage = ({ idSender, adressID }: IDefaultProps) => {
       validationSchema={ValidMessageSchema}
     >
       {(...formikProps) => {
-        return <Fields />;
+        return <Fields {...formikProps[0]} />;
       }}
     </Formik>
   );
 };
 
-const Fields = () => {
+const Fields = ({ handleSubmit }: any) => {
   return (
     <Form className={style.wrapperChatForm}>
       <Field
@@ -48,8 +49,9 @@ const Fields = () => {
         placeholder={"Your message..."}
         as="textarea"
         className={style.chat_textarea}
+        onKeyPress={(e) => handleClickKey(e,handleSubmit)}
       />
-      <button className={style.chat_button}>Send</button>
+      <button type="submit" className={style.chat_button}>Send</button>
     </Form>
   );
 };

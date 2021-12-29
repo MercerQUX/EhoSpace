@@ -7,7 +7,7 @@ export const ValidStatusSchema = Yup.object().shape({
 });
 
 export const ValidMessageSchema = Yup.object().shape({
-  bodyMessage: Yup.string().required("Warning:Field required"),
+  bodyMessage: Yup.string().required("Warning:Field required").matches(/\S+/),
 });
 
 export const ValidLoginFormSchema = Yup.object().shape({
