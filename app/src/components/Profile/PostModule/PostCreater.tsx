@@ -39,7 +39,7 @@ export const PostCreater: React.FC = () => {
             text={item.body}
           />
         );
-      });
+      }).reverse();
     }
   };
 

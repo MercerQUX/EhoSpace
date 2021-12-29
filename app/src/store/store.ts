@@ -3,12 +3,14 @@ import { profileReducer } from "./reducers/profileSlice";
 import { authReducer } from "./reducers/authSlice";
 import { dialogsReducer } from "./reducers/dialogsSlice";
 import { userReducer } from "./reducers/userSlice";
+import { newsReducer } from "./reducers/newsSlice";
 
 const rootReducer = combineReducers({
   userReducer,
   dialogsReducer,
   profileReducer,
   authReducer,
+  newsReducer,
 });
 
 const setupStore = () => {

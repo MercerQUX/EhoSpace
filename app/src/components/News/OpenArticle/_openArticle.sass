@@ -1,0 +1,64 @@
+%direction-style
+	color: #001ffc
+	text-shadow: 1px 2px 2px #00e7ff
+	font-size: 1.3rem
+%openContent-background
+	background: #002bff8a
+	border: 3px solid #4508ff
+	border-radius: 1.2rem
+%title-content_style
+	border-radius: 10px
+	background: #fdfdfd61
+	color: #0072ff
+	text-shadow: 0px 0px 10px #4bffd5, 1px 1px 0px #002bff
+%content_container-style
+	background: #0583f1
+	border: 2px solid #4b00ff
+	font-size: 1.1rem
+
+.direction
+	display: flex
+	justify-content: space-between
+	padding: 10px 50px
+	span
+		@extend %direction-style
+		font-weight: bold
+		cursor: pointer
+
+.openContent
+	@extend %openContent-background
+	width: 86%
+	padding: 0px 20px 20px 20px
+	margin: 0px auto 40px auto
+	h2
+		@extend %title-content_style
+		text-align: center
+		width: 80%
+		margin: 20px auto 5px auto
+		padding: 10px
+
+.metaArticle
+	display: flex
+	margin-bottom: 20px
+	justify-content: space-between
+	padding: 0px 40px
+	span
+		font-weight: bold
+		color: #00ade1
+		font-size: 1.2rem
+	time
+		font-weight: bold
+		color: #94e6ff
+		font-size: 1.1rem
+
+.content_container
+	@extend %content_container-style
+	white-space: pre-wrap
+	padding: 20px
+.openTags
+	margin-top: 20px
+	height: 32px
+	align-items: center
+	display: flex
+	span
+		margin-right: 6px

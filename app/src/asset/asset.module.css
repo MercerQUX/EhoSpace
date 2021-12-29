@@ -20,3 +20,13 @@
 .chatPreview {
   height: 100%;
 }
+
+.tags {
+  cursor: pointer;
+  margin-left: 5px;
+  padding: 2px 15px 5px 15px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  outline: 2px solid white;
+  height: 20px;
+}

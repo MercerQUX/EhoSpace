@@ -46,7 +46,7 @@ const UsersPage: React.FC = () => {
       <div className={style.container_btn}>
         {isEmpty ? (
           <span className={style.notFound__error}>
-            Пользователей не найдено
+            Warning: Users not found
           </span>
         ) : null}
         <br />

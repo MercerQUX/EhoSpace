@@ -16,7 +16,6 @@ const initialState: initialStateType = {
   dialogsUsers: [],
   dialogsMessages: [],
   isLoading: false,
-
 };
 
 const dialogsSlice = createSlice({

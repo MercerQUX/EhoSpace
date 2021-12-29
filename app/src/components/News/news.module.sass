@@ -1,0 +1,71 @@
+$middle-news_backround: #5459ff85
+%title-main-style
+	color: #0072ff
+	background: #2a89ff87
+	border-radius: 20px
+	box-shadow: 0px 0px 15px #0400ff, inset 0px 5px 30px #00dcff
+	text-shadow: 0px 0px 10px #4bffd5, 1px 1px 0px #002bff
+%tags_container-style
+	border-top: 3px solid #0008ff
+	border-radius: 8px
+	background: #002bff70
+
+.wrapperArticle
+	margin: 0
+	padding: 0
+	width: 100%
+	height: 300px
+	margin-bottom: 20px
+	display: grid
+	grid-template-columns: 1fr
+	grid-template-rows: 2fr 1.5fr 45px
+	grid-auto-columns: 1fr
+	gap: 0px 0px
+	grid-auto-flow: row
+	grid-template-areas: "headerArticle" "Article" "tagsArticle"
+	&:hover
+		transition: transform 0.7s
+		transform: scale(1.09)
+
+.titleMain
+	@extend %title-main-style
+	margin: 10px auto
+	text-align: center
+	width: 60%
+
+.headerArticle
+	cursor: pointer
+	grid-area: headerArticle
+	padding: 0
+	border-radius: 5px 5px 0px 0px
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	.timeArticle
+		padding: 10px 0px 0px 20px
+		font-size: 0.8rem
+		font-weight: bold
+	.titleArticle
+		align-self: end
+		padding: 0px 20px 10px 0px
+		font-weight: bold
+		font-size: 1.4rem
+
+.Article
+	grid-area: Article
+	background: $middle-news_backround
+	.namedArticle
+		padding: 10px 0px 0px 10px
+		margin: 10px 0px
+	.contentArticle
+		font-size: 0.9rem
+		padding: 0px 10px 5px 20px
+
+.tagsArticle
+	@extend %tags_container-style
+	display: flex
+	grid-area: tagsArticle
+	margin-top: -3px
+	padding-top: 10px
+
+@import ./openArticle/_openArticle

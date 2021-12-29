@@ -18,3 +18,30 @@ $background-img: url("../src/asset/background-profile.jpg")
 
 .dialogs, .login
   grid-area: content
+
+.news
+  background-color: #7aa7c8d3
+  background-image: $background-img
+  grid-area: content
+
+.news__grid
+  display: grid
+  padding: 20px
+  grid-auto-columns: 1fr
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr
+  gap: 0px 20px
+  grid-template-areas: "newsContainer_right newsContainer_left"
+
+.newsContainer_right
+  grid-area: newsContainer_right
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.newsContainer_left
+  grid-area: newsContainer_left
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+

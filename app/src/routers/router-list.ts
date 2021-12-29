@@ -1,7 +1,8 @@
 import Login from "../components/Auth/Login";
 import Contact from "../components/Contact/Contact";
 import Dialogs from "../components/Dialogs/Dialog";
-import News from "../components/News/News";
+import News from "../components/News/NewsPage";
+import { OpenArticle } from "../components/News/OpenArticle/OpenArticle";
 import Profile from "../components/Profile/Profile";
 import UsersPage from "../components/User/UsersPage";
 
@@ -79,6 +80,13 @@ export const dataListRouter: Array<IDataList> = [
   },
   {
     key: 10,
+    redirect: false,
+    redirectPath: "",
+    path: "/news/:newsID",
+    JSX: OpenArticle,
+  },
+  {
+    key: 11,
     redirect: false,
     redirectPath: "",
     path: "/login",
