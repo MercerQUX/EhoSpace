@@ -1,6 +1,7 @@
-<h1 align="center" style="font-weight:bold; color:#63e8ea">EhoSpace v0.1</h1>
+<h1 align="center" style="font-weight:bold; color:#63e8ea">EhoSpace v0.2</h1>
 
 ## Description
+
 <img align = "center" src = "./preview-doc.jpg" width = "100%">
 <p>The project was created on the basis of practice with minimal investment in the visual part, but as a skill development in the design of architecture and functionality using BLL and interaction with API-noSQL;</p>
 <p>You can follow the development of the project in the tab <b>/news</b>;</p>
@@ -17,8 +18,11 @@
 <p>• Displaying registered users</p>
 <p>• Ability to subscribe to users</p>
 <p>• Ability to send messages to subscribed users</p>
+<p>• The current time in sending posts and messages</p>
 
 ## Structure project
+
+<p>Actual for version 0.1</p>
 
 ```
 -src
@@ -191,9 +195,9 @@ Since the project is educational, it has the opportunity to practice any ideas a
 <p>• Refactoring and optimization</p>
 <p>• Fonts</p>
 <p>• Testing the application</p>
-<p>• Add time display of messages and posts</p>
 <p>• User filter in the / users tab</p>
-<p>• Create tabs / contacts and / news</p>
+<p>• Create tabs / contacts and 404 page</p>
+<p>• Redesign and adding adaptability</p>
 <p><b>more other...</b></p>
 
 ## More about
