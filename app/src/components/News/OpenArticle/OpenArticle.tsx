@@ -31,7 +31,9 @@ export const OpenArticle = () => {
           <time>{fullArticle.timestamp}</time>
         </span>
         <article className={style.content_container}>
-          {fullArticle.content_dive.full_content_article}
+          {fullArticle.content_dive.full_content_article}<br/><br/>
+          Thank you for your support and attention to my pet-project. We also
+          continue to actively develop the project with any useful criticism!
         </article>
         <div className={style.openTags}>
           <Tags tags={fullArticle.tags} />
