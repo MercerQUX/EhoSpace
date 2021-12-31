@@ -29,17 +29,20 @@ export const PostCreater: React.FC = () => {
         </h2>
       );
     } else {
-      return posts.map((item) => {
-        return (
-          <Post
-            key={item.id}
-            name={profile.name}
-            surname={profile.surname}
-            img={profile.avatar}
-            text={item.body}
-          />
-        );
-      }).reverse();
+      return posts
+        .map((item) => {
+          return (
+            <Post
+              key={item.id}
+              name={profile.name}
+              surname={profile.surname}
+              img={profile.avatar}
+              text={item.body}
+              time={item.timestamp}
+            />
+          );
+        })
+        .reverse();
     }
   };
 

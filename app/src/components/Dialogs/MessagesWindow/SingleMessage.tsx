@@ -13,7 +13,6 @@ export const SingleMessage: React.FC<defaultProps> = ({
   timeStamp,
 }) => {
   let ownMessage = messagePosition ? style.messageOther : null;
-
   return (
     <div className={style.containerMessage}>
       <div className={cn(style.singleMessage, ownMessage)}>
@@ -23,3 +22,4 @@ export const SingleMessage: React.FC<defaultProps> = ({
     </div>
   );
 };
+

@@ -18,7 +18,8 @@
 }
 
 .chatPreview {
-  height: 100%;
+  height: 90%;
+  margin-top: 1%;
 }
 
 .tags {

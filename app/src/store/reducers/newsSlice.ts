@@ -69,7 +69,8 @@ const initialState: initialStateType = {
       },
       content_dive: {
         author: "MercerQUX",
-        full_content_article:"The page you're on is created with this update! Many changes were made to the code itself.\n More details:\n   - Delet\n   - Setet"
+        full_content_article:
+          "The page you're on is created with this update! Many changes were made to the code itself.\n More details:\n   - New News page created\n   - Sorting of posts changed to: from new to old\n   - Sending posts and messages is now on <Enter> and line breaks on <Ctrl + Enter>\n   - The current time in sending posts and messages\n   - Smooth scrolling when clicking user downloads\n   - Adding a new logo\n  Fix:  \n   - Most code refactoring for further support\n   - Error in user subscription\n   - Convert most of the CSS to SASS for further support\n",
       },
     },
   ],

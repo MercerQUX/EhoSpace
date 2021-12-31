@@ -3,6 +3,7 @@ import { ICommonProfile } from "../../models/ICommonProfile";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchSingleProfileDB } from "../../services/DB/fetchProfileDB";
 import { rewriteProfile } from "../../services/DB/rewriteProfileDB";
+import { format } from "date-fns";
 export interface IThunkRewriteProfile {
   id: number;
   updateProfile: ICommonProfile;
@@ -45,7 +46,7 @@ export const uploadPosts = createAsyncThunk(
     let newPost = {
       id: thunkAPI.getState().profileReducer.posts.length + 1,
       body: payload,
-      timestamp: "00:00:00 01/01/22",
+      timestamp: format(new Date(), "PPP p OOOO"),
     };
     let concatPosts = [...thunkAPI.getState().profileReducer.posts, newPost];
     await uploadPostsDB({

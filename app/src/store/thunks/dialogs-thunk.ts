@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { format } from "date-fns";
 import { fetchMessageType, sendedMessageType } from "../../models/IDialogs";
 import { fetchChatDB, uploadChatDB } from "../../services/DB/chatDB";
 import { fetchShortProfileDB } from "../../services/DB/fetchProfileDB";
@@ -31,7 +32,7 @@ export const sendMessages = createAsyncThunk(
       id: thunkAPI.getState().dialogsReducer.dialogsMessages.length,
       body: messageBody,
       idSender: idSender,
-      timestamp: "00:00:00 01/01/2022",
+      timestamp: format(new Date(), "Pp"),
     };
     await uploadChatDB({
       idSender,
