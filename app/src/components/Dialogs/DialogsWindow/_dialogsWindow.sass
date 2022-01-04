@@ -1,0 +1,111 @@
+$header-background: #1a70f1b3
+$middle-background: #1d159b73
+$footer-background: #243dd9
+%title-style
+	color: #856af5
+	font-size: 2.4rem
+	font-weight: bold
+%wrapper-button-style
+	background-color: #960d89b0
+	color: #556cff
+	font-size: 2rem
+%single-dialog-wrapper-style
+	background-color: #4ad9bc60
+	outline: #0076f5 solid 1px
+	box-shadow: 0px 0px 5px #43d1f9
+
+.wrapperContactsDialogs
+	display: grid
+	width: 100%
+	height: 550px
+	grid-template-rows: 10% 85% 5%
+	gap: 0px 0px
+	grid-template-areas: "headerDialogs" "usersDialogs" "footerDialogs"
+
+.headerDialogs
+	grid-area: headerDialogs
+	background-color: $header-background
+	width: 100%
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	span
+		@extend %title-style
+		height: 100%
+		padding-left: 30px
+		cursor: default
+
+.usersDialogs
+	height: 100%
+	grid-area: usersDialogs
+	background-color: $middle-background
+	overflow-y: scroll
+	&::-webkit-scrollbar
+		width: 12px
+	&::-webkit-scrollbar-track
+		box-shadow: inset 0 0 6px rgba(248, 248, 248, 0.3)
+	&::-webkit-scrollbar-thumb
+		box-shadow: inset 0 0 6px rgba(182, 149, 248, 0.5)
+
+.footerDialogs
+	height: 100%
+	grid-area: footerDialogs
+	background-color: $footer-background
+	width: 100%
+
+.emptyDialogs
+	padding: 40px 0px 0px 30px
+	color: #bddaff
+
+.showDialogs_btn
+	@extend %wrapper-button-style
+	width: 80px
+	height: 100%
+	padding: 0px 0px 0px 10px
+	border-bottom-left-radius: 40%
+	cursor: pointer
+	font-weight: bold
+	letter-spacing: -10px
+
+.wrapperSingleDialog
+	@extend %single-dialog-wrapper-style
+	min-width: 300px
+	max-width: 99%
+	margin-left: 0.5%
+	height: 60px
+	margin-top: 10px
+	display: flex
+	justify-content: space-between
+	cursor: pointer
+
+.activeLink > .wrapperSingleDialog
+	background-color: #7207ff29
+	box-shadow: 0px 0px 10px #3a00f7c2
+
+.wrapperSingleDialog:hover
+	outline: 1px solid rgba(17, 147, 180, 0.65)
+	background-color: rgba(115, 73, 184, 0.55)
+
+.infoDialog
+	display: flex
+	flex-direction: column
+	justify-content: center
+	padding-left: 30px
+	.infoName
+		font-size: 1.2rem
+		font-weight: 700
+		color: #9980ff
+	.infoStatus
+		font-size: 1rem
+		padding-left: 5px
+		font-weight: 600
+		color: #ff6262
+
+.avatar
+	width: 60px
+	height: 60px
+	background-color: rgb(35, 167, 207)
+	margin-right: 10px
+	img
+		width: 60px
+		height: 60px

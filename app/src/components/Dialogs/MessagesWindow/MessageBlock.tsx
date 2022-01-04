@@ -1,24 +1,26 @@
 import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import {
-  dialogsUsers,
+  dialogsSelectedUser,
   ownDialogsMessages,
 } from "../../../store/reselectors/dialogs-selector";
-import style from "../dialogs.module.css";
+import style from "../dialogs.module.sass";
 import { FormMessage } from "../../../UI/FormChat/FormMessage";
 import { getAuthID } from "../../../store/reselectors/auth-selector";
 import { useCallback, useEffect } from "react";
 import { fetchChatMessages } from "../../../store/thunks/dialogs-thunk";
 import { SingleMessage } from "./SingleMessage";
 import { ChatPreview } from "../../../asset/common/ChatPreview";
+import { HeaderMessageBlock } from "./HeaderMessageBlock";
+import { dialogsAction } from "../../../store/reducers/dialogsSlice";
 
 export const MessageBlock: React.FC = () => {
-  const { activeDialogs, dispatch, dialogs, messages, loggedID } = {
+  const { activeDialogs, dispatch, messages, loggedID, selectedUser } = {
     activeDialogs: useParams().userID,
     dispatch: useAppDispatch(),
-    dialogs: useAppSelector(dialogsUsers),
     messages: useAppSelector(ownDialogsMessages),
     loggedID: useAppSelector(getAuthID),
+    selectedUser: useAppSelector(dialogsSelectedUser),
   };
 
   const fetchMessages = useCallback(() => {
@@ -27,21 +29,14 @@ export const MessageBlock: React.FC = () => {
     );
   }, [loggedID, activeDialogs, dispatch]);
 
-  const dataDialogs = dialogs.filter(
-    (user) => user.id === Number(activeDialogs)
-  )[0];
+  const selectActiveDialog = useCallback(() => {
+    dispatch(dialogsAction.selectActiveDialogs(activeDialogs));
+  }, [activeDialogs, dispatch]);
 
   useEffect(() => {
+    selectActiveDialog();
     fetchMessages();
   }, [activeDialogs, loggedID, fetchMessages]);
-
-  let chatName;
-  if (dataDialogs) {
-    let nickname = dataDialogs.nickname ? `(${dataDialogs.nickname})` : "";
-    chatName = `${dataDialogs.name} ${dataDialogs.surname} ${nickname}`;
-  } else {
-    chatName = `Selected User`;
-  }
 
   let mapMessage = messages.map((mes) => {
     return (
@@ -56,10 +51,7 @@ export const MessageBlock: React.FC = () => {
   return (
     <div className={style.wrapperContactsMessage}>
       {activeDialogs ? (
-        <div className={style.headerMessage}>
-          <span className={style.fullNameDialog}>{chatName}</span>
-          <span className={style.statusChat}>Offline</span>
-        </div>
+        <HeaderMessageBlock dataPerson={selectedUser} />
       ) : (
         <div className={style.headerMessage}>
           <span className={style.fullNameDialog}>Welcome</span>

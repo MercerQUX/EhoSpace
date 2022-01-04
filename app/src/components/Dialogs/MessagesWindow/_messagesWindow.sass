@@ -1,0 +1,94 @@
+$header-footer-background: #ed08b14d
+$name-color: #ffaae5
+$status-color: #f77171
+$wrapper-message-color: #9441ef47
+%start-text-style
+	color: #6fafcf
+	font-size: 1.6rem
+	text-shadow: 2px 2px 8px #ffffffcf
+
+.wrapperContactsMessage
+	grid-area: wrapperContactsMessag
+	flex-direction: column
+	justify-content: space-between
+	height: 550px
+	background-color: rgb(126 10 237 / 26%)
+	display: grid
+	grid-template-columns: 1fr
+	grid-template-rows: 10% 64% 26%
+	grid-auto-columns: 1fr
+	gap: 0px 0px
+	grid-auto-flow: row
+	grid-template-areas: "headerMessage" "userMessage" "footerMessage"
+
+.headerMessage
+	grid-area: headerMessage
+	border-radius: 0px 0px 20px 20px
+	background-color: $header-footer-background
+	width: 100%
+	display: flex
+	justify-content: space-around
+	span
+		padding: 10px 0px 10px 0px
+	.fullNameDialog
+		font-size: 1.4rem
+		font-weight: bold
+		color: $name-color
+		font-style: italic
+	.statusChat
+		font-size: 0.9rem
+		color: $status-color
+		font-weight: 600
+
+.userMessage
+	grid-area: userMessage
+	overflow-y: scroll
+	&::-webkit-scrollbar
+		width: 12px
+	&::-webkit-scrollbar-track
+		box-shadow: inset 0 0 6px rgba(106, 36, 172, 0.3)
+		border-radius: 10px
+	&::-webkit-scrollbar-thumb
+		border-radius: 10px
+		box-shadow: inset 0 0 6px rgba(37, 5, 219, 0.5)
+
+.untilSelectText
+	grid-area: userMessage
+	display: flex
+	justify-content: space-between
+	span
+		@extend %start-text-style
+		padding: 0px 0px 0px 25px
+		font-weight: 600
+		width: 50%
+
+.footerMessage
+	grid-area: footerMessage
+	border-radius: 20px 20px 0px 0px
+	background-color: $header-footer-background
+	width: 100%
+
+//SingleMessage
+.containerMessage
+	width: 96%
+	margin: 0px 1% 2% 2%
+	display: flex
+	flex-direction: column
+
+.singleMessage
+	background-color: $wrapper-message-color
+	display: flex
+	flex-direction: column
+	width: 40%
+	padding: 5px
+	border-radius: 8px
+	margin: 10px 0px 5px 10px
+	word-break: break-word
+	.messageBody
+		padding: 5px 15px
+	.messageTime
+		align-self: end
+		font-size: 0.6rem
+
+.messageOther
+	align-self: flex-end

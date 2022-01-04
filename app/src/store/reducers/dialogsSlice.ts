@@ -10,12 +10,20 @@ type initialStateType = {
   dialogsUsers: Array<dialogsUsersType>;
   dialogsMessages: Array<dialogsMessagesType>;
   isLoading: boolean;
+  selectedUser: dialogsUsersType;
 };
 
 const initialState: initialStateType = {
   dialogsUsers: [],
   dialogsMessages: [],
   isLoading: false,
+  selectedUser: {
+    id: 0,
+    name: "",
+    avatar: "",
+    surname: "",
+    nickname: "",
+  },
 };
 
 const dialogsSlice = createSlice({
@@ -24,6 +32,13 @@ const dialogsSlice = createSlice({
   reducers: {
     addMessage(state, action: PayloadAction<dialogsMessagesType>) {
       state.dialogsMessages = [...state.dialogsMessages, action.payload];
+    },
+    selectActiveDialogs(state, action: PayloadAction<string | undefined>) {
+      if (action.payload) {
+        state.selectedUser = state.dialogsUsers.filter(
+          (user) => user.id === Number(action.payload)
+        )[0];
+      }
     },
   },
   extraReducers: {

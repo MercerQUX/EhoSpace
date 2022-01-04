@@ -1,4 +1,4 @@
-import style from "./dialogs.module.css";
+import style from "./dialogs.module.sass";
 import styleMain from "../../main.module.sass"
 import cn from "classnames";
 import { DialogsBlock } from "./DialogsWindow/DialogsBlock";

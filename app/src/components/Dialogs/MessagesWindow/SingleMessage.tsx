@@ -1,4 +1,4 @@
-import style from "../dialogs.module.css";
+import style from "../dialogs.module.sass";
 import cn from "classnames";
 
 interface defaultProps {

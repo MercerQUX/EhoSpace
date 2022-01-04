@@ -8,6 +8,8 @@ export const dialogsIsLoading = (state: RootState) =>
   state.dialogsReducer.isLoading;
 export const dialogsUsers = (state: RootState) =>
   state.dialogsReducer.dialogsUsers;
+export const dialogsSelectedUser = (state: RootState) =>
+  state.dialogsReducer.selectedUser;
 export const ownDialogsMessages = createSelector(
   dialogsMessages,
   getAuthID,

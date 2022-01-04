@@ -1,16 +1,14 @@
 import { NavLink } from "react-router-dom";
-import style from "../dialogs.module.css";
+import style from "../dialogs.module.sass";
 import notAvatar from "../../../asset/notAvatar.jpg";
 interface defaultProps {
   name: string;
-  surname: string;
   nickname: string;
   avatar: string;
   id: number;
 }
 export const SingleDialog: React.FC<defaultProps> = ({
   name,
-  surname,
   nickname,
   avatar,
   id,
