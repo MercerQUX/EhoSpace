@@ -7,14 +7,12 @@ interface defaultProps {
   full: IArticle;
   tags: Array<ITags>;
   colors: IColors;
-  dive: IDiveContent;
 }
 
 export const SingleArticle: React.FC<defaultProps> = ({
   full,
   tags,
   colors,
-  dive,
 }) => {
   return (
     <div className={style.wrapperArticle}>

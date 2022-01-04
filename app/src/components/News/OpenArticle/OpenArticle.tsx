@@ -4,12 +4,12 @@ import { Tags } from "../../../asset/common/Tags";
 import { decrementIDsArticle } from "../../../helpers/decrementNewsHelper";
 import { useAppSelector } from "../../../hooks/redux-use";
 import styleMain from "../../../main.module.sass";
-import { getNews } from "../../../store/reselectors/news-selector";
+import { stateAllNews } from "../../../store/reselectors/news-selector";
 import style from "../news.module.sass";
 
 export const OpenArticle = () => {
   const selectArticle: number = Number(useParams().newsID);
-  const fullArticle = useAppSelector(getNews)[selectArticle - 1];
+  const fullArticle = useAppSelector(stateAllNews)[selectArticle - 1];
 
   return (
     <div className={styleMain.news}>
@@ -31,7 +31,9 @@ export const OpenArticle = () => {
           <time>{fullArticle.timestamp}</time>
         </span>
         <article className={style.content_container}>
-          {fullArticle.content_dive.full_content_article}<br/><br/>
+          {fullArticle.content_dive.full_content_article}
+          <br />
+          <br />
           Thank you for your support and attention to my pet-project. We also
           continue to actively develop the project with any useful criticism!
         </article>

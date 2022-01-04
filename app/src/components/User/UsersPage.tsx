@@ -2,13 +2,13 @@ import styleMain from "../../main.module.sass";
 import style from "./users.module.sass";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
-import { isAuthInitialization } from "../../store/reselectors/auth-selector";
+import { stateAuthIsInitialization } from "../../store/reselectors/auth-selector";
 import {
-  getIsFetching,
-  getIsEmpty,
-  getIsFollowingDisabled,
-  getFollowingID,
-  getFiltredUsers,
+  stateUsersIsFetching,
+  stateUsersIsEmpty,
+  stateUsersIsFollowingDisabled,
+  stateUsersFollowingID,
+  stateFiltredUsers,
 } from "../../store/reselectors/users-selector";
 import { getPartUsers } from "../../store/thunks/users-thunk";
 import { Preloader } from "../../asset/common/Preloader";
@@ -16,15 +16,23 @@ import { User } from "./User";
 import { scrollingBy } from "../../helpers/scrollHelper";
 
 const UsersPage: React.FC = () => {
-  const { users, isFetching, isEmpty, isFollowingDisabled, friends, isAuth } = {
-    users: useAppSelector(getFiltredUsers),
-    isFetching: useAppSelector(getIsFetching),
-    isEmpty: useAppSelector(getIsEmpty),
-    isFollowingDisabled: useAppSelector(getIsFollowingDisabled),
-    friends: useAppSelector(getFollowingID),
-    isAuth: useAppSelector(isAuthInitialization),
+  const {
+    users,
+    isFetching,
+    isEmpty,
+    isFollowingDisabled,
+    friends,
+    isAuth,
+    dispatch,
+  } = {
+    users: useAppSelector(stateFiltredUsers),
+    isFetching: useAppSelector(stateUsersIsFetching),
+    isEmpty: useAppSelector(stateUsersIsEmpty),
+    isFollowingDisabled: useAppSelector(stateUsersIsFollowingDisabled),
+    friends: useAppSelector(stateUsersFollowingID),
+    isAuth: useAppSelector(stateAuthIsInitialization),
+    dispatch: useAppDispatch(),
   };
-  const dispatch = useAppDispatch();
   const getUsersParts = useCallback(async () => {
     await dispatch(getPartUsers());
     scrollingBy(window.innerHeight);

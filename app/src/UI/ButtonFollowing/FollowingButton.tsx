@@ -20,9 +20,10 @@ export const FollowingButton = ({
   isFollowed,
   idUser,
 }: IFormikProps) => {
+  const dispatch = useAppDispatch();
   const setFollow = (id: number, isFollow: boolean) =>
     dispatch(setFollowed({ id, isFollow }));
-  const dispatch = useAppDispatch();
+
   return (
     <Formik initialValues={{}} onSubmit={() => setFollow(idUser, isFollowed)}>
       {() => (

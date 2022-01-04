@@ -25,9 +25,11 @@ export const getPartUsers = createAsyncThunk(
       startAfter(String(state.usersShowed)),
       limitToFirst(state.limitShowUsers)
     );
-    return await get(getUsers).then((res) => {
-      return Object.values(res.exportVal());
-    });
+    try {
+      return await get(getUsers).then((res) => {
+        return Object.values(res.exportVal());
+      });
+    } catch (e) {}
   }
 );
 

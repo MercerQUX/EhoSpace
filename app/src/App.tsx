@@ -4,13 +4,15 @@ import style from "./main.module.sass";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/redux-use";
-import { isAuthInitialization } from "./store/reselectors/auth-selector";
+import { stateAuthIsInitialization } from "./store/reselectors/auth-selector";
 import { initialzationApp } from "./helpers/initialzationHelper";
 import { Routers } from "./routers/Routers";
 
 function App() {
-  const dispatch = useAppDispatch();
-  const isAuth = useAppSelector(isAuthInitialization);
+  const { dispatch, isAuth } = {
+    dispatch: useAppDispatch(),
+    isAuth: useAppSelector(stateAuthIsInitialization),
+  };
   useEffect(() => {
     initialzationApp(dispatch);
   }, [dispatch]);

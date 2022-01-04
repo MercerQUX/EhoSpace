@@ -1,22 +1,23 @@
 import { useAppSelector } from "../../../hooks/redux-use";
 import { profileAction } from "../../../store/reducers/profileSlice";
 import {
-  getIsOwnerProfile,
-  getPosts,
-  getProfile,
+  stateProfileIsOwner,
+  stateProfilePosts,
+  stateProfile,
 } from "../../../store/reselectors/profile-selector";
 import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
 import style from "../profile.module.sass";
 import { Post } from "./Post";
 
 export const PostCreater: React.FC = () => {
-  const { posts, profile, isOwnerProfile } = {
-    posts: useAppSelector(getPosts),
-    profile: useAppSelector(getProfile),
-    isOwnerProfile: useAppSelector(getIsOwnerProfile),
+  const { posts, profile, isOwnerProfile, addPost } = {
+    posts: useAppSelector(stateProfilePosts),
+    profile: useAppSelector(stateProfile),
+    isOwnerProfile: useAppSelector(stateProfileIsOwner),
+    addPost: profileAction.addPost,
   };
-  const addPost = profileAction.addPost;
-  let map = () => {
+
+  let postControll = () => {
     if (profile === null) {
       return <h2 className={style.loading}>Loading...</h2>;
     } else if (posts.length === 0 && !isOwnerProfile) {
@@ -58,7 +59,7 @@ export const PostCreater: React.FC = () => {
           <h2 className={style.text_head}>{profile?.name + `'`} Posts</h2>
         </div>
       )}
-      {<div className={style.posts}>{map()}</div>}
+      {<div className={style.posts}>{postControll()}</div>}
     </div>
   );
 };

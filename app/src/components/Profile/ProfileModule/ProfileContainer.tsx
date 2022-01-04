@@ -1,29 +1,41 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 import {
-  getAuthID,
-  isAuthInitialization,
+  stateAuthID,
+  stateAuthIsInitialization,
 } from "../../../store/reselectors/auth-selector";
 import { profileAction } from "../../../store/reducers/profileSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
-import { getIsOwnerProfile, getProfile } from "../../../store/reselectors/profile-selector";
+import {
+  stateProfileIsOwner,
+  stateProfile,
+} from "../../../store/reselectors/profile-selector";
 import { sendRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { ProfileCard } from "./ProfileCard";
 import { Preloader } from "../../../asset/common/Preloader";
 import { initlizationProfile } from "../../../helpers/initialzationHelper";
 
-export const ProfileContainer: React.FC<any> = () => {
-  const { idLoggedUser, profile, auth,isOwner } = {
-    idLoggedUser: useAppSelector(getAuthID),
-    profile: useAppSelector(getProfile),
-    auth: useAppSelector(isAuthInitialization),
-    isOwner: useAppSelector(getIsOwnerProfile)
+export const ProfileContainer: React.FC = () => {
+  const {
+    paramsSelectedUserID,
+    idLoggedUser,
+    profile,
+    auth,
+    isOwner,
+    changeStatus,
+    rewriteProfile,
+    dispatch,
+  } = {
+    paramsSelectedUserID: useParams().userID,
+    idLoggedUser: useAppSelector(stateAuthID),
+    profile: useAppSelector(stateProfile),
+    auth: useAppSelector(stateAuthIsInitialization),
+    isOwner: useAppSelector(stateProfileIsOwner),
+    changeStatus: profileAction.changeStatus,
+    rewriteProfile: profileAction.rewriteProfile,
+    dispatch: useAppDispatch(),
   };
-  const { changeStatus, rewriteProfile } = profileAction;
-  let dispatch = useAppDispatch();
-  const sendNewProfile = sendRewriteProfile;
   const [isLoading, setIsLoading] = useState(true);
-  let paramsSelectedUserID = useParams().userID;
   const initProfile = useCallback(() => {
     initlizationProfile(paramsSelectedUserID, idLoggedUser, auth, dispatch);
   }, [paramsSelectedUserID, idLoggedUser, auth, dispatch]);
@@ -43,7 +55,7 @@ export const ProfileContainer: React.FC<any> = () => {
           profile={profile}
           isOwnerProfile={isOwner}
           changeStatus={changeStatus}
-          sendNewProfile={sendNewProfile}
+          sendNewProfile={sendRewriteProfile}
           rewriteProfile={rewriteProfile}
         />
       ) : (

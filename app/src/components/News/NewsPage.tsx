@@ -1,14 +1,17 @@
 import { useAppSelector } from "../../hooks/redux-use";
 import styleMain from "../../main.module.sass";
 import { IArticle } from "../../models/INews";
-import { getEvenNews, getOddNews } from "../../store/reselectors/news-selector";
+import {
+  stateEvenNews,
+  stateOddNews,
+} from "../../store/reselectors/news-selector";
 import style from "./news.module.sass";
 import { SingleArticle } from "./SingleArticle";
 
 export const NewsPage = () => {
   const { oddNews, evenNews } = {
-    oddNews: useAppSelector(getOddNews),
-    evenNews: useAppSelector(getEvenNews),
+    oddNews: useAppSelector(stateOddNews),
+    evenNews: useAppSelector(stateEvenNews),
   };
   return (
     <div className={styleMain.news}>
@@ -20,7 +23,6 @@ export const NewsPage = () => {
               full={article}
               tags={article.tags}
               colors={article.colors}
-              dive={article.content_dive}
             />
           ))}
         </div>
@@ -30,7 +32,6 @@ export const NewsPage = () => {
               full={article}
               tags={article.tags}
               colors={article.colors}
-              dive={article.content_dive}
             />
           ))}
         </div>

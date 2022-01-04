@@ -17,17 +17,17 @@
 	margin-top: 20px
 
 .follow
+	@include shadow-btn-following($out-color:#b8d1e1 ,$inset-color:#e3eb7b )
 	background-color: #005e09
 	border: solid 2px #96b60b
-	@include shadow-btn-following($out-color:#b8d1e1 ,$inset-color:#e3eb7b )
 
 	&:hover
 		@include shadow-btn-following__hover($out-color:#b8d1e1 ,$inset-color:#e3eb7b )
 
 .unfollow
+	@include shadow-btn-following($out-color:#fd1616 ,$inset-color:#ff0f46 )
 	background-color: #cf0a0ae0
 	border: solid 2px #cd2c2c
-	@include shadow-btn-following($out-color:#fd1616 ,$inset-color:#ff0f46 )
 
 	&:hover
 		@include shadow-btn-following__hover($out-color:#fd1616 ,$inset-color:#ff0f46 )

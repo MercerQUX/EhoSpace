@@ -1,4 +1,4 @@
-import style from "../asset.module.css";
+import style from "../asset.module.sass";
 import animation from "../chat-preview.svg";
 export const ChatPreview = () => {
   return (

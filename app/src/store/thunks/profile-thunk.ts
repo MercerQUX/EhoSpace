@@ -36,7 +36,9 @@ export const sendRewriteProfile = createAsyncThunk(
 export const fetchPosts = createAsyncThunk(
   "profile/fetchPost",
   async (payload: number, thunkAPI) => {
-    return await fetchPostsDB(payload);
+    try {
+      return await fetchPostsDB(payload);
+    } catch (e) {}
   }
 );
 

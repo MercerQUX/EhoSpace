@@ -1,4 +1,4 @@
-import style from "../asset.module.css";
+import style from "../asset.module.sass";
 import preloader from "../chat-preloader.svg";
 export const ChatPreloader = () => {
   return (

@@ -1,18 +1,18 @@
 import { RootState } from "./../store";
 import { createSelector } from "@reduxjs/toolkit";
-import { getAuthID } from "./auth-selector";
+import { stateAuthID } from "./auth-selector";
 
-export const dialogsMessages = (state: RootState) =>
+export const stateDialogsMessages = (state: RootState) =>
   state.dialogsReducer.dialogsMessages;
-export const dialogsIsLoading = (state: RootState) =>
+export const stateDialogsIsLoading = (state: RootState) =>
   state.dialogsReducer.isLoading;
-export const dialogsUsers = (state: RootState) =>
+export const stateDialogsUsers = (state: RootState) =>
   state.dialogsReducer.dialogsUsers;
 export const dialogsSelectedUser = (state: RootState) =>
   state.dialogsReducer.selectedUser;
-export const ownDialogsMessages = createSelector(
-  dialogsMessages,
-  getAuthID,
+export const stateDialogsOwnMessages = createSelector(
+  stateDialogsMessages,
+  stateAuthID,
   (messages, idLogged) =>
     messages.map((message) => {
       return { ...message, other: message.idSender === idLogged };

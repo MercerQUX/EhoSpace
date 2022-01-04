@@ -3,8 +3,8 @@ import logo from "./../../asset/siteLogo.png"
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-use";
 import {
-  isAuthInitialization,
-  getAuthLogin,
+  stateAuthIsInitialization,
+  stateAuthLogin,
 } from "../../store/reselectors/auth-selector";
 import { signOutProfile } from "../../store/thunks/auth-thunk";
 import style from "./header.module.sass";
@@ -13,8 +13,8 @@ import style from "./header.module.sass";
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isAuth, login } = {
-    isAuth: useAppSelector(isAuthInitialization),
-    login: useAppSelector(getAuthLogin),
+    isAuth: useAppSelector(stateAuthIsInitialization),
+    login: useAppSelector(stateAuthLogin),
   };
   return (
     <header className={style.header}>

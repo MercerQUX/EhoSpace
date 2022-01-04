@@ -1,21 +1,21 @@
 import { RootState } from "../store";
 
-export const getPosts = (state: RootState) => {
+export const stateProfilePosts = (state: RootState) => {
   return state.profileReducer.posts;
 };
 
-export const getActualStatus = (state: RootState) => {
+export const stateProfileActualStatus = (state: RootState) => {
   return state.profileReducer.actualStatus;
 };
 
-export const getIsOwnerProfile = (state:RootState)=>{
+export const stateProfileIsOwner = (state:RootState)=>{
   return state.profileReducer.isOwner;
 }
 
-export const isFetchingProfile = (state: RootState) => {
+export const stateProfileIsFetching = (state: RootState) => {
   return state.profileReducer.isFetching;
 };
 
-export const getProfile = (state: RootState) => {
+export const stateProfile = (state: RootState) => {
   return state.profileReducer.profile;
 };

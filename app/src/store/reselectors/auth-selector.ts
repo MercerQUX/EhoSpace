@@ -1,17 +1,17 @@
 import { RootState } from "../store";
 
-export const getAuthID = (state: RootState) => {
+export const stateAuthID = (state: RootState) => {
   return state.authReducer.id;
 };
-export const getAuthLogin = (state: RootState) => {
+export const stateAuthLogin = (state: RootState) => {
   return state.authReducer.login;
 };
-export const getAuthIsLoading = (state: RootState) => {
+export const stateAuthIsLoading = (state: RootState) => {
   return state.authReducer.isLoading;
 };
-export const getAuthError = (state: RootState) => {
+export const stateAuthError = (state: RootState) => {
   return state.authReducer.error;
 };
-export const isAuthInitialization = (state: RootState) => {
+export const stateAuthIsInitialization = (state: RootState) => {
   return state.authReducer.isAuth;
 };

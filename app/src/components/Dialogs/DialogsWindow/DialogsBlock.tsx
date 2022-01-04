@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
-import { dialogsUsers } from "../../../store/reselectors/dialogs-selector";
-import { getFollowingID } from "../../../store/reselectors/users-selector";
+import { stateDialogsUsers } from "../../../store/reselectors/dialogs-selector";
+import { stateUsersFollowingID } from "../../../store/reselectors/users-selector";
 import style from "../dialogs.module.sass";
 import { SingleDialog } from "./SingleDialog";
 import cn from "classnames";
@@ -10,8 +10,8 @@ import { fetchArrayFollowUsers } from "../../../store/thunks/dialogs-thunk";
 export const DialogsBlock: React.FC = () => {
   const { dispatch, followedUsers, friends } = {
     dispatch: useAppDispatch(),
-    followedUsers: useAppSelector(dialogsUsers),
-    friends: useAppSelector(getFollowingID),
+    followedUsers: useAppSelector(stateDialogsUsers),
+    friends: useAppSelector(stateUsersFollowingID),
   };
 
   const fetchFollowUsers = useCallback(() => {

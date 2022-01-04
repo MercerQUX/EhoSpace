@@ -2,11 +2,11 @@ import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import {
   dialogsSelectedUser,
-  ownDialogsMessages,
+  stateDialogsOwnMessages,
 } from "../../../store/reselectors/dialogs-selector";
 import style from "../dialogs.module.sass";
 import { FormMessage } from "../../../UI/FormChat/FormMessage";
-import { getAuthID } from "../../../store/reselectors/auth-selector";
+import { stateAuthID } from "../../../store/reselectors/auth-selector";
 import { useCallback, useEffect } from "react";
 import { fetchChatMessages } from "../../../store/thunks/dialogs-thunk";
 import { SingleMessage } from "./SingleMessage";
@@ -18,8 +18,8 @@ export const MessageBlock: React.FC = () => {
   const { activeDialogs, dispatch, messages, loggedID, selectedUser } = {
     activeDialogs: useParams().userID,
     dispatch: useAppDispatch(),
-    messages: useAppSelector(ownDialogsMessages),
-    loggedID: useAppSelector(getAuthID),
+    messages: useAppSelector(stateDialogsOwnMessages),
+    loggedID: useAppSelector(stateAuthID),
     selectedUser: useAppSelector(dialogsSelectedUser),
   };
 

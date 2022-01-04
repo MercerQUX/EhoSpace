@@ -1,21 +1,30 @@
 import { createSelector } from "reselect";
 import { RootState } from "../store";
-import { getAuthID } from "./auth-selector";
+import { stateAuthID } from "./auth-selector";
 
-export const getUsers = (state: RootState) => state.userReducer.users;
-export const getLimitLoadingUsers = (state: RootState) =>
+export const stateAllUsers = (state: RootState) => state.userReducer.users;
+
+export const stateUsersLimitLoading = (state: RootState) =>
   state.userReducer.limitShowUsers;
-export const getShowedUsers = (state: RootState) =>
-  state.userReducer.usersShowed;
-export const getIsFetching = (state: RootState) => state.userReducer.isFetching;
-export const getIsEmpty = (state: RootState) => state.userReducer.isEmpty;
-export const getIsFollowingDisabled = (state: RootState) =>
-  state.userReducer.isFollowingDisabled;
-export const getFollowingID = (state: RootState) => state.userReducer.following;
 
-export const getFiltredUsers = createSelector(
-  getUsers,
-  getAuthID,
+export const stateUsersShowed = (state: RootState) =>
+  state.userReducer.usersShowed;
+
+export const stateUsersIsFetching = (state: RootState) =>
+  state.userReducer.isFetching;
+
+export const stateUsersIsEmpty = (state: RootState) =>
+  state.userReducer.isEmpty;
+
+export const stateUsersIsFollowingDisabled = (state: RootState) =>
+  state.userReducer.isFollowingDisabled;
+
+export const stateUsersFollowingID = (state: RootState) =>
+  state.userReducer.following;
+
+export const stateFiltredUsers = createSelector(
+  stateAllUsers,
+  stateAuthID,
   (users, idLogged) =>
     users.filter((u) => {
       return u.id !== idLogged;

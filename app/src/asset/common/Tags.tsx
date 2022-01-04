@@ -1,5 +1,5 @@
 import { ITags } from "../../models/INews";
-import style from "../asset.module.css";
+import style from "../asset.module.sass";
 
 interface defaultProps {
   tags: ITags[];
