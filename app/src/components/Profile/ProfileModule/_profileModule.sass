@@ -1,0 +1,83 @@
+$card-status-color: #0769fdcf
+$card-fullname-color: #270ac7e0
+
+%setting-button-style
+	border: solid 3px #777bebd9
+	color: #0769fdcf
+	background-color: #dddddd52
+	box-shadow: 0px 0px 10px #0e5cd1, inset 0px 0px 10px #edc0c0
+%location-block-style
+	border: solid 3px #777bebd9
+	color: #0769fdcf
+	background-color: #dddddd52
+	box-shadow: 0px 0px 10px #0e5cd1, inset 0px 0px 10px #edc0c0
+
+.profileCard
+	display: flex
+	justify-content: space-between
+	padding: 0px 10px
+	img
+		width: 180px
+		height: 180px
+
+.profileStatus
+	display: block
+	width: 100%
+	word-break: break-word
+	color: $card-status-color
+
+.leftCard
+	display: flex
+	align-items: flex-end
+	margin-top: 20px
+
+.profileInfo
+	padding: 0px 0px 25px 15px
+
+.profileImg img
+	width: 180px
+	height: 180px
+
+.rightCard
+	display: flex
+	flex-direction: column
+	height: 180px
+	padding: 25px 25px 0px 0px
+	justify-content: space-between
+
+.locationCard
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	align-items: center
+	height: 55px
+
+.btn_settings
+	@extend %setting-button-style
+	text-align: center
+	margin-left: 5px
+	padding: 8px 41px
+	border-radius: 4px
+	font: 16px "Arial Black", Gadget, sans-serif
+	font-weight: bold
+
+	&:hover
+		background-color: #46d3e1b5
+		cursor: pointer
+		color: #edededcf
+
+.locationCard span
+	@extend %location-block-style
+	text-decoration: none
+	text-align: center
+	margin-left: 5px
+	padding: 8px 41px
+
+	border-radius: 4px
+	font: 16px "Arial Black", Gadget, sans-serif
+	font-weight: bold
+
+.profileName
+	font-size: 1.5rem
+	font-weight: bold
+	color: $card-fullname-color

@@ -74,16 +74,12 @@ export const ProfileCard: React.FC<defaultProps> = ({
         </div>
       </div>
       {isEditProfile && (
-        <div className={style.wrapperEditMode}>
-          <div className={style.wrapperForm}>
-            <FormEditProfile
-              profile={profile}
-              setIsEditProfile={setIsEditProfile}
-              rewriteProfile={rewriteProfile}
-              sendNewProfile={sendNewProfile}
-            />
-          </div>
-        </div>
+        <FormEditProfile
+          profile={profile}
+          setIsEditProfile={setIsEditProfile}
+          rewriteProfile={rewriteProfile}
+          sendNewProfile={sendNewProfile}
+        />
       )}
     </div>
   );

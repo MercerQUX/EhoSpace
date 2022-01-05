@@ -83,108 +83,116 @@ const Fields = ({ setIsEditProfile, errors, touched }: IFieldProps) => {
     errors.profileCity ||
     errors.profileAvatar;
   return (
-    <Form>
-      <div className={style.allForms}>
-        <span className={style.spanEditProfile}>Name*:</span>
-        <Field
-          className={`${style.inputsEditProfile} ${
-            errors.profileName && style.errorField
-          }`}
-          type={"input"}
-          name={"profileName"}
-          placeholder={"New Name"}
-        />
-      </div>
-      <div className={style.allForms}>
-        <span className={style.spanEditProfile}>Surname*:</span>
-        <Field
-          className={cn(
-            style.inputsEditProfile,
-            errors.profileSurname && style.errorField
+    <div className={style.wrapperEditMode}>
+      <div className={style.wrapperForm}>
+        <Form>
+          <div className={style.allForms}>
+            <span className={style.spanEditProfile}>Name*:</span>
+            <Field
+              className={`${style.inputsEditProfile} ${
+                errors.profileName && style.errorField
+              }`}
+              type={"input"}
+              name={"profileName"}
+              placeholder={"New Name"}
+            />
+          </div>
+          <div className={style.allForms}>
+            <span className={style.spanEditProfile}>Surname*:</span>
+            <Field
+              className={cn(
+                style.inputsEditProfile,
+                errors.profileSurname && style.errorField
+              )}
+              type={"input"}
+              name={"profileSurname"}
+              placeholder={"New Surname"}
+            />
+          </div>
+          <div className={style.allForms}>
+            <span className={style.spanEditProfile}>Nickname:</span>
+            <Field
+              className={cn(
+                style.inputsEditProfile,
+                errors.profileNick && style.errorField
+              )}
+              type={"input"}
+              name={"profileNick"}
+              placeholder={"New Nickname"}
+            />
+          </div>
+          <div className={style.allForms}>
+            <span className={style.spanEditProfile}>Status:</span>
+            <Field
+              className={cn(
+                style.inputsEditProfile,
+                errors.profileStatus && style.errorField
+              )}
+              type={"input"}
+              name={"profileStatus"}
+              placeholder={"New Status"}
+            />
+          </div>
+          <div className={style.allForms}>
+            <span className={`${style.spanEditProfile}`}>Coutry*:</span>
+            <Field
+              className={cn(
+                style.inputsEditProfile,
+                errors.profileCountry && style.errorField
+              )}
+              type={"input"}
+              name={"profileCountry"}
+              placeholder={"New Country"}
+            />
+          </div>
+          <div className={style.allForms}>
+            <span className={style.spanEditProfile}>City:</span>
+            <Field
+              className={cn(
+                style.inputsEditProfile,
+                errors.profileCity && style.errorField
+              )}
+              type={"input"}
+              name={"profileCity"}
+              placeholder={"New City"}
+            />
+          </div>
+          <div className={style.uploadAvatar}>
+            <span className={style.spanEditProfile}>
+              Loading Avatar from link:
+            </span>
+            <br />
+            <Field
+              className={cn(
+                style.inputsAvatar,
+                errors.profileAvatar && style.errorField
+              )}
+              type={"input"}
+              name={"profileAvatar"}
+              placeholder={"URL new photo for avatar"}
+            />
+          </div>
+          {alternateСallErrors && (
+            <span className={style.errorEditProfile}>
+              {alternateСallErrors}
+            </span>
           )}
-          type={"input"}
-          name={"profileSurname"}
-          placeholder={"New Surname"}
-        />
+          <br />
+          <button
+            type="submit"
+            className={cn(style.btn_editProfile, style.btn_apply)}
+          >
+            Apply
+          </button>
+          <button
+            type="reset"
+            onClick={() => setIsEditProfile(false)}
+            className={cn(style.btn_editProfile, style.btn_cancel)}
+          >
+            Cancel
+          </button>
+        </Form>
       </div>
-      <div className={style.allForms}>
-        <span className={style.spanEditProfile}>Nickname:</span>
-        <Field
-          className={cn(
-            style.inputsEditProfile,
-            errors.profileNick && style.errorField
-          )}
-          type={"input"}
-          name={"profileNick"}
-          placeholder={"New Nickname"}
-        />
-      </div>
-      <div className={style.allForms}>
-        <span className={style.spanEditProfile}>Status:</span>
-        <Field
-          className={cn(
-            style.inputsEditProfile,
-            errors.profileStatus && style.errorField
-          )}
-          type={"input"}
-          name={"profileStatus"}
-          placeholder={"New Status"}
-        />
-      </div>
-      <div className={style.allForms}>
-        <span className={`${style.spanEditProfile}`}>Coutry*:</span>
-        <Field
-          className={cn(
-            style.inputsEditProfile,
-            errors.profileCountry && style.errorField
-          )}
-          type={"input"}
-          name={"profileCountry"}
-          placeholder={"New Country"}
-        />
-      </div>
-      <div className={style.allForms}>
-        <span className={style.spanEditProfile}>City:</span>
-        <Field
-          className={cn(
-            style.inputsEditProfile,
-            errors.profileCity && style.errorField
-          )}
-          type={"input"}
-          name={"profileCity"}
-          placeholder={"New City"}
-        />
-      </div>
-      <div className={style.uploadAvatar}>
-        <span className={style.spanEditProfile}>Loading Avatar from link:</span>
-        <br />
-        <Field
-          className={cn(
-            style.inputsAvatar,
-            errors.profileAvatar && style.errorField
-          )}
-          type={"input"}
-          name={"profileAvatar"}
-          placeholder={"URL new photo for avatar"}
-        />
-      </div>
-      {alternateСallErrors && (
-        <span className={style.errorEditProfile}>{alternateСallErrors}</span>
-      )}
-      <br />
-      <button
-        type="submit"
-        className={cn(style.btn_editProfile, style.btn_apply)}
-      >
-        Apply
-      </button>
-      <button
-        type="reset"
-        onClick={() => setIsEditProfile(false)}
-        className={cn(style.btn_editProfile, style.btn_cancel)}
-      >
-        Cancel
-      </button>
-    </Form>
+    </div>
   );
 };
