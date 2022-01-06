@@ -46,7 +46,7 @@ export const uploadPosts = createAsyncThunk(
   "profile/uploadPost",
   async (payload: string, thunkAPI: { getState: any }) => {
     let newPost = {
-      id: thunkAPI.getState().profileReducer.posts.length + 1,
+      id: Math.floor(Date.now() / 1000),
       body: payload,
       timestamp: format(new Date(), "PPP p OOOO"),
     };
@@ -58,6 +58,24 @@ export const uploadPosts = createAsyncThunk(
 
     try {
       return concatPosts;
-    } catch (error) {}
+    } catch (error) {
+      return [];
+    }
+  }
+);
+
+export const deletePosts = createAsyncThunk(
+  "profile/deletePosts",
+  async (payload: number, thunkAPI: { getState: any }) => {
+    console.log(thunkAPI.getState().profileReducer);
+    let filtereArray = thunkAPI
+      .getState()
+      .profileReducer.posts.filter((post) => post.id !== payload);
+    await uploadPostsDB({
+      id: thunkAPI.getState().authReducer.id,
+      newPost: filtereArray,
+    });
+
+    return filtereArray;
   }
 );

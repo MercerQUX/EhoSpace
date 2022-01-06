@@ -1,4 +1,5 @@
 import {
+  deletePosts,
   fetchPosts,
   updateAuthProfile,
   uploadPosts,
@@ -72,8 +73,10 @@ const profileSlice = createSlice({
     },
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
       state.isFetching = false;
-      if (action.payload) {
+      if (action.payload) { 
         state.posts = action.payload;
+      } else {
+        state.posts = [];
       }
     },
     [fetchPosts.rejected.type]: (state) => {
@@ -82,6 +85,16 @@ const profileSlice = createSlice({
     },
     [uploadPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
       state.posts = action.payload;
+    },
+    [deletePosts.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+    [deletePosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
+      state.posts = action.payload;
+      state.isFetching = false;
+    },
+    [deletePosts.rejected.type]: (state) => {
+      state.isFetching = false;
     },
   },
 });

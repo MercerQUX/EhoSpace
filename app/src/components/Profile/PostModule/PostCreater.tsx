@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAppSelector } from "../../../hooks/redux-use";
 import { profileAction } from "../../../store/reducers/profileSlice";
 import {
@@ -8,6 +9,7 @@ import {
 import { FormCreatePost } from "../../../UI/FormCreatePost/FormCreatePost";
 import style from "../profile.module.sass";
 import { Post } from "./Post";
+import { PostConfirm } from "../../../asset/common/PostConfirm";
 
 export const PostCreater: React.FC = () => {
   const { posts, profile, isOwnerProfile, addPost } = {
@@ -16,6 +18,9 @@ export const PostCreater: React.FC = () => {
     isOwnerProfile: useAppSelector(stateProfileIsOwner),
     addPost: profileAction.addPost,
   };
+
+  const [display, setDisplay] = useState({ display: "none" });
+  const [selectedPost, selectPost] = useState(0);
 
   let postControll = () => {
     if (profile === null) {
@@ -34,12 +39,16 @@ export const PostCreater: React.FC = () => {
         .map((item) => {
           return (
             <Post
+              isOwner={isOwnerProfile}
               key={item.id}
+              idPost={item.id}
               name={profile.name}
               surname={profile.surname}
               img={profile.avatar}
               text={item.body}
               time={item.timestamp}
+              selectPost={selectPost}
+              openConfirm={setDisplay}
             />
           );
         })
@@ -60,6 +69,11 @@ export const PostCreater: React.FC = () => {
         </div>
       )}
       {<div className={style.posts}>{postControll()}</div>}
+      <PostConfirm
+        idPost={selectedPost}
+        display={display}
+        switchDisplay={setDisplay}
+      />
     </div>
   );
 };
