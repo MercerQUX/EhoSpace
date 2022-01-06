@@ -7,6 +7,8 @@ export const stateAllUsers = (state: RootState) => state.userReducer.users;
 export const stateUsersLimitLoading = (state: RootState) =>
   state.userReducer.limitShowUsers;
 
+export const stateUsersError = (state:RootState)=>state.userReducer.error
+
 export const stateUsersShowed = (state: RootState) =>
   state.userReducer.usersShowed;
 

@@ -9,6 +9,7 @@ import {
   stateUsersIsFollowingDisabled,
   stateUsersFollowingID,
   stateFiltredUsers,
+  stateUsersError,
 } from "../../store/reselectors/users-selector";
 import { getPartUsers } from "../../store/thunks/users-thunk";
 import { Preloader } from "../../asset/common/Preloader";
@@ -24,6 +25,7 @@ const UsersPage: React.FC = () => {
     friends,
     isAuth,
     dispatch,
+    error
   } = {
     users: useAppSelector(stateFiltredUsers),
     isFetching: useAppSelector(stateUsersIsFetching),
@@ -32,6 +34,7 @@ const UsersPage: React.FC = () => {
     friends: useAppSelector(stateUsersFollowingID),
     isAuth: useAppSelector(stateAuthIsInitialization),
     dispatch: useAppDispatch(),
+    error: useAppSelector(stateUsersError)
   };
   const getUsersParts = useCallback(async () => {
     await dispatch(getPartUsers());
@@ -54,7 +57,7 @@ const UsersPage: React.FC = () => {
       <div className={style.container_btn}>
         {isEmpty ? (
           <span className={style.notFound__error}>
-            Warning: Users not found
+            {error}
           </span>
         ) : null}
         <br />

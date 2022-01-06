@@ -31,7 +31,9 @@ export const getPartUsers = createAsyncThunk(
       });
     } catch (e) {
       return thunkAPI.rejectWithValue(
-        "Error 500: Pls reload page or click this button"
+        state.users.length === 0
+          ? "Error 500: Pls reload page or click this button"
+          : "Warning: Users not found"
       );
     }
   }
