@@ -1,4 +1,5 @@
 import { useAppDispatch } from "../../../hooks/redux-use";
+import { profileAction } from "../../../store/reducers/profileSlice";
 import { deletePosts } from "../../../store/thunks/profile-thunk";
 import style from "../profile.module.sass";
 
@@ -10,8 +11,8 @@ type defaultProps = {
   text: string;
   time: string;
   isOwner: boolean;
-  selectPost: (idPost: number) => void;
-  openConfirm: (display: { display: string }) => void;
+  openConfirmDelete: (display:boolean) => void;
+  openConfirmEdit: (display:boolean) => void;
 };
 export const Post: React.FC<defaultProps> = ({
   name,
@@ -21,9 +22,12 @@ export const Post: React.FC<defaultProps> = ({
   text,
   time,
   isOwner,
-  selectPost,
-  openConfirm,
+  openConfirmDelete,
+  openConfirmEdit,
 }) => {
+  const dispatch = useAppDispatch();
+  const {installSelectPost} = profileAction;
+
   return (
     <div className={style.wrapperPost}>
       <div style={{ display: "flex" }}>
@@ -40,8 +44,19 @@ export const Post: React.FC<defaultProps> = ({
           <span
             className={style.btn_close}
             onClick={() => {
-              selectPost(idPost);
-              openConfirm({ display: "flex" });
+              dispatch(installSelectPost(idPost))
+              openConfirmEdit(true);
+            }}
+          >
+            Edit
+          </span>
+        )}
+        {isOwner && (
+          <span
+            className={style.btn_close}
+            onClick={() => {
+              dispatch(installSelectPost(idPost));
+              openConfirmDelete(true);
             }}
           >
             Delete

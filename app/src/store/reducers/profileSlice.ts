@@ -1,5 +1,6 @@
 import {
   deletePosts,
+  editPosts,
   fetchPosts,
   updateAuthProfile,
   uploadPosts,
@@ -11,6 +12,7 @@ import notAvatar from "../../asset/notAvatar.jpg";
 
 interface initialStateProfileType {
   posts: Array<IPosts>;
+  selectPost: IPosts;
   profile: ICommonProfile | null;
   actualStatus: string;
   isFetching: boolean;
@@ -19,6 +21,11 @@ interface initialStateProfileType {
 
 let initialState: initialStateProfileType = {
   posts: [],
+  selectPost: {
+    body: "",
+    timestamp: "",
+    id: 0,
+  },
   profile: null,
   actualStatus: "",
   isFetching: false,
@@ -49,6 +56,11 @@ const profileSlice = createSlice({
     rewriteProfile(state, action: PayloadAction<ICommonProfile>) {
       state.profile = action.payload;
     },
+    installSelectPost(state, action: PayloadAction<number>) {
+      state.selectPost = state.posts.filter(
+        (post) => post.id === action.payload
+      )[0];
+    },
   },
   extraReducers: {
     [updateAuthProfile.pending.type]: (state) => {
@@ -73,7 +85,7 @@ const profileSlice = createSlice({
     },
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
       state.isFetching = false;
-      if (action.payload) { 
+      if (action.payload) {
         state.posts = action.payload;
       } else {
         state.posts = [];
@@ -94,6 +106,16 @@ const profileSlice = createSlice({
       state.isFetching = false;
     },
     [deletePosts.rejected.type]: (state) => {
+      state.isFetching = false;
+    },
+    [editPosts.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+    [editPosts.fulfilled.type]: (state, action: PayloadAction<IPosts[]>) => {
+      state.posts = action.payload;
+      state.isFetching = false;
+    },
+    [editPosts.rejected.type]: (state) => {
       state.isFetching = false;
     },
   },

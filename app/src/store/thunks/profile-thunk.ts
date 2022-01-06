@@ -66,16 +66,35 @@ export const uploadPosts = createAsyncThunk(
 
 export const deletePosts = createAsyncThunk(
   "profile/deletePosts",
-  async (payload: number, thunkAPI: { getState: any }) => {
-    console.log(thunkAPI.getState().profileReducer);
+  async (_, thunkAPI: { getState: any }) => {
     let filtereArray = thunkAPI
       .getState()
-      .profileReducer.posts.filter((post) => post.id !== payload);
+      .profileReducer.posts.filter(
+        (post) => post.id !== thunkAPI.getState().profileReducer.selectPost.id
+      );
     await uploadPostsDB({
       id: thunkAPI.getState().authReducer.id,
       newPost: filtereArray,
     });
 
     return filtereArray;
+  }
+);
+export const editPosts = createAsyncThunk(
+  "profile/editPosts",
+  async (payload: string, thunkAPI: { getState: any }) => {
+    let editedArrayPost = thunkAPI
+      .getState()
+      .profileReducer.posts.map((post) => {
+        return post.id === thunkAPI.getState().profileReducer.selectPost.id
+          ? { ...post, body: payload }
+          : post;
+      });
+    await uploadPostsDB({
+      id: thunkAPI.getState().authReducer.id,
+      newPost: editedArrayPost,
+    });
+
+    return editedArrayPost;
   }
 );
