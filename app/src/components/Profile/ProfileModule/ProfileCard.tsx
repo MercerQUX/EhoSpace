@@ -69,7 +69,7 @@ export const ProfileCard: React.FC<defaultProps> = ({
           )}
           <div className={style.locationCard}>
             <span>{profile.country}</span>
-            <span>{profile.city}</span>
+            {profile.city !== "Not indicated" && <span>{profile.city}</span>}
           </div>
         </div>
       </div>

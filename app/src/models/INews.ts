@@ -20,5 +20,5 @@ export interface IColors{
 }
 export interface IDiveContent{
     author: string
-    full_content_article: any
+    full_content_article: string
 }

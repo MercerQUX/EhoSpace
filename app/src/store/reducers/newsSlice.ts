@@ -33,12 +33,7 @@ const initialState: initialStateType = {
       },
       content_dive: {
         author: "MercerQUX",
-        full_content_article: `This version has been improved to a state in which the application can function. The functionality is now minimal, but fully working at the moment This version is not an MVP pet project and requires a lot of improvements of which are important:
-  More futher details:
-    - Complete refactoring
-    - Improvement of the real-time chat
-    - Redesign with responsive design
-    - And adding new functionality`,
+        full_content_article: "This version has been improved to a state in which the application can function. The functionality is now minimal, but fully working at the moment This version is not an MVP pet project and requires a lot of improvements of which are important: <br/><b>More futher details:</b> <p>- Complete refactoring</p> <p>- Improvement of the real-time chat</p> <p>- Redesign with responsive design</p> <p>- And adding new functionality`</p> <p>Thank you for your support and attention to my pet-project. We also continue to actively develop the project with any useful criticism!</p>",
       },
     },
     {
@@ -74,7 +69,7 @@ const initialState: initialStateType = {
       },
       content_dive: {
         author: "MercerQUX",
-        full_content_article: `The page you're on is created with this update! Many changes were made to the code itself.\n More details:\n   - New News page created\n   - Sorting of posts changed to: from new to old\n   - Sending posts and messages is now on <Enter> and line breaks on <Ctrl + Enter>\n   - The current time in sending posts and messages\n   - Smooth scrolling when clicking user downloads\n   - Adding a new logo\n  Fix:  \n   - Most code refactoring for further support\n   - Error in user subscription\n   - Convert most of the CSS to SASS for further support\n`,
+        full_content_article: "The page you're on is created with this update! Many changes were made to the code itself. <br /><b>More details:</b> <p>- New News page created</p> <p>- Sorting of posts changed to: from new to old</p> <p>- Sending posts and messages is now on <b>Enter</b> and line breaks on <b>Ctrl+Enter</b></p> <p>- The current time in sending posts and messages</p> <p>- Smooth scrolling when clicking user load</p> <p>- Adding a new logo</p> <br /><b>Fix:</b> <p>- Most code refactoring for further support</p> <p>- Error in user subscription</p> <p>- Convert most of the CSS to SASS for further support</p> <br/><p>Thank you for your support and attention to my pet-project. We also continue to actively develop the project with any useful criticism!</p>",
       },
     },
   ],

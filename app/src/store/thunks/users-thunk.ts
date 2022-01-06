@@ -29,7 +29,11 @@ export const getPartUsers = createAsyncThunk(
       return await get(getUsers).then((res) => {
         return Object.values(res.exportVal());
       });
-    } catch (e) {}
+    } catch (e) {
+      return thunkAPI.rejectWithValue(
+        "Error 500: Pls reload page or click this button"
+      );
+    }
   }
 );
 
