@@ -15,12 +15,14 @@ const initialState: initialStateType = {
         "This version has been finalized to the state in which the application can function, was created on the basis of...",
       tags: [
         {
+          id: 1,
           body: "#developer",
           color_text: "#ff0000",
           color_background: "#ffa500",
           color_outline: "#fff700",
         },
         {
+          id: 2,
           body: "#released",
           color_text: "#ff0000",
           color_background: "#ffffff",
@@ -46,18 +48,21 @@ const initialState: initialStateType = {
         "The page you're on is created with this update! Many changes were made to the code itself...",
       tags: [
         {
+          id: 1,
           body: "#developer",
           color_text: "#ff0000",
           color_background: "#ffa500",
           color_outline: "#fff700",
         },
         {
+          id: 2,
           body: "#released",
           color_text: "#ff0000",
           color_background: "#ffffff",
           color_outline: "#000000",
         },
         {
+          id: 3,
           body: "#newpage",
           color_text: "#000000",
           color_background: "#ff4343",
@@ -78,23 +83,27 @@ const initialState: initialStateType = {
       id: 3,
       title: "Releas project v0.3",
       timestamp: "07/01/2022",
-      title_article: "Added functionality for the post and creating a new CONTACTS page",
+      title_article:
+        "Added functionality for the post and creating a new CONTACTS page",
       cutted_content_article:
         "Now posts can be edited and deleted, there were also many minor edits in the code that improved the state of the application for support...",
       tags: [
         {
+          id: 1,
           body: "#developer",
           color_text: "#ff0000",
           color_background: "#ffa500",
           color_outline: "#fff700",
         },
         {
+          id: 2,
           body: "#released",
           color_text: "#ff0000",
           color_background: "#ffffff",
           color_outline: "#000000",
         },
         {
+          id: 3,
           body: "#newpage",
           color_text: "#000000",
           color_background: "#ff4343",

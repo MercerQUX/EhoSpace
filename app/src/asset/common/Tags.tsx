@@ -11,6 +11,7 @@ export const Tags = (props: defaultProps) => {
       {props.tags.map((tag) => {
         return (
           <span
+            key={tag.id}
             className={style.tags}
             style={{
               color: tag.color_text,

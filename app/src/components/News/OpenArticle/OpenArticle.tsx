@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Tags } from "../../../asset/common/Tags";
-import { decrementIDsArticle } from "../../../helpers/decrementNewsHelper";
+import { decrementIDArticle } from "../../../helpers/decrementNewsHelper";
 import { useAppSelector } from "../../../hooks/redux-use";
 import styleMain from "../../../main.module.sass";
 import { stateAllNews } from "../../../store/reselectors/news-selector";
@@ -18,7 +18,7 @@ export const OpenArticle = () => {
         <NavLink to="/news">
           <span>Go Back</span>
         </NavLink>
-        <NavLink to={`/news/${decrementIDsArticle(selectArticle)}`}>
+        <NavLink to={`/news/${decrementIDArticle(selectArticle)}`}>
           <span>Past Article</span>
         </NavLink>
       </div>
