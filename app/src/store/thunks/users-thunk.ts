@@ -44,11 +44,12 @@ export const setFollowed = createAsyncThunk(
   async (payload: IThunkPayloadFollowed, thunkAPI: { getState: any }) => {
     const { id, isFollow } = payload;
     const state = thunkAPI.getState();
+    const arrayFriends = await thunkAPI.getState().userReducer.following
     const newFollowing = isFollow
-      ? state.userReducer.following.filter((idFollowed: number) => {
+      ? arrayFriends.filter((idFollowed: number) => {
           return idFollowed !== id;
         })
-      : [...state.userReducer.following, id];
+      : [...arrayFriends, id];
     const reference = ref(
       getDatabase(),
       `innerData/${state.authReducer.login}/following`

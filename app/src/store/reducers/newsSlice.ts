@@ -82,7 +82,7 @@ const initialState: initialStateType = {
     {
       id: 3,
       title: "Releas project v0.3",
-      timestamp: "07/01/2022",
+      timestamp: "25/01/2022",
       title_article:
         "Added functionality for the post and creating a new CONTACTS page",
       cutted_content_article:

@@ -7,6 +7,7 @@ import { userAction } from "../store/reducers/userSlice";
 import { profileAction } from "../store/reducers/profileSlice";
 import { fetchArrayFollowUsers } from "../store/thunks/dialogs-thunk";
 import { getPartUsers } from "../store/thunks/users-thunk";
+import { getFriends } from "../store/thunks/contact-thunk";
 
 export const initlizationProfile = async (
   selectUser: string | undefined,

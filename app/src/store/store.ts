@@ -1,3 +1,4 @@
+import { contactReducer } from './reducers/contactSlice';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { profileReducer } from "./reducers/profileSlice";
 import { authReducer } from "./reducers/authSlice";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   profileReducer,
   authReducer,
   newsReducer,
+  contactReducer
 });
 
 const setupStore = () => {

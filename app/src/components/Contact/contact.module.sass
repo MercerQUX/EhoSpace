@@ -1,0 +1,91 @@
+@mixin wrap-flex
+  display: flex
+  flex-direction: column
+
+%fullname-style
+  color: #c5dcff
+%nickname-style
+  color: white
+  text-shadow: 0px 0px 10px white
+%country-style
+  color: #1d1b4d
+  text-shadow: 0px 0px 5px #6464ff
+%img-size
+  width: 7rem
+  height: 7rem
+%button-sendMessage-style
+  color: #c5dcff
+  border: 1px solid #c5dcff
+  background: #a0a0ab8c
+%warning-style
+  font-size: 1.5rem
+  font-weight: bold
+  color: #d3dbe3
+  text-shadow: 0 0 2px #0009ff
+
+.wrapperUser
+  background-color: #79aedd69
+  border: 1px solid #79aedd
+  box-shadow: 0px 0px 10px #0071d5
+  display: flex
+  width: 90%
+  margin: 20px auto
+  padding: 10px 20px
+  justify-content: space-between
+  border-radius: 20px
+
+.leftContent
+  display: flex
+
+.user_img
+  @extend %img-size
+  margin-right: 20px
+  cursor: pointer
+
+  img
+    @extend %img-size
+    border-radius: 10px
+
+.userInfo
+  @include wrap-flex
+  height: 80px
+  justify-content: space-between
+
+  .userInfo__fullname
+    font-size: 1.6rem
+    font-weight: bold
+    @extend %fullname-style
+
+  .userInfo__nickname
+    font-size: 1rem
+    font-weight: bold
+    @extend %nickname-style
+
+.rightContent
+  @include wrap-flex
+  align-items: flex-end
+
+  .userInfo__country
+    font-size: 1.5rem
+    @extend %country-style
+
+.error
+  @extend %warning-style
+
+.notUser
+  @extend %warning-style
+  padding: 20px
+  &:hover
+    color: #2391ff
+    text-shadow: 0 0 2px #36beff
+    cursor: pointer
+
+.btn_message
+  @extend %button-sendMessage-style
+  padding: 4px 10px
+  font-size: 1.2rem
+  font-weight: bold
+  margin-top: 4%
+  border-radius: 5px
+  &:hover
+    background: #4a4af8a6

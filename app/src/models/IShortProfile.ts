@@ -4,4 +4,5 @@ export interface IShortProfile {
   name: string;
   surname: string;
   nickname: string;
+  country: string;
 }

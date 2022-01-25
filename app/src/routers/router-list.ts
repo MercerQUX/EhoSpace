@@ -1,5 +1,5 @@
 import Login from "../components/Auth/Login";
-import Contact from "../components/Contact/Contact";
+import ContactPage from "../components/Contact/ContactPage";
 import Dialogs from "../components/Dialogs/Dialog";
 import News from "../components/News/NewsPage";
 import { OpenArticle } from "../components/News/OpenArticle/OpenArticle";
@@ -69,7 +69,7 @@ export const dataListRouter: Array<IDataList> = [
     redirect: false,
     redirectPath: "",
     path: "/contact",
-    JSX: Contact,
+    JSX: ContactPage,
   },
   {
     key: 9,

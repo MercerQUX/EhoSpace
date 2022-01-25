@@ -33,7 +33,7 @@ export const sendMessages = createAsyncThunk(
   async (payload: sendedMessageType, thunkAPI: { getState: any }) => {
     const { idSender, idAdress, messageBody } = payload;
     const newMessage = {
-      id: Math.floor(Date.now()/100),
+      id: Math.floor(Date.now() / 100),
       body: messageBody,
       idSender: idSender,
       timestamp: format(new Date(), "Pp"),

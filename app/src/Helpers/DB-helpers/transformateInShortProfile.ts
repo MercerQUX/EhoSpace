@@ -19,6 +19,7 @@ export const transformateInShortProfile = ({
       name: followUser.name,
       surname: followUser.surname,
       nickname: followUser.nickname,
+      country: followUser.country
     };
     return shortUser;
   });
