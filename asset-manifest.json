@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "/EhoSpace/static/css/main.3581701f.chunk.css",
-    "main.js": "/EhoSpace/static/js/main.961b78e1.chunk.js",
-    "main.js.map": "/EhoSpace/static/js/main.961b78e1.chunk.js.map",
-    "runtime-main.js": "/EhoSpace/static/js/runtime-main.27be7f0c.js",
-    "runtime-main.js.map": "/EhoSpace/static/js/runtime-main.27be7f0c.js.map",
-    "static/js/2.af6eed24.chunk.js": "/EhoSpace/static/js/2.af6eed24.chunk.js",
-    "static/js/2.af6eed24.chunk.js.map": "/EhoSpace/static/js/2.af6eed24.chunk.js.map",
-    "static/js/3.897b67ce.chunk.js": "/EhoSpace/static/js/3.897b67ce.chunk.js",
-    "static/js/3.897b67ce.chunk.js.map": "/EhoSpace/static/js/3.897b67ce.chunk.js.map",
+    "main.css": "/EhoSpace/static/css/main.dda189c5.chunk.css",
+    "main.js": "/EhoSpace/static/js/main.7add2e08.chunk.js",
+    "main.js.map": "/EhoSpace/static/js/main.7add2e08.chunk.js.map",
+    "runtime-main.js": "/EhoSpace/static/js/runtime-main.b3ae83be.js",
+    "runtime-main.js.map": "/EhoSpace/static/js/runtime-main.b3ae83be.js.map",
+    "static/js/2.efbd293b.chunk.js": "/EhoSpace/static/js/2.efbd293b.chunk.js",
+    "static/js/2.efbd293b.chunk.js.map": "/EhoSpace/static/js/2.efbd293b.chunk.js.map",
+    "static/js/3.f2ebb6f6.chunk.js": "/EhoSpace/static/js/3.f2ebb6f6.chunk.js",
+    "static/js/3.f2ebb6f6.chunk.js.map": "/EhoSpace/static/js/3.f2ebb6f6.chunk.js.map",
     "index.html": "/EhoSpace/index.html",
-    "static/css/main.3581701f.chunk.css.map": "/EhoSpace/static/css/main.3581701f.chunk.css.map",
-    "static/js/2.af6eed24.chunk.js.LICENSE.txt": "/EhoSpace/static/js/2.af6eed24.chunk.js.LICENSE.txt",
+    "static/css/main.dda189c5.chunk.css.map": "/EhoSpace/static/css/main.dda189c5.chunk.css.map",
+    "static/js/2.efbd293b.chunk.js.LICENSE.txt": "/EhoSpace/static/js/2.efbd293b.chunk.js.LICENSE.txt",
     "static/media/forms.module.sass": "/EhoSpace/static/media/auth-background.8303c0a5.jpg",
     "static/media/main.module.sass": "/EhoSpace/static/media/background-profile.668eec19.jpg",
     "static/media/index.css": "/EhoSpace/static/media/background.b25aa8de.jpg",
     "static/media/chat-preview.4869b0bf.svg": "/EhoSpace/static/media/chat-preview.4869b0bf.svg",
+    "static/media/cosmo.c8d4fa9d.png": "/EhoSpace/static/media/cosmo.c8d4fa9d.png",
     "static/media/preloader.f5d18815.svg": "/EhoSpace/static/media/preloader.f5d18815.svg",
     "static/media/siteLogo.3c08956c.png": "/EhoSpace/static/media/siteLogo.3c08956c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.27be7f0c.js",
-    "static/js/2.af6eed24.chunk.js",
-    "static/css/main.3581701f.chunk.css",
-    "static/js/main.961b78e1.chunk.js"
+    "static/js/runtime-main.b3ae83be.js",
+    "static/js/2.efbd293b.chunk.js",
+    "static/css/main.dda189c5.chunk.css",
+    "static/js/main.7add2e08.chunk.js"
   ]
 }
