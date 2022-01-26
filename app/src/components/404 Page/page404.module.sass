@@ -1,0 +1,44 @@
+$animation-time: 4.2s
+
+%text-pageNotFound-style
+	color: #93b1f5
+	text-shadow: 0 0 15px #3f25a9
+%text-link-style
+	color: #451fa8
+	text-shadow: 0 0 5px #e10dfb
+%text-link-style-hover
+	color: #e10dfb
+	text-shadow: 0 0 5px #451fa8
+
+.wrapperCosmo
+	width: 40%
+	.cosmoImg
+		width: 360px
+		margin: 20px
+		animation: cosmoFly $animation-time infinite alternate
+		animation-timing-function: ease-in-out
+.text404
+	position: static
+	text-align: center
+	padding-bottom: 20px
+.pagenotfound
+	@extend %text-pageNotFound-style
+	text-align: center
+	font-size: 4.2rem
+	font-weight: bold
+.link_back
+	@extend %text-link-style
+	text-align: center
+	font-size: 1.8rem
+	&:hover
+		@extend %text-link-style-hover
+
+@keyframes cosmoFly
+	0%
+		margin: 0
+	50%
+		margin-left: 20px
+		margin-top: 10px
+	100%
+		margin: 0px
+margin

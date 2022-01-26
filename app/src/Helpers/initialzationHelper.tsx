@@ -7,7 +7,6 @@ import { userAction } from "../store/reducers/userSlice";
 import { profileAction } from "../store/reducers/profileSlice";
 import { fetchArrayFollowUsers } from "../store/thunks/dialogs-thunk";
 import { getPartUsers } from "../store/thunks/users-thunk";
-import { getFriends } from "../store/thunks/contact-thunk";
 
 export const initlizationProfile = async (
   selectUser: string | undefined,
@@ -15,11 +14,10 @@ export const initlizationProfile = async (
   auth: boolean,
   dispatch: AppDispatch
 ) => {
-  const updateProfileData = updateAuthProfile;
   const { defineOwnerProfile } = profileAction;
   let selectedUser =
     isNaN(Number(selectUser)) && auth ? idLoggedUser : Number(selectUser);
-  await dispatch(updateProfileData(selectedUser));
+  await dispatch(updateAuthProfile(selectedUser));
   await dispatch(defineOwnerProfile(idLoggedUser));
   await dispatch(fetchPosts(selectedUser));
 };

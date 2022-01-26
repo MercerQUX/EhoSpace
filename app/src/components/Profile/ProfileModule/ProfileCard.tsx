@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Navigate } from "react-router";
 import { ICommonProfile } from "../../../models/ICommonProfile";
 import { IThunkRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { FormEditProfile } from "../../../UI/FormEditProfile/FormEditProfile";

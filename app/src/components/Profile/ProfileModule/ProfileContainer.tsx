@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import {
   stateAuthID,
   stateAuthIsInitialization,
@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux-use";
 import {
   stateProfileIsOwner,
   stateProfile,
+  stateErrorLoading,
 } from "../../../store/reselectors/profile-selector";
 import { sendRewriteProfile } from "../../../store/thunks/profile-thunk";
 import { ProfileCard } from "./ProfileCard";
@@ -24,6 +25,7 @@ export const ProfileContainer: React.FC = () => {
     isOwner,
     changeStatus,
     rewriteProfile,
+    errorLoading,
     dispatch,
   } = {
     paramsSelectedUserID: useParams().userID,
@@ -33,6 +35,7 @@ export const ProfileContainer: React.FC = () => {
     isOwner: useAppSelector(stateProfileIsOwner),
     changeStatus: profileAction.changeStatus,
     rewriteProfile: profileAction.rewriteProfile,
+    errorLoading: useAppSelector(stateErrorLoading),
     dispatch: useAppDispatch(),
   };
   const [isLoading, setIsLoading] = useState(true);
@@ -47,10 +50,11 @@ export const ProfileContainer: React.FC = () => {
     }, 400);
     return () => clearTimeout(timer);
   }, [initProfile]);
-
+  
   return (
     <div>
-      {profile != null && !isLoading ? (
+      {errorLoading && !profile ? <Navigate to={"/page404"} /> : null}
+      {profile !== null && !isLoading ? (
         <ProfileCard
           profile={profile}
           isOwnerProfile={isOwner}

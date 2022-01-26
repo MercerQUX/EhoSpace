@@ -23,3 +23,8 @@ export const stateProfileIsFetching = (state: RootState) => {
 export const stateProfile = (state: RootState) => {
   return state.profileReducer.profile;
 };
+
+export const stateErrorLoading = (state: RootState) => {
+  return state.profileReducer.errorLoading;
+};
+

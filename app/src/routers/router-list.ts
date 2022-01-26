@@ -1,3 +1,4 @@
+import { Page404 } from "../components/404 Page/Page404";
 import Login from "../components/Auth/Login";
 import ContactPage from "../components/Contact/ContactPage";
 import Dialogs from "../components/Dialogs/Dialog";
@@ -92,10 +93,11 @@ export const dataListRouter: Array<IDataList> = [
     path: "/login",
     JSX: Login,
   },
-  // {
-  //   key:11,
-  //   redirect: false,redirectPath: "",
-  //   path: "",
-  //   JSX: <div></div>,
-  // },
+  {
+    key: 12,
+    redirect: false,
+    redirectPath: "",
+    path: "*",
+    JSX: Page404,
+  },
 ];

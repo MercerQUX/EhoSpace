@@ -82,7 +82,7 @@ const initialState: initialStateType = {
     {
       id: 3,
       title: "Releas project v0.3",
-      timestamp: "25/01/2022",
+      timestamp: "26/01/2022",
       title_article:
         "Added functionality for the post and creating a new CONTACTS page",
       cutted_content_article:
@@ -117,7 +117,7 @@ const initialState: initialStateType = {
       content_dive: {
         author: "MercerQUX",
         full_content_article:
-          "Now posts can be edited and deleted, there were also many minor edits in the code that improved the state of the application for support. <br /><b>More details:</b> <p>- Posts can be deleted and edited</p> <p>- Added a page for your subscriptions, it is located in <b>/contacts</b></p> <p>- Added a description of the site for publications in other sources</p> <p>- Changed site icon</p> <br /><b>Fix:</b> <p>- Fixed a bug where the text in the article was merged</p> <p>- Fixed application crash when loading users in <b>/users</b></p> <p>- If the city is not specified, now it does not display it</p> <p>- The news grid collapsed, fixed.</p> <p>Thank you for your support and attention to my pet-project. We also continue to actively develop the project with any useful criticism!</p>",
+          "Now posts can be edited and deleted, there were also many minor edits in the code that improved the state of the application for support. <br /><b>More details:</b> <p>- Posts can be deleted and edited</p> <p>- Added a page for your subscriptions, it is located in <b>/contacts</b> and <b>404 Page</b></p> <p>- Added a description of the site for publications in other sources</p> <p>- Changed site icon</p> <br /><b>Fix:</b> <p>- Fixed a bug where the text in the article was merged</p> <p>- Fixed a crash when entering a non-existent profile ID in a URL <br/>  (will now redirect to a 404 page)</p> <p>- Fixed application crash when loading users in <b>/users</b></p> <p>- If the city is not specified, now it does not display it</p> <p>- The news grid collapsed, fixed.</p> <p>Thank you for your support and attention to my pet-project. We also continue to actively develop the project with any useful criticism!</p>",
       },
     },
   ],

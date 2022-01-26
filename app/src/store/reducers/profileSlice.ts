@@ -17,6 +17,7 @@ interface initialStateProfileType {
   actualStatus: string;
   isFetching: boolean;
   isOwner: boolean;
+  errorLoading: boolean;
 }
 
 let initialState: initialStateProfileType = {
@@ -30,6 +31,7 @@ let initialState: initialStateProfileType = {
   actualStatus: "",
   isFetching: false,
   isOwner: false,
+  errorLoading: false,
 };
 
 const profileSlice = createSlice({
@@ -65,19 +67,27 @@ const profileSlice = createSlice({
   extraReducers: {
     [updateAuthProfile.pending.type]: (state) => {
       state.isFetching = true;
+      state.errorLoading = false;
     },
     [updateAuthProfile.fulfilled.type]: (
       state,
       action: PayloadAction<ICommonProfile>
     ) => {
-      state.isFetching = false;
-      if (action.payload.avatar === "") {
-        state.profile = { ...action.payload, avatar: notAvatar };
-      } else {
-        state.profile = action.payload;
+      state.errorLoading = false;
+      if (action.payload !== undefined) {
+        if (action.payload.avatar === "") {
+          state.profile = { ...action.payload, avatar: notAvatar };
+        } else {
+          state.profile = { ...action.payload };
+        }
+      }else{
+        state.profile = null;
+        state.errorLoading = true;
       }
+      state.isFetching = false;
     },
     [updateAuthProfile.rejected.type]: (state) => {
+      state.errorLoading = true;
       state.isFetching = false;
     },
     [fetchPosts.pending.type]: (state) => {
